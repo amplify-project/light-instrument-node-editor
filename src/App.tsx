@@ -49,12 +49,6 @@ const initialNodes: Node[] = [
     position: { x: 500, y: 100 },
     data: { label: "Serial Output" },
   },
-  {
-    id: "filter-1",
-    type: "deviceFilter",
-    position: { x: 300, y: 100 },
-    data: { label: "Device Filter", filterValue: "sensor1" },
-  },
 ];
 
 const initialEdges: Edge[] = [];
