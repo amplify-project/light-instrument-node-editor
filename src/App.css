@@ -1,0 +1,182 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  color: #f6f6f6;
+  background-color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+.serial-node {
+  background: #2b2b2b;
+  border: 1px solid #444;
+  border-radius: 8px;
+  min-width: 180px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  color: #eee;
+  font-size: 12px;
+}
+
+.node-header {
+  background: #3c3c3c;
+  padding: 8px 12px;
+  border-bottom: 1px solid #444;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-btn {
+  background: transparent !important;
+  border: none !important;
+  color: #888 !important;
+  padding: 0 4px !important;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.delete-btn:hover {
+  color: #ff4646 !important;
+}
+
+.input-node .node-header {
+  border-top: 3px solid #646cff;
+}
+
+.output-node .node-header {
+  border-top: 3px solid #ff4646;
+}
+
+.filter-node .node-header {
+  border-top: 3px solid #46ff88;
+}
+
+.peak-node .node-header {
+  border-top: 3px solid #ffcc46;
+}
+
+.command-node .node-header {
+  border-top: 3px solid #a246ff;
+}
+
+.graph-node .node-header {
+  border-top: 3px solid #46ccff;
+}
+
+
+.node-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.node-content select,
+.node-content input,
+.node-content button {
+  background: #1e1e1e;
+  border: 1px solid #444;
+  color: #eee;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.node-content button {
+  cursor: pointer;
+  background: #444;
+  transition: background 0.2s;
+}
+
+.node-content button:hover:not(:disabled) {
+  background: #555;
+}
+
+.node-content button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.node-status {
+  margin-top: 4px;
+  padding: 4px;
+  background: #121212;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 10px;
+  color: #888;
+  border: 1px solid #333;
+}
+
+.react-flow__background {
+  background-color: #121212 !important;
+}
+
+.react-flow__controls button {
+  background: #2b2b2b;
+  border-bottom: 1px solid #444;
+  fill: #eee;
+}
+
+.react-flow__controls button:hover {
+  background: #3c3c3c;
+}
+
+.react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #aaa;
+  border: 2px solid #2b2b2b;
+}
+
+/* Node Search Styles */
+.node-search-container {
+  position: absolute;
+  z-index: 1000;
+  background: #2b2b2b;
+  border: 1px solid #444;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  width: 200px;
+  overflow: hidden;
+}
+
+.node-search-container input {
+  width: 100%;
+  background: #1e1e1e;
+  border: none;
+  border-bottom: 1px solid #444;
+  color: #eee;
+  padding: 8px 12px;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 13px;
+}
+
+.node-search-results {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.node-search-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #ccc;
+  transition: background 0.1s;
+}
+
+.node-search-item:hover,
+.node-search-item.selected {
+  background: #3c3c3c;
+  color: #fff;
+}
