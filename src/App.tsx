@@ -15,6 +15,8 @@ import {
   useReactFlow,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
+import { save, open } from "@tauri-apps/plugin-dialog";
+import { invoke } from "@tauri-apps/api/core";
 
 import { SerialInputNode } from "./components/nodes/SerialInputNode";
 import { SerialOutputNode } from "./components/nodes/SerialOutputNode";
@@ -163,6 +165,45 @@ function Flow() {
     setEdges((eds) => eds.filter((edge) => edge.source !== id && edge.target !== id));
   }, []);
 
+  const onSave = useCallback(async () => {
+    try {
+      const path = await save({
+        filters: [{ name: "JSON", extensions: ["json"] }],
+        defaultPath: "node_setup.json",
+      });
+
+      if (path) {
+        const setup = { nodes, edges };
+        await invoke("save_file", { path, contents: JSON.stringify(setup, null, 2) });
+      }
+    } catch (e) {
+      console.error(e);
+      alert("Failed to save: " + e);
+    }
+  }, [nodes, edges]);
+
+  const onOpen = useCallback(async () => {
+    try {
+      const path = await open({
+        filters: [{ name: "JSON", extensions: ["json"] }],
+        multiple: false,
+      });
+
+      if (path) {
+        const contents = await invoke<string>("load_file", { path });
+        const setup = JSON.parse(contents);
+
+        if (setup.nodes && setup.edges) {
+          setNodes(setup.nodes);
+          setEdges(setup.edges);
+        }
+      }
+    } catch (e) {
+      console.error(e);
+      alert("Failed to load: " + e);
+    }
+  }, []);
+
   // Enrich nodes with data flow callbacks
   const enrichedNodes = nodes.map((node) => ({
     ...node,
@@ -191,6 +232,11 @@ function Flow() {
         <Background color="#333" gap={20} />
         <Controls />
       </ReactFlow>
+
+      <div className="file-controls">
+        <button onClick={onOpen}>Open</button>
+        <button onClick={onSave}>Save</button>
+      </div>
 
       {searchState.visible && (
         <NodeSearch
