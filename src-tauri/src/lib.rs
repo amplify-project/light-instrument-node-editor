@@ -1,0 +1,92 @@
+use serialport;
+use std::collections::HashMap;
+use std::sync::Mutex;
+use tauri::{AppHandle, Emitter, State};
+
+struct SerialState {
+    ports: Mutex<HashMap<String, Box<dyn serialport::SerialPort>>>,
+}
+
+#[tauri::command]
+fn list_ports() -> Vec<String> {
+    match serialport::available_ports() {
+        Ok(ports) => ports.into_iter().map(|p| p.port_name).collect(),
+        Err(_) => vec![],
+    }
+}
+
+#[tauri::command]
+fn open_port(
+    state: State<'_, SerialState>,
+    app: AppHandle,
+    port_name: String,
+    baud_rate: u32,
+) -> Result<(), String> {
+    let port = serialport::new(port_name.clone(), baud_rate)
+        .timeout(std::time::Duration::from_millis(10))
+        .open()
+        .map_err(|e| e.to_string())?;
+
+    let mut ports = state.ports.lock().unwrap();
+    ports.insert(
+        port_name.clone(),
+        port.try_clone().map_err(|e| e.to_string())?,
+    );
+
+    // Start a background thread to read from the port
+    let mut reader = port;
+    let p_name = port_name.clone();
+    std::thread::spawn(move || {
+        let mut serial_buf: Vec<u8> = vec![0; 1024];
+        loop {
+            match reader.read(serial_buf.as_mut_slice()) {
+                Ok(t) => {
+                    let data = String::from_utf8_lossy(&serial_buf[..t]).to_string();
+                    let payload = serde_json::json!({
+                        "port": p_name,
+                        "data": data
+                    });
+                    let _ = app.emit("serial-data", payload);
+                }
+                Err(ref e) if e.kind() == std::io::ErrorKind::TimedOut => (),
+                Err(_) => break,
+            }
+        }
+    });
+
+    Ok(())
+}
+
+#[tauri::command]
+fn close_port(state: State<'_, SerialState>, port_name: String) {
+    let mut ports = state.ports.lock().unwrap();
+    ports.remove(&port_name);
+}
+
+#[tauri::command]
+fn write_serial(state: State<'_, SerialState>, port_name: String, data: String) -> Result<(), String> {
+    let mut ports = state.ports.lock().unwrap();
+    if let Some(port) = ports.get_mut(&port_name) {
+        port.write_all(data.as_bytes()).map_err(|e| e.to_string())?;
+        Ok(())
+    } else {
+        Err("Port not open".to_string())
+    }
+}
+
+#[cfg_attr(mobile, tauri::mobile_entry_point)]
+pub fn run() {
+    tauri::Builder::default()
+        .plugin(tauri_plugin_opener::init())
+        .manage(SerialState {
+            ports: Mutex::new(HashMap::new()),
+        })
+        .invoke_handler(tauri::generate_handler![
+            list_ports,
+            open_port,
+            close_port,
+            write_serial
+        ])
+        .run(tauri::generate_context!())
+        .expect("error while running tauri application");
+}
