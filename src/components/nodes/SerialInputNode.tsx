@@ -30,6 +30,7 @@ export function SerialInputNode({ data, id }: any) {
 
         for (const line of lines) {
           const trimmed = line.trim();
+
           if (!trimmed) continue;
 
           // Parse "device,port,value"
@@ -92,7 +93,6 @@ export function SerialInputNode({ data, id }: any) {
     <div className="serial-node input-node">
       <div className="node-header">
         <span>Serial Input</span>
-        <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>
 
       <div className="node-content nodrag">

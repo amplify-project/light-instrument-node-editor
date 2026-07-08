@@ -38,6 +38,7 @@ fn open_port(
     let p_name = port_name.clone();
     std::thread::spawn(move || {
         let mut serial_buf: Vec<u8> = vec![0; 1024];
+
         loop {
             match reader.read(serial_buf.as_mut_slice()) {
                 Ok(t) => {
@@ -66,8 +67,10 @@ fn close_port(state: State<'_, SerialState>, port_name: String) {
 #[tauri::command]
 fn write_serial(state: State<'_, SerialState>, port_name: String, data: String) -> Result<(), String> {
     let mut ports = state.ports.lock().unwrap();
+
     if let Some(port) = ports.get_mut(&port_name) {
         port.write_all(data.as_bytes()).map_err(|e| e.to_string())?;
+
         Ok(())
     } else {
         Err("Port not open".to_string())

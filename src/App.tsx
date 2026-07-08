@@ -42,12 +42,14 @@ const initialNodes: Node[] = [
     type: "serialInput",
     position: { x: 100, y: 100 },
     data: { label: "Serial Input" },
+    deletable: false,
   },
   {
     id: "output-1",
     type: "serialOutput",
     position: { x: 500, y: 100 },
     data: { label: "Serial Output" },
+    deletable: false,
   },
 ];
 
@@ -99,6 +101,10 @@ function Flow() {
   }, [handleMouseMove, handleKeyDown]);
 
   const onAddNode = useCallback((type: string) => {
+    if (type === "serialInput" || type === "serialOutput") {
+      return;
+    }
+
     const position = screenToFlowPosition({
       x: searchState.x,
       y: searchState.y,
@@ -155,7 +161,16 @@ function Flow() {
   }, []);
 
   const onDeleteNode = useCallback((id: string) => {
-    setNodes((nds) => nds.filter((node) => node.id !== id));
+    setNodes((nds) => {
+      const node = nds.find((n) => n.id === id);
+
+      if (node && (node.type === "serialInput" || node.type === "serialOutput")) {
+        return nds;
+      }
+
+      return nds.filter((n) => n.id !== id);
+    });
+
     setEdges((eds) => eds.filter((edge) => edge.source !== id && edge.target !== id));
   }, []);
 
@@ -188,7 +203,50 @@ function Flow() {
         const setup = JSON.parse(contents);
 
         if (setup.nodes && setup.edges) {
-          setNodes(setup.nodes);
+          let newNodes: Node[] = setup.nodes;
+
+          // Ensure exactly one serialInput
+          const inputNodes = newNodes.filter((n) => n.type === "serialInput");
+
+          if (inputNodes.length === 0) {
+            newNodes.push({
+              id: "input-1",
+              type: "serialInput",
+              position: { x: 100, y: 100 },
+              data: { label: "Serial Input" },
+              deletable: false,
+            });
+          } else if (inputNodes.length > 1) {
+            const firstInput = inputNodes[0];
+            newNodes = newNodes.filter((n) => n.type !== "serialInput" || n.id === firstInput.id);
+          }
+
+          // Ensure exactly one serialOutput
+          const outputNodes = newNodes.filter((n) => n.type === "serialOutput");
+
+          if (outputNodes.length === 0) {
+            newNodes.push({
+              id: "output-1",
+              type: "serialOutput",
+              position: { x: 500, y: 100 },
+              data: { label: "Serial Output" },
+              deletable: false,
+            });
+          } else if (outputNodes.length > 1) {
+            const firstOutput = outputNodes[0];
+            newNodes = newNodes.filter((n) => n.type !== "serialOutput" || n.id === firstOutput.id);
+          }
+
+          // Ensure they are marked non-deletable
+          newNodes = newNodes.map((n) => {
+            if (n.type === "serialInput" || n.type === "serialOutput") {
+              return { ...n, deletable: false };
+            }
+
+            return n;
+          });
+
+          setNodes(newNodes);
           setEdges(setup.edges);
         }
       }

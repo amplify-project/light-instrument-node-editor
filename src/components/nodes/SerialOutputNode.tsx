@@ -45,7 +45,6 @@ export function SerialOutputNode({ data, id }: any) {
 
       <div className="node-header">
         <span>Serial Output</span>
-        <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>
 
       <div className="node-content nodrag">

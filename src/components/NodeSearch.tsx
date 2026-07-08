@@ -6,8 +6,6 @@ interface NodeOption {
 }
 
 const nodeOptions: NodeOption[] = [
-  { type: "serialInput", label: "Serial Input" },
-  { type: "serialOutput", label: "Serial Output" },
   { type: "deviceFilter", label: "Device Filter" },
   { type: "peakDetection", label: "Peak Detection" },
   { type: "command", label: "Command" },
