@@ -2,18 +2,24 @@ import { useState, useEffect } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function DeviceFilterNode({ data, id }: any) {
-  const [filterValue, setFilterValue] = useState(data.filterValue || "");
+  const [deviceFilter, setDeviceFilter] = useState(data.deviceFilter || data.filterValue || "");
+  const [portFilter, setPortFilter] = useState(data.portFilter || "");
   const [lastRelayed, setLastRelayed] = useState<any>(null);
 
   useEffect(() => {
     // Register this node to receive data
     if (data.registerConsumer) {
       data.registerConsumer(id, (incoming: any) => {
-        if (incoming && typeof incoming === "object" && incoming.device === filterValue) {
-          setLastRelayed(incoming);
+        if (incoming && typeof incoming === "object") {
+          const deviceMatch = !deviceFilter || incoming.device === deviceFilter;
+          const portMatch = !portFilter || incoming.port === portFilter;
 
-          if (data.onData) {
-            data.onData(id, incoming);
+          if (deviceMatch && portMatch) {
+            setLastRelayed(incoming);
+
+            if (data.onData) {
+              data.onData(id, incoming);
+            }
           }
         }
       });
@@ -24,7 +30,7 @@ export function DeviceFilterNode({ data, id }: any) {
         data.unregisterConsumer(id);
       }
     };
-  }, [filterValue, id, data]);
+  }, [deviceFilter, portFilter, id, data]);
 
   return (
     <div className="serial-node filter-node">
@@ -36,17 +42,25 @@ export function DeviceFilterNode({ data, id }: any) {
       </div>
 
       <div className="node-content nodrag">
-        <label style={{ fontSize: "10px", color: "#888" }}>Filter by Device:</label>
+        <label style={{ fontSize: "10px", color: "#888" }}>Device Name:</label>
         <input
           type="text"
-          value={filterValue}
-          onChange={(e) => setFilterValue(e.target.value)}
-          placeholder="e.sender1"
+          value={deviceFilter}
+          onChange={(e) => setDeviceFilter(e.target.value)}
+          placeholder="e.g. sender1"
+        />
+
+        <label style={{ fontSize: "10px", color: "#888", marginTop: "8px", display: "block" }}>Device Port:</label>
+        <input
+          type="text"
+          value={portFilter}
+          onChange={(e) => setPortFilter(e.target.value)}
+          placeholder="e.g. sensorA"
         />
 
         {lastRelayed && (
           <div className="node-status">
-            Relayed: {lastRelayed.device}:{lastRelayed.value}
+            Relayed: {lastRelayed.device}:{lastRelayed.port}:{lastRelayed.value}
           </div>
         )}
       </div>
