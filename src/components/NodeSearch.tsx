@@ -13,6 +13,7 @@ const nodeOptions: NodeOption[] = [
   { type: "compare", label: "Compare" },
   { type: "boolean", label: "Boolean" },
   { type: "log", label: "Log" },
+  { type: "smooth", label: "Smooth" },
 ];
 
 interface NodeSearchProps {

@@ -32,7 +32,7 @@ export function GraphNode({ data, id }: any) {
   }, [id, data]);
 
   // SVG constants
-  const width = 160;
+  const width = 216;
   const height = 80;
   const padding = 5;
 

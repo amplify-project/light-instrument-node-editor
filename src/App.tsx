@@ -28,6 +28,7 @@ import { GraphNode } from "./components/nodes/GraphNode";
 import { CompareNode } from "./components/nodes/CompareNode";
 import { BooleanNode } from "./components/nodes/BooleanNode";
 import { LogNode } from "./components/nodes/LogNode";
+import { SmoothNode } from "./components/nodes/SmoothNode";
 import { NodeSearch } from "./components/NodeSearch";
 import "./App.css";
 
@@ -41,6 +42,7 @@ const nodeTypes = {
   compare: CompareNode,
   boolean: BooleanNode,
   log: LogNode,
+  smooth: SmoothNode,
 };
 
 const initialNodes: Node[] = [
