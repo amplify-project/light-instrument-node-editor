@@ -237,6 +237,19 @@ function Flow() {
     delete consumers.current[id];
   }, []);
 
+  const updateNodeData = useCallback((id: string, newData: any) => {
+    setNodes((nds) =>
+      nds.map((node) => {
+        if (node.id === id) {
+          return { ...node, data: { ...node.data, ...newData } };
+        }
+
+        return node;
+      })
+    );
+    setIsDirty(true);
+  }, []);
+
   const onDeleteNode = useCallback((id: string) => {
     setNodes((nds) => {
       const node = nds.find((n) => n.id === id);
@@ -286,6 +299,58 @@ function Flow() {
     }
   }, [nodes, edges, currentPath, handleSaveAs]);
 
+  const applySetup = useCallback((setup: any, path: string | null) => {
+    if (setup.nodes && setup.edges) {
+      let newNodes: Node[] = setup.nodes;
+
+      // Ensure exactly one serialInput
+      const inputNodes = newNodes.filter((n) => n.type === "serialInput");
+
+      if (inputNodes.length === 0) {
+        newNodes.push({
+          id: "input-1",
+          type: "serialInput",
+          position: { x: 100, y: 100 },
+          data: { label: "Serial Input" },
+          deletable: false,
+        });
+      } else if (inputNodes.length > 1) {
+        const firstInput = inputNodes[0];
+        newNodes = newNodes.filter((n) => n.type !== "serialInput" || n.id === firstInput.id);
+      }
+
+      // Ensure exactly one serialOutput
+      const outputNodes = newNodes.filter((n) => n.type === "serialOutput");
+
+      if (outputNodes.length === 0) {
+        newNodes.push({
+          id: "output-1",
+          type: "serialOutput",
+          position: { x: 500, y: 100 },
+          data: { label: "Serial Output" },
+          deletable: false,
+        });
+      } else if (outputNodes.length > 1) {
+        const firstOutput = outputNodes[0];
+        newNodes = newNodes.filter((n) => n.type !== "serialOutput" || n.id === firstOutput.id);
+      }
+
+      // Ensure they are marked non-deletable
+      newNodes = newNodes.map((n) => {
+        if (n.type === "serialInput" || n.type === "serialOutput") {
+          return { ...n, deletable: false };
+        }
+
+        return n;
+      });
+
+      setNodes(newNodes);
+      setEdges(setup.edges);
+      setCurrentPath(path);
+      setIsDirty(false);
+    }
+  }, []);
+
   const onOpen = useCallback(async () => {
     try {
       const path = await open({
@@ -296,62 +361,13 @@ function Flow() {
       if (path) {
         const contents = await invoke<string>("load_file", { path });
         const setup = JSON.parse(contents);
-
-        if (setup.nodes && setup.edges) {
-          let newNodes: Node[] = setup.nodes;
-
-          // Ensure exactly one serialInput
-          const inputNodes = newNodes.filter((n) => n.type === "serialInput");
-
-          if (inputNodes.length === 0) {
-            newNodes.push({
-              id: "input-1",
-              type: "serialInput",
-              position: { x: 100, y: 100 },
-              data: { label: "Serial Input" },
-              deletable: false,
-            });
-          } else if (inputNodes.length > 1) {
-            const firstInput = inputNodes[0];
-            newNodes = newNodes.filter((n) => n.type !== "serialInput" || n.id === firstInput.id);
-          }
-
-          // Ensure exactly one serialOutput
-          const outputNodes = newNodes.filter((n) => n.type === "serialOutput");
-
-          if (outputNodes.length === 0) {
-            newNodes.push({
-              id: "output-1",
-              type: "serialOutput",
-              position: { x: 500, y: 100 },
-              data: { label: "Serial Output" },
-              deletable: false,
-            });
-          } else if (outputNodes.length > 1) {
-            const firstOutput = outputNodes[0];
-            newNodes = newNodes.filter((n) => n.type !== "serialOutput" || n.id === firstOutput.id);
-          }
-
-          // Ensure they are marked non-deletable
-          newNodes = newNodes.map((n) => {
-            if (n.type === "serialInput" || n.type === "serialOutput") {
-              return { ...n, deletable: false };
-            }
-
-            return n;
-          });
-
-          setNodes(newNodes);
-          setEdges(setup.edges);
-          setCurrentPath(path);
-          setIsDirty(false);
-        }
+        applySetup(setup, path);
       }
     } catch (e) {
       console.error(e);
       alert("Failed to load: " + e);
     }
-  }, []);
+  }, [applySetup]);
 
   // Enrich nodes with data flow callbacks
   const enrichedNodes = nodes.map((node) => ({
@@ -362,6 +378,7 @@ function Flow() {
       registerConsumer,
       unregisterConsumer,
       onDelete: onDeleteNode,
+      updateNodeData,
       activePort,
       setActivePort,
     },

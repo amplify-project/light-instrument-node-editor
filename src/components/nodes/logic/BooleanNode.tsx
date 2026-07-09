@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function BooleanNode({ data, id }: any) {
-  const [operator, setOperator] = useState(data.operator || "AND");
+  const operator = data.operator || "AND";
   const [valA, setValA] = useState<number>(0);
   const [valB, setValB] = useState<number>(0);
   const [lastOutput, setLastOutput] = useState<number | null>(null);
@@ -67,7 +67,10 @@ export function BooleanNode({ data, id }: any) {
 
       <div className="node-content nodrag">
         <label style={{ fontSize: "10px", color: "#888" }}>Operation:</label>
-        <select value={operator} onChange={(e) => setOperator(e.target.value)}>
+        <select
+          value={operator}
+          onChange={(e) => data.updateNodeData?.(id, { operator: e.target.value })}
+        >
           <option value="AND">AND</option>
           <option value="OR">OR</option>
           <option value="XOR">XOR</option>

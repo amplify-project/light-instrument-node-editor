@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function CommandNode({ data, id }: any) {
-  const [command, setCommand] = useState(data.command || "led");
-  const [value, setValue] = useState(data.value || "");
+  const command = data.command || "led";
+  const value = data.value || "";
   const [lastEmitted, setLastEmitted] = useState<any>(null);
 
   useEffect(() => {
@@ -14,6 +14,7 @@ export function CommandNode({ data, id }: any) {
         if (incoming) {
           const payload = { command, value };
           setLastEmitted(payload);
+
           if (data.onData) {
             data.onData(id, payload);
           }
@@ -51,7 +52,7 @@ export function CommandNode({ data, id }: any) {
         <input
           type="text"
           value={command}
-          onChange={(e) => setCommand(e.target.value)}
+          onChange={(e) => data.updateNodeData?.(id, { command: e.target.value })}
           placeholder="e.g. led"
         />
 
@@ -59,7 +60,7 @@ export function CommandNode({ data, id }: any) {
         <input
           type="text"
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => data.updateNodeData?.(id, { value: e.target.value })}
         />
 
         <button onClick={handleManualTrigger}>Manual Trigger</button>

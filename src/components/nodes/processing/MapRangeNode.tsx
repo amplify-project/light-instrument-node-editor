@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function MapRangeNode({ data, id }: any) {
-  const [inMin, setInMin] = useState(data.inMin ?? 0);
-  const [inMax, setInMax] = useState(data.inMax ?? 1023);
-  const [outMin, setOutMin] = useState(data.outMin ?? 0);
-  const [outMax, setOutMax] = useState(data.outMax ?? 255);
+  const inMin = data.inMin ?? 0;
+  const inMax = data.inMax ?? 1023;
+  const outMin = data.outMin ?? 0;
+  const outMax = data.outMax ?? 255;
   const [lastValue, setLastValue] = useState<number | null>(null);
 
   useEffect(() => {
@@ -45,19 +45,19 @@ export function MapRangeNode({ data, id }: any) {
       <div className="node-content nodrag">
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>In Min</label>
-          <input type="number" value={inMin} onChange={(e) => setInMin(Number(e.target.value))} style={{ width: "100%" }} />
+          <input type="number" value={inMin} onChange={(e) => data.updateNodeData?.(id, { inMin: Number(e.target.value) })} style={{ width: "100%" }} />
         </div>
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>In Max</label>
-          <input type="number" value={inMax} onChange={(e) => setInMax(Number(e.target.value))} style={{ width: "100%" }} />
+          <input type="number" value={inMax} onChange={(e) => data.updateNodeData?.(id, { inMax: Number(e.target.value) })} style={{ width: "100%" }} />
         </div>
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>Out Min</label>
-          <input type="number" value={outMin} onChange={(e) => setOutMin(Number(e.target.value))} style={{ width: "100%" }} />
+          <input type="number" value={outMin} onChange={(e) => data.updateNodeData?.(id, { outMin: Number(e.target.value) })} style={{ width: "100%" }} />
         </div>
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>Out Max</label>
-          <input type="number" value={outMax} onChange={(e) => setOutMax(Number(e.target.value))} style={{ width: "100%" }} />
+          <input type="number" value={outMax} onChange={(e) => data.updateNodeData?.(id, { outMax: Number(e.target.value) })} style={{ width: "100%" }} />
         </div>
 
         {lastValue !== null && (

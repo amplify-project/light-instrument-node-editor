@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function CompareNode({ data, id }: any) {
-  const [compareValue, setCompareValue] = useState(data.compareValue ?? 0);
-  const [operator, setOperator] = useState(data.operator || "==");
+  const compareValue = data.compareValue ?? 0;
+  const operator = data.operator || "==";
   const [lastMet, setLastMet] = useState<any>(null);
 
   useEffect(() => {
@@ -57,7 +57,10 @@ export function CompareNode({ data, id }: any) {
 
       <div className="node-content nodrag">
         <label style={{ fontSize: "10px", color: "#888" }}>Operator:</label>
-        <select value={operator} onChange={(e) => setOperator(e.target.value)}>
+        <select
+          value={operator}
+          onChange={(e) => data.updateNodeData?.(id, { operator: e.target.value })}
+        >
           <option value="==">Equal (==)</option>
           <option value="!=">Not Equal (!=)</option>
           <option value=">">Greater Than (&gt;)</option>
@@ -70,7 +73,7 @@ export function CompareNode({ data, id }: any) {
         <input
           type="number"
           value={compareValue}
-          onChange={(e) => setCompareValue(Number(e.target.value))}
+          onChange={(e) => data.updateNodeData?.(id, { compareValue: Number(e.target.value) })}
         />
 
         {lastMet && (

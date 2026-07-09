@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function DeadbandNode({ data, id }: any) {
-  const [threshold, setThreshold] = useState(data.threshold ?? 5);
+  const threshold = data.threshold ?? 5;
   const [lastValue, setLastValue] = useState<number | null>(null);
   const outputRef = useRef<number | null>(null);
 
@@ -50,7 +50,7 @@ export function DeadbandNode({ data, id }: any) {
         <input
           type="number"
           value={threshold}
-          onChange={(e) => setThreshold(Number(e.target.value))}
+          onChange={(e) => data.updateNodeData?.(id, { threshold: Number(e.target.value) })}
           style={{ width: "100%" }}
         />
 

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function MovingAverageNode({ data, id }: any) {
-  const [windowSize, setWindowSize] = useState(data.windowSize ?? 10);
+  const windowSize = data.windowSize ?? 10;
   const [lastAverage, setLastAverage] = useState<number | null>(null);
   const valuesRef = useRef<number[]>([]);
 
@@ -61,7 +61,7 @@ export function MovingAverageNode({ data, id }: any) {
           value={windowSize}
           onChange={(e) => {
             const size = Number(e.target.value);
-            setWindowSize(size);
+            data.updateNodeData?.(id, { windowSize: size });
 
             if (valuesRef.current.length > size) {
               valuesRef.current = valuesRef.current.slice(-size);

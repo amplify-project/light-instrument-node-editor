@@ -91,7 +91,6 @@ export function SerialInputNode({ data, id }: any) {
     }
   };
 
-
   return (
     <div className="serial-node input-node">
       <div className="node-header">

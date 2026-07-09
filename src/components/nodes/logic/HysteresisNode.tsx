@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function HysteresisNode({ data, id }: any) {
-  const [highThreshold, setHighThreshold] = useState(data.highThreshold ?? 800);
-  const [lowThreshold, setLowThreshold] = useState(data.lowThreshold ?? 200);
+  const highThreshold = data.highThreshold ?? 800;
+  const lowThreshold = data.lowThreshold ?? 200;
   const [state, setState] = useState(0);
   const stateRef = useRef<number>(0);
 
@@ -53,11 +53,11 @@ export function HysteresisNode({ data, id }: any) {
       <div className="node-content nodrag">
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>High</label>
-          <input type="number" value={highThreshold} onChange={(e) => setHighThreshold(Number(e.target.value))} style={{ width: "100%" }} />
+          <input type="number" value={highThreshold} onChange={(e) => data.updateNodeData?.(id, { highThreshold: Number(e.target.value) })} style={{ width: "100%" }} />
         </div>
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>Low</label>
-          <input type="number" value={lowThreshold} onChange={(e) => setLowThreshold(Number(e.target.value))} style={{ width: "100%" }} />
+          <input type="number" value={lowThreshold} onChange={(e) => data.updateNodeData?.(id, { lowThreshold: Number(e.target.value) })} style={{ width: "100%" }} />
         </div>
 
         <div className="node-status" style={{ color: state ? "#46ff88" : "#888" }}>

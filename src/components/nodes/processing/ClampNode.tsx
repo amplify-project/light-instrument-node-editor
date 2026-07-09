@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function ClampNode({ data, id }: any) {
-  const [min, setMin] = useState(data.min ?? 0);
-  const [max, setMax] = useState(data.max ?? 1023);
+  const min = data.min ?? 0;
+  const max = data.max ?? 1023;
   const [lastValue, setLastValue] = useState<number | null>(null);
 
   useEffect(() => {
@@ -43,11 +43,11 @@ export function ClampNode({ data, id }: any) {
       <div className="node-content nodrag">
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>Min</label>
-          <input type="number" value={min} onChange={(e) => setMin(Number(e.target.value))} style={{ width: "100%" }} />
+          <input type="number" value={min} onChange={(e) => data.updateNodeData?.(id, { min: Number(e.target.value) })} style={{ width: "100%" }} />
         </div>
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>Max</label>
-          <input type="number" value={max} onChange={(e) => setMax(Number(e.target.value))} style={{ width: "100%" }} />
+          <input type="number" value={max} onChange={(e) => data.updateNodeData?.(id, { max: Number(e.target.value) })} style={{ width: "100%" }} />
         </div>
 
         {lastValue !== null && (

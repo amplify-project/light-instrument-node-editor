@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function MedianFilterNode({ data, id }: any) {
-  const [windowSize, setWindowSize] = useState(data.windowSize ?? 5);
+  const windowSize = data.windowSize ?? 5;
   const [lastMedian, setLastMedian] = useState<number | null>(null);
   const valuesRef = useRef<number[]>([]);
 
@@ -62,7 +62,7 @@ export function MedianFilterNode({ data, id }: any) {
           value={windowSize}
           onChange={(e) => {
             const size = Number(e.target.value);
-            setWindowSize(size);
+            data.updateNodeData?.(id, { windowSize: size });
 
             if (valuesRef.current.length > size) {
               valuesRef.current = valuesRef.current.slice(-size);

@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function EnvelopeFollowerNode({ data, id }: any) {
-  const [attack, setAttack] = useState(data.attack ?? 0.5);
-  const [release, setRelease] = useState(data.release ?? 0.1);
+  const attack = data.attack ?? 0.5;
+  const release = data.release ?? 0.1;
   const [lastEnvelope, setLastEnvelope] = useState<number | null>(null);
   const envelopeRef = useRef<number>(0);
 
@@ -57,14 +57,14 @@ export function EnvelopeFollowerNode({ data, id }: any) {
             <label style={{ fontSize: "9px", color: "#888" }}>Attack</label>
             <span style={{ fontSize: "9px" }}>{attack.toFixed(2)}</span>
           </div>
-          <input type="range" min="0.01" max="1" step="0.01" value={attack} onChange={(e) => setAttack(Number(e.target.value))} style={{ width: "100%" }} />
+          <input type="range" min="0.01" max="1" step="0.01" value={attack} onChange={(e) => data.updateNodeData?.(id, { attack: Number(e.target.value) })} style={{ width: "100%" }} />
         </div>
         <div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <label style={{ fontSize: "9px", color: "#888" }}>Release</label>
             <span style={{ fontSize: "9px" }}>{release.toFixed(2)}</span>
           </div>
-          <input type="range" min="0.01" max="1" step="0.01" value={release} onChange={(e) => setRelease(Number(e.target.value))} style={{ width: "100%" }} />
+          <input type="range" min="0.01" max="1" step="0.01" value={release} onChange={(e) => data.updateNodeData?.(id, { release: Number(e.target.value) })} style={{ width: "100%" }} />
         </div>
 
         {lastEnvelope !== null && (

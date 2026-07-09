@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function QuantizeNode({ data, id }: any) {
-  const [step, setStep] = useState(data.step ?? 10);
+  const step = data.step ?? 10;
   const [lastValue, setLastValue] = useState<number | null>(null);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export function QuantizeNode({ data, id }: any) {
         <input
           type="number"
           value={step}
-          onChange={(e) => setStep(Number(e.target.value))}
+          onChange={(e) => data.updateNodeData?.(id, { step: Number(e.target.value) })}
           style={{ width: "100%" }}
         />
 

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function SmoothNode({ data, id }: any) {
-  const [alpha, setAlpha] = useState(data.alpha ?? 0.5);
+  const alpha = data.alpha ?? 0.5;
   const [lastSmoothed, setLastSmoothed] = useState<number | null>(null);
   const smoothedRef = useRef<number | null>(null);
 
@@ -59,7 +59,7 @@ export function SmoothNode({ data, id }: any) {
           max="1"
           step="0.01"
           value={alpha}
-          onChange={(e) => setAlpha(Number(e.target.value))}
+          onChange={(e) => data.updateNodeData?.(id, { alpha: Number(e.target.value) })}
           style={{ width: "100%" }}
         />
 

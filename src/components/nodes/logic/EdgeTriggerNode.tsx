@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function EdgeTriggerNode({ data, id }: any) {
-  const [mode, setMode] = useState(data.mode || "rising");
-  const [threshold, setThreshold] = useState(data.threshold || 0);
+  const mode = data.mode ?? "rising";
+  const threshold = data.threshold ?? 0;
   const [triggerCount, setTriggerCount] = useState(0);
   const lastValueRef = useRef<number | null>(null);
 
@@ -60,7 +60,7 @@ export function EdgeTriggerNode({ data, id }: any) {
 
       <div className="node-content nodrag">
         <label style={{ fontSize: "10px", color: "#888" }}>Mode:</label>
-        <select value={mode} onChange={(e) => setMode(e.target.value)}>
+        <select value={mode} onChange={(e) => data.updateNodeData?.(id, { mode: e.target.value })}>
           <option value="rising">Rising Edge</option>
           <option value="falling">Falling Edge</option>
         </select>
@@ -70,7 +70,7 @@ export function EdgeTriggerNode({ data, id }: any) {
           <input
             type="number"
             value={threshold}
-            onChange={(e) => setThreshold(Number(e.target.value))}
+            onChange={(e) => data.updateNodeData?.(id, { threshold: Number(e.target.value) })}
             style={{ width: "100%" }}
           />
         </div>

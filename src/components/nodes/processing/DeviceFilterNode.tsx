@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function DeviceFilterNode({ data, id }: any) {
-  const [deviceFilter, setDeviceFilter] = useState(data.deviceFilter || data.filterValue || "");
-  const [portFilter, setPortFilter] = useState(data.portFilter || "");
+  const deviceFilter = data.deviceFilter ?? data.filterValue ?? "";
+  const portFilter = data.portFilter ?? "";
   const [lastRelayed, setLastRelayed] = useState<any>(null);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export function DeviceFilterNode({ data, id }: any) {
         <input
           type="text"
           value={deviceFilter}
-          onChange={(e) => setDeviceFilter(e.target.value)}
+          onChange={(e) => data.updateNodeData?.(id, { deviceFilter: e.target.value })}
           placeholder="e.g. sender1"
         />
 
@@ -54,7 +54,7 @@ export function DeviceFilterNode({ data, id }: any) {
         <input
           type="text"
           value={portFilter}
-          onChange={(e) => setPortFilter(e.target.value)}
+          onChange={(e) => data.updateNodeData?.(id, { portFilter: e.target.value })}
           placeholder="e.g. sensorA"
         />
 
