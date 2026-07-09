@@ -75,7 +75,8 @@ body {
 .compare-node .node-header,
 .boolean-node .node-header,
 .gate-node .node-header,
-.toggle-node .node-header {
+.toggle-node .node-header,
+.edge-trigger-node .node-header {
   border-top: 3px solid #ff8846;
 }
 

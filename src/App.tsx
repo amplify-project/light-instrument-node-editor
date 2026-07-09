@@ -41,6 +41,7 @@ import { EnvelopeFollowerNode } from "./components/nodes/processing/EnvelopeFoll
 import { HysteresisNode } from "./components/nodes/logic/HysteresisNode";
 import { GateNode } from "./components/nodes/logic/GateNode";
 import { ToggleNode } from "./components/nodes/logic/ToggleNode";
+import { EdgeTriggerNode } from "./components/nodes/logic/EdgeTriggerNode";
 import { NodeSearch } from "./components/NodeSearch";
 import "./App.css";
 
@@ -67,6 +68,7 @@ const nodeTypes = {
   hysteresis: HysteresisNode,
   gate: GateNode,
   toggle: ToggleNode,
+  edgeTrigger: EdgeTriggerNode,
 };
 
 const initialNodes: Node[] = [

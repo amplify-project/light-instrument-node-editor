@@ -13,6 +13,7 @@ const nodeOptions: NodeOption[] = [
   { type: "deadband", label: "Deadband" },
   { type: "derivative", label: "Derivative" },
   { type: "deviceFilter", label: "Device Filter" },
+  { type: "edgeTrigger", label: "Edge Trigger" },
   { type: "envelopeFollower", label: "Envelope Follower" },
   { type: "gate", label: "Gate" },
   { type: "graph", label: "Graph" },
