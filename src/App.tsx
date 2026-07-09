@@ -169,7 +169,9 @@ function Flow() {
 
       // For all other nodes, only allow one connection per input handle
       const existingEdge = edges.find(
-        (edge) => edge.target === connection.target && edge.targetHandle === connection.targetHandle
+        (edge) =>
+          edge.target === connection.target &&
+          (edge.targetHandle ?? null) === (connection.targetHandle ?? null)
       );
 
       if (existingEdge && (connection as any).id === existingEdge.id) {
