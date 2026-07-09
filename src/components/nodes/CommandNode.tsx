@@ -3,7 +3,7 @@ import { Handle, Position } from "@xyflow/react";
 
 export function CommandNode({ data, id }: any) {
   const [command, setCommand] = useState(data.command || "led");
-  const [value, setValue] = useState(data.value || 1);
+  const [value, setValue] = useState(data.value || "");
   const [lastEmitted, setLastEmitted] = useState<any>(null);
 
   useEffect(() => {
@@ -57,9 +57,9 @@ export function CommandNode({ data, id }: any) {
 
         <label style={{ fontSize: "10px", color: "#888" }}>Value:</label>
         <input
-          type="number"
+          type="text"
           value={value}
-          onChange={(e) => setValue(Number(e.target.value))}
+          onChange={(e) => setValue(e.target.value)}
         />
 
         <button onClick={handleManualTrigger}>Manual Trigger</button>
