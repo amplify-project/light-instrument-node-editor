@@ -14,6 +14,7 @@ const nodeOptions: NodeOption[] = [
   { type: "boolean", label: "Boolean" },
   { type: "log", label: "Log" },
   { type: "smooth", label: "Smooth" },
+  { type: "simulate", label: "Simulate" },
 ];
 
 interface NodeSearchProps {

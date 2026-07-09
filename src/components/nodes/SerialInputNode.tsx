@@ -20,8 +20,10 @@ export function SerialInputNode({ data, id }: any) {
   useEffect(() => {
     refreshPorts();
 
-    const unlisten = listen<SerialDataPayload>("serial-data", (event) => {
-      if (event.payload.port === selectedPort && isConnected) {
+    const unlistenData = listen<SerialDataPayload>("serial-data", (event) => {
+      const isCorrectPort = event.payload.port === selectedPort && isConnected;
+
+      if (isCorrectPort) {
         bufferRef.current += event.payload.data;
 
         // Split by newlines and handle partial lines
@@ -54,7 +56,7 @@ export function SerialInputNode({ data, id }: any) {
     });
 
     return () => {
-      unlisten.then((f) => f());
+      unlistenData.then((f) => f());
     };
   }, [selectedPort, isConnected, id, data]);
 
@@ -89,6 +91,7 @@ export function SerialInputNode({ data, id }: any) {
     }
   };
 
+
   return (
     <div className="serial-node input-node">
       <div className="node-header">
@@ -113,11 +116,22 @@ export function SerialInputNode({ data, id }: any) {
           disabled={isConnected}
         />
 
-        <button onClick={toggleConnect}>
-          {isConnected ? "Disconnect" : "Connect"}
-        </button>
+        <div style={{ display: "flex", gap: "4px", marginTop: "8px" }}>
+          <button
+            onClick={toggleConnect}
+            style={{ flex: 1 }}
+          >
+            {isConnected ? "Disconnect" : "Connect"}
+          </button>
+        </div>
 
-        <button onClick={refreshPorts} disabled={isConnected}>Refresh</button>
+        <button
+          onClick={refreshPorts}
+          disabled={isConnected}
+          style={{ width: "100%", marginTop: "4px" }}
+        >
+          Refresh Ports
+        </button>
 
         {lastParsed && (
           <div className="node-status">

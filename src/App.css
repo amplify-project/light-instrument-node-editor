@@ -50,7 +50,8 @@ body {
 
 /* Communication Nodes - Blue */
 .input-node .node-header,
-.output-node .node-header {
+.output-node .node-header,
+.simulate-node .node-header {
   border-top: 3px solid #646cff;
 }
 

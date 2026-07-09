@@ -1,10 +1,14 @@
 use serialport;
 use std::collections::HashMap;
-use std::sync::Mutex;
+use std::fs::File;
+use std::io::{BufRead, BufReader};
+use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::{Arc, Mutex};
 use tauri::{AppHandle, Emitter, State};
 
 struct SerialState {
     ports: Mutex<HashMap<String, Box<dyn serialport::SerialPort>>>,
+    simulation_running: Arc<AtomicBool>,
 }
 
 #[tauri::command]
@@ -88,6 +92,52 @@ fn load_file(path: String) -> Result<String, String> {
     std::fs::read_to_string(path).map_err(|e| e.to_string())
 }
 
+#[tauri::command]
+fn start_simulation(state: State<'_, SerialState>, app: AppHandle, path: String) -> Result<(), String> {
+    state.simulation_running.store(true, Ordering::SeqCst);
+    let running = state.simulation_running.clone();
+
+    std::thread::spawn(move || {
+        let file = match File::open(&path) {
+            Ok(f) => f,
+            Err(_) => {
+                running.store(false, Ordering::SeqCst);
+                return;
+            }
+        };
+
+        let reader = BufReader::new(file);
+
+        for line in reader.lines() {
+            if !running.load(Ordering::SeqCst) {
+                break;
+            }
+
+            if let Ok(content) = line {
+                let payload = serde_json::json!({
+                    "port": "SIMULATION",
+                    "data": format!("{}\n", content)
+                });
+
+                let _ = app.emit("serial-data", payload);
+
+                // Add a small delay to simulate real data rate
+                std::thread::sleep(std::time::Duration::from_millis(50));
+            }
+        }
+
+        running.store(false, Ordering::SeqCst);
+        let _ = app.emit("simulation-finished", ());
+    });
+
+    Ok(())
+}
+
+#[tauri::command]
+fn stop_simulation(state: State<'_, SerialState>) {
+    state.simulation_running.store(false, Ordering::SeqCst);
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -95,6 +145,7 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .manage(SerialState {
             ports: Mutex::new(HashMap::new()),
+            simulation_running: Arc::new(AtomicBool::new(false)),
         })
         .invoke_handler(tauri::generate_handler![
             list_ports,
@@ -102,7 +153,9 @@ pub fn run() {
             close_port,
             write_serial,
             save_file,
-            load_file
+            load_file,
+            start_simulation,
+            stop_simulation
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
