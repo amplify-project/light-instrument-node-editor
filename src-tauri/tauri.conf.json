@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "tauri-app",
+  "productName": "Light Instrument Editor",
   "version": "0.1.0",
-  "identifier": "com.tom.tauri-app",
+  "identifier": "nl.cwi.dis.amplify",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -12,9 +12,9 @@
   "app": {
     "windows": [
       {
-        "title": "tauri-app",
-        "width": 800,
-        "height": 600
+        "title": "AMPLIFY Light Instrument Editor",
+        "width": 1440,
+        "height": 900
       }
     ],
     "security": {
