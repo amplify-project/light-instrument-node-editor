@@ -13,6 +13,7 @@ import {
   OnConnect,
   ReactFlowProvider,
   useReactFlow,
+  Connection,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { save, open } from "@tauri-apps/plugin-dialog";
@@ -127,6 +128,28 @@ function Flow() {
 
   // Ref to store consumers for output nodes
   const consumers = useRef<{ [id: string]: (data: any, handleId?: string | null) => void }>({});
+
+  const isValidConnection = useCallback(
+    (connection: Connection | Edge) => {
+      const targetNode = nodes.find((n) => n.id === connection.target);
+
+      if (targetNode && targetNode.type === "serialOutput") {
+        return true;
+      }
+
+      // For all other nodes, only allow one connection per input handle
+      const existingEdge = edges.find(
+        (edge) => edge.target === connection.target && edge.targetHandle === connection.targetHandle
+      );
+
+      if (existingEdge && (connection as any).id === existingEdge.id) {
+        return true;
+      }
+
+      return !existingEdge;
+    },
+    [nodes, edges]
+  );
 
   const onNodesChange: OnNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -282,6 +305,7 @@ function Flow() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        isValidConnection={isValidConnection}
         nodeTypes={nodeTypes}
         fitView
       >

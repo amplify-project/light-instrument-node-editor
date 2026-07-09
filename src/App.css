@@ -142,6 +142,13 @@ body {
   border: 2px solid #2b2b2b;
 }
 
+.react-flow__handle.multi-handle {
+  transform: translate(-6px, -8px);
+  border-radius: 8px;
+  width: 8px;
+  height: 20px;
+}
+
 /* Node Search Styles */
 .node-search-container {
   position: absolute;
