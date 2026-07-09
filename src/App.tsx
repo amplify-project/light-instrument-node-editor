@@ -369,6 +369,25 @@ function Flow() {
     }
   }, [applySetup]);
 
+  const onReset = useCallback(async () => {
+    if (!currentPath) {
+      setNodes(initialNodes);
+      setEdges(initialEdges);
+      setIsDirty(false);
+
+      return;
+    }
+
+    try {
+      const contents = await invoke<string>("load_file", { path: currentPath });
+      const setup = JSON.parse(contents);
+      applySetup(setup, currentPath);
+    } catch (e) {
+      console.error(e);
+      alert("Failed to reset: " + e);
+    }
+  }, [currentPath, applySetup]);
+
   // Enrich nodes with data flow callbacks
   const enrichedNodes = nodes.map((node) => ({
     ...node,
@@ -406,6 +425,7 @@ function Flow() {
           {isDirty ? "*" : ""}
         </div>
         <button onClick={onOpen}>Open</button>
+        <button onClick={onReset}>Reset</button>
         <button onClick={onSave}>Save</button>
         <button onClick={handleSaveAs}>Save As</button>
       </div>
