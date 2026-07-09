@@ -47,14 +47,14 @@ const initialNodes: Node[] = [
   {
     id: "input-1",
     type: "serialInput",
-    position: { x: 100, y: 100 },
+    position: { x: 50, y: 100 },
     data: { label: "Serial Input" },
     deletable: false,
   },
   {
     id: "output-1",
     type: "serialOutput",
-    position: { x: 500, y: 100 },
+    position: { x: 1000, y: 120 },
     data: { label: "Serial Output" },
     deletable: false,
   },

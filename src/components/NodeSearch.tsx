@@ -40,17 +40,20 @@ export function NodeSearch({ onSelect, onClose, x, y }: NodeSearchProps) {
   }, [search]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    e.preventDefault();
-
     if (e.key === "ArrowDown") {
+      e.preventDefault();
       setSelectedIndex((prev) => (prev + 1) % filteredOptions.length);
     } else if (e.key === "ArrowUp") {
+      e.preventDefault();
       setSelectedIndex((prev) => (prev - 1 + filteredOptions.length) % filteredOptions.length);
     } else if (e.key === "Enter") {
+      e.preventDefault();
+
       if (filteredOptions[selectedIndex]) {
         onSelect(filteredOptions[selectedIndex].type);
       }
     } else if (e.key === "Escape") {
+      e.preventDefault();
       onClose();
     }
   };
