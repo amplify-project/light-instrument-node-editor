@@ -24,6 +24,8 @@ import { DeviceFilterNode } from "./components/nodes/DeviceFilterNode";
 import { PeakDetectionNode } from "./components/nodes/PeakDetectionNode";
 import { CommandNode } from "./components/nodes/CommandNode";
 import { GraphNode } from "./components/nodes/GraphNode";
+import { CompareNode } from "./components/nodes/CompareNode";
+import { BooleanNode } from "./components/nodes/BooleanNode";
 import { NodeSearch } from "./components/NodeSearch";
 import "./App.css";
 
@@ -34,6 +36,8 @@ const nodeTypes = {
   peakDetection: PeakDetectionNode,
   command: CommandNode,
   graph: GraphNode,
+  compare: CompareNode,
+  boolean: BooleanNode,
 };
 
 const initialNodes: Node[] = [
@@ -122,7 +126,7 @@ function Flow() {
   }, [searchState, screenToFlowPosition]);
 
   // Ref to store consumers for output nodes
-  const consumers = useRef<{ [id: string]: (data: any) => void }>({});
+  const consumers = useRef<{ [id: string]: (data: any, handleId?: string | null) => void }>({});
 
   const onNodesChange: OnNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -147,12 +151,12 @@ function Flow() {
       const consumer = consumers.current[edge.target];
 
       if (consumer) {
-        consumer(data);
+        consumer(data, edge.targetHandle);
       }
     });
   }, [edges]);
 
-  const registerConsumer = useCallback((id: string, consumer: (data: any) => void) => {
+  const registerConsumer = useCallback((id: string, consumer: (data: any, handleId?: string | null) => void) => {
     consumers.current[id] = consumer;
   }, []);
 

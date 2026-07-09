@@ -36,6 +36,7 @@ fn open_port(
     // Start a background thread to read from the port
     let mut reader = port;
     let p_name = port_name.clone();
+
     std::thread::spawn(move || {
         let mut serial_buf: Vec<u8> = vec![0; 1024];
 
