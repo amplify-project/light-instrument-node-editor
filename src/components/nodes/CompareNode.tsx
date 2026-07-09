@@ -1,0 +1,86 @@
+import { useState, useEffect } from "react";
+import { Handle, Position } from "@xyflow/react";
+
+export function CompareNode({ data, id }: any) {
+  const [compareValue, setCompareValue] = useState(data.compareValue ?? 0);
+  const [operator, setOperator] = useState(data.operator || "==");
+  const [lastMet, setLastMet] = useState<any>(null);
+
+  useEffect(() => {
+    // Register this node to receive data
+    if (data.registerConsumer) {
+      data.registerConsumer(id, (incoming: any) => {
+        if (incoming && typeof incoming === "object" && typeof incoming.value === "number") {
+          const value = incoming.value;
+          let met = false;
+
+          if (operator === "==") {
+            met = value === compareValue;
+          } else if (operator === "!=") {
+            met = value !== compareValue;
+          } else if (operator === ">") {
+            met = value > compareValue;
+          } else if (operator === "<") {
+            met = value < compareValue;
+          } else if (operator === ">=") {
+            met = value >= compareValue;
+          } else if (operator === "<=") {
+            met = value <= compareValue;
+          }
+
+          if (met) {
+            setLastMet(incoming);
+
+            if (data.onData) {
+              data.onData(id, incoming);
+            }
+          }
+        }
+      });
+    }
+
+    return () => {
+      if (data.unregisterConsumer) {
+        data.unregisterConsumer(id);
+      }
+    };
+  }, [compareValue, operator, id, data]);
+
+  return (
+    <div className="serial-node compare-node">
+      <Handle type="target" position={Position.Left} />
+
+      <div className="node-header">
+        <span>Compare</span>
+        <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
+      </div>
+
+      <div className="node-content nodrag">
+        <label style={{ fontSize: "10px", color: "#888" }}>Operator:</label>
+        <select value={operator} onChange={(e) => setOperator(e.target.value)}>
+          <option value="==">Equal (==)</option>
+          <option value="!=">Not Equal (!=)</option>
+          <option value=">">Greater Than (&gt;)</option>
+          <option value="<">Smaller Than (&lt;)</option>
+          <option value=">=">Greater Equal (&gt;=)</option>
+          <option value="<=">Smaller Equal (&lt;=)</option>
+        </select>
+
+        <label style={{ fontSize: "10px", color: "#888" }}>Value:</label>
+        <input
+          type="number"
+          value={compareValue}
+          onChange={(e) => setCompareValue(Number(e.target.value))}
+        />
+
+        {lastMet && (
+          <div className="node-status">
+            Last Met: {lastMet.value}
+          </div>
+        )}
+      </div>
+
+      <Handle type="source" position={Position.Right} />
+    </div>
+  );
+}
