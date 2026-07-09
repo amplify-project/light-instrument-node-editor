@@ -15,6 +15,17 @@ const nodeOptions: NodeOption[] = [
   { type: "log", label: "Log" },
   { type: "smooth", label: "Smooth" },
   { type: "simulate", label: "Simulate" },
+  { type: "movingAverage", label: "Moving Average" },
+  { type: "medianFilter", label: "Median Filter" },
+  { type: "deadband", label: "Deadband" },
+  { type: "mapRange", label: "Map Range" },
+  { type: "clamp", label: "Clamp" },
+  { type: "quantize", label: "Quantize" },
+  { type: "derivative", label: "Derivative" },
+  { type: "envelopeFollower", label: "Envelope Follower" },
+  { type: "hysteresis", label: "Hysteresis" },
+  { type: "gate", label: "Gate" },
+  { type: "toggle", label: "Toggle" },
 ];
 
 interface NodeSearchProps {

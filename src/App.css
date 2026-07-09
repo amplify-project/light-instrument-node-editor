@@ -58,13 +58,24 @@ body {
 /* Processing Nodes - Green */
 .filter-node .node-header,
 .peak-node .node-header,
-.smooth-node .node-header {
+.smooth-node .node-header,
+.moving-average-node .node-header,
+.median-node .node-header,
+.deadband-node .node-header,
+.map-range-node .node-header,
+.clamp-node .node-header,
+.quantize-node .node-header,
+.derivative-node .node-header,
+.envelope-node .node-header,
+.hysteresis-node .node-header {
   border-top: 3px solid #46ff88;
 }
 
 /* Logic Nodes - Orange */
 .compare-node .node-header,
-.boolean-node .node-header {
+.boolean-node .node-header,
+.gate-node .node-header,
+.toggle-node .node-header {
   border-top: 3px solid #ff8846;
 }
 

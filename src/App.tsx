@@ -30,6 +30,17 @@ import { BooleanNode } from "./components/nodes/BooleanNode";
 import { LogNode } from "./components/nodes/LogNode";
 import { SmoothNode } from "./components/nodes/SmoothNode";
 import { SimulateNode } from "./components/nodes/SimulateNode";
+import { MovingAverageNode } from "./components/nodes/MovingAverageNode";
+import { MedianFilterNode } from "./components/nodes/MedianFilterNode";
+import { DeadbandNode } from "./components/nodes/DeadbandNode";
+import { MapRangeNode } from "./components/nodes/MapRangeNode";
+import { ClampNode } from "./components/nodes/ClampNode";
+import { QuantizeNode } from "./components/nodes/QuantizeNode";
+import { DerivativeNode } from "./components/nodes/DerivativeNode";
+import { EnvelopeFollowerNode } from "./components/nodes/EnvelopeFollowerNode";
+import { HysteresisNode } from "./components/nodes/HysteresisNode";
+import { GateNode } from "./components/nodes/GateNode";
+import { ToggleNode } from "./components/nodes/ToggleNode";
 import { NodeSearch } from "./components/NodeSearch";
 import "./App.css";
 
@@ -45,6 +56,17 @@ const nodeTypes = {
   log: LogNode,
   smooth: SmoothNode,
   simulate: SimulateNode,
+  movingAverage: MovingAverageNode,
+  medianFilter: MedianFilterNode,
+  deadband: DeadbandNode,
+  mapRange: MapRangeNode,
+  clamp: ClampNode,
+  quantize: QuantizeNode,
+  derivative: DerivativeNode,
+  envelopeFollower: EnvelopeFollowerNode,
+  hysteresis: HysteresisNode,
+  gate: GateNode,
+  toggle: ToggleNode,
 };
 
 const initialNodes: Node[] = [
