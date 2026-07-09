@@ -10,6 +10,8 @@ const nodeOptions: NodeOption[] = [
   { type: "peakDetection", label: "Peak Detection" },
   { type: "command", label: "Command" },
   { type: "graph", label: "Graph" },
+  { type: "compare", label: "Compare" },
+  { type: "boolean", label: "Boolean" },
 ];
 
 interface NodeSearchProps {
