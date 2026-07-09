@@ -12,6 +12,7 @@ const nodeOptions: NodeOption[] = [
   { type: "graph", label: "Graph" },
   { type: "compare", label: "Compare" },
   { type: "boolean", label: "Boolean" },
+  { type: "log", label: "Log" },
 ];
 
 interface NodeSearchProps {

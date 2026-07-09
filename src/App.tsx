@@ -27,6 +27,7 @@ import { CommandNode } from "./components/nodes/CommandNode";
 import { GraphNode } from "./components/nodes/GraphNode";
 import { CompareNode } from "./components/nodes/CompareNode";
 import { BooleanNode } from "./components/nodes/BooleanNode";
+import { LogNode } from "./components/nodes/LogNode";
 import { NodeSearch } from "./components/NodeSearch";
 import "./App.css";
 
@@ -39,6 +40,7 @@ const nodeTypes = {
   graph: GraphNode,
   compare: CompareNode,
   boolean: BooleanNode,
+  log: LogNode,
 };
 
 const initialNodes: Node[] = [

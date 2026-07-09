@@ -76,6 +76,11 @@ body {
   border-top: 3px solid #46ccff;
 }
 
+/* Log Node - Grey */
+.log-node .node-header {
+  border-top: 3px solid #cccccc;
+}
+
 
 .node-content {
   padding: 12px;
