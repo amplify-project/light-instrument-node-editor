@@ -233,6 +233,16 @@ body {
   border-radius: 4px;
   border: 1px solid #444;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  align-items: center;
+}
+
+.file-info {
+  color: #aaa;
+  font-size: 11px;
+  margin-right: 4px;
+  padding-right: 8px;
+  border-right: 1px solid #444;
+  font-family: monospace;
 }
 
 .file-controls button {

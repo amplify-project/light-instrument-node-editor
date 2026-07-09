@@ -93,6 +93,8 @@ const initialEdges: Edge[] = [];
 function Flow() {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
   const [edges, setEdges] = useState<Edge[]>(initialEdges);
+  const [currentPath, setCurrentPath] = useState<string | null>(null);
+  const [isDirty, setIsDirty] = useState(false);
   const [searchState, setSearchState] = useState<{ visible: boolean; x: number; y: number }>({
     visible: false,
     x: 0,
@@ -153,6 +155,7 @@ function Flow() {
     };
 
     setNodes((nds) => nds.concat(newNode));
+    setIsDirty(true);
     setSearchState((prev) => ({ ...prev, visible: false }));
   }, [searchState, screenToFlowPosition]);
 
@@ -184,17 +187,32 @@ function Flow() {
   );
 
   const onNodesChange: OnNodesChange = useCallback(
-    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    (changes) => {
+      setNodes((nds) => applyNodeChanges(changes, nds));
+
+      if (changes.some((c) => c.type !== "select")) {
+        setIsDirty(true);
+      }
+    },
     [setNodes]
   );
 
   const onEdgesChange: OnEdgesChange = useCallback(
-    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    (changes) => {
+      setEdges((eds) => applyEdgeChanges(changes, eds));
+
+      if (changes.some((c) => c.type !== "select")) {
+        setIsDirty(true);
+      }
+    },
     [setEdges]
   );
 
   const onConnect: OnConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
+    (params) => {
+      setEdges((eds) => addEdge(params, eds));
+      setIsDirty(true);
+    },
     [setEdges]
   );
 
@@ -231,24 +249,42 @@ function Flow() {
     });
 
     setEdges((eds) => eds.filter((edge) => edge.source !== id && edge.target !== id));
+    setIsDirty(true);
   }, []);
 
-  const onSave = useCallback(async () => {
+  const handleSaveAs = useCallback(async () => {
     try {
       const path = await save({
         filters: [{ name: "JSON", extensions: ["json"] }],
-        defaultPath: "node_setup.json",
+        defaultPath: currentPath || "node_setup.json",
       });
 
       if (path) {
         const setup = { nodes, edges };
         await invoke("save_file", { path, contents: JSON.stringify(setup, null, 2) });
+        setCurrentPath(path);
+        setIsDirty(false);
       }
     } catch (e) {
       console.error(e);
       alert("Failed to save: " + e);
     }
-  }, [nodes, edges]);
+  }, [nodes, edges, currentPath]);
+
+  const onSave = useCallback(async () => {
+    if (!currentPath) {
+      return handleSaveAs();
+    }
+
+    try {
+      const setup = { nodes, edges };
+      await invoke("save_file", { path: currentPath, contents: JSON.stringify(setup, null, 2) });
+      setIsDirty(false);
+    } catch (e) {
+      console.error(e);
+      alert("Failed to save: " + e);
+    }
+  }, [nodes, edges, currentPath, handleSaveAs]);
 
   const onOpen = useCallback(async () => {
     try {
@@ -307,6 +343,8 @@ function Flow() {
 
           setNodes(newNodes);
           setEdges(setup.edges);
+          setCurrentPath(path);
+          setIsDirty(false);
         }
       }
     } catch (e) {
@@ -346,8 +384,13 @@ function Flow() {
       </ReactFlow>
 
       <div className="file-controls">
+        <div className="file-info">
+          {currentPath ? currentPath.split("/").pop()?.split("\\").pop() : "Untitled"}
+          {isDirty ? "*" : ""}
+        </div>
         <button onClick={onOpen}>Open</button>
         <button onClick={onSave}>Save</button>
+        <button onClick={handleSaveAs}>Save As</button>
       </div>
 
       {searchState.visible && (
