@@ -8,6 +8,7 @@ interface NodeOption {
 
 const nodeOptions: NodeOption[] = [
   // Communication
+  { type: "button", label: "Button", category: "Communication" },
   { type: "simulate", label: "Simulate", category: "Communication" },
   // Processing
   { type: "clamp", label: "Clamp", category: "Processing" },

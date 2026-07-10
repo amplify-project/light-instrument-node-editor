@@ -30,6 +30,7 @@ import { BooleanNode } from "./components/nodes/logic/BooleanNode";
 import { LogNode } from "./components/nodes/display/LogNode";
 import { SmoothNode } from "./components/nodes/processing/SmoothNode";
 import { SimulateNode } from "./components/nodes/io/SimulateNode";
+import { ButtonNode } from "./components/nodes/io/ButtonNode";
 import { MovingAverageNode } from "./components/nodes/processing/MovingAverageNode";
 import { MedianFilterNode } from "./components/nodes/processing/MedianFilterNode";
 import { DeadbandNode } from "./components/nodes/processing/DeadbandNode";
@@ -61,6 +62,7 @@ const nodeTypes = {
   log: LogNode,
   smooth: SmoothNode,
   simulate: SimulateNode,
+  button: ButtonNode,
   movingAverage: MovingAverageNode,
   medianFilter: MedianFilterNode,
   deadband: DeadbandNode,
