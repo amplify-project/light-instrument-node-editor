@@ -9,6 +9,7 @@ interface NodeOption {
 const nodeOptions: NodeOption[] = [
   // Communication
   { type: "button", label: "Button", category: "Communication" },
+  { type: "functionGenerator", label: "Function Generator", category: "Communication" },
   { type: "timer", label: "Timer", category: "Communication" },
   { type: "simulate", label: "Simulate", category: "Communication" },
   // Processing
