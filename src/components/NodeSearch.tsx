@@ -9,6 +9,7 @@ interface NodeOption {
 const nodeOptions: NodeOption[] = [
   // Communication
   { type: "button", label: "Button", category: "Communication" },
+  { type: "timer", label: "Timer", category: "Communication" },
   { type: "simulate", label: "Simulate", category: "Communication" },
   // Processing
   { type: "clamp", label: "Clamp", category: "Processing" },
@@ -30,7 +31,6 @@ const nodeOptions: NodeOption[] = [
   { type: "compare", label: "Compare", category: "Logic" },
   { type: "edgeTrigger", label: "Edge Trigger", category: "Logic" },
   { type: "gate", label: "Gate", category: "Logic" },
-  { type: "timer", label: "Timer", category: "Logic" },
   { type: "toggle", label: "Toggle", category: "Logic" },
   // Action
   { type: "command", label: "Command", category: "Action" },
