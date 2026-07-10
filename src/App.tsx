@@ -179,7 +179,7 @@ function Flow() {
     (connection: Connection | Edge) => {
       const targetNode = nodes.find((n) => n.id === connection.target);
 
-      if (targetNode && targetNode.type === "serialOutput") {
+      if (targetNode && (targetNode.type === "serialOutput" || targetNode.type === "log")) {
         return true;
       }
 

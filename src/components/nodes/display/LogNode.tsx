@@ -45,7 +45,7 @@ export function LogNode({ data, id }: any) {
 
   return (
     <div className="serial-node log-node">
-      <Handle type="target" position={Position.Left} />
+      <Handle type="target" position={Position.Left} className="multi-handle" />
 
       <div className="node-header">
         <span>Log</span>
