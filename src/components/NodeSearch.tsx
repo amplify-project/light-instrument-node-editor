@@ -3,33 +3,41 @@ import React, { useState, useEffect, useRef } from "react";
 interface NodeOption {
   type: string;
   label: string;
+  category: string;
 }
 
 const nodeOptions: NodeOption[] = [
-  { type: "boolean", label: "Boolean" },
-  { type: "clamp", label: "Clamp" },
-  { type: "command", label: "Command" },
-  { type: "compare", label: "Compare" },
-  { type: "cumulativeSum", label: "Cumulative Sum" },
-  { type: "deadband", label: "Deadband" },
-  { type: "derivative", label: "Derivative" },
-  { type: "deviceFilter", label: "Device Filter" },
-  { type: "edgeTrigger", label: "Edge Trigger" },
-  { type: "envelopeFollower", label: "Envelope Follower" },
-  { type: "frame", label: "Frame" },
-  { type: "gate", label: "Gate" },
-  { type: "graph", label: "Graph" },
-  { type: "hysteresis", label: "Hysteresis" },
-  { type: "log", label: "Log" },
-  { type: "mapRange", label: "Map Range" },
-  { type: "medianFilter", label: "Median Filter" },
-  { type: "movingAverage", label: "Moving Average" },
-  { type: "peakDetection", label: "Peak Detection" },
-  { type: "quantize", label: "Quantize" },
-  { type: "rate", label: "Rate" },
-  { type: "simulate", label: "Simulate" },
-  { type: "smooth", label: "Smooth" },
-  { type: "toggle", label: "Toggle" },
+  // Communication
+  { type: "simulate", label: "Simulate", category: "Communication" },
+  // Processing
+  { type: "clamp", label: "Clamp", category: "Processing" },
+  { type: "cumulativeSum", label: "Cumulative Sum", category: "Processing" },
+  { type: "deadband", label: "Deadband", category: "Processing" },
+  { type: "derivative", label: "Derivative", category: "Processing" },
+  { type: "deviceFilter", label: "Device Filter", category: "Processing" },
+  { type: "envelopeFollower", label: "Envelope Follower", category: "Processing" },
+  { type: "hysteresis", label: "Hysteresis", category: "Processing" },
+  { type: "mapRange", label: "Map Range", category: "Processing" },
+  { type: "medianFilter", label: "Median Filter", category: "Processing" },
+  { type: "movingAverage", label: "Moving Average", category: "Processing" },
+  { type: "peakDetection", label: "Peak Detection", category: "Processing" },
+  { type: "quantize", label: "Quantize", category: "Processing" },
+  { type: "rate", label: "Rate", category: "Processing" },
+  { type: "smooth", label: "Smooth", category: "Processing" },
+  // Logic
+  { type: "boolean", label: "Boolean", category: "Logic" },
+  { type: "compare", label: "Compare", category: "Logic" },
+  { type: "edgeTrigger", label: "Edge Trigger", category: "Logic" },
+  { type: "gate", label: "Gate", category: "Logic" },
+  { type: "timer", label: "Timer", category: "Logic" },
+  { type: "toggle", label: "Toggle", category: "Logic" },
+  // Action
+  { type: "command", label: "Command", category: "Action" },
+  // Visualization
+  { type: "graph", label: "Graph", category: "Visualization" },
+  { type: "log", label: "Log", category: "Visualization" },
+  // Layout
+  { type: "frame", label: "Frame", category: "Layout" },
 ];
 
 interface NodeSearchProps {
@@ -44,9 +52,19 @@ export function NodeSearch({ onSelect, onClose, x, y }: NodeSearchProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const filteredOptions = nodeOptions.filter((opt) =>
-    opt.label.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredOptions = nodeOptions
+    .filter((opt) => opt.label.toLowerCase().includes(search.toLowerCase()))
+    .sort((a, b) => {
+      const categoryOrder = ["Communication", "Processing", "Logic", "Action", "Visualization", "Layout"];
+      const catA = categoryOrder.indexOf(a.category);
+      const catB = categoryOrder.indexOf(b.category);
+
+      if (catA !== catB) {
+        return catA - catB;
+      }
+
+      return a.label.localeCompare(b.label);
+    });
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -93,19 +111,28 @@ export function NodeSearch({ onSelect, onClose, x, y }: NodeSearchProps) {
       />
 
       <div className="node-search-results">
-        {filteredOptions.map((opt, index) => (
-          <div
-            key={opt.type}
-            className={`node-search-item ${index === selectedIndex ? "selected" : ""}`}
-            onMouseDown={(e) => {
-              e.preventDefault();
-              onSelect(opt.type);
-            }}
-            onMouseEnter={() => setSelectedIndex(index)}
-          >
-            {opt.label}
-          </div>
-        ))}
+        {filteredOptions.map((opt, index) => {
+          const showHeader = index === 0 || filteredOptions[index - 1].category !== opt.category;
+
+          return (
+            <React.Fragment key={opt.type}>
+              {showHeader && (
+                <div className="node-search-header">{opt.category}</div>
+              )}
+
+              <div
+                className={`node-search-item ${index === selectedIndex ? "selected" : ""}`}
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  onSelect(opt.type);
+                }}
+                onMouseEnter={() => setSelectedIndex(index)}
+              >
+                {opt.label}
+              </div>
+            </React.Fragment>
+          );
+        })}
 
         {filteredOptions.length === 0 && (
           <div className="node-search-item" style={{ fontStyle: "italic", cursor: "default" }}>
