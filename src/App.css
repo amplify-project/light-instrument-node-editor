@@ -90,7 +90,8 @@ body {
 }
 
 /* Visualization Nodes - Cyan */
-.graph-node .node-header {
+.graph-node .node-header,
+.statistics-node .node-header {
   border-top: 3px solid #46ccff;
 }
 

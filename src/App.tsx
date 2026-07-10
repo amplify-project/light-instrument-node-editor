@@ -28,6 +28,7 @@ import { GraphNode } from "./components/nodes/display/GraphNode";
 import { CompareNode } from "./components/nodes/logic/CompareNode";
 import { BooleanNode } from "./components/nodes/logic/BooleanNode";
 import { LogNode } from "./components/nodes/display/LogNode";
+import { StatisticsNode } from "./components/nodes/display/StatisticsNode";
 import { SmoothNode } from "./components/nodes/processing/SmoothNode";
 import { SimulateNode } from "./components/nodes/io/SimulateNode";
 import { ButtonNode } from "./components/nodes/io/ButtonNode";
@@ -60,6 +61,7 @@ const nodeTypes = {
   compare: CompareNode,
   boolean: BooleanNode,
   log: LogNode,
+  statistics: StatisticsNode,
   smooth: SmoothNode,
   simulate: SimulateNode,
   button: ButtonNode,
@@ -267,7 +269,7 @@ function Flow() {
     setNodes((nds) => {
       const node = nds.find((n) => n.id === id);
 
-      if (node && (node.type === "serialInput" || node.type === "serialOutput")) {
+      if (node?.type === "serialInput" || node?.type === "serialOutput") {
         return nds;
       }
 

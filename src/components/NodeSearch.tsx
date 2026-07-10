@@ -37,6 +37,7 @@ const nodeOptions: NodeOption[] = [
   // Visualization
   { type: "graph", label: "Graph", category: "Visualization" },
   { type: "log", label: "Log", category: "Visualization" },
+  { type: "statistics", label: "Statistics", category: "Visualization" },
   // Layout
   { type: "frame", label: "Frame", category: "Layout" },
 ];
