@@ -101,6 +101,7 @@ const initialNodes: Node[] = [
 ];
 
 const initialEdges: Edge[] = [];
+const ALLOWS_MULTI_INPUT = ["serialOutput", "log", "statistics"];
 
 function Flow() {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
@@ -181,7 +182,7 @@ function Flow() {
     (connection: Connection | Edge) => {
       const targetNode = nodes.find((n) => n.id === connection.target);
 
-      if (targetNode && (targetNode.type === "serialOutput" || targetNode.type === "log")) {
+      if (targetNode && ALLOWS_MULTI_INPUT.some((type) => type == targetNode.type)) {
         return true;
       }
 
