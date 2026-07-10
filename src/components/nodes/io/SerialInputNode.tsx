@@ -3,6 +3,8 @@ import { Handle, Position } from "@xyflow/react";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 
+const BAUD_RATE = 115200;
+
 interface SerialDataPayload {
   port: string;
   data: string;
@@ -11,7 +13,6 @@ interface SerialDataPayload {
 export function SerialInputNode({ data, id }: any) {
   const [ports, setPorts] = useState<string[]>([]);
   const [selectedPort, setSelectedPort] = useState("");
-  const [baudRate, setBaudRate] = useState(115200);
   const [isConnected, setIsConnected] = useState(false);
   const [lastParsed, setLastParsed] = useState<any>(null);
 
@@ -79,7 +80,7 @@ export function SerialInputNode({ data, id }: any) {
       }
     } else {
       try {
-        await invoke("open_port", { portName: selectedPort, baudRate });
+        await invoke("open_port", { portName: selectedPort, baudRate: BAUD_RATE });
         setIsConnected(true);
 
         if (data.setActivePort) {
@@ -107,17 +108,6 @@ export function SerialInputNode({ data, id }: any) {
             <option key={port} value={port}>{port}</option>
           ))}
         </select>
-
-        <input
-          type="number"
-          value={baudRate}
-          onChange={(e) => setBaudRate(Number(e.target.value))}
-          disabled={isConnected}
-          autoComplete="off"
-          autoCorrect="off"
-          autoCapitalize="off"
-          spellCheck="false"
-        />
 
         <div style={{ display: "flex", gap: "4px", marginTop: "8px" }}>
           <button
