@@ -7,35 +7,35 @@ interface NodeOption {
 }
 
 const nodeOptions: NodeOption[] = [
-  // Communication
-  { type: "button", label: "Button", category: "Communication" },
-  { type: "functionGenerator", label: "Function Generator", category: "Communication" },
-  { type: "timer", label: "Timer", category: "Communication" },
-  { type: "simulate", label: "Simulate", category: "Communication" },
+  // Input & IO
+  { type: "button", label: "Button", category: "Input & IO" },
+  { type: "functionGenerator", label: "Function Generator", category: "Input & IO" },
+  { type: "timer", label: "Timer", category: "Input & IO" },
+  { type: "simulate", label: "Simulate", category: "Input & IO" },
   // Processing
   { type: "clamp", label: "Clamp", category: "Processing" },
-  { type: "cumulativeSum", label: "Cumulative Sum", category: "Processing" },
   { type: "deadband", label: "Deadband", category: "Processing" },
   { type: "derivative", label: "Derivative", category: "Processing" },
   { type: "deviceFilter", label: "Device Filter", category: "Processing" },
   { type: "envelopeFollower", label: "Envelope Follower", category: "Processing" },
-  { type: "hysteresis", label: "Hysteresis", category: "Processing" },
   { type: "mapRange", label: "Map Range", category: "Processing" },
   { type: "medianFilter", label: "Median Filter", category: "Processing" },
   { type: "movingAverage", label: "Moving Average", category: "Processing" },
-  { type: "peakDetection", label: "Peak Detection", category: "Processing" },
   { type: "quantize", label: "Quantize", category: "Processing" },
   { type: "rate", label: "Rate", category: "Processing" },
   { type: "smooth", label: "Smooth", category: "Processing" },
-  // Logic
-  { type: "boolean", label: "Boolean", category: "Logic" },
-  { type: "compare", label: "Compare", category: "Logic" },
-  { type: "edgeTrigger", label: "Edge Trigger", category: "Logic" },
-  { type: "gate", label: "Gate", category: "Logic" },
-  { type: "math", label: "Math", category: "Logic" },
-  { type: "toggle", label: "Toggle", category: "Logic" },
-  // Action
-  { type: "command", label: "Command", category: "Action" },
+  // Math & Logic
+  { type: "boolean", label: "Boolean", category: "Math & Logic" },
+  { type: "compare", label: "Compare", category: "Math & Logic" },
+  { type: "cumulativeSum", label: "Cumulative Sum", category: "Math & Logic" },
+  { type: "edgeTrigger", label: "Edge Trigger", category: "Math & Logic" },
+  { type: "gate", label: "Gate", category: "Math & Logic" },
+  { type: "hysteresis", label: "Hysteresis", category: "Math & Logic" },
+  { type: "math", label: "Math", category: "Math & Logic" },
+  { type: "peakDetection", label: "Peak Detection", category: "Math & Logic" },
+  { type: "toggle", label: "Toggle", category: "Math & Logic" },
+  // Output
+  { type: "command", label: "Command", category: "Output" },
   // Visualization
   { type: "graph", label: "Graph", category: "Visualization" },
   { type: "log", label: "Log", category: "Visualization" },
@@ -59,7 +59,7 @@ export function NodeSearch({ onSelect, onClose, x, y }: NodeSearchProps) {
   const filteredOptions = nodeOptions
     .filter((opt) => opt.label.toLowerCase().includes(search.toLowerCase()))
     .sort((a, b) => {
-      const categoryOrder = ["Communication", "Processing", "Logic", "Action", "Visualization", "Layout"];
+      const categoryOrder = ["Input & IO", "Processing", "Math & Logic", "Output", "Visualization", "Layout"];
       const catA = categoryOrder.indexOf(a.category);
       const catB = categoryOrder.indexOf(b.category);
 

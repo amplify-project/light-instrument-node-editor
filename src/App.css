@@ -48,18 +48,18 @@ body {
   color: #ff4646 !important;
 }
 
-/* Communication Nodes - Blue */
+/* Input & IO Nodes - Blue */
 .input-node .node-header,
 .output-node .node-header,
 .simulate-node .node-header,
 .button-node .node-header,
-.function-generator-node .node-header {
+.function-generator-node .node-header,
+.timer-node .node-header {
   border-top: 3px solid #646cff;
 }
 
 /* Processing Nodes - Green */
 .filter-node .node-header,
-.peak-node .node-header,
 .smooth-node .node-header,
 .moving-average-node .node-header,
 .median-node .node-header,
@@ -69,30 +69,31 @@ body {
 .quantize-node .node-header,
 .derivative-node .node-header,
 .envelope-node .node-header,
-.hysteresis-node .node-header,
-.cumulative-sum-node .node-header,
 .rate-node .node-header {
   border-top: 3px solid #46ff88;
 }
 
-/* Logic Nodes - Orange */
+/* Math & Logic Nodes - Orange */
 .compare-node .node-header,
 .boolean-node .node-header,
 .gate-node .node-header,
 .math-node .node-header,
 .toggle-node .node-header,
-.timer-node .node-header,
-.edge-trigger-node .node-header {
+.edge-trigger-node .node-header,
+.hysteresis-node .node-header,
+.cumulative-sum-node .node-header,
+.peak-node .node-header {
   border-top: 3px solid #ff8846;
 }
 
-/* Action Nodes - Purple */
+/* Output Nodes - Purple */
 .command-node .node-header {
   border-top: 3px solid #a246ff;
 }
 
 /* Visualization Nodes - Cyan */
 .graph-node .node-header,
+.log-node .node-header,
 .statistics-node .node-header {
   border-top: 3px solid #46ccff;
 }
