@@ -121,7 +121,9 @@ export function CommandNode({ data, id }: any) {
           </label>
         </div>
 
-        <button disabled={useInputAsParam} onClick={handleManualTrigger}>Manual Trigger</button>
+        <button disabled={useInputAsParam || device == "" || port == "" || command == ""} onClick={handleManualTrigger}>
+          Manual Trigger
+        </button>
 
         {lastEmitted && (
           <div className="node-status">
