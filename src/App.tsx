@@ -45,6 +45,7 @@ import { GateNode } from "./components/nodes/logic/GateNode";
 import { ToggleNode } from "./components/nodes/logic/ToggleNode";
 import { EdgeTriggerNode } from "./components/nodes/logic/EdgeTriggerNode";
 import { TimerNode } from "./components/nodes/logic/TimerNode";
+import { MathNode } from "./components/nodes/logic/MathNode";
 import { FunctionGeneratorNode } from "./components/nodes/io/FunctionGeneratorNode";
 import { CumulativeSumNode } from "./components/nodes/processing/CumulativeSumNode";
 import { RateNode } from "./components/nodes/processing/RateNode";
@@ -79,6 +80,7 @@ const nodeTypes = {
   toggle: ToggleNode,
   edgeTrigger: EdgeTriggerNode,
   timer: TimerNode,
+  math: MathNode,
   functionGenerator: FunctionGeneratorNode,
   cumulativeSum: CumulativeSumNode,
   rate: RateNode,

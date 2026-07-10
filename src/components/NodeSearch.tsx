@@ -32,6 +32,7 @@ const nodeOptions: NodeOption[] = [
   { type: "compare", label: "Compare", category: "Logic" },
   { type: "edgeTrigger", label: "Edge Trigger", category: "Logic" },
   { type: "gate", label: "Gate", category: "Logic" },
+  { type: "math", label: "Math", category: "Logic" },
   { type: "toggle", label: "Toggle", category: "Logic" },
   // Action
   { type: "command", label: "Command", category: "Action" },

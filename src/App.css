@@ -79,6 +79,7 @@ body {
 .compare-node .node-header,
 .boolean-node .node-header,
 .gate-node .node-header,
+.math-node .node-header,
 .toggle-node .node-header,
 .timer-node .node-header,
 .edge-trigger-node .node-header {
