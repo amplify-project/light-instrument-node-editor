@@ -67,7 +67,8 @@ body {
 .quantize-node .node-header,
 .derivative-node .node-header,
 .envelope-node .node-header,
-.hysteresis-node .node-header {
+.hysteresis-node .node-header,
+.cumulative-sum-node .node-header {
   border-top: 3px solid #46ff88;
 }
 

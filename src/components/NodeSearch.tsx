@@ -10,6 +10,7 @@ const nodeOptions: NodeOption[] = [
   { type: "clamp", label: "Clamp" },
   { type: "command", label: "Command" },
   { type: "compare", label: "Compare" },
+  { type: "cumulativeSum", label: "Cumulative Sum" },
   { type: "deadband", label: "Deadband" },
   { type: "derivative", label: "Derivative" },
   { type: "deviceFilter", label: "Device Filter" },

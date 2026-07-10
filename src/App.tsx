@@ -42,6 +42,7 @@ import { HysteresisNode } from "./components/nodes/logic/HysteresisNode";
 import { GateNode } from "./components/nodes/logic/GateNode";
 import { ToggleNode } from "./components/nodes/logic/ToggleNode";
 import { EdgeTriggerNode } from "./components/nodes/logic/EdgeTriggerNode";
+import { CumulativeSumNode } from "./components/nodes/processing/CumulativeSumNode";
 import { NodeSearch } from "./components/NodeSearch";
 import "./App.css";
 
@@ -69,6 +70,7 @@ const nodeTypes = {
   gate: GateNode,
   toggle: ToggleNode,
   edgeTrigger: EdgeTriggerNode,
+  cumulativeSum: CumulativeSumNode,
 };
 
 const initialNodes: Node[] = [
