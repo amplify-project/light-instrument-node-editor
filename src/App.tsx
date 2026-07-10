@@ -43,6 +43,7 @@ import { GateNode } from "./components/nodes/logic/GateNode";
 import { ToggleNode } from "./components/nodes/logic/ToggleNode";
 import { EdgeTriggerNode } from "./components/nodes/logic/EdgeTriggerNode";
 import { CumulativeSumNode } from "./components/nodes/processing/CumulativeSumNode";
+import { RateNode } from "./components/nodes/processing/RateNode";
 import { FrameNode } from "./components/nodes/layout/FrameNode";
 import { NodeSearch } from "./components/NodeSearch";
 import "./App.css";
@@ -72,6 +73,7 @@ const nodeTypes = {
   toggle: ToggleNode,
   edgeTrigger: EdgeTriggerNode,
   cumulativeSum: CumulativeSumNode,
+  rate: RateNode,
   frame: FrameNode,
 };
 

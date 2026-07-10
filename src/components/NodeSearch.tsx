@@ -26,6 +26,7 @@ const nodeOptions: NodeOption[] = [
   { type: "movingAverage", label: "Moving Average" },
   { type: "peakDetection", label: "Peak Detection" },
   { type: "quantize", label: "Quantize" },
+  { type: "rate", label: "Rate" },
   { type: "simulate", label: "Simulate" },
   { type: "smooth", label: "Smooth" },
   { type: "toggle", label: "Toggle" },
