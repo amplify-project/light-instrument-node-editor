@@ -15,11 +15,7 @@ export function CommandNode({ data, id }: any) {
         // Any incoming signal triggers the command emission
         if (incoming) {
           const payload = { device, port, command, value };
-          setLastEmitted(payload);
-
-          if (data.onData) {
-            data.onData(id, payload);
-          }
+          emitPayload(payload);
         }
       });
     }
@@ -31,13 +27,20 @@ export function CommandNode({ data, id }: any) {
     };
   }, [device, port, command, value, id, data]);
 
-  const handleManualTrigger = () => {
-    const payload = { device, port, command, value };
-    setLastEmitted(payload);
+  const emitPayload = (payload: { device: string, port: string, command: string, value: string}) => {
+    if (Object.entries(payload).some(([_, val]) => val == "")) {
+      return;
+    }
 
     if (data.onData) {
+      setLastEmitted(payload);
       data.onData(id, payload);
     }
+  };
+
+  const handleManualTrigger = () => {
+    const payload = { device, port, command, value };
+    emitPayload(payload);
   };
 
   return (
