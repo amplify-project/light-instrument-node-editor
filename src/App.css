@@ -78,6 +78,7 @@ body {
 .boolean-node .node-header,
 .gate-node .node-header,
 .toggle-node .node-header,
+.timer-node .node-header,
 .edge-trigger-node .node-header {
   border-top: 3px solid #ff8846;
 }
@@ -219,8 +220,17 @@ body {
 }
 
 .node-search-results {
-  max-height: 200px;
+  max-height: 250px;
   overflow-y: auto;
+}
+
+.node-search-header {
+  padding: 4px 12px;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #666;
+  background: #222;
+  font-weight: bold;
 }
 
 .node-search-item {

@@ -42,6 +42,7 @@ import { HysteresisNode } from "./components/nodes/logic/HysteresisNode";
 import { GateNode } from "./components/nodes/logic/GateNode";
 import { ToggleNode } from "./components/nodes/logic/ToggleNode";
 import { EdgeTriggerNode } from "./components/nodes/logic/EdgeTriggerNode";
+import { TimerNode } from "./components/nodes/logic/TimerNode";
 import { CumulativeSumNode } from "./components/nodes/processing/CumulativeSumNode";
 import { RateNode } from "./components/nodes/processing/RateNode";
 import { FrameNode } from "./components/nodes/layout/FrameNode";
@@ -72,6 +73,7 @@ const nodeTypes = {
   gate: GateNode,
   toggle: ToggleNode,
   edgeTrigger: EdgeTriggerNode,
+  timer: TimerNode,
   cumulativeSum: CumulativeSumNode,
   rate: RateNode,
   frame: FrameNode,
