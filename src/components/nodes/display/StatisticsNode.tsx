@@ -12,7 +12,6 @@ export function StatisticsNode({ data, id }: any) {
 
           setStats((prev) => {
             const next = { ...prev };
-
             next[device] = (next[device] || 0) + 1;
 
             return next;
@@ -55,9 +54,8 @@ export function StatisticsNode({ data, id }: any) {
           {Object.entries(stats).length === 0 ? (
             <div style={{ color: "#555", fontSize: "10px", textAlign: "center" }}>No data yet</div>
           ) : (
-            Object.entries(stats)
-              .sort((a, b) => b[1] - a[1])
-              .map(([device, count]) => (
+            <>
+              {Object.entries(stats).sort((a, b) => b[1] - a[1]).map(([device, count]) => (
                 <div
                   key={device}
                   style={{
@@ -71,7 +69,21 @@ export function StatisticsNode({ data, id }: any) {
                   <span style={{ color: "#46ccff" }}>{device}</span>
                   <span style={{ color: "#eee" }}>{count}</span>
                 </div>
-              ))
+              ))}
+              <div
+                key="totals"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: "2px 0",
+                  borderTop: "1px solid #222",
+                  fontSize: "10px",
+                }}
+              >
+                <span style={{ color: "#46ccff" }}>Total</span>
+                <span style={{ color: "#eee" }}>{Object.entries(stats).reduce((sum, [_, count]) => sum + count, 0)}</span>
+              </div>
+            </>
           )}
         </div>
         <button
