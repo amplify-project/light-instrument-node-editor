@@ -68,6 +68,10 @@ export function MovingAverageNode({ data, id }: any) {
             }
           }}
           style={{ width: "100%" }}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         {lastAverage !== null && (

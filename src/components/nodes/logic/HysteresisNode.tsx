@@ -53,11 +53,29 @@ export function HysteresisNode({ data, id }: any) {
       <div className="node-content nodrag">
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>High</label>
-          <input type="number" value={highThreshold} onChange={(e) => data.updateNodeData?.(id, { highThreshold: Number(e.target.value) })} style={{ width: "100%" }} />
+          <input
+            type="number"
+            value={highThreshold}
+            onChange={(e) => data.updateNodeData?.(id, { highThreshold: Number(e.target.value) })}
+            style={{ width: "100%" }}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+          />
         </div>
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>Low</label>
-          <input type="number" value={lowThreshold} onChange={(e) => data.updateNodeData?.(id, { lowThreshold: Number(e.target.value) })} style={{ width: "100%" }} />
+          <input
+            type="number"
+            value={lowThreshold}
+            onChange={(e) => data.updateNodeData?.(id, { lowThreshold: Number(e.target.value) })}
+            style={{ width: "100%" }}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+          />
         </div>
 
         <div className="node-status" style={{ color: state ? "#46ff88" : "#888" }}>

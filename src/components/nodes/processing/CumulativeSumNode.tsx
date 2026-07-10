@@ -65,6 +65,10 @@ export function CumulativeSumNode({ data, id }: any) {
               valuesRef.current = valuesRef.current.slice(-size);
             }
           }}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         <div className="node-status">

@@ -57,14 +57,38 @@ export function EnvelopeFollowerNode({ data, id }: any) {
             <label style={{ fontSize: "9px", color: "#888" }}>Attack</label>
             <span style={{ fontSize: "9px" }}>{attack.toFixed(2)}</span>
           </div>
-          <input type="range" min="0.01" max="1" step="0.01" value={attack} onChange={(e) => data.updateNodeData?.(id, { attack: Number(e.target.value) })} style={{ width: "100%" }} />
+          <input
+            type="range"
+            min="0.01"
+            max="1"
+            step="0.01"
+            value={attack}
+            onChange={(e) => data.updateNodeData?.(id, { attack: Number(e.target.value) })}
+            style={{ width: "100%" }}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+          />
         </div>
         <div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <label style={{ fontSize: "9px", color: "#888" }}>Release</label>
             <span style={{ fontSize: "9px" }}>{release.toFixed(2)}</span>
           </div>
-          <input type="range" min="0.01" max="1" step="0.01" value={release} onChange={(e) => data.updateNodeData?.(id, { release: Number(e.target.value) })} style={{ width: "100%" }} />
+          <input
+            type="range"
+            min="0.01"
+            max="1"
+            step="0.01"
+            value={release}
+            onChange={(e) => data.updateNodeData?.(id, { release: Number(e.target.value) })}
+            style={{ width: "100%" }}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+          />
         </div>
 
         {lastEnvelope !== null && (

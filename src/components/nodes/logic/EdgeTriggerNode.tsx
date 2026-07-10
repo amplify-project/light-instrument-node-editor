@@ -72,6 +72,10 @@ export function EdgeTriggerNode({ data, id }: any) {
             value={threshold}
             onChange={(e) => data.updateNodeData?.(id, { threshold: Number(e.target.value) })}
             style={{ width: "100%" }}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
           />
         </div>
 

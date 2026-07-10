@@ -34,6 +34,10 @@ export function FrameNode({ data, id, selected }: any) {
             }}
             value={data.label ?? "Frame"}
             onChange={(e) => data.updateNodeData?.(id, { label: e.target.value })}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
           />
           <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
         </div>

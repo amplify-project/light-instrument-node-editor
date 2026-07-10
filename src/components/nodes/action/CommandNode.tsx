@@ -54,6 +54,10 @@ export function CommandNode({ data, id }: any) {
           value={command}
           onChange={(e) => data.updateNodeData?.(id, { command: e.target.value })}
           placeholder="e.g. led"
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         <label style={{ fontSize: "10px", color: "#888" }}>Value:</label>
@@ -61,6 +65,10 @@ export function CommandNode({ data, id }: any) {
           type="text"
           value={value}
           onChange={(e) => data.updateNodeData?.(id, { value: e.target.value })}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         <button onClick={handleManualTrigger}>Manual Trigger</button>

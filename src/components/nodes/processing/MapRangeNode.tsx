@@ -45,19 +45,55 @@ export function MapRangeNode({ data, id }: any) {
       <div className="node-content nodrag">
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>In Min</label>
-          <input type="number" value={inMin} onChange={(e) => data.updateNodeData?.(id, { inMin: Number(e.target.value) })} style={{ width: "100%" }} />
+          <input
+            type="number"
+            value={inMin}
+            onChange={(e) => data.updateNodeData?.(id, { inMin: Number(e.target.value) })}
+            style={{ width: "100%" }}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+          />
         </div>
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>In Max</label>
-          <input type="number" value={inMax} onChange={(e) => data.updateNodeData?.(id, { inMax: Number(e.target.value) })} style={{ width: "100%" }} />
+          <input
+            type="number"
+            value={inMax}
+            onChange={(e) => data.updateNodeData?.(id, { inMax: Number(e.target.value) })}
+            style={{ width: "100%" }}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+          />
         </div>
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>Out Min</label>
-          <input type="number" value={outMin} onChange={(e) => data.updateNodeData?.(id, { outMin: Number(e.target.value) })} style={{ width: "100%" }} />
+          <input
+            type="number"
+            value={outMin}
+            onChange={(e) => data.updateNodeData?.(id, { outMin: Number(e.target.value) })}
+            style={{ width: "100%" }}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+          />
         </div>
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>Out Max</label>
-          <input type="number" value={outMax} onChange={(e) => data.updateNodeData?.(id, { outMax: Number(e.target.value) })} style={{ width: "100%" }} />
+          <input
+            type="number"
+            value={outMax}
+            onChange={(e) => data.updateNodeData?.(id, { outMax: Number(e.target.value) })}
+            style={{ width: "100%" }}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+          />
         </div>
 
         {lastValue !== null && (

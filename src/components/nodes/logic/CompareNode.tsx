@@ -74,6 +74,10 @@ export function CompareNode({ data, id }: any) {
           type="number"
           value={compareValue}
           onChange={(e) => data.updateNodeData?.(id, { compareValue: Number(e.target.value) })}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         {lastMet && (

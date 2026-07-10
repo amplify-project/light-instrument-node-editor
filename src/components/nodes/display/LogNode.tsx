@@ -57,6 +57,10 @@ export function LogNode({ data, id }: any) {
           ref={scrollRef}
           readOnly
           value={logs.join("\n")}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
           style={{
             width: "100%",
             height: "120px",

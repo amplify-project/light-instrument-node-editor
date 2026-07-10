@@ -43,6 +43,10 @@ export function TimerNode({ data, id }: any) {
 
             data.updateNodeData?.(id, { interval: val });
           }}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "4px" }}>
@@ -56,6 +60,10 @@ export function TimerNode({ data, id }: any) {
           onChange={(e) => {
             data.updateNodeData?.(id, { value: Number(e.target.value) });
           }}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         <div className="node-status">

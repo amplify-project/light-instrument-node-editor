@@ -49,6 +49,10 @@ export function QuantizeNode({ data, id }: any) {
           value={step}
           onChange={(e) => data.updateNodeData?.(id, { step: Number(e.target.value) })}
           style={{ width: "100%" }}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         {lastValue !== null && (

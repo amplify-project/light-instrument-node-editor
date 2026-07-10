@@ -43,11 +43,29 @@ export function ClampNode({ data, id }: any) {
       <div className="node-content nodrag">
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>Min</label>
-          <input type="number" value={min} onChange={(e) => data.updateNodeData?.(id, { min: Number(e.target.value) })} style={{ width: "100%" }} />
+          <input
+            type="number"
+            value={min}
+            onChange={(e) => data.updateNodeData?.(id, { min: Number(e.target.value) })}
+            style={{ width: "100%" }}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+          />
         </div>
         <div>
           <label style={{ fontSize: "9px", color: "#888" }}>Max</label>
-          <input type="number" value={max} onChange={(e) => data.updateNodeData?.(id, { max: Number(e.target.value) })} style={{ width: "100%" }} />
+          <input
+            type="number"
+            value={max}
+            onChange={(e) => data.updateNodeData?.(id, { max: Number(e.target.value) })}
+            style={{ width: "100%" }}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+          />
         </div>
 
         {lastValue !== null && (

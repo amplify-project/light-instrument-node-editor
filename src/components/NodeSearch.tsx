@@ -108,6 +108,10 @@ export function NodeSearch({ onSelect, onClose, x, y }: NodeSearchProps) {
         onChange={(e) => setSearch(e.target.value)}
         onKeyDown={handleKeyDown}
         onBlur={() => setTimeout(onClose, 100)} // Small delay to allow onMouseDown on items
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck="false"
       />
 
       <div className="node-search-results">

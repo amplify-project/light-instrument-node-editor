@@ -48,6 +48,10 @@ export function DeviceFilterNode({ data, id }: any) {
           value={deviceFilter}
           onChange={(e) => data.updateNodeData?.(id, { deviceFilter: e.target.value })}
           placeholder="e.g. sender1"
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         <label style={{ fontSize: "10px", color: "#888", marginTop: "8px", display: "block" }}>Device Port:</label>
@@ -56,6 +60,10 @@ export function DeviceFilterNode({ data, id }: any) {
           value={portFilter}
           onChange={(e) => data.updateNodeData?.(id, { portFilter: e.target.value })}
           placeholder="e.g. sensorA"
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         {lastRelayed && (

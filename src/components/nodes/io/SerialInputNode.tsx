@@ -113,6 +113,10 @@ export function SerialInputNode({ data, id }: any) {
           value={baudRate}
           onChange={(e) => setBaudRate(Number(e.target.value))}
           disabled={isConnected}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         <div style={{ display: "flex", gap: "4px", marginTop: "8px" }}>

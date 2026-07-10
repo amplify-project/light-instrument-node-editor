@@ -69,6 +69,10 @@ export function MedianFilterNode({ data, id }: any) {
             }
           }}
           style={{ width: "100%" }}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         {lastMedian !== null && (

@@ -61,6 +61,10 @@ export function SmoothNode({ data, id }: any) {
           value={alpha}
           onChange={(e) => data.updateNodeData?.(id, { alpha: Number(e.target.value) })}
           style={{ width: "100%" }}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         {lastSmoothed !== null && (

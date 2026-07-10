@@ -101,6 +101,10 @@ export function SimulateNode({ data, id }: any) {
           }}
           disabled={isSimulating}
           style={{ width: "100%", marginBottom: "8px" }}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         <button

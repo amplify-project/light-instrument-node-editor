@@ -60,6 +60,10 @@ export function RateNode({ data, id }: any) {
 
             data.updateNodeData?.(id, { interval: val });
           }}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
 
         <div className="node-status">
