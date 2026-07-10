@@ -43,6 +43,7 @@ import { GateNode } from "./components/nodes/logic/GateNode";
 import { ToggleNode } from "./components/nodes/logic/ToggleNode";
 import { EdgeTriggerNode } from "./components/nodes/logic/EdgeTriggerNode";
 import { CumulativeSumNode } from "./components/nodes/processing/CumulativeSumNode";
+import { FrameNode } from "./components/nodes/layout/FrameNode";
 import { NodeSearch } from "./components/NodeSearch";
 import "./App.css";
 
@@ -71,6 +72,7 @@ const nodeTypes = {
   toggle: ToggleNode,
   edgeTrigger: EdgeTriggerNode,
   cumulativeSum: CumulativeSumNode,
+  frame: FrameNode,
 };
 
 const initialNodes: Node[] = [
@@ -154,6 +156,9 @@ function Flow() {
       type,
       position,
       data: { label: type.charAt(0).toUpperCase() + type.slice(1) },
+      zIndex: type === "frame" ? -1 : undefined,
+      width: type === "frame" ? 300 : undefined,
+      height: type === "frame" ? 200 : undefined,
     };
 
     setNodes((nds) => nds.concat(newNode));

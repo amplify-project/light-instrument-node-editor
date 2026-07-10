@@ -91,6 +91,20 @@ body {
   border-top: 3px solid #46ccff;
 }
 
+/* Layout Nodes - Transparent */
+.frame-node {
+  background: rgba(43, 43, 43, 0.2) !important;
+  min-width: 50px;
+  min-height: 50px;
+  box-shadow: none !important;
+  border: 1px dashed #666 !important;
+}
+
+.frame-node .node-header {
+  background: rgba(60, 60, 60, 0.4) !important;
+  border-bottom: 1px solid #555;
+}
+
 .graph-node, .log-node {
   width: 240px;
 }

@@ -16,6 +16,7 @@ const nodeOptions: NodeOption[] = [
   { type: "deviceFilter", label: "Device Filter" },
   { type: "edgeTrigger", label: "Edge Trigger" },
   { type: "envelopeFollower", label: "Envelope Follower" },
+  { type: "frame", label: "Frame" },
   { type: "gate", label: "Gate" },
   { type: "graph", label: "Graph" },
   { type: "hysteresis", label: "Hysteresis" },
