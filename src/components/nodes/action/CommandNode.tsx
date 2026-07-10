@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function CommandNode({ data, id }: any) {
-  const command = data.command || "led";
+  const device = data.device || "";
+  const port = data.port || "";
+  const command = data.command || "";
   const value = data.value || "";
   const [lastEmitted, setLastEmitted] = useState<any>(null);
 
@@ -12,7 +14,7 @@ export function CommandNode({ data, id }: any) {
       data.registerConsumer(id, (incoming: any) => {
         // Any incoming signal triggers the command emission
         if (incoming) {
-          const payload = { command, value };
+          const payload = { device, port, command, value };
           setLastEmitted(payload);
 
           if (data.onData) {
@@ -27,10 +29,10 @@ export function CommandNode({ data, id }: any) {
         data.unregisterConsumer(id);
       }
     };
-  }, [command, value, id, data]);
+  }, [device, port, command, value, id, data]);
 
   const handleManualTrigger = () => {
-    const payload = { command, value };
+    const payload = { device, port, command, value };
     setLastEmitted(payload);
 
     if (data.onData) {
@@ -48,19 +50,40 @@ export function CommandNode({ data, id }: any) {
       </div>
 
       <div className="node-content nodrag">
-        <label style={{ fontSize: "10px", color: "#888" }}>Command Name:</label>
+        <label style={{ fontSize: "10px", color: "#888" }}>Device:</label>
         <input
           type="text"
-          value={command}
-          onChange={(e) => data.updateNodeData?.(id, { command: e.target.value })}
-          placeholder="e.g. led"
+          value={device}
+          onChange={(e) => data.updateNodeData?.(id, { device: e.target.value })}
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
           spellCheck="false"
         />
 
-        <label style={{ fontSize: "10px", color: "#888" }}>Value:</label>
+        <label style={{ fontSize: "10px", color: "#888" }}>Port:</label>
+        <input
+          type="text"
+          value={port}
+          onChange={(e) => data.updateNodeData?.(id, { port: e.target.value })}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
+        />
+
+        <label style={{ fontSize: "10px", color: "#888" }}>Command Name:</label>
+        <input
+          type="text"
+          value={command}
+          onChange={(e) => data.updateNodeData?.(id, { command: e.target.value })}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
+        />
+
+        <label style={{ fontSize: "10px", color: "#888" }}>Parameters:</label>
         <input
           type="text"
           value={value}
@@ -75,7 +98,7 @@ export function CommandNode({ data, id }: any) {
 
         {lastEmitted && (
           <div className="node-status">
-            Last: {lastEmitted.command},{lastEmitted.value}
+            Last: {lastEmitted.device},{lastEmitted.port},{lastEmitted.command},{lastEmitted.value}
           </div>
         )}
       </div>
