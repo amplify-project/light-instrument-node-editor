@@ -93,7 +93,7 @@ fn load_file(path: String) -> Result<String, String> {
 }
 
 #[tauri::command]
-fn start_simulation(state: State<'_, SerialState>, app: AppHandle, path: String) -> Result<(), String> {
+fn start_simulation(state: State<'_, SerialState>, app: AppHandle, path: String, interval_ms: u64) -> Result<(), String> {
     state.simulation_running.store(true, Ordering::SeqCst);
     let running = state.simulation_running.clone();
 
@@ -121,8 +121,8 @@ fn start_simulation(state: State<'_, SerialState>, app: AppHandle, path: String)
 
                 let _ = app.emit("serial-data", payload);
 
-                // Add a small delay to simulate real data rate
-                std::thread::sleep(std::time::Duration::from_millis(50));
+                // Add a delay to simulate real data rate
+                std::thread::sleep(std::time::Duration::from_millis(interval_ms));
             }
         }
 

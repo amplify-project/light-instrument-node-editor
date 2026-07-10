@@ -11,6 +11,7 @@ interface SerialDataPayload {
 
 export function SimulateNode({ data, id }: any) {
   const [isSimulating, setIsSimulating] = useState(false);
+  const interval = data.interval ?? 50;
   const [lastParsed, setLastParsed] = useState<any>(null);
   const bufferRef = useRef("");
 
@@ -68,7 +69,7 @@ export function SimulateNode({ data, id }: any) {
 
         if (filePath) {
           setIsSimulating(true);
-          await invoke("start_simulation", { path: filePath });
+          await invoke("start_simulation", { path: filePath, intervalMs: interval });
         }
       } catch (e) {
         alert("Failed to start simulation: " + e);
@@ -85,6 +86,23 @@ export function SimulateNode({ data, id }: any) {
       </div>
 
       <div className="node-content nodrag">
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "4px" }}>
+          <label style={{ fontSize: "10px", color: "#888" }}>Interval (ms):</label>
+          <span style={{ fontSize: "11px", color: "#eee" }}>{interval}</span>
+        </div>
+
+        <input
+          type="number"
+          min="1"
+          value={interval}
+          onChange={(e) => {
+            const val = Math.max(1, Number(e.target.value));
+            data.updateNodeData?.(id, { interval: val });
+          }}
+          disabled={isSimulating}
+          style={{ width: "100%", marginBottom: "8px" }}
+        />
+
         <button
           onClick={handleSimulate}
           style={{ width: "100%", marginBottom: "8px" }}
