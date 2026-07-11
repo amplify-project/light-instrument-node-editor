@@ -131,34 +131,6 @@ function Flow() {
     mousePos.current = { x: e.clientX, y: e.clientY };
   }, []);
 
-  const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.shiftKey && e.key.toLowerCase() === "a") {
-      const target = e.target as HTMLElement;
-
-      if (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable) {
-        return;
-      }
-
-      e.preventDefault();
-
-      setSearchState({
-        visible: true,
-        x: mousePos.current.x,
-        y: mousePos.current.y,
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [handleMouseMove, handleKeyDown]);
-
   const onAddNode = useCallback((type: string) => {
     if (type === "serialInput" || type === "serialOutput") {
       return;
@@ -410,6 +382,40 @@ function Flow() {
       alert("Failed to load: " + e);
     }
   }, [applySetup]);
+
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") {
+        e.preventDefault();
+        onSave();
+      } else if (e.shiftKey && e.key.toLowerCase() === "a") {
+        const target = e.target as HTMLElement;
+
+        if (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable) {
+          return;
+        }
+
+        e.preventDefault();
+
+        setSearchState({
+          visible: true,
+          x: mousePos.current.x,
+          y: mousePos.current.y,
+        });
+      }
+    },
+    [onSave]
+  );
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleMouseMove, handleKeyDown]);
 
   // Enrich nodes with data flow callbacks
   const enrichedNodes = nodes.map((node) => ({
