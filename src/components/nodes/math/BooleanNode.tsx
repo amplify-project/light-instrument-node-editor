@@ -60,7 +60,7 @@ export function BooleanNode({ data, id }: any) {
       <Handle type="target" position={Position.Left} id="a" style={{ top: "30%" }} />
       <Handle type="target" position={Position.Left} id="b" style={{ top: "70%" }} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Performs logical operations (AND, OR, XOR, NOT) on two boolean inputs (non-zero is true).\nInputs: A, B\nOutput: 1 or 0"}>
         <span>Boolean</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

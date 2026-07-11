@@ -47,7 +47,7 @@ export function LogNode({ data, id }: any) {
     <div className="serial-node log-node">
       <Handle type="target" position={Position.Left} className="multi-handle" />
 
-      <div className="node-header">
+      <div className="node-header" title={"Displays a scrollable history of incoming data packets with timestamps.\nInput: Any data"}>
         <span>Log</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

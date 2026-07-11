@@ -35,7 +35,7 @@ export function ClampNode({ data, id }: any) {
     <div className="serial-node clamp-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Restricts the incoming signal to be within a minimum and maximum range.\nInput: Numeric value\nOutput: Clamped value"}>
         <span>Clamp</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

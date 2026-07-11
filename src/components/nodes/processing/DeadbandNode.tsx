@@ -37,7 +37,7 @@ export function DeadbandNode({ data, id }: any) {
     <div className="serial-node deadband-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Ignores small fluctuations in the signal within a specified threshold of the last value.\nInput: Numeric value\nOutput: Filtered value"}>
         <span>Deadband</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

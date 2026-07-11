@@ -44,7 +44,7 @@ export function MedianFilterNode({ data, id }: any) {
     <div className="serial-node median-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Removes spike noise by outputting the median of a sliding window of values.\nInput: Numeric value\nOutput: Filtered value"}>
         <span>Median Filter</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

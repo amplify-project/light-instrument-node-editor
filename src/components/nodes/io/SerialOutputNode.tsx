@@ -43,7 +43,7 @@ export function SerialOutputNode({ data, id }: any) {
     <div className="serial-node output-node">
       <Handle type="target" position={Position.Left} className="multi-handle" />
 
-      <div className="node-header">
+      <div className="node-header" title={"Sends formatted command packets to the connected serial port.\nInput: Command packet {command, value}"}>
         <span>Serial Output</span>
       </div>
 

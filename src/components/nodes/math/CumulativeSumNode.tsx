@@ -42,7 +42,7 @@ export function CumulativeSumNode({ data, id }: any) {
     <div className="serial-node cumulative-sum-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Sums incoming numeric values over an infinite or sliding window buffer.\nInput: Numeric value\nOutput: Current sum"}>
         <span>Cumulative Sum</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

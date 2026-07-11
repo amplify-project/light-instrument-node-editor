@@ -45,7 +45,7 @@ export function HysteresisNode({ data, id }: any) {
     <div className="serial-node hysteresis-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Uses two thresholds to provide stable on/off switching and prevent jitter.\nInput: Numeric value\nOutput: 1 or 0"}>
         <span>Hysteresis</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

@@ -41,7 +41,7 @@ export function ToggleNode({ data, id }: any) {
     <div className="serial-node toggle-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Alternates between 1 and 0 every time it receives an input pulse (Flip-Flop).\nInput: Any signal\nOutput: 1 or 0"}>
         <span>Toggle</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

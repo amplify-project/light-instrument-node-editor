@@ -55,7 +55,7 @@ export function GraphNode({ data, id }: any) {
     <div className="serial-node graph-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Visualizes incoming numeric data on a real-time line chart.\nInput: Numeric value"}>
         <span>Graph</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

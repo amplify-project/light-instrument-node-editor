@@ -34,7 +34,7 @@ export function QuantizeNode({ data, id }: any) {
     <div className="serial-node quantize-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Snaps incoming values to the nearest multiple of a set step size.\nInput: Numeric value\nOutput: Quantized value"}>
         <span>Quantize</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

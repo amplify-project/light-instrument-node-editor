@@ -37,7 +37,7 @@ export function MapRangeNode({ data, id }: any) {
     <div className="serial-node map-range-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Linearly rescales values from one range to another (e.g. 0-1023 to 0-255).\nInput: Numeric value\nOutput: Scaled value"}>
         <span>Map Range</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

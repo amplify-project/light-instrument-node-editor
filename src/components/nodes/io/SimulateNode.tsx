@@ -80,7 +80,7 @@ export function SimulateNode({ data, id }: any) {
 
   return (
     <div className="serial-node simulate-node">
-      <div className="node-header">
+      <div className="node-header" title={"Reads recorded sensor data from a file and streams it into the editor.\nOutput: Structured packet {device, port, value}"}>
         <span>Simulate</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

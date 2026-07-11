@@ -36,7 +36,7 @@ export function DeviceFilterNode({ data, id }: any) {
     <div className="serial-node filter-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Only allows packets from a specific device and/or port to pass through.\nInput: Structured packet\nOutput: Filtered packet"}>
         <span>Device Filter</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

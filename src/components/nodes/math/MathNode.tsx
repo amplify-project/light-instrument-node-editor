@@ -62,7 +62,7 @@ export function MathNode({ data, id }: any) {
       <Handle type="target" position={Position.Left} id="a" style={{ top: 113 }} />
       <Handle type="target" position={Position.Left} id="b" style={{ top: 134 }} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Performs arithmetic operations (+, -, *, /, %) on two numeric inputs.\nInputs: A, B\nOutput: Calculation result"}>
         <span>Math</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

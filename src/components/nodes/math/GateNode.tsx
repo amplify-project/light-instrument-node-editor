@@ -41,7 +41,7 @@ export function GateNode({ data, id }: any) {
       <Handle type="target" position={Position.Left} id="control" style={{ top: "80%" }} />
       <label style={{ position: "absolute", left: "12px", top: "73%", fontSize: "8px", color: "#888" }}>Control</label>
 
-      <div className="node-header">
+      <div className="node-header" title={"Allows or blocks a data stream based on a separate control signal.\nInputs: Signal, Control\nOutput: Signal (if control is non-zero)"}>
         <span>Gate</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

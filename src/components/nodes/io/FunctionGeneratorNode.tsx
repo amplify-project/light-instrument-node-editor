@@ -40,7 +40,7 @@ export function FunctionGeneratorNode({ id, data }: any) {
 
   return (
     <div className="serial-node function-generator-node">
-      <div className="node-header">
+      <div className="node-header" title={"Generates periodic waveforms (Sine, Square, Triangle, Sawtooth) at a set frequency.\nOutput: Periodic numeric signal (0 to 1)"}>
         <span>Function Generator</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

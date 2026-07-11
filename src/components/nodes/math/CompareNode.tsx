@@ -50,7 +50,7 @@ export function CompareNode({ data, id }: any) {
     <div className="serial-node compare-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Compares input data against a threshold using mathematical operators.\nInput: Numeric value\nOutput: Filtered numeric value"}>
         <span>Compare</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

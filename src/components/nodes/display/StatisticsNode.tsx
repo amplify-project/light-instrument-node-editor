@@ -31,7 +31,7 @@ export function StatisticsNode({ data, id }: any) {
     <div className="serial-node statistics-node">
       <Handle type="target" position={Position.Left} className="multi-handle" />
 
-      <div className="node-header">
+      <div className="node-header" title={"Maintains a live count of received packets grouped by device name.\nInput: Structured packet"}>
         <span>Statistics</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

@@ -56,7 +56,7 @@ export function PeakDetectionNode({ data, id }: any) {
     <div className="serial-node peak-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Identifies local maxima (peaks) in a numeric stream and emits a trigger signal.\nInput: Numeric value\nOutput: Trigger impulse"}>
         <span>Peak Detection</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

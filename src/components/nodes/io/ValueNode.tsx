@@ -23,7 +23,7 @@ export function ValueNode({ data, id }: any) {
 
   return (
     <div className="serial-node value-node">
-      <div className="node-header">
+      <div className="node-header" title={"Provides a static numeric value that can be manually pushed or emitted on connection.\nOutput: Numeric value"}>
         <span>Value</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

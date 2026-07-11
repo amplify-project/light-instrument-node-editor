@@ -94,7 +94,7 @@ export function SerialInputNode({ data, id }: any) {
 
   return (
     <div className="serial-node input-node">
-      <div className="node-header">
+      <div className="node-header" title={"Interfaces with a physical serial port to receive raw data packets.\nOutput: Structured packet {device, port, value}"}>
         <span>Serial Input</span>
       </div>
 

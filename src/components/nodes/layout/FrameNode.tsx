@@ -18,7 +18,7 @@ export function FrameNode({ data, id, selected }: any) {
           margin: 0,
         }}
       >
-        <div className="node-header">
+        <div className="node-header" title={"A visual grouping component used to organize and label collections of nodes.\n(No functional inputs or outputs)"}>
           <input
             className="nodrag"
             style={{

@@ -53,7 +53,7 @@ export function CommandNode({ data, id }: any) {
     <div className="serial-node command-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Converts a trigger signal into a structured command packet for the serial output.\nInput: Any signal\nOutput: Command packet {device, port, command, value}"}>
         <span>Command</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

@@ -53,7 +53,7 @@ export function EdgeTriggerNode({ data, id }: any) {
     <div className="serial-node edge-trigger-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Detects rising or falling transitions in a signal and emits a single impulse.\nInput: Numeric signal\nOutput: Impulse (1)"}>
         <span>Edge Trigger</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

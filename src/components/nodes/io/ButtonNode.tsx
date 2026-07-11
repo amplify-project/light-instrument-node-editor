@@ -50,7 +50,7 @@ export function ButtonNode({ data, id }: any) {
 
   return (
     <div className="serial-node button-node">
-      <div className="node-header">
+      <div className="node-header" title={"Interactive button that emits signals on press and release (momentary) or alternates state (toggle).\nOutput: Numeric signal (0 or 1)"}>
         <span>Button</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

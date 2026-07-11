@@ -43,7 +43,7 @@ export function MovingAverageNode({ data, id }: any) {
     <div className="serial-node moving-average-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Smooths signal by averaging values over a sliding window.\nInput: Numeric value\nOutput: Averaged value"}>
         <span>Moving Average</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

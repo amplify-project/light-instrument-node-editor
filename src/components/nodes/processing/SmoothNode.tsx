@@ -43,7 +43,7 @@ export function SmoothNode({ data, id }: any) {
     <div className="serial-node smooth-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Applies exponential smoothing to the data stream to reduce jitter.\nInput: Numeric value\nOutput: Smoothed value"}>
         <span>Smooth</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

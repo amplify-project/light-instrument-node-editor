@@ -38,7 +38,7 @@ export function CounterNode({ data, id }: any) {
     <div className="serial-node counter-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Increments a internal counter for every message received and emits the total.\nInput: Any signal\nOutput: Current count"}>
         <span>Counter</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

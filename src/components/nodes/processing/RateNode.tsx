@@ -39,7 +39,7 @@ export function RateNode({ data, id }: any) {
     <div className="serial-node rate-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Measures the frequency (messages per second) of incoming data packets.\nInput: Any data\nOutput: Frequency (Hz)"}>
         <span>Rate</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

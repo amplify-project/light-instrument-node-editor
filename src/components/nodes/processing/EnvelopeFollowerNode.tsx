@@ -46,7 +46,7 @@ export function EnvelopeFollowerNode({ data, id }: any) {
     <div className="serial-node envelope-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header">
+      <div className="node-header" title={"Tracks the peak level of a signal with configurable attack and release times.\nInput: Numeric value\nOutput: Envelope value"}>
         <span>Envelope Follower</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>
