@@ -47,6 +47,7 @@ import { RateNode } from "./components/nodes/processing/RateNode";
 import { SerialInputNode } from "./components/nodes/io/SerialInputNode";
 import { SerialOutputNode } from "./components/nodes/io/SerialOutputNode";
 import { SimulateNode } from "./components/nodes/io/SimulateNode";
+import { ValueNode } from "./components/nodes/io/ValueNode";
 import { SmoothNode } from "./components/nodes/processing/SmoothNode";
 import { StatisticsNode } from "./components/nodes/display/StatisticsNode";
 import { TimerNode } from "./components/nodes/math/TimerNode";
@@ -67,6 +68,7 @@ const nodeTypes = {
   statistics: StatisticsNode,
   smooth: SmoothNode,
   simulate: SimulateNode,
+  value: ValueNode,
   button: ButtonNode,
   movingAverage: MovingAverageNode,
   medianFilter: MedianFilterNode,
@@ -233,8 +235,25 @@ function Flow() {
     (params) => {
       setEdges((eds) => addEdge(params, eds));
       setIsDirty(true);
+
+      const sourceNode = nodes.find((n) => n.id === params.source);
+
+      if (sourceNode?.type === "value") {
+        const consumer = consumers.current[params.target];
+
+        if (consumer) {
+          consumer(
+            {
+              device: "value",
+              port: "out",
+              value: sourceNode.data.value ?? 0,
+            },
+            params.targetHandle
+          );
+        }
+      }
     },
-    [setEdges]
+    [setEdges, nodes]
   );
 
   const onData = useCallback((sourceId: string, data: any) => {

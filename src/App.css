@@ -54,6 +54,7 @@ body {
 .simulate-node .node-header,
 .button-node .node-header,
 .function-generator-node .node-header,
+.value-node .node-header,
 .timer-node .node-header {
   border-top: 3px solid #646cff;
 }
