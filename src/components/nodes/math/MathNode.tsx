@@ -59,8 +59,8 @@ export function MathNode({ data, id }: any) {
 
   return (
     <div className="serial-node math-node">
-      <Handle type="target" position={Position.Left} id="a" style={{ top: "60%" }} />
-      <Handle type="target" position={Position.Left} id="b" style={{ top: "72%" }} />
+      <Handle type="target" position={Position.Left} id="a" style={{ top: 113 }} />
+      <Handle type="target" position={Position.Left} id="b" style={{ top: 134 }} />
 
       <div className="node-header">
         <span>Math</span>
