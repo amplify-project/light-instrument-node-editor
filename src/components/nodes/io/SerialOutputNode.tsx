@@ -15,11 +15,14 @@ export function SerialOutputNode({ data, id }: any) {
           let payload = "";
 
           if (incoming && typeof incoming === "object") {
-            // Support both direct command/value and mapped device/value for convenience
-            const command = incoming.command || incoming.device || "cmd";
+            const device = incoming.device || "";
+            const port = incoming.port || "";
+            const command = incoming.command || "";
             const value = incoming.value !== undefined ? incoming.value : 0;
 
-            payload = `${command},${value}\n`;
+            if (device && port && command) {
+              payload = `${device},${port},${command},${value}\n`;
+            }
           } else if (typeof incoming === "string") {
             payload = incoming.endsWith("\n") ? incoming : incoming + "\n";
           }
@@ -43,7 +46,7 @@ export function SerialOutputNode({ data, id }: any) {
     <div className="serial-node output-node">
       <Handle type="target" position={Position.Left} className="multi-handle" />
 
-      <div className="node-header" title={"Sends formatted command packets to the connected serial port.\nInput: Command packet {command, value}"}>
+      <div className="node-header" title={"Sends formatted command packets to the connected serial port.\nInput: Command packet {device, port, command, value}"}>
         <span>Serial Output</span>
       </div>
 
