@@ -24,6 +24,7 @@ import { ButtonNode } from "./components/nodes/io/ButtonNode";
 import { ClampNode } from "./components/nodes/processing/ClampNode";
 import { CommandNode } from "./components/nodes/action/CommandNode";
 import { CompareNode } from "./components/nodes/math/CompareNode";
+import { CounterNode } from "./components/nodes/math/CounterNode";
 import { CumulativeSumNode } from "./components/nodes/math/CumulativeSumNode";
 import { DeadbandNode } from "./components/nodes/processing/DeadbandNode";
 import { DerivativeNode } from "./components/nodes/processing/DerivativeNode";
@@ -63,6 +64,7 @@ const nodeTypes = {
   command: CommandNode,
   graph: GraphNode,
   compare: CompareNode,
+  counter: CounterNode,
   boolean: BooleanNode,
   log: LogNode,
   statistics: StatisticsNode,

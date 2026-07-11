@@ -77,6 +77,7 @@ body {
 /* Math & Logic Nodes - Orange */
 .compare-node .node-header,
 .boolean-node .node-header,
+.counter-node .node-header,
 .gate-node .node-header,
 .math-node .node-header,
 .toggle-node .node-header,

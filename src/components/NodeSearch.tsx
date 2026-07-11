@@ -28,6 +28,7 @@ const nodeOptions: NodeOption[] = [
   // Math & Logic
   { type: "boolean", label: "Boolean", category: "Math & Logic" },
   { type: "compare", label: "Compare", category: "Math & Logic" },
+  { type: "counter", label: "Counter", category: "Math & Logic" },
   { type: "cumulativeSum", label: "Cumulative Sum", category: "Math & Logic" },
   { type: "edgeTrigger", label: "Edge Trigger", category: "Math & Logic" },
   { type: "gate", label: "Gate", category: "Math & Logic" },
