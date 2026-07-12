@@ -112,7 +112,7 @@ const initialNodes: Node[] = [
 ];
 
 const initialEdges: Edge[] = [];
-const ALLOWS_MULTI_INPUT = ["serialOutput", "log", "statistics"];
+const ALLOWS_MULTI_INPUT = ["serialOutput", "log", "statistics", "csvWriter"];
 
 function Flow() {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
