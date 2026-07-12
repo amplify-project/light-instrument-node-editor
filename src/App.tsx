@@ -284,8 +284,8 @@ function Flow() {
   const handleSaveAs = useCallback(async () => {
     try {
       const path = await save({
-        filters: [{ name: "JSON", extensions: ["json"] }],
-        defaultPath: currentPath || "node_setup.json",
+        filters: [{ name: "Light Instrument Nodes", extensions: ["lns"] }],
+        defaultPath: currentPath || "node_setup.lns",
       });
 
       if (path) {
@@ -370,7 +370,7 @@ function Flow() {
   const onOpen = useCallback(async () => {
     try {
       const path = await open({
-        filters: [{ name: "JSON", extensions: ["json"] }],
+        filters: [{ name: "Light Instrument Nodes", extensions: ["lns"] }],
         multiple: false,
       });
 
