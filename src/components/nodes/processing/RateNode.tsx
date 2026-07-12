@@ -21,7 +21,7 @@ export function RateNode({ data, id }: any) {
       countRef.current = 0;
       setCurrentRate(rate);
 
-      if (data.onData) {
+      if (data.onData && rate > 0) {
         data.onData(id, { device: "rate", port: "msgs", value: rate });
       }
     }, interval);
