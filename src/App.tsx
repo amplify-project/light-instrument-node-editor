@@ -25,6 +25,7 @@ import { ClampNode } from "./components/nodes/processing/ClampNode";
 import { CommandNode } from "./components/nodes/action/CommandNode";
 import { CompareNode } from "./components/nodes/math/CompareNode";
 import { CounterNode } from "./components/nodes/math/CounterNode";
+import { CsvWriterNode } from "./components/nodes/io/CsvWriterNode";
 import { CumulativeSumNode } from "./components/nodes/math/CumulativeSumNode";
 import { DeadbandNode } from "./components/nodes/processing/DeadbandNode";
 import { DerivativeNode } from "./components/nodes/processing/DerivativeNode";
@@ -59,6 +60,7 @@ import "./App.css";
 const nodeTypes = {
   serialInput: SerialInputNode,
   serialOutput: SerialOutputNode,
+  csvWriter: CsvWriterNode,
   deviceFilter: DeviceFilterNode,
   peakDetection: PeakDetectionNode,
   command: CommandNode,

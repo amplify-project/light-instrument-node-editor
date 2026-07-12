@@ -38,6 +38,7 @@ const nodeOptions: NodeOption[] = [
   { type: "toggle", label: "Toggle", category: "Math & Logic" },
   // Output
   { type: "command", label: "Command", category: "Output" },
+  { type: "csvWriter", label: "CSV Writer", category: "Output" },
   // Visualization
   { type: "graph", label: "Graph", category: "Visualization" },
   { type: "log", label: "Log", category: "Visualization" },
