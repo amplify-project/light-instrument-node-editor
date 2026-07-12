@@ -89,7 +89,8 @@ body {
 }
 
 /* Output Nodes - Purple */
-.command-node .node-header {
+.command-node .node-header,
+.csv-writer-node .node-header {
   border-top: 3px solid #a246ff;
 }
 
