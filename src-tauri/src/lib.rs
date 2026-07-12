@@ -138,6 +138,20 @@ fn stop_simulation(state: State<'_, SerialState>) {
     state.simulation_running.store(false, Ordering::SeqCst);
 }
 
+#[tauri::command]
+fn append_to_file(path: String, content: String) -> Result<(), String> {
+    use std::fs::OpenOptions;
+    use std::io::Write;
+
+    let mut file = OpenOptions::new()
+        .create(true)
+        .append(true)
+        .open(path)
+        .map_err(|e| e.to_string())?;
+
+    file.write_all(content.as_bytes()).map_err(|e| e.to_string())
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -155,7 +169,8 @@ pub fn run() {
             save_file,
             load_file,
             start_simulation,
-            stop_simulation
+            stop_simulation,
+            append_to_file
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
