@@ -23,10 +23,10 @@ export function CsvWriterNode({ data, id }: any) {
         const line = `${timestamp.toFixed(4)},${device},${port},${value}\n`;
 
         if (firstWriteRef.current && !append) {
-          invoke("saveFile", { path: filePath, contents: line }).catch(console.error);
+          invoke("save_file", { path: filePath, contents: line }).catch(console.error);
           firstWriteRef.current = false;
         } else {
-          invoke("appendToFile", { path: filePath, content: line }).catch(console.error);
+          invoke("append_to_file", { path: filePath, content: line }).catch(console.error);
         }
       });
     }
