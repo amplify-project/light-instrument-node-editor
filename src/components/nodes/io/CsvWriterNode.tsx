@@ -5,7 +5,7 @@ import { invoke } from "@tauri-apps/api/core";
 
 export function CsvWriterNode({ data, id }: any) {
   const [filePath, setFilePath] = useState<string>(data.filePath || "");
-  const [append, setAppend] = useState<boolean>(data.append !== undefined ? data.append : true);
+  const [append, setAppend] = useState<boolean>(data.append !== undefined ? data.append : false);
   const [isRecording, setIsRecording] = useState<boolean>(false);
   const firstWriteRef = useRef<boolean>(true);
 
