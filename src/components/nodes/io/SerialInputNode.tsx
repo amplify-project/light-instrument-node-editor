@@ -40,7 +40,6 @@ export function SerialInputNode({ data, id }: any) {
 
           console.log(trimmed);
 
-          // Parse "device,port,value"
           const parts = trimmed.split(",");
           const [ messageType ] = parts;
 
