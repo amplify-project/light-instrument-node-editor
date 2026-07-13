@@ -56,6 +56,12 @@ export function SerialInputNode({ data, id }: any) {
                 data.onData(id, parsed);
               }
             }
+          } else if (messageType == "MSG" && parts.length == 3) {
+            const [_, deviceType, deviceName] = parts;
+
+            if (data.onData) {
+              data.onData(id, { type: "deviceDiscovery", deviceType, deviceName });
+            }
           }
         }
       }
