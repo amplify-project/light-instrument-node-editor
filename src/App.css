@@ -270,6 +270,36 @@ body {
   align-items: center;
 }
 
+.discovered-devices {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  background: #2b2b2b;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #444;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 100px;
+
+  text-align: right;
+  font-size: 14px;
+}
+
+.discovered-devices-header {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #7b7b7b;
+  font-weight: bold;
+}
+
+.discovered-devices-header:not(:has(~ .discovered-devices-header)) {
+  margin-top: 6px;
+}
+
 .file-info {
   color: #aaa;
   font-size: 11px;
