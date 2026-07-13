@@ -34,13 +34,18 @@ export function SerialInputNode({ data, id }: any) {
         for (const line of lines) {
           const trimmed = line.trim();
 
-          if (!trimmed) continue;
+          if (!trimmed) {
+            continue;
+          }
+
+          console.log(trimmed);
 
           // Parse "device,port,value"
           const parts = trimmed.split(",");
+          const [ messageType ] = parts;
 
-          if (parts.length === 3) {
-            const [device, port, valueStr] = parts;
+          if (messageType == "DATA" && parts.length == 4) {
+            const [_, device, port, valueStr] = parts;
             const value = parseInt(valueStr, 10);
 
             if (!isNaN(value)) {
