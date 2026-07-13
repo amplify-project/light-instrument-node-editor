@@ -118,6 +118,7 @@ function Flow() {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
   const [edges, setEdges] = useState<Edge[]>(initialEdges);
   const [currentPath, setCurrentPath] = useState<string | null>(null);
+  const [discoveredDevices, setDiscoveredDevices] = useState<{ sensors: Set<string>, actuators: Set<string> }>({ sensors: new Set(), actuators: new Set()});
   const [isDirty, setIsDirty] = useState(false);
   const [searchState, setSearchState] = useState<{ visible: boolean; x: number; y: number }>({
     visible: false,
@@ -233,6 +234,18 @@ function Flow() {
   );
 
   const onData = useCallback((sourceId: string, data: any) => {
+    // Check if the message came from the serial input node and is of type "deviceDiscovery"
+    if (sourceId == "input-1" && data?.type == "deviceDiscovery") {
+      const { deviceType, deviceName } = data;
+
+      setDiscoveredDevices({
+        sensors: (deviceType == "sensor") ? discoveredDevices.sensors.add(deviceName) : discoveredDevices.sensors,
+        actuators: (deviceType == "actuator") ? discoveredDevices.actuators.add(deviceName) : discoveredDevices.actuators
+      })
+
+      return;
+    }
+
     // Find edges connected to this source
     const connectedEdges = edges.filter((e) => e.source === sourceId);
 
