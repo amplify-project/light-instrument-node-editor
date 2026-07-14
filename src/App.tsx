@@ -18,6 +18,7 @@ import {
 import "@xyflow/react/dist/style.css";
 import { save, open } from "@tauri-apps/plugin-dialog";
 import { invoke } from "@tauri-apps/api/core";
+import useInterval from "@use-it/interval";
 
 import { BooleanNode } from "./components/nodes/math/BooleanNode";
 import { ButtonNode } from "./components/nodes/io/ButtonNode";
@@ -118,7 +119,7 @@ function Flow() {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
   const [edges, setEdges] = useState<Edge[]>(initialEdges);
   const [currentPath, setCurrentPath] = useState<string | null>(null);
-  const [discoveredDevices, setDiscoveredDevices] = useState<{ sensors: Set<string>, actuators: Set<string> }>({ sensors: new Set(), actuators: new Set()});
+  const [discoveredDevices, setDiscoveredDevices] = useState<{ sensors: Map<string, [number, number]>, actuators: Map<string, [number, number]> }>({ sensors: new Map(), actuators: new Map()});
   const [isDirty, setIsDirty] = useState(false);
   const [searchState, setSearchState] = useState<{ visible: boolean; x: number; y: number }>({
     visible: false,
@@ -129,6 +130,18 @@ function Flow() {
   const [activePort, setActivePort] = useState<string | null>(null);
   const mousePos = useRef({ x: 0, y: 0 });
   const { screenToFlowPosition } = useReactFlow();
+
+  useInterval(() => {
+    const sensors = new Map<string, [number, number]>(Array.from(discoveredDevices.sensors).map(([name, [lastSeen]]) => {
+      return [name, [lastSeen, Date.now() - lastSeen]]
+    }));
+
+    const actuators = new Map<string, [number, number]>(Array.from(discoveredDevices.actuators).map(([name, [lastSeen]]) => {
+      return [name, [lastSeen, Date.now() - lastSeen]]
+    }));
+
+    setDiscoveredDevices({ sensors, actuators });
+  }, 12000);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     mousePos.current = { x: e.clientX, y: e.clientY };
@@ -235,13 +248,29 @@ function Flow() {
 
   const onData = useCallback((sourceId: string, data: any) => {
     // Check if the message came from the serial input node and is of type "deviceDiscovery"
-    if (sourceId == "input-1" && data?.type == "deviceDiscovery") {
-      const { deviceType, deviceName } = data;
+    if (sourceId == "input-1") {
+      if (data?.type == "deviceDiscovery") {
+        const { deviceType, deviceName } = data;
 
-      setDiscoveredDevices({
-        sensors: (deviceType == "sensor") ? discoveredDevices.sensors.add(deviceName) : discoveredDevices.sensors,
-        actuators: (deviceType == "actuator") ? discoveredDevices.actuators.add(deviceName) : discoveredDevices.actuators
-      })
+        setDiscoveredDevices({
+          sensors: (deviceType == "sensor") ? discoveredDevices.sensors.set(deviceName, [Date.now(), 0]) : discoveredDevices.sensors,
+          actuators: (deviceType == "actuator") ? discoveredDevices.actuators.set(deviceName, [Date.now(), 0]) : discoveredDevices.actuators
+        });
+      } else if (data?.type == "pong") {
+        const { deviceType, deviceName } = data;
+
+        if (deviceType == "sensor" && discoveredDevices.sensors.has(deviceName)) {
+          setDiscoveredDevices({
+            sensors: discoveredDevices.sensors.set(deviceName, [Date.now(), 0]),
+            actuators: discoveredDevices.actuators
+          });
+        } else if (deviceType == "actuator" && discoveredDevices.actuators.has(deviceName)) {
+          setDiscoveredDevices({
+            sensors: discoveredDevices.sensors,
+            actuators: discoveredDevices.actuators.set(deviceName, [Date.now(), 0])
+          });
+        }
+      }
 
       return;
     }
@@ -447,6 +476,20 @@ function Flow() {
     },
   }));
 
+  const mapDeviceAgeToOpacity = (age: number) => {
+    return (age < 10000) ? (
+      1.0
+    ) : (age < 15000) ? (
+      0.75
+    ) : (age < 20000) ? (
+      0.5
+    ) : (age < 25000) ? (
+      0.25
+    ) : (
+      0.1
+    );
+  };
+
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <ReactFlow
@@ -476,13 +519,15 @@ function Flow() {
       {(discoveredDevices.sensors.size > 0 || discoveredDevices.actuators.size > 0) && (
         <div className="discovered-devices">
           <div className="discovered-devices-header">Sensors</div>
-          {Array.from(discoveredDevices.sensors).map((deviceName) => {
-            return (<div key={deviceName}>{deviceName}</div>);
+
+          {Array.from(discoveredDevices.sensors).map(([deviceName, [_, age]]) => {
+            return (<div key={deviceName} style={{ opacity: mapDeviceAgeToOpacity(age) }}>{deviceName}</div>);
           })}
 
           <div className="discovered-devices-header">Actuators</div>
-          {Array.from(discoveredDevices.actuators).map((deviceName) => {
-            return (<div key={deviceName}>{deviceName}</div>);
+
+          {Array.from(discoveredDevices.actuators).map(([deviceName, [_, age]]) => {
+            return (<div key={deviceName} style={{ opacity: mapDeviceAgeToOpacity(age) }}>{deviceName}</div>);
           })}
         </div>
       )}
