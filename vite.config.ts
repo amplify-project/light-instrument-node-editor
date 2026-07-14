@@ -29,4 +29,9 @@ export default defineConfig(async () => ({
       ignored: ["**/src-tauri/**"],
     },
   },
+  resolve: {
+    alias: {
+      "@use-it/interval": "@use-it/interval/dist/interval.esm.js",
+    },
+  },
 }));
