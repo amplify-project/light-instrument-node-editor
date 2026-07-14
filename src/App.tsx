@@ -249,30 +249,16 @@ function Flow() {
   const onData = useCallback((sourceId: string, data: any) => {
     // Check if the message came from the serial input node and is of type "deviceDiscovery"
     if (sourceId == "input-1") {
-      if (data?.type == "deviceDiscovery") {
+      if (data?.type == "deviceDiscovery" || data?.type == "pong") {
         const { deviceType, deviceName } = data;
 
         setDiscoveredDevices({
           sensors: (deviceType == "sensor") ? discoveredDevices.sensors.set(deviceName, [Date.now(), 0]) : discoveredDevices.sensors,
           actuators: (deviceType == "actuator") ? discoveredDevices.actuators.set(deviceName, [Date.now(), 0]) : discoveredDevices.actuators
         });
-      } else if (data?.type == "pong") {
-        const { deviceType, deviceName } = data;
 
-        if (deviceType == "sensor" && discoveredDevices.sensors.has(deviceName)) {
-          setDiscoveredDevices({
-            sensors: discoveredDevices.sensors.set(deviceName, [Date.now(), 0]),
-            actuators: discoveredDevices.actuators
-          });
-        } else if (deviceType == "actuator" && discoveredDevices.actuators.has(deviceName)) {
-          setDiscoveredDevices({
-            sensors: discoveredDevices.sensors,
-            actuators: discoveredDevices.actuators.set(deviceName, [Date.now(), 0])
-          });
-        }
+        return;
       }
-
-      return;
     }
 
     // Find edges connected to this source
