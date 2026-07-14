@@ -504,13 +504,17 @@ function Flow() {
 
       {(discoveredDevices.sensors.size > 0 || discoveredDevices.actuators.size > 0) && (
         <div className="discovered-devices">
-          <div className="discovered-devices-header">Sensors</div>
+          {(discoveredDevices.sensors.size > 0) && (
+            <div className="discovered-devices-header">Sensors</div>
+          )}
 
           {Array.from(discoveredDevices.sensors).map(([deviceName, [_, age]]) => {
             return (<div key={deviceName} style={{ opacity: mapDeviceAgeToOpacity(age) }}>{deviceName}</div>);
           })}
 
-          <div className="discovered-devices-header">Actuators</div>
+          {(discoveredDevices.actuators.size > 0) && (
+            <div className="discovered-devices-header">Actuators</div>
+          )}
 
           {Array.from(discoveredDevices.actuators).map(([deviceName, [_, age]]) => {
             return (<div key={deviceName} style={{ opacity: mapDeviceAgeToOpacity(age) }}>{deviceName}</div>);
