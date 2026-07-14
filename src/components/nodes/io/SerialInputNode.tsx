@@ -55,11 +55,17 @@ export function SerialInputNode({ data, id }: any) {
                 data.onData(id, parsed);
               }
             }
-          } else if (messageType == "MSG" && parts.length == 3) {
-            const [_, deviceType, deviceName] = parts;
+          } else if (messageType == "MSG" && parts.length == 4) {
+            const [_, command, deviceType, deviceName] = parts;
 
-            if (data.onData) {
+            if (!data.onData) {
+              return;
+            }
+
+            if (command == "discovery") {
               data.onData(id, { type: "deviceDiscovery", deviceType, deviceName });
+            } else if (command == "pong") {
+              data.onData(id, { type: "pong", deviceType, deviceName });
             }
           }
         }
