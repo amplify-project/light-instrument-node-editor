@@ -16,8 +16,10 @@ import {
   Connection,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
-import { save, open } from "@tauri-apps/plugin-dialog";
+import { save, open, ask } from "@tauri-apps/plugin-dialog";
 import { invoke } from "@tauri-apps/api/core";
+import { listen } from "@tauri-apps/api/event";
+import { getCurrentWindow } from "@tauri-apps/api/window";
 import useInterval from "@use-it/interval";
 
 import { BooleanNode } from "./components/nodes/math/BooleanNode";
@@ -121,6 +123,13 @@ function Flow() {
   const [currentPath, setCurrentPath] = useState<string | null>(null);
   const [discoveredDevices, setDiscoveredDevices] = useState<{ sensors: Map<string, [number, number]>, actuators: Map<string, [number, number]> }>({ sensors: new Map(), actuators: new Map()});
   const [isDirty, setIsDirty] = useState(false);
+  const isDirtyRef = useRef(false);
+
+  useEffect(() => {
+    isDirtyRef.current = isDirty;
+  }, [isDirty]);
+
+  const isDialogShowing = useRef(false);
   const [searchState, setSearchState] = useState<{ visible: boolean; x: number; y: number }>({
     visible: false,
     x: 0,
@@ -413,6 +422,21 @@ function Flow() {
     }
   }, [applySetup]);
 
+  const onNew = useCallback(async () => {
+    if (isDirty) {
+      const confirmed = await ask("You have unsaved changes. Are you sure you want to start a new setup?", {
+        title: "Confirm New Setup",
+        kind: "warning",
+      });
+
+      if (!confirmed) {
+        return;
+      }
+    }
+
+    applySetup({ nodes: initialNodes, edges: [] }, null);
+  }, [isDirty, applySetup]);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") {
@@ -441,9 +465,57 @@ function Flow() {
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("keydown", handleKeyDown);
 
+    const onAppExitRequested = listen("app-exit-requested", async () => {
+      if (isDialogShowing.current) {
+        return;
+      }
+
+      isDialogShowing.current = true;
+
+      if (isDirtyRef.current) {
+        const confirmed = await ask("You have unsaved changes. Are you sure you want to quit?", {
+          title: "Unsaved Changes",
+          kind: "warning",
+        });
+
+        if (confirmed) {
+          await invoke("actually_exit");
+        }
+      } else {
+        await invoke("actually_exit");
+      }
+
+      isDialogShowing.current = false;
+    });
+
+    const unlistenCloseRequested = getCurrentWindow().listen("tauri://close-requested", async () => {
+      if (isDialogShowing.current) {
+        return;
+      }
+
+      isDialogShowing.current = true;
+
+      if (isDirtyRef.current) {
+        const confirmed = await ask("You have unsaved changes. Are you sure you want to close?", {
+          title: "Unsaved Changes",
+          kind: "warning",
+        });
+
+        if (confirmed) {
+          getCurrentWindow().destroy();
+        }
+      } else {
+        getCurrentWindow().destroy();
+      }
+
+      isDialogShowing.current = false;
+    });
+
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("keydown", handleKeyDown);
+      onAppExitRequested.then((f) => f());
+      unlistenCloseRequested.then((f) => f());
     };
   }, [handleMouseMove, handleKeyDown]);
 
@@ -497,6 +569,7 @@ function Flow() {
           {currentPath ? currentPath.split("/").pop()?.split("\\").pop() : "Untitled"}
           {isDirty ? "*" : ""}
         </div>
+        <button onClick={onNew}>New</button>
         <button onClick={onOpen}>Open</button>
         <button onClick={onSave}>Save</button>
         <button onClick={handleSaveAs}>Save As</button>
