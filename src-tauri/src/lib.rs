@@ -157,7 +157,7 @@ fn append_to_file(path: String, content: String) -> Result<(), String> {
 pub fn run() {
     tauri::Builder::default()
         .setup(|app| {
-            let new_menu_entry = MenuItemBuilder::new("Open")
+            let new_menu_entry = MenuItemBuilder::new("New")
                 .id("new-custom")
                 .accelerator("CmdOrCtrl+N")
                 .build(app)?;
@@ -185,6 +185,7 @@ pub fn run() {
                 .about(Some(AboutMetadata::default()))
                 .separator()
                 .item(&new_menu_entry)
+                .separator()
                 .item(&open_menu_entry)
                 .separator()
                 .item(&save_menu_entry)
