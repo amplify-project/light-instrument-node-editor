@@ -479,13 +479,22 @@ function Flow() {
       }
     });
 
+    const saveRequestedEvent = listen("save-requested", onSave);
+    const saveAsRequestedEvent = listen("save-as-requested", handleSaveAs);
+    const openRequestedEvent = listen("open-requested", onOpen);
+    const newRequestedEvent = listen("new-requested", onNew);
+
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("keydown", handleKeyDown);
 
       closeRequestedEvent.then((f) => f());
+      openRequestedEvent.then((f) => f());
+      saveRequestedEvent.then((f) => f());
+      saveAsRequestedEvent.then((f) => f());
+      newRequestedEvent.then((f) => f());
     };
-  }, [handleMouseMove, handleKeyDown]);
+  }, [handleMouseMove, handleKeyDown, onSave, handleSaveAs, onOpen, onNew]);
 
   // Enrich nodes with data flow callbacks
   const enrichedNodes = nodes.map((node) => ({
