@@ -157,6 +157,25 @@ fn append_to_file(path: String, content: String) -> Result<(), String> {
 pub fn run() {
     tauri::Builder::default()
         .setup(|app| {
+            let new_menu_entry = MenuItemBuilder::new("Open")
+                .id("new-custom")
+                .accelerator("CmdOrCtrl+N")
+                .build(app)?;
+
+            let open_menu_entry = MenuItemBuilder::new("Open")
+                .id("open-custom")
+                .accelerator("CmdOrCtrl+O")
+                .build(app)?;
+
+            let save_menu_entry = MenuItemBuilder::new("Save")
+                .id("save-custom")
+                .accelerator("CmdOrCtrl+S")
+                .build(app)?;
+
+            let save_as_menu_entry = MenuItemBuilder::new("Save As")
+                .id("save-as-custom")
+                .build(app)?;
+
             let quit_menu_entry = MenuItemBuilder::new("Quit")
                 .id("quit-custom")
                 .accelerator("CmdOrCtrl+Q")
@@ -164,6 +183,12 @@ pub fn run() {
 
             let submenu = SubmenuBuilder::new(app, "File")
                 .about(Some(AboutMetadata::default()))
+                .separator()
+                .item(&new_menu_entry)
+                .item(&open_menu_entry)
+                .separator()
+                .item(&save_menu_entry)
+                .item(&save_as_menu_entry)
                 .separator()
                 .item(&quit_menu_entry)
                 .build()?;
@@ -175,9 +200,17 @@ pub fn run() {
             app.set_menu(menu)?;
 
             app.on_menu_event(move |app_handle, event| {
-                if event.id() == quit_menu_entry.id() {
-                    if let Some(window) = app_handle.get_webview_window("main") {
+                if let Some(window) = app_handle.get_webview_window("main") {
+                    if event.id() == quit_menu_entry.id() {
                         let _ = window.emit("close-requested", ());
+                    } else if event.id() == save_menu_entry.id() {
+                        let _ = window.emit("save-requested", ());
+                    } else if event.id() == save_as_menu_entry.id() {
+                        let _ = window.emit("save-as-requested", ());
+                    } else if event.id() == open_menu_entry.id() {
+                        let _ = window.emit("open-requested", ());
+                    } else if event.id() == new_menu_entry.id() {
+                        let _ = window.emit("new-requested", ());
                     }
                 }
             });
