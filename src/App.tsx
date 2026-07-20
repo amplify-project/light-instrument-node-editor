@@ -19,7 +19,6 @@ import "@xyflow/react/dist/style.css";
 import { save, open, ask } from "@tauri-apps/plugin-dialog";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { getCurrentWindow } from "@tauri-apps/api/window";
 import useInterval from "@use-it/interval";
 
 import { BooleanNode } from "./components/nodes/math/BooleanNode";
@@ -59,6 +58,7 @@ import { TimerNode } from "./components/nodes/math/TimerNode";
 import { ToggleNode } from "./components/nodes/math/ToggleNode";
 
 import "./App.css";
+import { getCurrentWindow } from "@tauri-apps/api/window";
 
 const nodeTypes = {
   serialInput: SerialInputNode,
@@ -129,7 +129,6 @@ function Flow() {
     isDirtyRef.current = isDirty;
   }, [isDirty]);
 
-  const isDialogShowing = useRef(false);
   const [searchState, setSearchState] = useState<{ visible: boolean; x: number; y: number }>({
     visible: false,
     x: 0,
@@ -465,57 +464,26 @@ function Flow() {
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("keydown", handleKeyDown);
 
-    const onAppExitRequested = listen("app-exit-requested", async () => {
-      if (isDialogShowing.current) {
-        return;
-      }
-
-      isDialogShowing.current = true;
-
+    const closeRequestedEvent = listen("close-requested", async () => {
       if (isDirtyRef.current) {
-        const confirmed = await ask("You have unsaved changes. Are you sure you want to quit?", {
+        const confirmExit = await ask("You have unsaved changes, are you sure you want to exit?", {
           title: "Unsaved Changes",
-          kind: "warning",
+          kind: "warning"
         });
 
-        if (confirmed) {
-          await invoke("actually_exit");
+        if (confirmExit) {
+          await getCurrentWindow().destroy();
         }
       } else {
-        await invoke("actually_exit");
+        await getCurrentWindow().destroy();
       }
-
-      isDialogShowing.current = false;
-    });
-
-    const unlistenCloseRequested = getCurrentWindow().listen("tauri://close-requested", async () => {
-      if (isDialogShowing.current) {
-        return;
-      }
-
-      isDialogShowing.current = true;
-
-      if (isDirtyRef.current) {
-        const confirmed = await ask("You have unsaved changes. Are you sure you want to close?", {
-          title: "Unsaved Changes",
-          kind: "warning",
-        });
-
-        if (confirmed) {
-          getCurrentWindow().destroy();
-        }
-      } else {
-        getCurrentWindow().destroy();
-      }
-
-      isDialogShowing.current = false;
     });
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("keydown", handleKeyDown);
-      onAppExitRequested.then((f) => f());
-      unlistenCloseRequested.then((f) => f());
+
+      closeRequestedEvent.then((f) => f());
     };
   }, [handleMouseMove, handleKeyDown]);
 

@@ -4,12 +4,11 @@ use std::fs::File;
 use std::io::{BufRead, BufReader};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
-use tauri::{AppHandle, Emitter, Manager, State};
+use tauri::{AppHandle, Emitter, State, WindowEvent};
 
 struct SerialState {
     ports: Mutex<HashMap<String, Box<dyn serialport::SerialPort>>>,
-    simulation_running: Arc<AtomicBool>,
-    exit_confirmed: Arc<AtomicBool>,
+    simulation_running: Arc<AtomicBool>
 }
 
 #[tauri::command]
@@ -153,22 +152,20 @@ fn append_to_file(path: String, content: String) -> Result<(), String> {
     file.write_all(content.as_bytes()).map_err(|e| e.to_string())
 }
 
-#[tauri::command]
-fn actually_exit(state: State<'_, SerialState>, app: AppHandle) {
-    state.exit_confirmed.store(true, Ordering::SeqCst);
-
-    app.exit(0);
-}
-
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_dialog::init())
+        .on_window_event(|window, event| {
+            if let WindowEvent::CloseRequested { api, .. } = event {
+                api.prevent_close();
+                let _ = window.emit("close-requested", ());
+            }
+        })
         .manage(SerialState {
             ports: Mutex::new(HashMap::new()),
             simulation_running: Arc::new(AtomicBool::new(false)),
-            exit_confirmed: Arc::new(AtomicBool::new(false)),
         })
         .invoke_handler(tauri::generate_handler![
             list_ports,
@@ -179,20 +176,8 @@ pub fn run() {
             load_file,
             start_simulation,
             stop_simulation,
-            append_to_file,
-            actually_exit
+            append_to_file
         ])
-        .build(tauri::generate_context!())
+        .run(tauri::generate_context!())
         .expect("error while building tauri application")
-        .run(|app, event| {
-            if let tauri::RunEvent::ExitRequested { api, .. } = event {
-                let state = app.state::<SerialState>();
-
-                if !state.exit_confirmed.load(Ordering::SeqCst) {
-                    api.prevent_exit();
-
-                    let _ = app.emit("app-exit-requested", ());
-                }
-            }
-        });
 }
