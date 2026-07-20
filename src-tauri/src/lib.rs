@@ -162,7 +162,7 @@ pub fn run() {
                 .accelerator("CmdOrCtrl+Q")
                 .build(app)?;
 
-            let submenu = SubmenuBuilder::new(app, "Light Instrument Editor")
+            let submenu = SubmenuBuilder::new(app, "File")
                 .about(Some(AboutMetadata::default()))
                 .separator()
                 .item(&quit_menu_entry)
