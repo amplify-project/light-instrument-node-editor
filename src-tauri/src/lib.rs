@@ -1,10 +1,11 @@
 use serialport;
+use tauri::menu::{AboutMetadata, MenuBuilder, MenuItemBuilder, SubmenuBuilder};
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
-use tauri::{AppHandle, Emitter, State, WindowEvent};
+use tauri::{AppHandle, Emitter, Manager, State, WindowEvent};
 
 struct SerialState {
     ports: Mutex<HashMap<String, Box<dyn serialport::SerialPort>>>,
@@ -155,6 +156,34 @@ fn append_to_file(path: String, content: String) -> Result<(), String> {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .setup(|app| {
+            let quit_menu_entry = MenuItemBuilder::new("Quit")
+                .id("quit-custom")
+                .accelerator("CmdOrCtrl+Q")
+                .build(app)?;
+
+            let submenu = SubmenuBuilder::new(app, "Light Instrument Editor")
+                .about(Some(AboutMetadata::default()))
+                .separator()
+                .item(&quit_menu_entry)
+                .build()?;
+
+            let menu = MenuBuilder::new(app)
+                .items(&[&submenu])
+                .build()?;
+
+            app.set_menu(menu)?;
+
+            app.on_menu_event(move |app_handle, event| {
+                if event.id() == quit_menu_entry.id() {
+                    if let Some(window) = app_handle.get_webview_window("main") {
+                        let _ = window.emit("close-requested", ());
+                    }
+                }
+            });
+
+            Ok(())
+        })
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_dialog::init())
         .on_window_event(|window, event| {
