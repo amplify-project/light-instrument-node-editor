@@ -1,0 +1,349 @@
+{
+  "nodes": [
+    {
+      "id": "input-1",
+      "type": "serialInput",
+      "position": {
+        "x": -347.58509524981775,
+        "y": -160.95159071539305
+      },
+      "data": {
+        "label": "Serial Input",
+        "selectedPort": "/dev/cu.debug-console"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 231,
+        "height": 185
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "output-1",
+      "type": "serialOutput",
+      "position": {
+        "x": 1403.5929316873112,
+        "y": 43.48231370426515
+      },
+      "data": {
+        "label": "Serial Output"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 182,
+        "height": 87
+      },
+      "selected": true,
+      "dragging": false
+    },
+    {
+      "id": "graph-1783580419144",
+      "type": "graph",
+      "position": {
+        "x": 564.765257827429,
+        "y": -287.33886446348095
+      },
+      "data": {
+        "label": "Graph"
+      },
+      "measured": {
+        "width": 242,
+        "height": 176
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "simulate-1783580462861",
+      "type": "simulate",
+      "position": {
+        "x": -303.00649874280657,
+        "y": -369.5514647594453
+      },
+      "data": {
+        "label": "Simulate"
+      },
+      "measured": {
+        "width": 186,
+        "height": 192
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "derivative-1783580969926",
+      "type": "derivative",
+      "position": {
+        "x": 226.5579825525619,
+        "y": -279.70591641976796
+      },
+      "data": {
+        "label": "Derivative"
+      },
+      "measured": {
+        "width": 182,
+        "height": 80
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "hysteresis-1783589370239",
+      "type": "hysteresis",
+      "position": {
+        "x": 510.84319069874425,
+        "y": 4.410300116895446
+      },
+      "data": {
+        "label": "Hysteresis",
+        "highThreshold": 500,
+        "lowThreshold": 100
+      },
+      "measured": {
+        "width": 205,
+        "height": 181
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "graph-1783589433312",
+      "type": "graph",
+      "position": {
+        "x": 836.5932449662354,
+        "y": 173.96907851330693
+      },
+      "data": {
+        "label": "Graph"
+      },
+      "measured": {
+        "width": 242,
+        "height": 176
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1783589765162",
+      "type": "compare",
+      "position": {
+        "x": 813.4690156965236,
+        "y": -18.646242750121594
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 155
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1783589779879",
+      "type": "command",
+      "position": {
+        "x": 1144.2142669557925,
+        "y": 38.22694022990924
+      },
+      "data": {
+        "label": "Command"
+      },
+      "measured": {
+        "width": 186,
+        "height": 328
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "log-1783589816470",
+      "type": "log",
+      "position": {
+        "x": 1397.64108215287,
+        "y": 149.96717772638118
+      },
+      "data": {
+        "label": "Log"
+      },
+      "measured": {
+        "width": 242,
+        "height": 217
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "edgeTrigger-1783595495017",
+      "type": "edgeTrigger",
+      "position": {
+        "x": 565.1565620765451,
+        "y": -514.2759520374011
+      },
+      "data": {
+        "label": "EdgeTrigger",
+        "threshold": 100
+      },
+      "measured": {
+        "width": 233,
+        "height": 190
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "log-1783595507710",
+      "type": "log",
+      "position": {
+        "x": 870.2335242312748,
+        "y": -435.4607986555276
+      },
+      "data": {
+        "label": "Log"
+      },
+      "measured": {
+        "width": 242,
+        "height": 217
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1783595673013",
+      "type": "deviceFilter",
+      "position": {
+        "x": -54.85795134593104,
+        "y": -455.14223836568124
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "deviceFilter": "drum1"
+      },
+      "measured": {
+        "width": 186,
+        "height": 168
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "graph-1783598783882",
+      "type": "graph",
+      "position": {
+        "x": 221.82191018856292,
+        "y": -538.210834493933
+      },
+      "data": {
+        "label": "Graph"
+      },
+      "measured": {
+        "width": 242,
+        "height": 176
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "frame-1783688435461",
+      "type": "frame",
+      "position": {
+        "x": -96.42882582718795,
+        "y": -596.2212785374442
+      },
+      "data": {
+        "label": "Peak detection"
+      },
+      "zIndex": -1,
+      "width": 1251,
+      "height": 515,
+      "measured": {
+        "width": 1251,
+        "height": 515
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false
+    },
+    {
+      "id": "frame-1783688567504",
+      "type": "frame",
+      "position": {
+        "x": 493.9663589767459,
+        "y": -62.91681335694322
+      },
+      "data": {
+        "label": "Hysteresis trigger"
+      },
+      "zIndex": -1,
+      "width": 871,
+      "height": 455,
+      "measured": {
+        "width": 871,
+        "height": 455
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "derivative-1783580969926",
+      "target": "graph-1783580419144",
+      "id": "xy-edge__derivative-1783580969926-graph-1783580419144"
+    },
+    {
+      "source": "derivative-1783580969926",
+      "target": "hysteresis-1783589370239",
+      "id": "xy-edge__derivative-1783580969926-hysteresis-1783589370239"
+    },
+    {
+      "source": "hysteresis-1783589370239",
+      "target": "graph-1783589433312",
+      "id": "xy-edge__hysteresis-1783589370239-graph-1783589433312"
+    },
+    {
+      "source": "hysteresis-1783589370239",
+      "target": "compare-1783589765162",
+      "id": "xy-edge__hysteresis-1783589370239-compare-1783589765162"
+    },
+    {
+      "source": "compare-1783589765162",
+      "target": "command-1783589779879",
+      "id": "xy-edge__compare-1783589765162-command-1783589779879"
+    },
+    {
+      "source": "command-1783589779879",
+      "target": "log-1783589816470",
+      "id": "xy-edge__command-1783589779879-log-1783589816470"
+    },
+    {
+      "source": "edgeTrigger-1783595495017",
+      "target": "log-1783595507710",
+      "id": "xy-edge__edgeTrigger-1783595495017-log-1783595507710"
+    },
+    {
+      "source": "derivative-1783580969926",
+      "target": "edgeTrigger-1783595495017",
+      "id": "xy-edge__derivative-1783580969926-edgeTrigger-1783595495017"
+    },
+    {
+      "source": "deviceFilter-1783595673013",
+      "target": "derivative-1783580969926",
+      "id": "xy-edge__deviceFilter-1783595673013-derivative-1783580969926"
+    },
+    {
+      "source": "simulate-1783580462861",
+      "target": "deviceFilter-1783595673013",
+      "id": "xy-edge__simulate-1783580462861-deviceFilter-1783595673013"
+    },
+    {
+      "source": "deviceFilter-1783595673013",
+      "target": "graph-1783598783882",
+      "id": "xy-edge__deviceFilter-1783595673013-graph-1783598783882"
+    }
+  ]
+}

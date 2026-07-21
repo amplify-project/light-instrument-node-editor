@@ -1,0 +1,174 @@
+{
+  "nodes": [
+    {
+      "id": "input-1",
+      "type": "serialInput",
+      "position": {
+        "x": 50,
+        "y": 100
+      },
+      "data": {
+        "label": "Serial Input"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 231,
+        "height": 187
+      },
+      "selected": true
+    },
+    {
+      "id": "output-1",
+      "type": "serialOutput",
+      "position": {
+        "x": 1000,
+        "y": 120
+      },
+      "data": {
+        "label": "Serial Output"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 182,
+        "height": 87
+      }
+    },
+    {
+      "id": "deviceFilter-1784392145093",
+      "type": "deviceFilter",
+      "position": {
+        "x": 427.6213740458015,
+        "y": -80.5083969465649
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "r"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1784392151998",
+      "type": "deviceFilter",
+      "position": {
+        "x": 425.02900763358787,
+        "y": 103.54961832061065
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "g"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1784392158107",
+      "type": "deviceFilter",
+      "position": {
+        "x": 420.70839694656496,
+        "y": 284.15114503816795
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "b"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "graph-1784392163201",
+      "type": "graph",
+      "position": {
+        "x": 687.7221374045802,
+        "y": -78.78015267175574
+      },
+      "data": {
+        "label": "Graph"
+      },
+      "measured": {
+        "width": 242,
+        "height": 176
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "graph-1784392168711",
+      "type": "graph",
+      "position": {
+        "x": 691.1786259541984,
+        "y": 107.00610687022899
+      },
+      "data": {
+        "label": "Graph"
+      },
+      "measured": {
+        "width": 242,
+        "height": 176
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "graph-1784392172614",
+      "type": "graph",
+      "position": {
+        "x": 699.8198473282444,
+        "y": 296.248854961832
+      },
+      "data": {
+        "label": "Graph"
+      },
+      "measured": {
+        "width": 242,
+        "height": 176
+      },
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "deviceFilter-1784392158107",
+      "target": "graph-1784392172614",
+      "id": "xy-edge__deviceFilter-1784392158107-graph-1784392172614"
+    },
+    {
+      "source": "deviceFilter-1784392151998",
+      "target": "graph-1784392168711",
+      "id": "xy-edge__deviceFilter-1784392151998-graph-1784392168711"
+    },
+    {
+      "source": "deviceFilter-1784392145093",
+      "target": "graph-1784392163201",
+      "id": "xy-edge__deviceFilter-1784392145093-graph-1784392163201"
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1784392145093",
+      "id": "xy-edge__input-1-deviceFilter-1784392145093"
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1784392151998",
+      "id": "xy-edge__input-1-deviceFilter-1784392151998"
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1784392158107",
+      "id": "xy-edge__input-1-deviceFilter-1784392158107"
+    }
+  ]
+}

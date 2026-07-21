@@ -1,0 +1,236 @@
+{
+  "nodes": [
+    {
+      "id": "input-1",
+      "type": "serialInput",
+      "position": {
+        "x": -554.7584998629586,
+        "y": 102.39703338497759
+      },
+      "data": {
+        "label": "Serial Input"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 231,
+        "height": 178
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "output-1",
+      "type": "serialOutput",
+      "position": {
+        "x": 1133.935245129815,
+        "y": 103.02708874563214
+      },
+      "data": {
+        "label": "Serial Output"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 289,
+        "height": 120
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1784634897774",
+      "type": "command",
+      "position": {
+        "x": 743.7796735716752,
+        "y": -262.99075120425135
+      },
+      "data": {
+        "label": "Command",
+        "device": "receiver1",
+        "port": "LED1",
+        "command": "comet",
+        "value": "0,0,255,10"
+      },
+      "measured": {
+        "width": 259,
+        "height": 361
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "timer-1784646414634",
+      "type": "timer",
+      "position": {
+        "x": -329.74600578364556,
+        "y": -274.2039761502823
+      },
+      "data": {
+        "label": "Timer"
+      },
+      "measured": {
+        "width": 186,
+        "height": 199
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1784646460386",
+      "type": "command",
+      "position": {
+        "x": 747.4487009248854,
+        "y": 122.58621201901391
+      },
+      "data": {
+        "label": "Command",
+        "device": "receiver1",
+        "port": "LED1",
+        "command": "comet",
+        "value": "255,0,0,10"
+      },
+      "measured": {
+        "width": 259,
+        "height": 361
+      },
+      "selected": true,
+      "dragging": false
+    },
+    {
+      "id": "math-1784646526355",
+      "type": "math",
+      "position": {
+        "x": 242.86710214897118,
+        "y": -110.58699114738427
+      },
+      "data": {
+        "label": "Math",
+        "operator": "%"
+      },
+      "measured": {
+        "width": 182,
+        "height": 187
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "value-1784646544251",
+      "type": "value",
+      "position": {
+        "x": -31.205212258079023,
+        "y": 13.817655656128835
+      },
+      "data": {
+        "label": "Value",
+        "value": 2
+      },
+      "measured": {
+        "width": 186,
+        "height": 145
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "counter-1784646563069",
+      "type": "counter",
+      "position": {
+        "x": -28.762472354285467,
+        "y": -145.03984401626974
+      },
+      "data": {
+        "label": "Counter"
+      },
+      "measured": {
+        "width": 182,
+        "height": 125
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1784646622334",
+      "type": "compare",
+      "position": {
+        "x": 498.67547687524075,
+        "y": -107.35472008528205
+      },
+      "data": {
+        "label": "Compare"
+      },
+      "measured": {
+        "width": 186,
+        "height": 188
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1784646629222",
+      "type": "compare",
+      "position": {
+        "x": 503.35781256777835,
+        "y": 136.12673592667636
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 188
+      },
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "command-1784634897774",
+      "target": "output-1",
+      "id": "xy-edge__command-1784634897774-output-1"
+    },
+    {
+      "source": "command-1784646460386",
+      "target": "output-1",
+      "id": "xy-edge__command-1784646460386-output-1"
+    },
+    {
+      "source": "value-1784646544251",
+      "target": "math-1784646526355",
+      "targetHandle": "b",
+      "id": "xy-edge__value-1784646544251-math-1784646526355b"
+    },
+    {
+      "source": "timer-1784646414634",
+      "target": "counter-1784646563069",
+      "id": "xy-edge__timer-1784646414634-counter-1784646563069"
+    },
+    {
+      "source": "counter-1784646563069",
+      "target": "math-1784646526355",
+      "targetHandle": "a",
+      "id": "xy-edge__counter-1784646563069-math-1784646526355a"
+    },
+    {
+      "source": "math-1784646526355",
+      "target": "compare-1784646622334",
+      "id": "xy-edge__math-1784646526355-compare-1784646622334"
+    },
+    {
+      "source": "math-1784646526355",
+      "target": "compare-1784646629222",
+      "id": "xy-edge__math-1784646526355-compare-1784646629222"
+    },
+    {
+      "source": "compare-1784646622334",
+      "target": "command-1784634897774",
+      "id": "xy-edge__compare-1784646622334-command-1784634897774"
+    },
+    {
+      "source": "compare-1784646629222",
+      "target": "command-1784646460386",
+      "id": "xy-edge__compare-1784646629222-command-1784646460386"
+    }
+  ]
+}
