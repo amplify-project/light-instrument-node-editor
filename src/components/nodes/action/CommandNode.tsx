@@ -34,7 +34,7 @@ export function CommandNode({ data, id }: any) {
   }, [device, port, command, value, id, data]);
 
   const emitPayload = (payload: { device: string, port: string, command: string, value: string}) => {
-    if (Object.entries(payload).some(([key, val]) => key != "value" && val == "")) {
+    if (device == "" || command == "") {
       return;
     }
 
@@ -121,7 +121,7 @@ export function CommandNode({ data, id }: any) {
           </label>
         </div>
 
-        <button disabled={useInputAsParam || device == "" || port == "" || command == ""} onClick={handleManualTrigger}>
+        <button disabled={useInputAsParam || device == "" || command == ""} onClick={handleManualTrigger}>
           Manual Trigger
         </button>
 
