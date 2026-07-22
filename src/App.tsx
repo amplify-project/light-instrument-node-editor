@@ -24,6 +24,7 @@ import useInterval from "@use-it/interval";
 import { BooleanNode } from "./components/nodes/math/BooleanNode";
 import { ButtonNode } from "./components/nodes/io/ButtonNode";
 import { ClampNode } from "./components/nodes/processing/ClampNode";
+import { CombineRgbNode } from "./components/nodes/processing/CombineRgbNode";
 import { CommandNode } from "./components/nodes/action/CommandNode";
 import { CompareNode } from "./components/nodes/math/CompareNode";
 import { CounterNode } from "./components/nodes/math/CounterNode";
@@ -82,6 +83,7 @@ const nodeTypes = {
   deadband: DeadbandNode,
   mapRange: MapRangeNode,
   clamp: ClampNode,
+  combineRgb: CombineRgbNode,
   quantize: QuantizeNode,
   derivative: DerivativeNode,
   envelopeFollower: EnvelopeFollowerNode,

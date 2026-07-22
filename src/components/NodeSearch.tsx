@@ -15,6 +15,7 @@ const nodeOptions: NodeOption[] = [
   { type: "simulate", label: "Simulate", category: "Input & IO" },
   // Processing
   { type: "clamp", label: "Clamp", category: "Processing" },
+  { type: "combineRgb", label: "Combine RGB", category: "Processing" },
   { type: "deadband", label: "Deadband", category: "Processing" },
   { type: "derivative", label: "Derivative", category: "Processing" },
   { type: "deviceFilter", label: "Device Filter", category: "Processing" },

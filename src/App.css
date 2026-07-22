@@ -67,6 +67,7 @@ body {
 .deadband-node .node-header,
 .map-range-node .node-header,
 .clamp-node .node-header,
+.combine-rgb-node .node-header,
 .quantize-node .node-header,
 .derivative-node .node-header,
 .envelope-node .node-header,
