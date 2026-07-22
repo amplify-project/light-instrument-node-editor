@@ -142,16 +142,24 @@ function Flow() {
   const { screenToFlowPosition } = useReactFlow();
 
   useInterval(() => {
-    const sensors = new Map<string, [number, number]>(Array.from(discoveredDevices.sensors).map(([name, [lastSeen]]) => {
-      return [name, [lastSeen, Date.now() - lastSeen]]
-    }));
+    setDiscoveredDevices((prev) => {
+      const sensors = new Map<string, [number, number]>(
+        Array.from(prev.sensors).map(([name, [lastSeen]]) => [
+          name,
+          [lastSeen, Date.now() - lastSeen],
+        ])
+      );
 
-    const actuators = new Map<string, [number, number]>(Array.from(discoveredDevices.actuators).map(([name, [lastSeen]]) => {
-      return [name, [lastSeen, Date.now() - lastSeen]]
-    }));
+      const actuators = new Map<string, [number, number]>(
+        Array.from(prev.actuators).map(([name, [lastSeen]]) => [
+          name,
+          [lastSeen, Date.now() - lastSeen],
+        ])
+      );
 
-    setDiscoveredDevices({ sensors, actuators });
-  }, 12000);
+      return { sensors, actuators };
+    });
+  }, 2000);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     mousePos.current = { x: e.clientX, y: e.clientY };
@@ -258,16 +266,38 @@ function Flow() {
 
   const onData = useCallback((sourceId: string, data: any) => {
     // Check if the message came from the serial input node and is of type "deviceDiscovery"
-    if (sourceId == "input-1") {
-      if (data?.type == "deviceDiscovery" || data?.type == "pong") {
+    if (sourceId === "input-1") {
+      if (data?.type === "deviceDiscovery" || data?.type === "pong") {
         const { deviceType, deviceName } = data;
 
-        setDiscoveredDevices({
-          sensors: (deviceType == "sensor") ? discoveredDevices.sensors.set(deviceName, [Date.now(), 0]) : discoveredDevices.sensors,
-          actuators: (deviceType == "actuator") ? discoveredDevices.actuators.set(deviceName, [Date.now(), 0]) : discoveredDevices.actuators
+        setDiscoveredDevices((prev) => {
+          const sensors = new Map(prev.sensors);
+          const actuators = new Map(prev.actuators);
+
+          if (deviceType === "sensor") {
+            sensors.set(deviceName, [Date.now(), 0]);
+          } else if (deviceType === "actuator") {
+            actuators.set(deviceName, [Date.now(), 0]);
+          }
+
+          return { sensors, actuators };
         });
 
         return;
+      }
+
+      // Also update lastSeen for regular data packets from sensors
+      if (data?.device) {
+        setDiscoveredDevices((prev) => {
+          if (prev.sensors.has(data.device)) {
+            const sensors = new Map(prev.sensors);
+            sensors.set(data.device, [Date.now(), 0]);
+
+            return { ...prev, sensors };
+          }
+
+          return prev;
+        });
       }
     }
 
