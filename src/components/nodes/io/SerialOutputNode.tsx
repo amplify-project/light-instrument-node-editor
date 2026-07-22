@@ -20,7 +20,7 @@ export function SerialOutputNode({ data, id }: any) {
             const command = incoming.command || "";
             const value = incoming.value !== undefined ? incoming.value : 0;
 
-            if (device && command) {
+            if (command) {
               payload = `${device},${port},${command},${value}\n`;
             }
           } else if (typeof incoming === "string") {
