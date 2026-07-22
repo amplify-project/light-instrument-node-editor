@@ -3,7 +3,7 @@ import { Handle, Position } from "@xyflow/react";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 
-const BAUD_RATE = 115200;
+const BAUD_RATE = 460800;
 
 interface SerialDataPayload {
   port: string;
