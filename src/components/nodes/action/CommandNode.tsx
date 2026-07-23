@@ -1,20 +1,19 @@
 import { useState, useEffect } from "react";
 import { Handle, Position } from "@xyflow/react";
 
-const AVAILABLE_COMMANDS = [
-  "",
-  "set",
-  "setColor",
-  "setBrightness",
-  "setLED",
-  "stop",
-  "rainbow",
-  "glitter",
-  "pulse",
-  "comet",
-  "breathe",
-  "fire",
-];
+const AVAILABLE_COMMANDS: Record<string, string> = {
+  "set": "r,g,b,brightness",
+  "setColor": "r,g,b",
+  "setBrightness": "brightness",
+  "setLED": "r,g,b,offset,numleds",
+  "stop": "None",
+  "rainbow": "deltaHue (optional)",
+  "glitter": "r,g,b,duration",
+  "pulse": "r,g,b,attack,decay,sustain,release",
+  "comet": "r,g,b,speed",
+  "breathe": "r,g,b,bpm",
+  "fire": "r,g,b,intensity",
+};
 
 export function CommandNode({ data, id }: any) {
   const device = data.device || "";
@@ -23,6 +22,8 @@ export function CommandNode({ data, id }: any) {
   const value = data.value || "";
   const useInputAsParam = data.useInputAsParam || false;
   const [lastEmitted, setLastEmitted] = useState<any>(null);
+
+  const hint = AVAILABLE_COMMANDS[command] || "";
 
   useEffect(() => {
     // Register this node to receive data
@@ -101,7 +102,8 @@ export function CommandNode({ data, id }: any) {
           value={command}
           onChange={(e) => data.updateNodeData?.(id, { command: e.target.value })}
         >
-          {AVAILABLE_COMMANDS.map((cmd) => (
+          <option value="">Select a command...</option>
+          {Object.keys(AVAILABLE_COMMANDS ).map((cmd) => (
             <option key={cmd} value={cmd}>
               {cmd === "" ? "Select a command..." : cmd}
             </option>
@@ -121,6 +123,12 @@ export function CommandNode({ data, id }: any) {
               autoCapitalize="off"
               spellCheck="false"
             />
+
+            {hint && (
+              <div style={{ fontSize: "9px", color: "#666", marginTop: "-6px", marginBottom: "4px" }}>
+                Params: {hint}
+              </div>
+            )}
           </>
         )}
 
