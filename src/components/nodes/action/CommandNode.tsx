@@ -20,7 +20,6 @@ export function CommandNode({ data, id }: any) {
   const port = data.port || "";
   const command = data.command || "";
   const value = data.value || "";
-  const useInputAsParam = data.useInputAsParam || false;
   const [lastEmitted, setLastEmitted] = useState<any>(null);
 
   const hint = AVAILABLE_COMMANDS[command] || "";
@@ -31,11 +30,8 @@ export function CommandNode({ data, id }: any) {
       data.registerConsumer(id, (incoming: any) => {
         // Any incoming signal triggers the command emission
         if (incoming) {
-          const payload = (useInputAsParam) ? (
-            { device, port, command, value: incoming.value }
-          ) : (
-            { device, port, command, value }
-          );
+          const finalValue = String(value).replace(/#/g, incoming.value);
+          const payload = { device, port, command, value: finalValue };
 
           emitPayload(payload);
         }
@@ -69,7 +65,7 @@ export function CommandNode({ data, id }: any) {
     <div className="serial-node command-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header" title={"Converts a trigger signal into a structured command packet for the serial output.\nInput: Any signal\nOutput: Command packet {device, port, command, value}"}>
+      <div className="node-header" title={"Converts a trigger signal into a structured command packet for the serial output.\nInput: Any signal\nOutput: Command packet {device, port, command, value}\nUse '#' in parameters to inject incoming value."}>
         <span>Command</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>
@@ -110,42 +106,24 @@ export function CommandNode({ data, id }: any) {
           ))}
         </select>
 
-        {(!useInputAsParam) && (
-          <>
-            <label style={{ fontSize: "10px", color: "#888" }}>Parameters:</label>
-            <input
-              type="text"
-              value={value}
-              disabled={useInputAsParam}
-              onChange={(e) => data.updateNodeData?.(id, { value: e.target.value })}
-              autoComplete="off"
-              autoCorrect="off"
-              autoCapitalize="off"
-              spellCheck="false"
-            />
+        <label style={{ fontSize: "10px", color: "#888" }}>Parameters:</label>
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => data.updateNodeData?.(id, { value: e.target.value })}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
+        />
 
-            {hint && (
-              <div style={{ fontSize: "9px", color: "#666", marginTop: "-6px", marginBottom: "4px" }}>
-                Params: {hint}
-              </div>
-            )}
-          </>
+        {hint && (
+          <div style={{ fontSize: "9px", color: "#666", marginTop: "-6px", marginBottom: "4px" }}>
+            Params: {hint}
+          </div>
         )}
 
-        <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
-          <input
-            type="checkbox"
-            id={`useinput-${id}`}
-            checked={useInputAsParam}
-            onChange={(e) => data.updateNodeData?.(id, { useInputAsParam: e.target.checked })}
-            style={{ margin: 0 }}
-          />
-          <label htmlFor={`useinput-${id}`} style={{ fontSize: "11px", color: "#eee", cursor: "pointer" }}>
-            Use input value
-          </label>
-        </div>
-
-        <button disabled={useInputAsParam || command == ""} onClick={handleManualTrigger}>
+        <button disabled={command == ""} onClick={handleManualTrigger}>
           Manual Trigger
         </button>
 
