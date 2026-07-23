@@ -52,7 +52,7 @@
       },
       "measured": {
         "width": 259,
-        "height": 361
+        "height": 356
       },
       "selected": false,
       "dragging": false
@@ -90,9 +90,9 @@
       },
       "measured": {
         "width": 259,
-        "height": 361
+        "height": 356
       },
-      "selected": true,
+      "selected": false,
       "dragging": false
     },
     {
@@ -128,7 +128,7 @@
         "width": 186,
         "height": 145
       },
-      "selected": false,
+      "selected": true,
       "dragging": false
     },
     {

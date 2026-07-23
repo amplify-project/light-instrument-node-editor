@@ -1,6 +1,20 @@
 import { useState, useEffect } from "react";
 import { Handle, Position } from "@xyflow/react";
 
+const AVAILABLE_COMMANDS = [
+  "",
+  "set",
+  "setColor",
+  "setBrightness",
+  "stop",
+  "rainbow",
+  "glitter",
+  "pulse",
+  "comet",
+  "breathe",
+  "fire",
+];
+
 export function CommandNode({ data, id }: any) {
   const device = data.device || "";
   const port = data.port || "";
@@ -82,15 +96,16 @@ export function CommandNode({ data, id }: any) {
         />
 
         <label style={{ fontSize: "10px", color: "#888" }}>Command Name:</label>
-        <input
-          type="text"
+        <select
           value={command}
           onChange={(e) => data.updateNodeData?.(id, { command: e.target.value })}
-          autoComplete="off"
-          autoCorrect="off"
-          autoCapitalize="off"
-          spellCheck="false"
-        />
+        >
+          {AVAILABLE_COMMANDS.map((cmd) => (
+            <option key={cmd} value={cmd}>
+              {cmd === "" ? "Select a command..." : cmd}
+            </option>
+          ))}
+        </select>
 
         {(!useInputAsParam) && (
           <>
