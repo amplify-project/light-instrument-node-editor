@@ -6,6 +6,7 @@ const AVAILABLE_COMMANDS = [
   "set",
   "setColor",
   "setBrightness",
+  "setLED",
   "stop",
   "rainbow",
   "glitter",
