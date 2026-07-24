@@ -11,7 +11,6 @@ interface SerialDataPayload {
 
 export function SimulateNode({ data, id }: any) {
   const [isSimulating, setIsSimulating] = useState(false);
-  const interval = data.interval ?? 50;
   const [lastParsed, setLastParsed] = useState<any>(null);
   const bufferRef = useRef("");
 
@@ -30,8 +29,8 @@ export function SimulateNode({ data, id }: any) {
 
           const parts = trimmed.split(",");
 
-          if (parts.length === 3) {
-            const [device, port, valueStr] = parts;
+          if (parts.length === 4) {
+            const [_, device, port, valueStr] = parts;
             const value = parseInt(valueStr, 10);
 
             if (!isNaN(value)) {
@@ -69,7 +68,7 @@ export function SimulateNode({ data, id }: any) {
 
         if (filePath) {
           setIsSimulating(true);
-          await invoke("start_simulation", { path: filePath, intervalMs: interval });
+          await invoke("start_simulation", { path: filePath });
         }
       } catch (e) {
         alert("Failed to start simulation: " + e);
@@ -86,27 +85,6 @@ export function SimulateNode({ data, id }: any) {
       </div>
 
       <div className="node-content nodrag">
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "4px" }}>
-          <label style={{ fontSize: "10px", color: "#888" }}>Interval (ms):</label>
-          <span style={{ fontSize: "11px", color: "#eee" }}>{interval}</span>
-        </div>
-
-        <input
-          type="number"
-          min="1"
-          value={interval}
-          onChange={(e) => {
-            const val = Math.max(1, Number(e.target.value));
-            data.updateNodeData?.(id, { interval: val });
-          }}
-          disabled={isSimulating}
-          style={{ width: "100%", marginBottom: "8px" }}
-          autoComplete="off"
-          autoCorrect="off"
-          autoCapitalize="off"
-          spellCheck="false"
-        />
-
         <button
           onClick={handleSimulate}
           style={{ width: "100%", marginBottom: "8px" }}
