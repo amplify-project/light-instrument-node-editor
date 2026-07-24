@@ -4,7 +4,16 @@ import { Handle, Position } from "@xyflow/react";
 export function DeadbandNode({ data, id }: any) {
   const threshold = data.threshold ?? 5;
   const [lastValue, setLastValue] = useState<number | null>(null);
+  const lastValueRef = useRef<number | null>(null);
   const outputRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastValue(lastValueRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (data.registerConsumer) {
@@ -15,7 +24,7 @@ export function DeadbandNode({ data, id }: any) {
 
           if (outputRef.current === null || Math.abs(value - outputRef.current) >= threshold) {
             outputRef.current = value;
-            setLastValue(value);
+            lastValueRef.current = value;
 
             if (data.onData) {
               data.onData(id, { ...incoming, value });

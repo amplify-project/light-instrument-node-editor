@@ -4,7 +4,16 @@ import { Handle, Position } from "@xyflow/react";
 export function SmoothNode({ data, id }: any) {
   const alpha = data.alpha ?? 0.5;
   const [lastSmoothed, setLastSmoothed] = useState<number | null>(null);
+  const lastSmoothedRef = useRef<number | null>(null);
   const smoothedRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastSmoothed(lastSmoothedRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     // Register this node to receive data
@@ -22,7 +31,7 @@ export function SmoothNode({ data, id }: any) {
           }
 
           smoothedRef.current = nextSmoothed;
-          setLastSmoothed(nextSmoothed);
+          lastSmoothedRef.current = nextSmoothed;
 
           if (data.onData) {
             data.onData(id, { ...incoming, value: nextSmoothed });

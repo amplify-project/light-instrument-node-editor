@@ -1,10 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function ClampNode({ data, id }: any) {
   const min = data.min ?? 0;
   const max = data.max ?? 1023;
   const [lastValue, setLastValue] = useState<number | null>(null);
+  const lastValueRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastValue(lastValueRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (data.registerConsumer) {
@@ -14,7 +23,7 @@ export function ClampNode({ data, id }: any) {
           const value = incoming.value;
           const clamped = Math.min(Math.max(value, min), max);
 
-          setLastValue(clamped);
+          lastValueRef.current = clamped;
 
           if (data.onData) {
             data.onData(id, { ...incoming, value: clamped });

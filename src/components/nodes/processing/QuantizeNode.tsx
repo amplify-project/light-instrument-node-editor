@@ -1,9 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function QuantizeNode({ data, id }: any) {
   const step = data.step ?? 10;
   const [lastValue, setLastValue] = useState<number | null>(null);
+  const lastValueRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastValue(lastValueRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (data.registerConsumer) {
@@ -13,7 +22,7 @@ export function QuantizeNode({ data, id }: any) {
           const value = incoming.value;
           const quantized = Math.round(value / step) * step;
 
-          setLastValue(quantized);
+          lastValueRef.current = quantized;
 
           if (data.onData) {
             data.onData(id, { ...incoming, value: quantized });

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function MapRangeNode({ data, id }: any) {
@@ -7,6 +7,15 @@ export function MapRangeNode({ data, id }: any) {
   const outMin = data.outMin ?? 0;
   const outMax = data.outMax ?? 255;
   const [lastValue, setLastValue] = useState<number | null>(null);
+  const lastValueRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastValue(lastValueRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (data.registerConsumer) {
@@ -16,7 +25,7 @@ export function MapRangeNode({ data, id }: any) {
           const value = incoming.value;
           const mapped = ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
 
-          setLastValue(mapped);
+          lastValueRef.current = mapped;
 
           if (data.onData) {
             data.onData(id, { ...incoming, value: mapped });

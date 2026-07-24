@@ -5,7 +5,16 @@ export function EnvelopeFollowerNode({ data, id }: any) {
   const attack = data.attack ?? 0.5;
   const release = data.release ?? 0.1;
   const [lastEnvelope, setLastEnvelope] = useState<number | null>(null);
+  const lastEnvelopeRef = useRef<number | null>(null);
   const envelopeRef = useRef<number>(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastEnvelope(lastEnvelopeRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (data.registerConsumer) {
@@ -25,7 +34,7 @@ export function EnvelopeFollowerNode({ data, id }: any) {
           if (next < 0.001) next = 0;
 
           envelopeRef.current = next;
-          setLastEnvelope(next);
+          lastEnvelopeRef.current = next;
 
           if (data.onData) {
             data.onData(id, { ...incoming, value: next });

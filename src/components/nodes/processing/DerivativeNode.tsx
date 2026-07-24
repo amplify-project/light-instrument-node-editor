@@ -3,7 +3,16 @@ import { Handle, Position } from "@xyflow/react";
 
 export function DerivativeNode({ data, id }: any) {
   const [lastDiff, setLastDiff] = useState<number | null>(null);
+  const lastDiffRef = useRef<number | null>(null);
   const lastValueRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastDiff(lastDiffRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (data.registerConsumer) {
@@ -14,7 +23,7 @@ export function DerivativeNode({ data, id }: any) {
 
           if (lastValueRef.current !== null) {
             const diff = value - lastValueRef.current;
-            setLastDiff(diff);
+            lastDiffRef.current = diff;
 
             if (data.onData) {
               data.onData(id, { ...incoming, value: diff });

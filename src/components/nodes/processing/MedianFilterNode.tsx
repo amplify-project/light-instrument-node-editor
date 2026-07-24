@@ -4,7 +4,16 @@ import { Handle, Position } from "@xyflow/react";
 export function MedianFilterNode({ data, id }: any) {
   const windowSize = data.windowSize ?? 5;
   const [lastMedian, setLastMedian] = useState<number | null>(null);
+  const lastMedianRef = useRef<number | null>(null);
   const valuesRef = useRef<number[]>([]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastMedian(lastMedianRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (data.registerConsumer) {
@@ -23,7 +32,7 @@ export function MedianFilterNode({ data, id }: any) {
           const mid = Math.floor(sorted.length / 2);
           const median = sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
 
-          setLastMedian(median);
+          lastMedianRef.current = median;
 
           if (data.onData) {
             data.onData(id, { ...incoming, value: median });

@@ -4,7 +4,16 @@ import { Handle, Position } from "@xyflow/react";
 export function MovingAverageNode({ data, id }: any) {
   const windowSize = data.windowSize ?? 10;
   const [lastAverage, setLastAverage] = useState<number | null>(null);
+  const lastAverageRef = useRef<number | null>(null);
   const valuesRef = useRef<number[]>([]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastAverage(lastAverageRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (data.registerConsumer) {
@@ -22,7 +31,7 @@ export function MovingAverageNode({ data, id }: any) {
           const sum = valuesRef.current.reduce((a, b) => a + b, 0);
           const average = sum / valuesRef.current.length;
 
-          setLastAverage(average);
+          lastAverageRef.current = average;
 
           if (data.onData) {
             data.onData(id, { ...incoming, value: average });

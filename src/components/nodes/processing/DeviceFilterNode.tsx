@@ -1,10 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function DeviceFilterNode({ data, id }: any) {
   const deviceFilter = data.deviceFilter ?? data.filterValue ?? "";
   const portFilter = data.portFilter ?? "";
   const [lastRelayed, setLastRelayed] = useState<any>(null);
+  const lastRelayedRef = useRef<any>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastRelayed(lastRelayedRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     // Register this node to receive data
@@ -15,7 +24,7 @@ export function DeviceFilterNode({ data, id }: any) {
           const portMatch = !portFilter || incoming.port === portFilter;
 
           if (deviceMatch && portMatch) {
-            setLastRelayed(incoming);
+            lastRelayedRef.current = incoming;
 
             if (data.onData) {
               data.onData(id, incoming);

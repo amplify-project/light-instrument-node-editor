@@ -11,19 +11,26 @@ export function CombineRgbNode({ data, id }: any) {
   const bRef = useRef(0);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setR(rRef.current);
+      setG(gRef.current);
+      setB(bRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     if (data.registerConsumer) {
       data.registerConsumer(id, (incoming: any, handleId?: string | null) => {
         if (incoming && typeof incoming === "object") {
           const value = typeof incoming.value === "number" ? incoming.value : 0;
 
           if (handleId === "r") {
-            setR(value);
             rRef.current = value;
           } else if (handleId === "g") {
-            setG(value);
             gRef.current = value;
           } else if (handleId === "b") {
-            setB(value);
             bRef.current = value;
           }
 
