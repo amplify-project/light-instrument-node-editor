@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 const AVAILABLE_COMMANDS: Record<string, string> = {
@@ -21,8 +21,17 @@ export function CommandNode({ data, id }: any) {
   const command = data.command || "";
   const value = data.value || "";
   const [lastEmitted, setLastEmitted] = useState<any>(null);
+  const lastEmittedRef = useRef<any>(null);
 
   const hint = AVAILABLE_COMMANDS[command] || "";
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastEmitted(lastEmittedRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     // Register this node to receive data
@@ -51,7 +60,7 @@ export function CommandNode({ data, id }: any) {
     }
 
     if (data.onData) {
-      setLastEmitted(payload);
+      lastEmittedRef.current = payload;
       data.onData(id, payload);
     }
   };

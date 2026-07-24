@@ -18,6 +18,17 @@ export function SerialInputNode({ data, id }: any) {
   const [queueLen, setQueueLen] = useState(0);
 
   const bufferRef = useRef("");
+  const lastParsedRef = useRef<any>(null);
+  const queueLenRef = useRef(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastParsed(lastParsedRef.current);
+      setQueueLen(queueLenRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     refreshPorts();
@@ -48,7 +59,7 @@ export function SerialInputNode({ data, id }: any) {
 
             if (!isNaN(value)) {
               const parsed = { device, port, value };
-              setLastParsed(parsed);
+              lastParsedRef.current = parsed;
 
               if (data.onData) {
                 data.onData(id, parsed);
@@ -70,7 +81,7 @@ export function SerialInputNode({ data, id }: any) {
             const [_, command, size] = parts;
 
             if (command == "queuelen") {
-              setQueueLen(parseInt(size));
+              queueLenRef.current = parseInt(size);
             }
           }
         }

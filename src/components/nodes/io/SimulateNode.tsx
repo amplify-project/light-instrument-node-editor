@@ -13,6 +13,15 @@ export function SimulateNode({ data, id }: any) {
   const [isSimulating, setIsSimulating] = useState(false);
   const [lastParsed, setLastParsed] = useState<any>(null);
   const bufferRef = useRef("");
+  const lastParsedRef = useRef<any>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastParsed(lastParsedRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const unlistenData = listen<SerialDataPayload>("serial-data", (event) => {
@@ -35,7 +44,7 @@ export function SimulateNode({ data, id }: any) {
 
             if (!isNaN(value)) {
               const parsed = { device, port, value };
-              setLastParsed(parsed);
+              lastParsedRef.current = parsed;
 
               if (data.onData) {
                 data.onData(id, parsed);
