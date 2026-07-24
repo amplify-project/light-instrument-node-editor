@@ -135,10 +135,28 @@ function Flow() {
   }>({ sensors: new Map(), actuators: new Map() });
   const [isDirty, setIsDirty] = useState(false);
   const isDirtyRef = useRef(false);
+  const edgesRef = useRef<Edge[]>(edges);
+  const adjacencyMapRef = useRef<{ [sourceId: string]: Edge[] }>({});
 
   useEffect(() => {
     isDirtyRef.current = isDirty;
   }, [isDirty]);
+
+  useEffect(() => {
+    edgesRef.current = edges;
+
+    const map: { [sourceId: string]: Edge[] } = {};
+
+    edges.forEach((edge) => {
+      if (!map[edge.source]) {
+        map[edge.source] = [];
+      }
+
+      map[edge.source].push(edge);
+    });
+
+    adjacencyMapRef.current = map;
+  }, [edges]);
 
   const [searchState, setSearchState] = useState<{ visible: boolean; x: number; y: number }>({
     visible: false,
@@ -295,8 +313,8 @@ function Flow() {
       }
     }
 
-    // Find edges connected to this source
-    const connectedEdges = edges.filter((e) => e.source === sourceId);
+    // Find edges connected to this source using the adjacency map
+    const connectedEdges = adjacencyMapRef.current[sourceId] || [];
 
     connectedEdges.forEach((edge) => {
       const consumer = consumers.current[edge.target];
@@ -305,7 +323,7 @@ function Flow() {
         consumer(data, edge.targetHandle);
       }
     });
-  }, [edges]);
+  }, []);
 
   const registerConsumer = useCallback((id: string, consumer: (data: any, handleId?: string | null) => void) => {
     consumers.current[id] = consumer;
