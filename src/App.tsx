@@ -123,7 +123,14 @@ function Flow() {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
   const [edges, setEdges] = useState<Edge[]>(initialEdges);
   const [currentPath, setCurrentPath] = useState<string | null>(null);
-  const [discoveredDevices, setDiscoveredDevices] = useState<{ sensors: Map<string, [number, number]>, actuators: Map<string, [number, number]> }>({ sensors: new Map(), actuators: new Map()});
+  const [discoveredDevices, setDiscoveredDevices] = useState<{
+    sensors: Map<string, [number, number]>;
+    actuators: Map<string, [number, number]>;
+  }>({ sensors: new Map(), actuators: new Map() });
+  const discoveredDevicesRef = useRef<{
+    sensors: Map<string, number>;
+    actuators: Map<string, number>;
+  }>({ sensors: new Map(), actuators: new Map() });
   const [isDirty, setIsDirty] = useState(false);
   const isDirtyRef = useRef(false);
 
@@ -142,20 +149,19 @@ function Flow() {
   const { screenToFlowPosition } = useReactFlow();
 
   useInterval(() => {
-    setDiscoveredDevices((prev) => {
-      const sensors = new Map<string, [number, number]>(
-        Array.from(prev.sensors).map(([name, [lastSeen]]) => [
-          name,
-          [lastSeen, Date.now() - lastSeen],
-        ])
-      );
+    setDiscoveredDevices(() => {
+      const now = Date.now();
+      const sensors = new Map<string, [number, number]>();
 
-      const actuators = new Map<string, [number, number]>(
-        Array.from(prev.actuators).map(([name, [lastSeen]]) => [
-          name,
-          [lastSeen, Date.now() - lastSeen],
-        ])
-      );
+      discoveredDevicesRef.current.sensors.forEach((lastSeen, name) => {
+        sensors.set(name, [lastSeen, now - lastSeen]);
+      });
+
+      const actuators = new Map<string, [number, number]>();
+
+      discoveredDevicesRef.current.actuators.forEach((lastSeen, name) => {
+        actuators.set(name, [lastSeen, now - lastSeen]);
+      });
 
       return { sensors, actuators };
     });
@@ -270,34 +276,20 @@ function Flow() {
       if (data?.type === "deviceDiscovery" || data?.type === "pong") {
         const { deviceType, deviceName } = data;
 
-        setDiscoveredDevices((prev) => {
-          const sensors = new Map(prev.sensors);
-          const actuators = new Map(prev.actuators);
-
-          if (deviceType === "sensor") {
-            sensors.set(deviceName, [Date.now(), 0]);
-          } else if (deviceType === "actuator") {
-            actuators.set(deviceName, [Date.now(), 0]);
-          }
-
-          return { sensors, actuators };
-        });
+        if (deviceType === "sensor") {
+          discoveredDevicesRef.current.sensors.set(deviceName, Date.now());
+        } else if (deviceType === "actuator") {
+          discoveredDevicesRef.current.actuators.set(deviceName, Date.now());
+        }
 
         return;
       }
 
       // Also update lastSeen for regular data packets from sensors
       if (data?.device) {
-        setDiscoveredDevices((prev) => {
-          if (prev.sensors.has(data.device)) {
-            const sensors = new Map(prev.sensors);
-            sensors.set(data.device, [Date.now(), 0]);
-
-            return { ...prev, sensors };
-          }
-
-          return prev;
-        });
+        if (discoveredDevicesRef.current.sensors.has(data.device)) {
+          discoveredDevicesRef.current.sensors.set(data.device, Date.now());
+        }
       }
     }
 
