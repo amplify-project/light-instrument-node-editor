@@ -1,25 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 const MAX_DATA_POINTS = 50;
 
 export function GraphNode({ data, id }: any) {
   const [points, setPoints] = useState<number[]>([]);
+  const pointsRef = useRef<number[]>([]);
 
   useEffect(() => {
     // Register this node to receive data
     if (data.registerConsumer) {
       data.registerConsumer(id, (incoming: any) => {
         if (incoming && typeof incoming === "object" && typeof incoming.value === "number") {
-          setPoints((prev) => {
-            const next = [...prev, incoming.value];
+          pointsRef.current.push(incoming.value);
 
-            if (next.length > MAX_DATA_POINTS) {
-              return next.slice(next.length - MAX_DATA_POINTS);
-            }
-
-            return next;
-          });
+          if (pointsRef.current.length > MAX_DATA_POINTS) {
+            pointsRef.current = pointsRef.current.slice(pointsRef.current.length - MAX_DATA_POINTS);
+          }
         }
       });
     }
@@ -30,6 +27,14 @@ export function GraphNode({ data, id }: any) {
       }
     };
   }, [id, data]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPoints([...pointsRef.current]);
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, []);
 
   // SVG constants
   const width = 216;

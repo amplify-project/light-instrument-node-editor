@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function StatisticsNode({ data, id }: any) {
   const [stats, setStats] = useState<Record<string, number>>({});
+  const statsRef = useRef<Record<string, number>>({});
 
   useEffect(() => {
     if (data.registerConsumer) {
@@ -10,12 +11,7 @@ export function StatisticsNode({ data, id }: any) {
         if (incoming && typeof incoming === "object" && incoming.device) {
           const device = String(incoming.device);
 
-          setStats((prev) => {
-            const next = { ...prev };
-            next[device] = (next[device] || 0) + 1;
-
-            return next;
-          });
+          statsRef.current[device] = (statsRef.current[device] || 0) + 1;
         }
       });
     }
@@ -26,6 +22,14 @@ export function StatisticsNode({ data, id }: any) {
       }
     };
   }, [id, data]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStats({ ...statsRef.current });
+    }, 200);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="serial-node statistics-node">
@@ -87,7 +91,10 @@ export function StatisticsNode({ data, id }: any) {
           )}
         </div>
         <button
-          onClick={() => setStats({})}
+          onClick={() => {
+            statsRef.current = {};
+            setStats({});
+          }}
           style={{ marginTop: "4px" }}
         >
           Reset Counts

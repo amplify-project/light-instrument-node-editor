@@ -3,6 +3,7 @@ import { Handle, Position } from "@xyflow/react";
 
 export function LogNode({ data, id }: any) {
   const [logs, setLogs] = useState<string[]>([]);
+  const logsRef = useRef<string[]>([]);
   const scrollRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -18,15 +19,11 @@ export function LogNode({ data, id }: any) {
           message = String(incoming);
         }
 
-        setLogs((prev) => {
-          const next = [...prev, `[${timestamp}] ${message}`];
+        logsRef.current.push(`[${timestamp}] ${message}`);
 
-          if (next.length > 50) {
-            return next.slice(next.length - 50);
-          }
-
-          return next;
-        });
+        if (logsRef.current.length > 50) {
+          logsRef.current = logsRef.current.slice(logsRef.current.length - 50);
+        }
       });
     }
 
@@ -36,6 +33,14 @@ export function LogNode({ data, id }: any) {
       }
     };
   }, [id, data]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLogs([...logsRef.current]);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -75,7 +80,13 @@ export function LogNode({ data, id }: any) {
             padding: "4px",
           }}
         />
-        <button onClick={() => setLogs([])} style={{ marginTop: "4px" }}>
+        <button
+          onClick={() => {
+            logsRef.current = [];
+            setLogs([]);
+          }}
+          style={{ marginTop: "4px" }}
+        >
           Clear
         </button>
       </div>

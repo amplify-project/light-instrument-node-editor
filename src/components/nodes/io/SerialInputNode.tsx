@@ -39,8 +39,6 @@ export function SerialInputNode({ data, id }: any) {
             continue;
           }
 
-          console.log(trimmed);
-
           const parts = trimmed.split(",");
           const [ messageType ] = parts;
 
