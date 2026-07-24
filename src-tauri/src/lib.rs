@@ -108,8 +108,7 @@ fn start_simulation(state: State<'_, SerialState>, app: AppHandle, path: String)
         };
 
         let reader = BufReader::new(file);
-        let mut last_timestamp: f64 = 0.0;
-        let mut delay: f64 = 0.0;
+        let mut last_timestamp: Option<f64> = None;
 
         for line in reader.lines() {
             if !running.load(Ordering::SeqCst) {
@@ -118,7 +117,10 @@ fn start_simulation(state: State<'_, SerialState>, app: AppHandle, path: String)
 
             if let Ok(content) = line {
                 let first_col: Vec<&str> = content.split(",").take(1).collect();
-                let timestamp: f64 = first_col[0].parse::<f64>().unwrap() * 1000.0;
+
+                let timestamp: f64 = first_col.first()
+                    .and_then(|s| s.parse::<f64>().ok())
+                    .unwrap_or(0.0) * 1000.0;
 
                 let payload = serde_json::json!({
                     "port": "SIMULATION",
@@ -127,14 +129,15 @@ fn start_simulation(state: State<'_, SerialState>, app: AppHandle, path: String)
 
                 let _ = app.emit("serial-data", payload);
 
-                if last_timestamp == 0.0 {
-                    last_timestamp = timestamp;
-                } else {
-                    delay = timestamp - last_timestamp;
+                if let Some(last) = last_timestamp {
+                    let delay = (timestamp - last).max(0.0) as u64;
+
+                    if delay > 0 {
+                        std::thread::sleep(std::time::Duration::from_millis(delay));
+                    }
                 }
 
-                // Add a delay to simulate real data rate
-                std::thread::sleep(std::time::Duration::from_millis(delay as u64));
+                last_timestamp = Some(timestamp);
             }
         }
 
