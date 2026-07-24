@@ -6,6 +6,14 @@ export function GateNode({ data, id }: any) {
   const controlRef = useRef<boolean>(false);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setIsOpen(controlRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     if (data.registerConsumer) {
       data.registerConsumer(id, (incoming: any, targetHandle?: string) => {
 
@@ -14,7 +22,6 @@ export function GateNode({ data, id }: any) {
           if (targetHandle === "control") {
             const open = incoming.value !== 0;
             controlRef.current = open;
-            setIsOpen(open);
           } else {
             // Signal input
             if (controlRef.current && data.onData) {

@@ -6,10 +6,17 @@ export function CounterNode({ data, id }: any) {
   const countRef = useRef<number>(0);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(countRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     if (data.registerConsumer) {
       data.registerConsumer(id, (incoming: any) => {
         countRef.current += 1;
-        setCount(countRef.current);
 
         if (data.onData) {
           data.onData(id, {

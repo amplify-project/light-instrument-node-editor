@@ -9,6 +9,17 @@ export function BooleanNode({ data, id }: any) {
 
   const valARef = useRef(0);
   const valBRef = useRef(0);
+  const lastOutputRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setValA(valARef.current);
+      setValB(valBRef.current);
+      setLastOutput(lastOutputRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     // Register this node to receive data
@@ -18,10 +29,8 @@ export function BooleanNode({ data, id }: any) {
           const truthy = incoming.value !== 0 ? 1 : 0;
 
           if (handleId === "b") {
-            setValB(truthy);
             valBRef.current = truthy;
           } else {
-            setValA(truthy);
             valARef.current = truthy;
           }
 
@@ -39,7 +48,7 @@ export function BooleanNode({ data, id }: any) {
             result = (!a) ? 1 : 0;
           }
 
-          setLastOutput(result);
+          lastOutputRef.current = result;
 
           if (data.onData) {
             data.onData(id, { ...incoming, value: result });

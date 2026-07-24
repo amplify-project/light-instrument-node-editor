@@ -7,6 +7,14 @@ export function ToggleNode({ data, id }: any) {
   const lastInputRef = useRef<boolean>(false);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setState(stateRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     if (data.registerConsumer) {
       data.registerConsumer(id, (incoming: any) => {
 
@@ -17,7 +25,6 @@ export function ToggleNode({ data, id }: any) {
           if (isTrue && !lastInputRef.current) {
             const nextState = stateRef.current === 0 ? 1 : 0;
             stateRef.current = nextState;
-            setState(nextState);
 
             if (data.onData) {
               data.onData(id, { ...incoming, value: nextState });

@@ -5,7 +5,16 @@ export function EdgeTriggerNode({ data, id }: any) {
   const mode = data.mode ?? "rising";
   const threshold = data.threshold ?? 0;
   const [triggerCount, setTriggerCount] = useState(0);
+  const triggerCountRef = useRef(0);
   const lastValueRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTriggerCount(triggerCountRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     // Register this node to receive data
@@ -29,7 +38,7 @@ export function EdgeTriggerNode({ data, id }: any) {
             }
 
             if (triggered) {
-              setTriggerCount((c) => c + 1);
+              triggerCountRef.current += 1;
 
               if (data.onData) {
                 data.onData(id, { ...incoming, value: 1 });

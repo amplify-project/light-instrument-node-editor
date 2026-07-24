@@ -1,10 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 
 export function CompareNode({ data, id }: any) {
   const compareValue = data.compareValue ?? 0;
   const operator = data.operator || "==";
   const [lastMet, setLastMet] = useState<any>(null);
+  const lastMetRef = useRef<any>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastMet(lastMetRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     // Register this node to receive data
@@ -29,7 +38,7 @@ export function CompareNode({ data, id }: any) {
           }
 
           if (met) {
-            setLastMet(incoming);
+            lastMetRef.current = incoming;
 
             if (data.onData) {
               data.onData(id, incoming);

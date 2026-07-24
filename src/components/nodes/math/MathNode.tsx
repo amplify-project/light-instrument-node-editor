@@ -9,6 +9,17 @@ export function MathNode({ data, id }: any) {
 
   const valARef = useRef(0);
   const valBRef = useRef(0);
+  const lastOutputRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setValA(valARef.current);
+      setValB(valBRef.current);
+      setLastOutput(lastOutputRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     // Register this node to receive data
@@ -18,10 +29,8 @@ export function MathNode({ data, id }: any) {
           const value = incoming.value;
 
           if (handleId === "b") {
-            setValB(value);
             valBRef.current = value;
           } else {
-            setValA(value);
             valARef.current = value;
           }
 
@@ -41,7 +50,7 @@ export function MathNode({ data, id }: any) {
             result = b !== 0 ? a % b : 0;
           }
 
-          setLastOutput(result);
+          lastOutputRef.current = result;
 
           if (data.onData) {
             data.onData(id, { ...incoming, value: result });

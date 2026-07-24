@@ -4,7 +4,16 @@ import { Handle, Position } from "@xyflow/react";
 export function CumulativeSumNode({ data, id }: any) {
   const bufferSize = data.bufferSize ?? 0;
   const [lastSum, setLastSum] = useState<number>(0);
+  const lastSumRef = useRef<number>(0);
   const valuesRef = useRef<number[]>([]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastSum(lastSumRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (data.registerConsumer) {
@@ -21,7 +30,7 @@ export function CumulativeSumNode({ data, id }: any) {
 
           const sum = valuesRef.current.reduce((a, b) => a + b, 0);
 
-          setLastSum(sum);
+          lastSumRef.current = sum;
 
           if (data.onData) {
             data.onData(id, { ...incoming, value: sum });

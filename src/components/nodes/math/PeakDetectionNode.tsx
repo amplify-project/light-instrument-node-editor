@@ -5,8 +5,19 @@ export function PeakDetectionNode({ data, id }: any) {
   const [lastPeak, setLastPeak] = useState<number | null>(null);
   const [triggerCount, setTriggerCount] = useState(0);
 
+  const lastPeakRef = useRef<number | null>(null);
+  const triggerCountRef = useRef(0);
   const lastValueRef = useRef<number | null>(null);
   const isRisingRef = useRef(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastPeak(lastPeakRef.current);
+      setTriggerCount(triggerCountRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     // Register this node to receive data
@@ -22,8 +33,8 @@ export function PeakDetectionNode({ data, id }: any) {
               if (isRisingRef.current) {
                 // Peak detected!
                 const peakValue = lastValueRef.current;
-                setLastPeak(peakValue);
-                setTriggerCount(prev => prev + 1);
+                lastPeakRef.current = peakValue;
+                triggerCountRef.current += 1;
 
                 if (data.onData) {
                   // Emit a signal (e.g., command: peak, value: peakValue)

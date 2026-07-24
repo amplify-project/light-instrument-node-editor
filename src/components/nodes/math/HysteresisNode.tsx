@@ -8,6 +8,14 @@ export function HysteresisNode({ data, id }: any) {
   const stateRef = useRef<number>(0);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setState(stateRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     if (data.registerConsumer) {
       data.registerConsumer(id, (incoming: any) => {
 
@@ -23,7 +31,6 @@ export function HysteresisNode({ data, id }: any) {
 
           if (nextState !== stateRef.current) {
             stateRef.current = nextState;
-            setState(nextState);
           }
 
           if (data.onData) {

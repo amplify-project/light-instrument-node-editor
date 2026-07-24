@@ -4,7 +4,17 @@ import { Handle, Position } from "@xyflow/react";
 export function DelayNode({ data, id }: any) {
   const delayMs = data.delayMs ?? 1000;
   const [isPending, setIsPending] = useState(false);
+  const [pendingCount, setPendingCount] = useState(0);
   const pendingCountRef = useRef(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsPending(pendingCountRef.current > 0);
+      setPendingCount(pendingCountRef.current);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const timeouts: any[] = [];
@@ -13,7 +23,6 @@ export function DelayNode({ data, id }: any) {
       data.registerConsumer(id, (incoming: any) => {
         if (incoming) {
           pendingCountRef.current++;
-          setIsPending(true);
 
           const timeout = setTimeout(() => {
             if (data.onData) {
@@ -21,10 +30,6 @@ export function DelayNode({ data, id }: any) {
             }
 
             pendingCountRef.current--;
-
-            if (pendingCountRef.current === 0) {
-              setIsPending(false);
-            }
           }, delayMs);
 
           timeouts.push(timeout);
@@ -64,7 +69,7 @@ export function DelayNode({ data, id }: any) {
 
         {isPending && (
           <div className="node-status">
-            {pendingCountRef.current} pending...
+            {pendingCount} pending...
           </div>
         )}
       </div>
