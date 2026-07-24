@@ -30,6 +30,7 @@ import { CompareNode } from "./components/nodes/math/CompareNode";
 import { CounterNode } from "./components/nodes/math/CounterNode";
 import { CsvWriterNode } from "./components/nodes/io/CsvWriterNode";
 import { CumulativeSumNode } from "./components/nodes/math/CumulativeSumNode";
+import { DelayNode } from "./components/nodes/math/DelayNode";
 import { DeadbandNode } from "./components/nodes/processing/DeadbandNode";
 import { DerivativeNode } from "./components/nodes/processing/DerivativeNode";
 import { DeviceFilterNode } from "./components/nodes/processing/DeviceFilterNode";
@@ -93,6 +94,7 @@ const nodeTypes = {
   edgeTrigger: EdgeTriggerNode,
   timer: TimerNode,
   math: MathNode,
+  delay: DelayNode,
   functionGenerator: FunctionGeneratorNode,
   cumulativeSum: CumulativeSumNode,
   rate: RateNode,

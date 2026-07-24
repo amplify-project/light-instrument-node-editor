@@ -31,6 +31,7 @@ const nodeOptions: NodeOption[] = [
   { type: "compare", label: "Compare", category: "Math & Logic" },
   { type: "counter", label: "Counter", category: "Math & Logic" },
   { type: "cumulativeSum", label: "Cumulative Sum", category: "Math & Logic" },
+  { type: "delay", label: "Delay", category: "Math & Logic" },
   { type: "edgeTrigger", label: "Edge Trigger", category: "Math & Logic" },
   { type: "gate", label: "Gate", category: "Math & Logic" },
   { type: "hysteresis", label: "Hysteresis", category: "Math & Logic" },
