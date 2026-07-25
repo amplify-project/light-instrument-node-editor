@@ -205,8 +205,12 @@ body {
   height: 20px;
 }
 
-.react-flow__panel.bottom {
+.react-flow__controls.bottom {
   margin-bottom: 80px;
+}
+
+.react-flow__attribution.bottom {
+  margin-bottom: 42px;
 }
 
 /* Node Search Styles */
