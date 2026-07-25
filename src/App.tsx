@@ -673,7 +673,7 @@ function Flow() {
 
         <select
           value={consoleData.command}
-          onChange={(e) => setConsoleData((prev) => ({ ...prev, command: e.target.value }))}
+          onChange={(e) => setConsoleData((prev) => ({ ...prev, params: "", command: e.target.value }))}
         >
           <option value="">Select command...</option>
           {Object.keys(AVAILABLE_COMMANDS).map((cmd) => (
