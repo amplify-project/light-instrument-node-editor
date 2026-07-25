@@ -12,6 +12,26 @@ Converts a trigger signal into a structured command packet for the serial output
 - **Output**: Command packet `{device, port, command, value}`
 - **Note**: Use "#" in parameters to inject incoming value.
 
+### Script
+
+Executes a sequence of commands and delays.
+
+- **Input**: Any signal
+- **Output**: Command packets `{device, port, command, value}`
+- **Format:** `command 'device' 'port' 'params'`
+- **Delay:** `delay [ms]`
+
+Example:
+
+    breathe 'receiver1' 'LED1' '255,0,0,20'
+    delay 500
+    stop '' '' ''
+
+This will send a `breathe` command to `receiver1` port `LED1`, which causes a
+breathe animation with color red and a speed of 20 BPM to start. Then, the
+script waits for 500ms and then issues a `stop` command (empty strings for
+device and port send the command to all devices/port).
+
 ## Display
 
 ### Graph
