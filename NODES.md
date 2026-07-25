@@ -1,12 +1,14 @@
 # Node Documentation
 
-This document provides a description of all available nodes in the node-based editor, including their functions, inputs, and outputs.
+This document provides a description of all available nodes in the node-based
+editor, including their functions, inputs, and outputs.
 
 ## Action
 
 ### Command
 
-Converts a trigger signal into a structured command packet for the serial output.
+Converts a trigger signal into a structured command packet for the serial
+output.
 
 - **Input**: Any signal
 - **Output**: Command packet `{device, port, command, value}`
@@ -56,7 +58,8 @@ Maintains a live count of received packets grouped by device name.
 
 ### Button
 
-Interactive button that emits signals on press and release (momentary) or alternates state (toggle).
+Interactive button that emits signals on press and release (momentary) or
+alternates state (toggle).
 
 - **Output**: Numeric signal (0 or 1)
 
@@ -68,7 +71,8 @@ Saves incoming data to a CSV file with timestamps.
 
 ### Function Generator
 
-Generates periodic waveforms (Sine, Square, Triangle, Sawtooth) at a set frequency.
+Generates periodic waveforms (Sine, Square, Triangle, Sawtooth) at a set
+frequency.
 
 - **Output**: Periodic numeric signal (0 to 1)
 
@@ -92,7 +96,8 @@ Reads recorded sensor data from a file and streams it into the editor.
 
 ### Value
 
-Provides a static numeric value that can be manually pushed or emitted on connection.
+Provides a static numeric value that can be manually pushed or emitted on
+connection.
 
 - **Output**: Numeric value
 
@@ -108,7 +113,8 @@ A visual grouping component used to organize and label collections of nodes.
 
 ### Boolean
 
-Performs logical operations (AND, OR, XOR, NOT) on two boolean inputs (non-zero is true).
+Performs logical operations (AND, OR, XOR, NOT) on two boolean inputs (non-zero
+is true).
 
 - **Inputs**: A, B
 - **Output**: 1 or 0
@@ -200,14 +206,17 @@ Restricts the incoming signal to be within a minimum and maximum range.
 
 ### Combine RGB
 
-Combines three numeric inputs into a CSV string format "r,g,b".
+Combines three numeric inputs into a string of format "r,g,b". This is useful
+for merging inputs from three different sources into a color for use in the
+*Command* node.
 
 - **Inputs**: R, G, B
 - **Output**: String "r,g,b"
 
 ### Deadband
 
-Ignores small fluctuations in the signal within a specified threshold of the last value.
+Ignores small fluctuations in the signal within a specified threshold of the
+last value.
 
 - **Input**: Numeric value
 - **Output**: Filtered value
