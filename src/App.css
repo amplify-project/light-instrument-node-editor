@@ -205,6 +205,10 @@ body {
   height: 20px;
 }
 
+.react-flow__panel.bottom {
+  margin-bottom: 80px;
+}
+
 /* Node Search Styles */
 .node-search-container {
   position: absolute;
@@ -324,4 +328,68 @@ body {
 
 .file-controls button:hover {
   background: #555;
+}
+
+.command-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(43, 43, 43, 0.95);
+  border-top: 1px solid #444;
+  padding: 8px 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 1000;
+}
+
+.command-bar input,
+.command-bar select {
+  background: #1e1e1e;
+  border: 1px solid #444;
+  color: #eee;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.command-bar input {
+  width: 200px;
+}
+
+.command-bar select {
+  width: 150px;
+}
+
+.command-bar .console-hint {
+  font-size: 10px;
+  color: #888;
+  position: absolute;
+  top: -18px;
+  left: 16px;
+  background: rgba(43, 43, 43, 0.95);
+  padding: 2px 8px;
+  border: 1px solid #444;
+  border-bottom: none;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.command-bar button {
+  background: #646cff;
+  color: white;
+  border: none;
+  padding: 4px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.command-bar button:hover:not(:disabled) {
+  background: #535bf2;
+}
+
+.command-bar button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

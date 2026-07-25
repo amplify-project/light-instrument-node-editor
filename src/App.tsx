@@ -59,6 +59,7 @@ import { StatisticsNode } from "./components/nodes/display/StatisticsNode";
 import { TimerNode } from "./components/nodes/math/TimerNode";
 import { ToggleNode } from "./components/nodes/math/ToggleNode";
 
+import { AVAILABLE_COMMANDS } from "./constants";
 import "./App.css";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 
@@ -167,6 +168,12 @@ function Flow() {
   const [activePort, setActivePort] = useState<string | null>(null);
   const mousePos = useRef({ x: 0, y: 0 });
   const { screenToFlowPosition } = useReactFlow();
+  const [consoleData, setConsoleData] = useState({
+    device: "",
+    port: "",
+    command: "",
+    params: "",
+  });
 
   useInterval(() => {
     setDiscoveredDevices(() => {
@@ -345,6 +352,16 @@ function Flow() {
     );
     setIsDirty(true);
   }, []);
+
+  const handleSendConsole = useCallback(() => {
+    if (!activePort || !consoleData.command) {
+      return;
+    }
+
+    const payload = `${consoleData.device},${consoleData.port},${consoleData.command},${consoleData.params}\n`;
+
+    invoke("write_serial", { portName: activePort, data: payload }).catch(console.error);
+  }, [activePort, consoleData]);
 
   const onDeleteNode = useCallback((id: string) => {
     setNodes((nds) => {
@@ -624,6 +641,63 @@ function Flow() {
           onClose={() => setSearchState((prev) => ({ ...prev, visible: false }))}
         />
       )}
+
+      <div className="command-bar">
+        {consoleData.command && AVAILABLE_COMMANDS[consoleData.command] && (
+          <div className="console-hint">
+            Params: {AVAILABLE_COMMANDS[consoleData.command]}
+          </div>
+        )}
+
+        <input
+          type="text"
+          placeholder="Device"
+          value={consoleData.device}
+          onChange={(e) => setConsoleData((prev) => ({ ...prev, device: e.target.value }))}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
+        />
+
+        <input
+          type="text"
+          placeholder="Port"
+          value={consoleData.port}
+          onChange={(e) => setConsoleData((prev) => ({ ...prev, port: e.target.value }))}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
+        />
+
+        <select
+          value={consoleData.command}
+          onChange={(e) => setConsoleData((prev) => ({ ...prev, command: e.target.value }))}
+        >
+          <option value="">Select command...</option>
+          {Object.keys(AVAILABLE_COMMANDS).map((cmd) => (
+            <option key={cmd} value={cmd}>
+              {cmd}
+            </option>
+          ))}
+        </select>
+
+        <input
+          type="text"
+          placeholder="Params"
+          value={consoleData.params}
+          onChange={(e) => setConsoleData((prev) => ({ ...prev, params: e.target.value }))}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
+        />
+
+        <button disabled={!activePort || !consoleData.command} onClick={handleSendConsole}>
+          Send
+        </button>
+      </div>
     </div>
   );
 }
