@@ -50,6 +50,7 @@ import { NodeSearch } from "./components/NodeSearch";
 import { PeakDetectionNode } from "./components/nodes/math/PeakDetectionNode";
 import { QuantizeNode } from "./components/nodes/processing/QuantizeNode";
 import { RateNode } from "./components/nodes/processing/RateNode";
+import { ScriptNode } from "./components/nodes/action/ScriptNode";
 import { SerialInputNode } from "./components/nodes/io/SerialInputNode";
 import { SerialOutputNode } from "./components/nodes/io/SerialOutputNode";
 import { SimulateNode } from "./components/nodes/io/SimulateNode";
@@ -99,6 +100,7 @@ const nodeTypes = {
   functionGenerator: FunctionGeneratorNode,
   cumulativeSum: CumulativeSumNode,
   rate: RateNode,
+  script: ScriptNode,
   frame: FrameNode,
 };
 
