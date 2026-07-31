@@ -1,0 +1,267 @@
+{
+  "nodes": [
+    {
+      "id": "input-1",
+      "type": "serialInput",
+      "position": {
+        "x": -295.3010307766157,
+        "y": 7.249237687834636
+      },
+      "data": {
+        "label": "Serial Input"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 231,
+        "height": 187
+      },
+      "selected": true,
+      "dragging": false
+    },
+    {
+      "id": "output-1",
+      "type": "serialOutput",
+      "position": {
+        "x": 1558.5578485846067,
+        "y": 50.372432682533606
+      },
+      "data": {
+        "label": "Serial Output"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 271,
+        "height": 120
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1785340410199",
+      "type": "command",
+      "position": {
+        "x": 1125.5787041421052,
+        "y": -419.27591291168324
+      },
+      "data": {
+        "label": "Command",
+        "command": "pulse",
+        "value": "255,0,0,50,60,100,50"
+      },
+      "measured": {
+        "width": 241,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1785340626383",
+      "type": "command",
+      "position": {
+        "x": 1124.777671272263,
+        "y": -63.5206065005699
+      },
+      "data": {
+        "label": "Command",
+        "command": "pulse",
+        "value": "0,255,0,50,60,100,50"
+      },
+      "measured": {
+        "width": 191,
+        "height": 310
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1785340660954",
+      "type": "command",
+      "position": {
+        "x": 1124.7776712722628,
+        "y": 302.7331567260831
+      },
+      "data": {
+        "label": "Command",
+        "command": "pulse",
+        "value": "0,0,255,50,60,100,50"
+      },
+      "measured": {
+        "width": 191,
+        "height": 310
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "counter-1785340688597",
+      "type": "counter",
+      "position": {
+        "x": 129.10382524648773,
+        "y": -1.2211486824588373
+      },
+      "data": {
+        "label": "Counter"
+      },
+      "measured": {
+        "width": 182,
+        "height": 125
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "math-1785340696430",
+      "type": "math",
+      "position": {
+        "x": 444.23292129504955,
+        "y": -69.38737158658031
+      },
+      "data": {
+        "label": "Math",
+        "operator": "%"
+      },
+      "measured": {
+        "width": 182,
+        "height": 187
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "value-1785340702076",
+      "type": "value",
+      "position": {
+        "x": 123.51642992647768,
+        "y": 142.93365057379822
+      },
+      "data": {
+        "label": "Value",
+        "value": 3
+      },
+      "measured": {
+        "width": 186,
+        "height": 145
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1785340720130",
+      "type": "compare",
+      "position": {
+        "x": 799.5912636476831,
+        "y": -277.2384774909509
+      },
+      "data": {
+        "label": "Compare"
+      },
+      "measured": {
+        "width": 186,
+        "height": 155
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1785340723782",
+      "type": "compare",
+      "position": {
+        "x": 802.9437008396891,
+        "y": -3.456106810462771
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 155
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1785340728058",
+      "type": "compare",
+      "position": {
+        "x": 807.413617095697,
+        "y": 291.55836608606324
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 2
+      },
+      "measured": {
+        "width": 186,
+        "height": 155
+      },
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "command-1785340410199",
+      "target": "output-1",
+      "id": "xy-edge__command-1785340410199-output-1"
+    },
+    {
+      "source": "command-1785340626383",
+      "target": "output-1",
+      "id": "xy-edge__command-1785340626383-output-1"
+    },
+    {
+      "source": "command-1785340660954",
+      "target": "output-1",
+      "id": "xy-edge__command-1785340660954-output-1"
+    },
+    {
+      "source": "input-1",
+      "target": "counter-1785340688597",
+      "id": "xy-edge__input-1-counter-1785340688597"
+    },
+    {
+      "source": "value-1785340702076",
+      "target": "math-1785340696430",
+      "targetHandle": "b",
+      "id": "xy-edge__value-1785340702076-math-1785340696430b"
+    },
+    {
+      "source": "counter-1785340688597",
+      "target": "math-1785340696430",
+      "targetHandle": "a",
+      "id": "xy-edge__counter-1785340688597-math-1785340696430a"
+    },
+    {
+      "source": "compare-1785340720130",
+      "target": "command-1785340410199",
+      "id": "xy-edge__compare-1785340720130-command-1785340410199"
+    },
+    {
+      "source": "compare-1785340723782",
+      "target": "command-1785340626383",
+      "id": "xy-edge__compare-1785340723782-command-1785340626383"
+    },
+    {
+      "source": "compare-1785340728058",
+      "target": "command-1785340660954",
+      "id": "xy-edge__compare-1785340728058-command-1785340660954"
+    },
+    {
+      "source": "math-1785340696430",
+      "target": "compare-1785340720130",
+      "id": "xy-edge__math-1785340696430-compare-1785340720130"
+    },
+    {
+      "source": "math-1785340696430",
+      "target": "compare-1785340723782",
+      "id": "xy-edge__math-1785340696430-compare-1785340723782"
+    },
+    {
+      "source": "math-1785340696430",
+      "target": "compare-1785340728058",
+      "id": "xy-edge__math-1785340696430-compare-1785340728058"
+    }
+  ]
+}
