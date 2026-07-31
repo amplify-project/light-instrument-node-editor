@@ -116,9 +116,13 @@ fn start_simulation(state: State<'_, SerialState>, app: AppHandle, path: String)
             }
 
             if let Ok(content) = line {
-                let first_col: Vec<&str> = content.split(",").take(1).collect();
+                let columns: Vec<&str> = content.split(",").collect();
 
-                let timestamp: f64 = first_col.first()
+                if columns.len() < 4 {
+                    continue;
+                }
+
+                let timestamp: f64 = columns.first()
                     .and_then(|s| s.parse::<f64>().ok())
                     .unwrap_or(0.0) * 1000.0;
 
