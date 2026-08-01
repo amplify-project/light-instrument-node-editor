@@ -1,0 +1,854 @@
+{
+  "nodes": [
+    {
+      "id": "input-1",
+      "type": "serialInput",
+      "position": {
+        "x": -166.2502306641498,
+        "y": 446.7902304169023
+      },
+      "data": {
+        "label": "Serial Input"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 231,
+        "height": 211
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "output-1",
+      "type": "serialOutput",
+      "position": {
+        "x": 2788.2697739134837,
+        "y": 512.0307811520677
+      },
+      "data": {
+        "label": "Serial Output"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 271,
+        "height": 120
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1785033980243",
+      "type": "deviceFilter",
+      "position": {
+        "x": 441.2293533414884,
+        "y": -66.87563142276636
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "deviceFilter": "keys"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1785033992958",
+      "type": "compare",
+      "position": {
+        "x": 660.4219065235429,
+        "y": -102.54208753516184
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 188
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "counter-1785034010845",
+      "type": "counter",
+      "position": {
+        "x": 885.3949373863448,
+        "y": -79.67897464260064
+      },
+      "data": {
+        "label": "Counter"
+      },
+      "measured": {
+        "width": 182,
+        "height": 125
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "math-1785034020894",
+      "type": "math",
+      "position": {
+        "x": 1103.9662966392298,
+        "y": -83.33707270541039
+      },
+      "data": {
+        "label": "Math",
+        "operator": "%"
+      },
+      "measured": {
+        "width": 182,
+        "height": 187
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "value-1785034028072",
+      "type": "value",
+      "position": {
+        "x": 883.5658883549401,
+        "y": 106.13322918440463
+      },
+      "data": {
+        "label": "Value",
+        "value": 3
+      },
+      "measured": {
+        "width": 186,
+        "height": 145
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1785034058451",
+      "type": "compare",
+      "position": {
+        "x": 1346.5069660873119,
+        "y": -308.2112693531767
+      },
+      "data": {
+        "label": "Compare"
+      },
+      "measured": {
+        "width": 186,
+        "height": 188
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1785034067268",
+      "type": "compare",
+      "position": {
+        "x": 1347.895049004562,
+        "y": -92.48794142822086
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 188
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1785034083671",
+      "type": "compare",
+      "position": {
+        "x": 1352.5065610681365,
+        "y": 125.9189663676819
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 2
+      },
+      "measured": {
+        "width": 186,
+        "height": 188
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1785034106266",
+      "type": "command",
+      "position": {
+        "x": 1612.4356541022414,
+        "y": -384.51790840950366
+      },
+      "data": {
+        "label": "Command",
+        "command": "pulse",
+        "value": "255,0,0,50,50,100,50",
+        "port": "LED3"
+      },
+      "measured": {
+        "width": 265,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1785034146306",
+      "type": "command",
+      "position": {
+        "x": 1907.5781322689154,
+        "y": -187.65598551737037
+      },
+      "data": {
+        "label": "Command",
+        "value": "0,255,0,50,50,100,50",
+        "command": "pulse",
+        "port": "LED3"
+      },
+      "measured": {
+        "width": 265,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1785034180973",
+      "type": "command",
+      "position": {
+        "x": 1613.938567340227,
+        "y": 9.796266739109328
+      },
+      "data": {
+        "label": "Command",
+        "command": "pulse",
+        "value": "0,0,255,50,50,100,50",
+        "port": "LED3"
+      },
+      "measured": {
+        "width": 265,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "frame-1785034219605",
+      "type": "frame",
+      "position": {
+        "x": 396.84436404879915,
+        "y": -474.2599265506591
+      },
+      "data": {
+        "label": "Keys"
+      },
+      "zIndex": -1,
+      "width": 1792,
+      "height": 837,
+      "measured": {
+        "width": 1792,
+        "height": 837
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false
+    },
+    {
+      "id": "deviceFilter-1785034266787",
+      "type": "deviceFilter",
+      "position": {
+        "x": 477.0526217983372,
+        "y": 523.3689523854198
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "deviceFilter": "drum_big"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "derivative-1785034289916",
+      "type": "derivative",
+      "position": {
+        "x": 724.0108208440518,
+        "y": 516.1657912912902
+      },
+      "data": {
+        "label": "Derivative"
+      },
+      "measured": {
+        "width": 182,
+        "height": 113
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "edgeTrigger-1785034368520",
+      "type": "edgeTrigger",
+      "position": {
+        "x": 961.9885435953299,
+        "y": 517.297339550114
+      },
+      "data": {
+        "label": "EdgeTrigger",
+        "threshold": 100
+      },
+      "measured": {
+        "width": 233,
+        "height": 190
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1785034383886",
+      "type": "command",
+      "position": {
+        "x": 1258.1256324762694,
+        "y": 437.30121694893717
+      },
+      "data": {
+        "label": "Command",
+        "command": "pulse",
+        "value": "255,0,0,50,50,200,50"
+      },
+      "measured": {
+        "width": 241,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "frame-1785034447395",
+      "type": "frame",
+      "position": {
+        "x": 449.5326300888446,
+        "y": 386.4054838476292
+      },
+      "data": {
+        "label": "Drum"
+      },
+      "zIndex": -1,
+      "width": 1100,
+      "height": 427,
+      "measured": {
+        "width": 1100,
+        "height": 427
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false
+    },
+    {
+      "id": "deviceFilter-1785034595608",
+      "type": "deviceFilter",
+      "position": {
+        "x": 449.04422834150284,
+        "y": 914.8715106029784
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "deviceFilter": "maracas1"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1785034608419",
+      "type": "deviceFilter",
+      "position": {
+        "x": 462.66048119618335,
+        "y": 1286.957247521611
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "deviceFilter": "maracas2"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1785034639822",
+      "type": "command",
+      "position": {
+        "x": 727.0760494056846,
+        "y": 912.5765095897112
+      },
+      "data": {
+        "label": "Command",
+        "command": "pulse",
+        "value": "0,255,0,50,50,100,50"
+      },
+      "measured": {
+        "width": 241,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1785034673111",
+      "type": "command",
+      "position": {
+        "x": 1015.3807243698168,
+        "y": 1141.2261658293514
+      },
+      "data": {
+        "label": "Command",
+        "command": "pulse",
+        "value": "0,0,255,50,50,100,50"
+      },
+      "measured": {
+        "width": 241,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "frame-1785034723705",
+      "type": "frame",
+      "position": {
+        "x": 420.30569491166466,
+        "y": 847.4955316435233
+      },
+      "data": {
+        "label": "Maracas"
+      },
+      "zIndex": -1,
+      "width": 904,
+      "height": 648,
+      "measured": {
+        "width": 904,
+        "height": 648
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false
+    },
+    {
+      "id": "deviceFilter-1785034964818",
+      "type": "deviceFilter",
+      "position": {
+        "x": 1596.9393463649417,
+        "y": 991.565658040574
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "deviceFilter": "touch",
+        "portFilter": "r"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "hysteresis-1785034977078",
+      "type": "hysteresis",
+      "position": {
+        "x": 1841.5137687659121,
+        "y": 1044.043004853673
+      },
+      "data": {
+        "label": "Hysteresis",
+        "highThreshold": 400,
+        "lowThreshold": 120
+      },
+      "measured": {
+        "width": 205,
+        "height": 181
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1785034997247",
+      "type": "command",
+      "position": {
+        "x": 2133.99314422621,
+        "y": 902.564158307765
+      },
+      "data": {
+        "label": "Command",
+        "command": "comet",
+        "value": "0,255,0,2"
+      },
+      "measured": {
+        "width": 186,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "frame-1785035028033",
+      "type": "frame",
+      "position": {
+        "x": 1545.6908121064682,
+        "y": 841.7574597014406
+      },
+      "data": {
+        "label": "Touch"
+      },
+      "zIndex": -1,
+      "width": 955,
+      "height": 1171,
+      "measured": {
+        "width": 955,
+        "height": 1171
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false
+    },
+    {
+      "id": "deviceFilter-1785056964811",
+      "type": "deviceFilter",
+      "position": {
+        "x": 1611.0097716246673,
+        "y": 1359.7403216304015
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "deviceFilter": "touch",
+        "portFilter": "g"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "hysteresis-1785056975576",
+      "type": "hysteresis",
+      "position": {
+        "x": 1851.0097716246673,
+        "y": 1357.7403216304015
+      },
+      "data": {
+        "label": "Hysteresis",
+        "highThreshold": 400,
+        "lowThreshold": 100
+      },
+      "measured": {
+        "width": 205,
+        "height": 181
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1785056980583",
+      "type": "deviceFilter",
+      "position": {
+        "x": 1611.0097716246673,
+        "y": 1577.7403216304015
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "b",
+        "deviceFilter": "touch"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "hysteresis-1785056989459",
+      "type": "hysteresis",
+      "position": {
+        "x": 1863.0097716246673,
+        "y": 1579.7403216304015
+      },
+      "data": {
+        "label": "Hysteresis",
+        "highThreshold": 100,
+        "lowThreshold": 30
+      },
+      "measured": {
+        "width": 205,
+        "height": 181
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1785057055748",
+      "type": "command",
+      "position": {
+        "x": 2136.299793732067,
+        "y": 1270.5849769061967
+      },
+      "data": {
+        "label": "Command",
+        "command": "comet",
+        "value": "255,0,0,2"
+      },
+      "measured": {
+        "width": 186,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1785057082192",
+      "type": "command",
+      "position": {
+        "x": 2141.4586962353164,
+        "y": 1637.2937688724492
+      },
+      "data": {
+        "label": "Command",
+        "command": "comet",
+        "value": "0,0,255,2"
+      },
+      "measured": {
+        "width": 186,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "statistics-1785076002046",
+      "type": "statistics",
+      "position": {
+        "x": 182.5097716246671,
+        "y": 225.0169211608952
+      },
+      "data": {
+        "label": "Statistics"
+      },
+      "measured": {
+        "width": 182,
+        "height": 247
+      },
+      "selected": true,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "deviceFilter-1785033980243",
+      "target": "compare-1785033992958",
+      "id": "xy-edge__deviceFilter-1785033980243-compare-1785033992958"
+    },
+    {
+      "source": "compare-1785033992958",
+      "target": "counter-1785034010845",
+      "id": "xy-edge__compare-1785033992958-counter-1785034010845"
+    },
+    {
+      "source": "value-1785034028072",
+      "target": "math-1785034020894",
+      "targetHandle": "b",
+      "id": "xy-edge__value-1785034028072-math-1785034020894b"
+    },
+    {
+      "source": "counter-1785034010845",
+      "target": "math-1785034020894",
+      "targetHandle": "a",
+      "id": "xy-edge__counter-1785034010845-math-1785034020894a"
+    },
+    {
+      "source": "math-1785034020894",
+      "target": "compare-1785034058451",
+      "id": "xy-edge__math-1785034020894-compare-1785034058451"
+    },
+    {
+      "source": "math-1785034020894",
+      "target": "compare-1785034067268",
+      "id": "xy-edge__math-1785034020894-compare-1785034067268"
+    },
+    {
+      "source": "math-1785034020894",
+      "target": "compare-1785034083671",
+      "id": "xy-edge__math-1785034020894-compare-1785034083671"
+    },
+    {
+      "source": "compare-1785034083671",
+      "target": "command-1785034180973",
+      "id": "xy-edge__compare-1785034083671-command-1785034180973"
+    },
+    {
+      "source": "compare-1785034067268",
+      "target": "command-1785034146306",
+      "id": "xy-edge__compare-1785034067268-command-1785034146306"
+    },
+    {
+      "source": "compare-1785034058451",
+      "target": "command-1785034106266",
+      "id": "xy-edge__compare-1785034058451-command-1785034106266"
+    },
+    {
+      "source": "command-1785034106266",
+      "target": "output-1",
+      "id": "xy-edge__command-1785034106266-output-1"
+    },
+    {
+      "source": "command-1785034146306",
+      "target": "output-1",
+      "id": "xy-edge__command-1785034146306-output-1"
+    },
+    {
+      "source": "command-1785034180973",
+      "target": "output-1",
+      "id": "xy-edge__command-1785034180973-output-1"
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1785033980243",
+      "id": "xy-edge__input-1-deviceFilter-1785033980243"
+    },
+    {
+      "source": "deviceFilter-1785034266787",
+      "target": "derivative-1785034289916",
+      "id": "xy-edge__deviceFilter-1785034266787-derivative-1785034289916"
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1785034266787",
+      "id": "xy-edge__input-1-deviceFilter-1785034266787"
+    },
+    {
+      "source": "derivative-1785034289916",
+      "target": "edgeTrigger-1785034368520",
+      "id": "xy-edge__derivative-1785034289916-edgeTrigger-1785034368520"
+    },
+    {
+      "source": "edgeTrigger-1785034368520",
+      "target": "command-1785034383886",
+      "id": "xy-edge__edgeTrigger-1785034368520-command-1785034383886"
+    },
+    {
+      "source": "command-1785034383886",
+      "target": "output-1",
+      "id": "xy-edge__command-1785034383886-output-1"
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1785034595608",
+      "id": "xy-edge__input-1-deviceFilter-1785034595608"
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1785034608419",
+      "id": "xy-edge__input-1-deviceFilter-1785034608419"
+    },
+    {
+      "source": "deviceFilter-1785034595608",
+      "target": "command-1785034639822",
+      "id": "xy-edge__deviceFilter-1785034595608-command-1785034639822"
+    },
+    {
+      "source": "deviceFilter-1785034608419",
+      "target": "command-1785034673111",
+      "id": "xy-edge__deviceFilter-1785034608419-command-1785034673111"
+    },
+    {
+      "source": "command-1785034639822",
+      "target": "output-1",
+      "id": "xy-edge__command-1785034639822-output-1"
+    },
+    {
+      "source": "command-1785034673111",
+      "target": "output-1",
+      "id": "xy-edge__command-1785034673111-output-1"
+    },
+    {
+      "source": "deviceFilter-1785034964818",
+      "target": "hysteresis-1785034977078",
+      "id": "xy-edge__deviceFilter-1785034964818-hysteresis-1785034977078"
+    },
+    {
+      "source": "hysteresis-1785034977078",
+      "target": "command-1785034997247",
+      "id": "xy-edge__hysteresis-1785034977078-command-1785034997247"
+    },
+    {
+      "source": "command-1785034997247",
+      "target": "output-1",
+      "id": "xy-edge__command-1785034997247-output-1"
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1785034964818",
+      "id": "xy-edge__input-1-deviceFilter-1785034964818"
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1785056964811",
+      "id": "xy-edge__input-1-deviceFilter-1785056964811"
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1785056980583",
+      "id": "xy-edge__input-1-deviceFilter-1785056980583"
+    },
+    {
+      "source": "deviceFilter-1785056964811",
+      "target": "hysteresis-1785056975576",
+      "id": "xy-edge__deviceFilter-1785056964811-hysteresis-1785056975576"
+    },
+    {
+      "source": "deviceFilter-1785056980583",
+      "target": "hysteresis-1785056989459",
+      "id": "xy-edge__deviceFilter-1785056980583-hysteresis-1785056989459"
+    },
+    {
+      "source": "hysteresis-1785056975576",
+      "target": "command-1785057055748",
+      "id": "xy-edge__hysteresis-1785056975576-command-1785057055748"
+    },
+    {
+      "source": "command-1785057055748",
+      "target": "output-1",
+      "id": "xy-edge__command-1785057055748-output-1"
+    },
+    {
+      "source": "hysteresis-1785056989459",
+      "target": "command-1785057082192",
+      "id": "xy-edge__hysteresis-1785056989459-command-1785057082192"
+    },
+    {
+      "source": "command-1785057082192",
+      "target": "output-1",
+      "id": "xy-edge__command-1785057082192-output-1"
+    },
+    {
+      "source": "input-1",
+      "target": "statistics-1785076002046",
+      "id": "xy-edge__input-1-statistics-1785076002046"
+    }
+  ]
+}

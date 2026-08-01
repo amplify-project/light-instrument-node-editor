@@ -4,8 +4,8 @@
       "id": "input-1",
       "type": "serialInput",
       "position": {
-        "x": -554.7584998629586,
-        "y": 102.39703338497759
+        "x": -339.8123284626329,
+        "y": -8.19121421953783
       },
       "data": {
         "label": "Serial Input"
@@ -15,7 +15,7 @@
         "width": 231,
         "height": 178
       },
-      "selected": false,
+      "selected": true,
       "dragging": false
     },
     {
@@ -52,7 +52,7 @@
       },
       "measured": {
         "width": 259,
-        "height": 356
+        "height": 343
       },
       "selected": false,
       "dragging": false
@@ -90,7 +90,7 @@
       },
       "measured": {
         "width": 259,
-        "height": 356
+        "height": 343
       },
       "selected": false,
       "dragging": false
@@ -128,7 +128,7 @@
         "width": 186,
         "height": 145
       },
-      "selected": true,
+      "selected": false,
       "dragging": false
     },
     {
