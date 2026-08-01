@@ -231,6 +231,14 @@ function Flow() {
   const isValidConnection = useCallback(
     (connection: Connection | Edge) => {
       const targetNode = nodes.find((n) => n.id === connection.target);
+      const sourceNode = nodes.find((n) => n.id === connection.source);
+
+      // Serial Output only allows connections from Command and Script nodes
+      if (targetNode?.type === "serialOutput") {
+        if (sourceNode?.type !== "command" && sourceNode?.type !== "script") {
+          return false;
+        }
+      }
 
       if (targetNode && ALLOWS_MULTI_INPUT.some((type) => type == targetNode.type)) {
         return true;
