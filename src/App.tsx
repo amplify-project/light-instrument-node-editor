@@ -37,6 +37,7 @@ import { DeviceFilterNode } from "./components/nodes/processing/DeviceFilterNode
 import { EdgeTriggerNode } from "./components/nodes/math/EdgeTriggerNode";
 import { EnvelopeFollowerNode } from "./components/nodes/processing/EnvelopeFollowerNode";
 import { FrameNode } from "./components/nodes/layout/FrameNode";
+import { RerouteNode } from "./components/nodes/layout/RerouteNode";
 import { FunctionGeneratorNode } from "./components/nodes/io/FunctionGeneratorNode";
 import { GateNode } from "./components/nodes/math/GateNode";
 import { GraphNode } from "./components/nodes/display/GraphNode";
@@ -102,6 +103,7 @@ const nodeTypes = {
   rate: RateNode,
   script: ScriptNode,
   frame: FrameNode,
+  reroute: RerouteNode,
 };
 
 const initialNodes: Node[] = [
@@ -122,7 +124,7 @@ const initialNodes: Node[] = [
 ];
 
 const initialEdges: Edge[] = [];
-const ALLOWS_MULTI_INPUT = ["serialOutput", "log", "statistics", "csvWriter"];
+const ALLOWS_MULTI_INPUT = ["serialOutput", "log", "statistics", "csvWriter", "reroute"];
 
 function Flow() {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
@@ -233,9 +235,9 @@ function Flow() {
       const targetNode = nodes.find((n) => n.id === connection.target);
       const sourceNode = nodes.find((n) => n.id === connection.source);
 
-      // Serial Output only allows connections from Command and Script nodes
+      // Serial Output only allows connections from Command, Script and Reroute nodes
       if (targetNode?.type === "serialOutput") {
-        if (sourceNode?.type !== "command" && sourceNode?.type !== "script") {
+        if (sourceNode?.type !== "command" && sourceNode?.type !== "script" && sourceNode?.type !== "reroute") {
           return false;
         }
       }

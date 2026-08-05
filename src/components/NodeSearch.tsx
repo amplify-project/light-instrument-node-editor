@@ -48,6 +48,7 @@ const nodeOptions: NodeOption[] = [
   { type: "statistics", label: "Statistics", category: "Visualization" },
   // Layout
   { type: "frame", label: "Frame", category: "Layout" },
+  { type: "reroute", label: "Reroute", category: "Layout" },
 ];
 
 interface NodeSearchProps {

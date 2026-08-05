@@ -118,6 +118,38 @@ body {
   border-bottom: 1px solid #555;
 }
 
+.reroute-node {
+  min-width: 30px !important;
+  width: 30px !important;
+  height: 50px !important;
+  border-radius: 15px !important;
+  background: #3c3c3c !important;
+  border: 1px solid #666 !important;
+}
+
+.reroute-node .node-header {
+  padding: 0 !important;
+  height: 100%;
+  border: none !important;
+  background: transparent !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reroute-node .delete-btn {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.reroute-node:hover .delete-btn {
+  opacity: 1;
+}
+
+.reroute-node > .react-flow__handle.multi-handle {
+  transform: translate(-6px, -12px);
+}
+
 .graph-node, .log-node, .script-node {
   width: 250px;
 }
