@@ -103,6 +103,12 @@ connection.
 
 ## Layout
 
+### Annotation
+
+Allows adding text annotations to the node graph.
+
+- **Functional Details**: (No functional inputs or outputs)
+
 ### Frame
 
 A visual grouping component used to organize and label collections of nodes.
