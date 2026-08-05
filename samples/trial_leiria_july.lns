@@ -49,7 +49,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -67,7 +67,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 188
+        "height": 155
       },
       "selected": false,
       "dragging": false
@@ -155,7 +155,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 188
+        "height": 155
       },
       "selected": false,
       "dragging": false
@@ -173,7 +173,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 188
+        "height": 155
       },
       "selected": false,
       "dragging": false
@@ -212,8 +212,8 @@
         "port": "LED3"
       },
       "measured": {
-        "width": 265,
-        "height": 343
+        "width": 191,
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -232,8 +232,8 @@
         "port": "LED3"
       },
       "measured": {
-        "width": 265,
-        "height": 343
+        "width": 191,
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -272,7 +272,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -289,7 +289,7 @@
       },
       "measured": {
         "width": 182,
-        "height": 113
+        "height": 80
       },
       "selected": false,
       "dragging": false
@@ -325,8 +325,8 @@
         "value": "255,0,0,50,50,200,50"
       },
       "measured": {
-        "width": 241,
-        "height": 343
+        "width": 191,
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -365,7 +365,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -383,7 +383,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -401,8 +401,8 @@
         "value": "0,255,0,50,50,100,50"
       },
       "measured": {
-        "width": 241,
-        "height": 343
+        "width": 191,
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -420,8 +420,8 @@
         "value": "0,0,255,50,50,100,50"
       },
       "measured": {
-        "width": 241,
-        "height": 343
+        "width": 191,
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -461,7 +461,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -499,7 +499,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 343
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -539,7 +539,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -577,7 +577,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -615,7 +615,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 343
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -634,7 +634,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 343
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -651,9 +651,60 @@
       },
       "measured": {
         "width": 182,
-        "height": 247
+        "height": 147
       },
-      "selected": true,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "reroute-1785951447103",
+      "type": "reroute",
+      "position": {
+        "x": 2295.0015803333117,
+        "y": -48.71263797660659
+      },
+      "data": {
+        "label": "Reroute"
+      },
+      "measured": {
+        "width": 32,
+        "height": 52
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "reroute-1785951481121",
+      "type": "reroute",
+      "position": {
+        "x": 1350.50963417302,
+        "y": 928.196408822693
+      },
+      "data": {
+        "label": "Reroute"
+      },
+      "measured": {
+        "width": 32,
+        "height": 52
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "reroute-1785951508103",
+      "type": "reroute",
+      "position": {
+        "x": 2531.6320810360885,
+        "y": 1182.5526603351855
+      },
+      "data": {
+        "label": "Reroute"
+      },
+      "measured": {
+        "width": 32,
+        "height": 52
+      },
+      "selected": false,
       "dragging": false
     }
   ],
@@ -711,21 +762,6 @@
       "id": "xy-edge__compare-1785034058451-command-1785034106266"
     },
     {
-      "source": "command-1785034106266",
-      "target": "output-1",
-      "id": "xy-edge__command-1785034106266-output-1"
-    },
-    {
-      "source": "command-1785034146306",
-      "target": "output-1",
-      "id": "xy-edge__command-1785034146306-output-1"
-    },
-    {
-      "source": "command-1785034180973",
-      "target": "output-1",
-      "id": "xy-edge__command-1785034180973-output-1"
-    },
-    {
       "source": "input-1",
       "target": "deviceFilter-1785033980243",
       "id": "xy-edge__input-1-deviceFilter-1785033980243"
@@ -776,16 +812,6 @@
       "id": "xy-edge__deviceFilter-1785034608419-command-1785034673111"
     },
     {
-      "source": "command-1785034639822",
-      "target": "output-1",
-      "id": "xy-edge__command-1785034639822-output-1"
-    },
-    {
-      "source": "command-1785034673111",
-      "target": "output-1",
-      "id": "xy-edge__command-1785034673111-output-1"
-    },
-    {
       "source": "deviceFilter-1785034964818",
       "target": "hysteresis-1785034977078",
       "id": "xy-edge__deviceFilter-1785034964818-hysteresis-1785034977078"
@@ -794,11 +820,6 @@
       "source": "hysteresis-1785034977078",
       "target": "command-1785034997247",
       "id": "xy-edge__hysteresis-1785034977078-command-1785034997247"
-    },
-    {
-      "source": "command-1785034997247",
-      "target": "output-1",
-      "id": "xy-edge__command-1785034997247-output-1"
     },
     {
       "source": "input-1",
@@ -831,24 +852,69 @@
       "id": "xy-edge__hysteresis-1785056975576-command-1785057055748"
     },
     {
-      "source": "command-1785057055748",
-      "target": "output-1",
-      "id": "xy-edge__command-1785057055748-output-1"
-    },
-    {
       "source": "hysteresis-1785056989459",
       "target": "command-1785057082192",
       "id": "xy-edge__hysteresis-1785056989459-command-1785057082192"
     },
     {
-      "source": "command-1785057082192",
-      "target": "output-1",
-      "id": "xy-edge__command-1785057082192-output-1"
-    },
-    {
       "source": "input-1",
       "target": "statistics-1785076002046",
       "id": "xy-edge__input-1-statistics-1785076002046"
+    },
+    {
+      "source": "command-1785034106266",
+      "target": "reroute-1785951447103",
+      "id": "xy-edge__command-1785034106266-reroute-1785951447103"
+    },
+    {
+      "source": "command-1785034146306",
+      "target": "reroute-1785951447103",
+      "id": "xy-edge__command-1785034146306-reroute-1785951447103"
+    },
+    {
+      "source": "command-1785034180973",
+      "target": "reroute-1785951447103",
+      "id": "xy-edge__command-1785034180973-reroute-1785951447103"
+    },
+    {
+      "source": "reroute-1785951447103",
+      "target": "output-1",
+      "id": "xy-edge__reroute-1785951447103-output-1"
+    },
+    {
+      "source": "command-1785034639822",
+      "target": "reroute-1785951481121",
+      "id": "xy-edge__command-1785034639822-reroute-1785951481121"
+    },
+    {
+      "source": "command-1785034673111",
+      "target": "reroute-1785951481121",
+      "id": "xy-edge__command-1785034673111-reroute-1785951481121"
+    },
+    {
+      "source": "reroute-1785951481121",
+      "target": "output-1",
+      "id": "xy-edge__reroute-1785951481121-output-1"
+    },
+    {
+      "source": "command-1785057082192",
+      "target": "reroute-1785951508103",
+      "id": "xy-edge__command-1785057082192-reroute-1785951508103"
+    },
+    {
+      "source": "command-1785057055748",
+      "target": "reroute-1785951508103",
+      "id": "xy-edge__command-1785057055748-reroute-1785951508103"
+    },
+    {
+      "source": "command-1785034997247",
+      "target": "reroute-1785951508103",
+      "id": "xy-edge__command-1785034997247-reroute-1785951508103"
+    },
+    {
+      "source": "reroute-1785951508103",
+      "target": "output-1",
+      "id": "xy-edge__reroute-1785951508103-output-1"
     }
   ]
 }
