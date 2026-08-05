@@ -41,6 +41,21 @@ indicated by an elongated input socket.
 
 ![The Log node accepts multiple inputs, indicated by an elongated input socket](img/multiple_inputs.png){ width=90% }
 
+You can open existing setups, save the current one or start with a fresh canvas
+using the buttons in the menu panel located in the top left of the canvas or
+the application menu.
+
+Move the canvas by clicking it with your left mouse button and dragging it around.
+In the same fashion, you can move nodes around by clicking and dragging on their
+title bar. Zooming can be achieved by scrolling your mouse or using the pinch
+to zoom gesture on a trackpad. Alternatively, you can zoom in and out by using
+the `+` and `-` buttons in the toolbar located in the bottom left of the canvas.
+This toolbar also allows you to zoom the current setup to fit the screen or lock
+the entire canvas to prevent modification.
+
+Check the `samples/` directory for a few example setups which show off the basic
+features of the node editor.
+
 ## Setups for Debugging & Exploration
 
 When building a new setup or troubleshooting a sensor, it can be useful to
