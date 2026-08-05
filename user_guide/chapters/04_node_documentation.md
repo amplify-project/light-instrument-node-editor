@@ -109,6 +109,13 @@ A visual grouping component used to organize and label collections of nodes.
 
 - **Functional Details**: (No functional inputs or outputs)
 
+### Reroute
+
+Bundles multiple inputs into a single output.
+
+- **Input**: Any signal
+- **Output**: Same signal
+
 ## Math & Logic
 
 ### Boolean
