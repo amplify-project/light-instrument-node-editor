@@ -1,6 +1,6 @@
 # Node Documentation
 
-This document provides a description of all available nodes in the node-based
+This section provides a description of all available nodes in the node-based
 editor, including their functions, inputs, and outputs.
 
 ## Action
