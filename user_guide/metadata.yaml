@@ -1,0 +1,15 @@
+---
+title: "Light Instruments User Guide"
+author: "Thomas Röggla - CWI"
+date: \today
+toc: true
+numbersections: true
+geometry: margin=2.5cm
+header-includes: |
+  \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \fancyhf{}
+  \rhead{Light Instruments}
+  \lhead{User Guide}
+  \cfoot{\thepage}
+---
