@@ -4,8 +4,8 @@
       "id": "input-1",
       "type": "serialInput",
       "position": {
-        "x": -166.2502306641498,
-        "y": 446.7902304169023
+        "x": -358.2502306641498,
+        "y": 406.7902304169023
       },
       "data": {
         "label": "Serial Input"
@@ -242,8 +242,8 @@
       "id": "frame-1785034219605",
       "type": "frame",
       "position": {
-        "x": 396.84436404879915,
-        "y": -474.2599265506591
+        "x": 385.55077904587927,
+        "y": -472.2065474592191
       },
       "data": {
         "label": "Keys"
@@ -263,8 +263,8 @@
       "id": "deviceFilter-1785034266787",
       "type": "deviceFilter",
       "position": {
-        "x": 477.0526217983372,
-        "y": 523.3689523854198
+        "x": 493.10942879579227,
+        "y": 688.3392309754303
       },
       "data": {
         "label": "DeviceFilter",
@@ -281,8 +281,8 @@
       "id": "derivative-1785034289916",
       "type": "derivative",
       "position": {
-        "x": 724.0108208440518,
-        "y": 516.1657912912902
+        "x": 751.1142774651476,
+        "y": 775.6021222969132
       },
       "data": {
         "label": "Derivative"
@@ -298,8 +298,8 @@
       "id": "edgeTrigger-1785034368520",
       "type": "edgeTrigger",
       "position": {
-        "x": 961.9885435953299,
-        "y": 517.297339550114
+        "x": 986.4697998497345,
+        "y": 663.6771295211421
       },
       "data": {
         "label": "EdgeTrigger",
@@ -316,8 +316,8 @@
       "id": "command-1785034383886",
       "type": "command",
       "position": {
-        "x": 1258.1256324762694,
-        "y": 437.30121694893717
+        "x": 1299.2653819112986,
+        "y": 516.1726865110445
       },
       "data": {
         "label": "Command",
@@ -335,18 +335,18 @@
       "id": "frame-1785034447395",
       "type": "frame",
       "position": {
-        "x": 449.5326300888446,
-        "y": 386.4054838476292
+        "x": 471.0430308785104,
+        "y": 395.16068424246214
       },
       "data": {
         "label": "Drum"
       },
       "zIndex": -1,
-      "width": 1100,
-      "height": 427,
+      "width": 1040,
+      "height": 529,
       "measured": {
-        "width": 1100,
-        "height": 427
+        "width": 1040,
+        "height": 529
       },
       "selected": false,
       "dragging": false,
@@ -356,8 +356,8 @@
       "id": "deviceFilter-1785034595608",
       "type": "deviceFilter",
       "position": {
-        "x": 449.04422834150284,
-        "y": 914.8715106029784
+        "x": 466.96956233289086,
+        "y": 1065.444316130638
       },
       "data": {
         "label": "DeviceFilter",
@@ -392,8 +392,8 @@
       "id": "command-1785034639822",
       "type": "command",
       "position": {
-        "x": 727.0760494056846,
-        "y": 912.5765095897112
+        "x": 769.0595179807099,
+        "y": 1051.2239811259826
       },
       "data": {
         "label": "Command",
@@ -411,8 +411,8 @@
       "id": "command-1785034673111",
       "type": "command",
       "position": {
-        "x": 1015.3807243698168,
-        "y": 1141.2261658293514
+        "x": 991.5716595457031,
+        "y": 1234.2304359837083
       },
       "data": {
         "label": "Command",
@@ -430,8 +430,8 @@
       "id": "frame-1785034723705",
       "type": "frame",
       "position": {
-        "x": 420.30569491166466,
-        "y": 847.4955316435233
+        "x": 432.85342870563613,
+        "y": 999.8608705703218
       },
       "data": {
         "label": "Maracas"
@@ -451,8 +451,8 @@
       "id": "deviceFilter-1785034964818",
       "type": "deviceFilter",
       "position": {
-        "x": 1596.9393463649417,
-        "y": 991.565658040574
+        "x": 1608.9393463649417,
+        "y": 1021.565658040574
       },
       "data": {
         "label": "DeviceFilter",
@@ -495,7 +495,7 @@
       "data": {
         "label": "Command",
         "command": "comet",
-        "value": "0,255,0,2"
+        "value": "255,0,0,2"
       },
       "measured": {
         "width": 186,
@@ -508,18 +508,18 @@
       "id": "frame-1785035028033",
       "type": "frame",
       "position": {
-        "x": 1545.6908121064682,
-        "y": 841.7574597014406
+        "x": 1548.836632645501,
+        "y": 838.858851888319
       },
       "data": {
         "label": "Touch"
       },
       "zIndex": -1,
-      "width": 955,
-      "height": 1171,
+      "width": 879,
+      "height": 1244,
       "measured": {
-        "width": 955,
-        "height": 1171
+        "width": 879,
+        "height": 1244
       },
       "selected": false,
       "dragging": false,
@@ -611,7 +611,7 @@
       "data": {
         "label": "Command",
         "command": "comet",
-        "value": "255,0,0,2"
+        "value": "0,255,0,2"
       },
       "measured": {
         "width": 186,
@@ -643,8 +643,8 @@
       "id": "statistics-1785076002046",
       "type": "statistics",
       "position": {
-        "x": 182.5097716246671,
-        "y": 225.0169211608952
+        "x": 137.9449316141012,
+        "y": 302.0428571651216
       },
       "data": {
         "label": "Statistics"
@@ -653,7 +653,7 @@
         "width": 182,
         "height": 147
       },
-      "selected": false,
+      "selected": true,
       "dragging": false
     },
     {
@@ -677,8 +677,8 @@
       "id": "reroute-1785951481121",
       "type": "reroute",
       "position": {
-        "x": 1350.50963417302,
-        "y": 928.196408822693
+        "x": 1420.9827019583797,
+        "y": 946.1468145477688
       },
       "data": {
         "label": "Reroute"
@@ -706,6 +706,94 @@
       },
       "selected": false,
       "dragging": false
+    },
+    {
+      "id": "annotation-1785958851640",
+      "type": "annotation",
+      "position": {
+        "x": 445.69353394662016,
+        "y": -414.2796779774879
+      },
+      "data": {
+        "label": "Annotation",
+        "text": "This area of the node tree filters for messages from the key instrument. Every time a button press (i.e. the data value is equal to one) is received on any key it is add to a counter. We then perform an integer division of the counter value by 3. Then:\n\n- If the resulting remainder is equal to 0, we send a 'pulse' command with colour red to the strip named LED3\n- If the resulting remainder is equal to 1, we send a 'pulse' command with colour green to the strip named LED3\n- If the resulting remainder is euqal to 2, we send a 'pulse' command with\ncolour blue to the strip named LED3"
+      },
+      "zIndex": -1,
+      "width": 528,
+      "height": 259,
+      "measured": {
+        "width": 528,
+        "height": 259
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false
+    },
+    {
+      "id": "annotation-1785959344588",
+      "type": "annotation",
+      "position": {
+        "x": 501.8188131897976,
+        "y": 444.54237853404044
+      },
+      "data": {
+        "label": "Annotation",
+        "text": "This area of the tree filters for messages from the instrument named 'drum_big'. We then take the derivative of the signal, which will have a positive value if the signal increases and a negative value if the value decreases. This is passed into a rising edge trigger, which will emit a signal every time the signal is on the increase and has a value greater than 100. Every time the trigger activates, a red 'pulse' command is sent to all LED strips on all LED controllers."
+      },
+      "zIndex": -1,
+      "width": 528,
+      "height": 193,
+      "measured": {
+        "width": 528,
+        "height": 193
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false
+    },
+    {
+      "id": "annotation-1785960010648",
+      "type": "annotation",
+      "position": {
+        "x": 461.46311294031614,
+        "y": 1485.4115065268902
+      },
+      "data": {
+        "label": "Annotation",
+        "text": "This area filters for the maracas. If a signal on 'maracas1' is detected, send a green 'pulse' command to all output devices. If a signal on 'maracas2' is detected, send a blue 'pulse' command to all output devices"
+      },
+      "zIndex": -1,
+      "width": 471,
+      "height": 143,
+      "measured": {
+        "width": 471,
+        "height": 143
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false
+    },
+    {
+      "id": "annotation-1785960172586",
+      "type": "annotation",
+      "position": {
+        "x": 1603.5713909913293,
+        "y": 1806.6483150157958
+      },
+      "data": {
+        "label": "Annotation",
+        "text": "This area filters for the different ports of the 'touch' instrument:\n\n- If the signal on the port named 'r' rises above 400, emit a signal which then activates the 'comet' animation with colour red\n- If the signal on the port named 'g' rises above 400, emit a signal which then activates the 'comet' animation with colour green\n- If the signal on the port named 'b' rises above 100, emit a signal which then activates the 'comet' animation with colour blue\n\nThe data for each port is passed through Hysteresis nodes, which activate if the incoming value rises above the value defined in the param 'High' and only retriggers after the incoming value has fallen below the value defined in the param 'Low'."
+      },
+      "zIndex": -1,
+      "width": 468,
+      "height": 253,
+      "measured": {
+        "width": 468,
+        "height": 253
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false
     }
   ],
   "edges": [
