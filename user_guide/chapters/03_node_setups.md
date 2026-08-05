@@ -7,6 +7,8 @@ behaviors. Instead of writing code, you create a "node setup" (also known as a
 graph or patch) by placing functional blocks on a canvas and connecting them
 with lines.
 
+![A basic node setup showing data flow from a Serial Input node to a Serial Output node via several Processing nodes.](img/basic_setup.png){ width=90% }
+
 Data flows from left to right: it starts at an **Input** node (like the physical
 serial port or a file simulation), passes through various **Processing** or
 **Math & Logic** nodes that transform the signals, and finally reaches an
@@ -14,7 +16,32 @@ serial port or a file simulation), passes through various **Processing** or
 file. This visual approach allows you to quickly experiment with different
 sensor-to-light mappings without needing to recompile firmware.
 
-## Setups for Debugging
+### Interacting with the Editor
+
+![The context menu for adding nodes is activated by pressing Shift+A](img/adding_nodes.png){ width=90% }
+
+To build your setup, you can interact with the editor using the following
+commands:
+
+- **Adding Nodes**: Press `Shift+A` to open the search menu. Type the name of
+  the node you want to add and press `Enter`, or click on the desired node in
+  the list.
+- **Deleting Nodes**: Click the "×" button in the top-right corner of the node's
+  header.
+- **Creating Connections**: Click and drag from an output handle (the circular
+  socket on the right side of a node) to an input handle (on the left side of
+  another node).
+- **Deleting Connections**: Click on the connection line to select it, then
+  press `Backspace` or `Delete` on your keyboard.
+
+You can route the output of any node to the input of as many nodes as required.
+Most nodes only accept a single incoming connection. Some nodes, however, accept
+multiple inputs, e.g. the *Log* node or the *Serial Output* node. This is
+indicated by an elongated input socket.
+
+![The Log node accepts multiple inputs, indicated by an elongated input socket](img/multiple_inputs.png){ width=90% }
+
+## Setups for Debugging & Exploration
 
 When building a new setup or troubleshooting a sensor, it can be useful to
 visualize the raw data arriving from the instruments. The editor provides two
@@ -30,6 +57,8 @@ primary nodes for this purpose:
 A common debugging pattern is to branch your signal and connect it to a *Graph*
 or *Log* node in parallel with your main processing logic.
 
+![Debugging setup with all incoming messages being displayed in a Log node and a Graph node displaying the current rate of incoming messages per second through the use of the Rate node](img/debug.png){ width=90% }
+
 ## Device Filtering
 
 In a large setup with multiple instruments, the receiver's serial stream will
@@ -42,6 +71,8 @@ to the "percussion1" instrument, you would set the device filter to
 "percussion1". Only packets matching your filter will be passed through to the
 output handle, allowing you to build modular logic for each individual
 instrument in your setup.
+
+![Two device filter nodes redirect the data streams in separate paths for the key instrument and the drum instrument, triggering different commands](img/device_filter.png){ width=90% }
 
 ## Sending commands
 
