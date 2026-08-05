@@ -47,6 +47,7 @@ const nodeOptions: NodeOption[] = [
   { type: "log", label: "Log", category: "Visualization" },
   { type: "statistics", label: "Statistics", category: "Visualization" },
   // Layout
+  { type: "annotation", label: "Annotation", category: "Layout" },
   { type: "frame", label: "Frame", category: "Layout" },
   { type: "reroute", label: "Reroute", category: "Layout" },
 ];

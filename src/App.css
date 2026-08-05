@@ -118,6 +118,10 @@ body {
   border-bottom: 1px solid #555;
 }
 
+.annotation-node .node-header {
+  border-top: 3px solid #aaaaaa;
+}
+
 .reroute-node {
   min-width: 30px !important;
   width: 30px !important;

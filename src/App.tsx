@@ -37,6 +37,7 @@ import { DeviceFilterNode } from "./components/nodes/processing/DeviceFilterNode
 import { EdgeTriggerNode } from "./components/nodes/math/EdgeTriggerNode";
 import { EnvelopeFollowerNode } from "./components/nodes/processing/EnvelopeFollowerNode";
 import { FrameNode } from "./components/nodes/layout/FrameNode";
+import { AnnotationNode } from "./components/nodes/layout/AnnotationNode";
 import { RerouteNode } from "./components/nodes/layout/RerouteNode";
 import { FunctionGeneratorNode } from "./components/nodes/io/FunctionGeneratorNode";
 import { GateNode } from "./components/nodes/math/GateNode";
@@ -103,6 +104,7 @@ const nodeTypes = {
   rate: RateNode,
   script: ScriptNode,
   frame: FrameNode,
+  annotation: AnnotationNode,
   reroute: RerouteNode,
 };
 
@@ -217,9 +219,9 @@ function Flow() {
       type,
       position,
       data: { label: type.charAt(0).toUpperCase() + type.slice(1) },
-      zIndex: type === "frame" ? -1 : undefined,
-      width: type === "frame" ? 300 : undefined,
-      height: type === "frame" ? 200 : undefined,
+      zIndex: (type === "frame" || type === "annotation") ? -1 : undefined,
+      width: (type === "frame" || type === "annotation") ? 300 : undefined,
+      height: (type === "frame" || type === "annotation") ? 200 : undefined,
     };
 
     setNodes((nds) => nds.concat(newNode));
