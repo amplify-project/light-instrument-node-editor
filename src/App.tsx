@@ -471,8 +471,21 @@ function Flow() {
       setEdges(setup.edges);
       setCurrentPath(path);
       setIsDirty(false);
+
+      // Trigger Value nodes after a short delay to ensure components are mounted and consumers registered
+      setTimeout(() => {
+        newNodes.forEach((node) => {
+          if (node.type === "value") {
+            onData(node.id, {
+              device: "value",
+              port: "out",
+              value: node.data.value ?? 0,
+            });
+          }
+        });
+      }, 500);
     }
-  }, []);
+  }, [onData]);
 
   const onOpen = useCallback(async () => {
     try {
