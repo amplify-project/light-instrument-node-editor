@@ -7,9 +7,14 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 use tauri::{AppHandle, Emitter, Manager, State, WindowEvent};
 
+struct PortEntry {
+    port: Box<dyn serialport::SerialPort>,
+    stop_signal: Arc<AtomicBool>,
+}
+
 struct SerialState {
-    ports: Mutex<HashMap<String, Box<dyn serialport::SerialPort>>>,
-    simulation_running: Arc<AtomicBool>
+    ports: Mutex<HashMap<String, PortEntry>>,
+    simulation_running: Arc<AtomicBool>,
 }
 
 #[tauri::command]
@@ -27,16 +32,32 @@ fn open_port(
     port_name: String,
     baud_rate: u32,
 ) -> Result<(), String> {
+    {
+        let ports = state.ports.lock().unwrap();
+
+        if ports.contains_key(&port_name) {
+            return Err("Port already open".to_string());
+        }
+    }
+
     let port = serialport::new(port_name.clone(), baud_rate)
         .timeout(std::time::Duration::from_millis(10))
         .open()
         .map_err(|e| e.to_string())?;
 
-    let mut ports = state.ports.lock().unwrap();
-    ports.insert(
-        port_name.clone(),
-        port.try_clone().map_err(|e| e.to_string())?,
-    );
+    let stop_signal = Arc::new(AtomicBool::new(false));
+    let thread_stop_signal = stop_signal.clone();
+
+    {
+        let mut ports = state.ports.lock().unwrap();
+        ports.insert(
+            port_name.clone(),
+            PortEntry {
+                port: port.try_clone().map_err(|e| e.to_string())?,
+                stop_signal,
+            },
+        );
+    }
 
     // Start a background thread to read from the port
     let mut reader = port;
@@ -67,15 +88,18 @@ fn open_port(
 #[tauri::command]
 fn close_port(state: State<'_, SerialState>, port_name: String) {
     let mut ports = state.ports.lock().unwrap();
-    ports.remove(&port_name);
+
+    if let Some(entry) = ports.remove(&port_name) {
+        entry.stop_signal.store(true, Ordering::SeqCst);
+    }
 }
 
 #[tauri::command]
 fn write_serial(state: State<'_, SerialState>, port_name: String, data: String) -> Result<(), String> {
     let mut ports = state.ports.lock().unwrap();
 
-    if let Some(port) = ports.get_mut(&port_name) {
-        port.write_all(data.as_bytes()).map_err(|e| e.to_string())?;
+    if let Some(entry) = ports.get_mut(&port_name) {
+        entry.port.write_all(data.as_bytes()).map_err(|e| e.to_string())?;
 
         Ok(())
     } else {
