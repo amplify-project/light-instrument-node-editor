@@ -1952,7 +1952,7 @@ dependencies = [
 
 [[package]]
 name = "light-instrument-editor"
-version = "1.3.2"
+version = "1.3.3"
 dependencies = [
  "redis",
  "serde",
