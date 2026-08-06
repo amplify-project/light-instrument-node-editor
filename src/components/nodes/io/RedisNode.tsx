@@ -26,6 +26,7 @@ export function RedisNode({ data, id }: any) {
         let payload = "";
 
         if (incoming && typeof incoming === "object") {
+          incoming["timestamp"] = Date.now() / 1000;
           payload = JSON.stringify(incoming);
         } else {
           payload = String(incoming);
