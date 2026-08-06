@@ -93,7 +93,8 @@ body {
 /* Output Nodes - Purple */
 .command-node .node-header,
 .script-node .node-header,
-.csv-writer-node .node-header {
+.csv-writer-node .node-header,
+.redis-node .node-header {
   border-top: 3px solid #a246ff;
 }
 
