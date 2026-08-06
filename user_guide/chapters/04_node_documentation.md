@@ -76,6 +76,15 @@ frequency.
 
 - **Output**: Periodic numeric signal (0 to 1)
 
+### Redis PubSub
+
+Pipes data into a Redis PubSub channel.
+
+- **Input**: Any data (serialized to JSON if object)
+- **Hostname**: Redis server hostname
+- **Port**: Redis server port
+- **Channel**: PubSub channel name
+
 ### Serial Input
 
 Interfaces with a physical serial port to receive raw data packets.
