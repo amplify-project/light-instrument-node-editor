@@ -2,9 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import { Handle, Position } from "@xyflow/react";
 import { invoke } from "@tauri-apps/api/core";
 
+interface LastSentMessage {
+  message: string;
+  isError: boolean;
+}
+
 export function RedisNode({ data, id }: any) {
-  const [lastSent, setLastSent] = useState("");
-  const lastSentRef = useRef("");
+  const [lastSent, setLastSent] = useState<LastSentMessage>({ message: "", isError: false });
+  const lastSentRef = useRef<LastSentMessage>({ message: "", isError: false });
 
   const host = data.host ?? "localhost";
   const port = data.port ?? 6379;
@@ -12,7 +17,7 @@ export function RedisNode({ data, id }: any) {
 
   useEffect(() => {
     const syncInterval = setInterval(() => {
-      if (lastSentRef.current !== lastSent) {
+      if (lastSentRef.current.message !== lastSent.message) {
         setLastSent(lastSentRef.current);
       }
     }, 100);
@@ -33,14 +38,24 @@ export function RedisNode({ data, id }: any) {
         }
 
         if (payload) {
-          lastSentRef.current = payload.length > 30 ? payload.substring(0, 27) + "..." : payload;
-
           invoke("redis_publish", {
             host: host,
             port: parseInt(port.toString()),
             channel: channel,
             message: payload,
-          }).catch(console.error);
+          }).then(() => {
+            lastSentRef.current = {
+              message: payload.length > 30 ? payload.substring(0, 27) + "..." : payload,
+              isError: false
+            };
+          }).catch((err) => {
+            lastSentRef.current = {
+              message: err.length > 35 ? err.substring(0, 38) + "..." : err,
+              isError: true
+            };
+
+            console.error(err);
+          });
         }
       });
     }
@@ -96,8 +111,12 @@ export function RedisNode({ data, id }: any) {
         />
 
         {lastSent && (
-          <div className="node-status">
-            Last Sent: {lastSent}
+          <div className="node-status" style={{ color: lastSent.isError ? "#f00" : "#888"}}>
+            {(!lastSent.isError) ? (
+              `Last Sent: ${lastSent.message}`
+            ) : (
+              lastSent.message
+            )}
           </div>
         )}
       </div>
