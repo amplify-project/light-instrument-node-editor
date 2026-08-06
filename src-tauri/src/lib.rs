@@ -199,6 +199,22 @@ fn append_to_file(path: String, content: String) -> Result<(), String> {
     file.write_all(content.as_bytes()).map_err(|e| e.to_string())
 }
 
+#[tauri::command]
+fn redis_publish(host: String, port: u16, channel: String, message: String) -> Result<(), String> {
+    let client = redis::Client::open(format!("redis://{}:{}/", host, port))
+        .map_err(|e| e.to_string())?;
+
+    let mut con = client.get_connection().map_err(|e| e.to_string())?;
+
+    redis::cmd("PUBLISH")
+        .arg(channel)
+        .arg(message)
+        .exec(&mut con)
+        .unwrap();
+
+    Ok(())
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -285,7 +301,8 @@ pub fn run() {
             load_file,
             start_simulation,
             stop_simulation,
-            append_to_file
+            append_to_file,
+            redis_publish
         ])
         .run(tauri::generate_context!())
         .expect("error while building tauri application")
