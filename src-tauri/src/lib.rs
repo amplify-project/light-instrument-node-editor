@@ -67,6 +67,10 @@ fn open_port(
         let mut serial_buf: Vec<u8> = vec![0; 1024];
 
         loop {
+            if thread_stop_signal.load(Ordering::SeqCst) {
+                break;
+            }
+
             match reader.read(serial_buf.as_mut_slice()) {
                 Ok(t) => {
                     let data = String::from_utf8_lossy(&serial_buf[..t]).to_string();
