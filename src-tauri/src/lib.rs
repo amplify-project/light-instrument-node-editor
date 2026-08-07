@@ -256,8 +256,18 @@ pub fn run() {
                 .item(&quit_menu_entry)
                 .build()?;
 
+            let edit_menu = SubmenuBuilder::new(app, "Edit")
+                .undo()
+                .redo()
+                .separator()
+                .cut()
+                .copy()
+                .paste()
+                .select_all()
+                .build()?;
+
             let menu = MenuBuilder::new(app)
-                .items(&[&submenu])
+                .items(&[&submenu, &edit_menu])
                 .build()?;
 
             app.set_menu(menu)?;
