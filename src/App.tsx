@@ -694,7 +694,6 @@ function Flow() {
         selectionMode={SelectionMode.Partial}
         selectionKeyCode="Shift"
         multiSelectionKeyCode="Shift"
-        panOnDrag={[1, 2]}
         fitView
       >
         <Background color="#333" gap={20} />
