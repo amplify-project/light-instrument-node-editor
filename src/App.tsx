@@ -144,12 +144,18 @@ function Flow() {
   }>({ sensors: new Map(), actuators: new Map() });
   const [isDirty, setIsDirty] = useState(false);
   const isDirtyRef = useRef(false);
+  const nodesRef = useRef<Node[]>(nodes);
   const edgesRef = useRef<Edge[]>(edges);
   const adjacencyMapRef = useRef<{ [sourceId: string]: Edge[] }>({});
+  const copyBufferRef = useRef<{ nodes: Node[]; edges: Edge[] } | null>(null);
 
   useEffect(() => {
     isDirtyRef.current = isDirty;
   }, [isDirty]);
+
+  useEffect(() => {
+    nodesRef.current = nodes;
+  }, [nodes]);
 
   useEffect(() => {
     edgesRef.current = edges;
@@ -528,13 +534,71 @@ function Flow() {
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement;
+      const isInput = target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable;
+
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") {
         e.preventDefault();
         onSave();
-      } else if (e.shiftKey && e.key.toLowerCase() === "a") {
-        const target = e.target as HTMLElement;
+      } else if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "c") {
+        if (isInput) {
+          return;
+        }
 
-        if (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable) {
+        const selectedNodes = nodesRef.current.filter((node) => node.selected);
+        const clonableNodes = selectedNodes.filter((n) => n.type !== "serialInput" && n.type !== "serialOutput");
+
+        if (clonableNodes.length > 0) {
+          const clonableNodeIds = new Set(clonableNodes.map((n) => n.id));
+          const selectedEdges = edgesRef.current.filter(
+            (edge) => edge.selected && clonableNodeIds.has(edge.source) && clonableNodeIds.has(edge.target)
+          );
+
+          copyBufferRef.current = {
+            nodes: clonableNodes,
+            edges: selectedEdges,
+          };
+        }
+      } else if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "v") {
+        if (isInput) {
+          return;
+        }
+
+        if (copyBufferRef.current) {
+          const idMap: { [oldId: string]: string } = {};
+          const now = Date.now();
+
+          const newNodes = copyBufferRef.current.nodes.map((node, index) => {
+            const newId = `${node.type}-${now}-${index}-${Math.floor(Math.random() * 1000)}`;
+            idMap[node.id] = newId;
+
+            return {
+              ...node,
+              id: newId,
+              position: {
+                x: node.position.x + 40,
+                y: node.position.y + 40,
+              },
+              selected: true,
+            };
+          });
+
+          const newEdges = copyBufferRef.current.edges.map((edge, index) => {
+            return {
+              ...edge,
+              id: `edge-${now}-${index}-${Math.floor(Math.random() * 1000)}`,
+              source: idMap[edge.source],
+              target: idMap[edge.target],
+              selected: true,
+            };
+          });
+
+          setNodes((nds) => nds.map((n) => ({ ...n, selected: false })).concat(newNodes));
+          setEdges((eds) => eds.map((e) => ({ ...e, selected: false })).concat(newEdges));
+          setIsDirty(true);
+        }
+      } else if (e.shiftKey && e.key.toLowerCase() === "a") {
+        if (isInput) {
           return;
         }
 
