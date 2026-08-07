@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import {
   ReactFlow,
   Background,
@@ -14,6 +14,7 @@ import {
   ReactFlowProvider,
   useReactFlow,
   Connection,
+  SelectionMode,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { save, open, ask } from "@tauri-apps/plugin-dialog";
@@ -651,7 +652,7 @@ function Flow() {
   }, [handleMouseMove, handleKeyDown, onSave, handleSaveAs, onOpen, onNew]);
 
   // Enrich nodes with data flow callbacks
-  const enrichedNodes = nodes.map((node) => ({
+  const enrichedNodes = useMemo(() => nodes.map((node) => ({
     ...node,
     data: {
       ...node.data,
@@ -663,7 +664,7 @@ function Flow() {
       activePort,
       setActivePort,
     },
-  }));
+  })), [nodes, onData, registerConsumer, unregisterConsumer, onDeleteNode, updateNodeData, activePort, setActivePort]);
 
   const mapDeviceAgeToOpacity = (age: number) => {
     return (age < 10000) ? (
@@ -689,6 +690,11 @@ function Flow() {
         onConnect={onConnect}
         isValidConnection={isValidConnection}
         nodeTypes={nodeTypes}
+        selectionOnDrag={true}
+        selectionMode={SelectionMode.Partial}
+        selectionKeyCode="Shift"
+        multiSelectionKeyCode="Shift"
+        panOnDrag={[1, 2]}
         fitView
       >
         <Background color="#333" gap={20} />
