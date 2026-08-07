@@ -34,7 +34,7 @@ export function RedisNode({ data, id }: any) {
           incoming["timestamp"] = Date.now() / 1000;
           payload = JSON.stringify(incoming);
         } else {
-          payload = String(incoming);
+          return;
         }
 
         if (payload) {
@@ -71,7 +71,7 @@ export function RedisNode({ data, id }: any) {
     <div className="serial-node redis-node">
       <Handle type="target" position={Position.Left} className="multi-handle" />
 
-      <div className="node-header" title={"Pipes data into a Redis PubSub channel.\nInput: Any data (serialized to JSON if object)\nOutput: None"}>
+      <div className="node-header" title={"Pipes data into a Redis PubSub channel.\nInput: JSON-serializable object data\nOutput: None"}>
         <span>Redis PubSub</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>
