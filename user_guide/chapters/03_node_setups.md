@@ -28,6 +28,9 @@ commands:
   the list.
 - **Deleting Nodes**: Click the "×" button in the top-right corner of the node's
   header.
+- **Selecting Nodes**: Hold `Shift`, left click and drag your mouse to activate
+  marquee selection. Selected nodes can be copied and pasted using `Cmd/Ctrl+C`
+  and `Cmd/Ctrl+V`.
 - **Creating Connections**: Click and drag from an output handle (the circular
   socket on the right side of a node) to an input handle (on the left side of
   another node).
