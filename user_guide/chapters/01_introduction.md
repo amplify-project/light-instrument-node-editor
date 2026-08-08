@@ -1,3 +1,4 @@
+\newpage
 # Introduction
 
 Welcome to the Light Instruments project. This guide will help you understand
