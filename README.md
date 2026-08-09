@@ -22,7 +22,8 @@ to:
 
 For a comprehensive guide on how to use the editor, including detailed node
 descriptions and example setups, please refer to the
-**[User Guide (PDF)](user_guide/user_guide.pdf)**.
+[User Guide (PDF)](user_guide/user_guide.pdf) or check the `samples/` directory
+in this repository.
 
 ### Development
 
