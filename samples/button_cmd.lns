@@ -1,0 +1,326 @@
+{
+  "nodes": [
+    {
+      "id": "input-1",
+      "type": "serialInput",
+      "position": {
+        "x": -99.00152671755728,
+        "y": 125.16335877862595
+      },
+      "data": {
+        "label": "Serial Input"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 231,
+        "height": 211
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "output-1",
+      "type": "serialOutput",
+      "position": {
+        "x": 1697.956473579145,
+        "y": 37.81299276601112
+      },
+      "data": {
+        "label": "Serial Output"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 217,
+        "height": 120
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1787251803065",
+      "type": "deviceFilter",
+      "position": {
+        "x": 656.8152671755726,
+        "y": -183.26870229007633
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "D2"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1787251807186-0-122",
+      "type": "deviceFilter",
+      "position": {
+        "x": 659.4625954198474,
+        "y": 504.30381679389313
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "deviceFilter": "",
+        "portFilter": "D5"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1787251808077-0-710",
+      "type": "deviceFilter",
+      "position": {
+        "x": 657.6091603053435,
+        "y": 64.66412213740459
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "D3"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1787251812442-0-856",
+      "type": "deviceFilter",
+      "position": {
+        "x": 656.4732824427481,
+        "y": 284.0503816793893
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "D4"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1787251828211-0-829",
+      "type": "deviceFilter",
+      "position": {
+        "x": 654.8152671755726,
+        "y": -419.51870229007636
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "D1"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1787251839559",
+      "type": "command",
+      "position": {
+        "x": 976.9770992366412,
+        "y": -467.46717557251907
+      },
+      "data": {
+        "label": "Command",
+        "command": "comet",
+        "value": "255,0,0,10"
+      },
+      "measured": {
+        "width": 186,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1787251876475-0-741",
+      "type": "command",
+      "position": {
+        "x": 1282.0970266571258,
+        "y": -260.49602941652455
+      },
+      "data": {
+        "label": "Command",
+        "command": "pulse",
+        "value": "0,255,0,50,50,50,10"
+      },
+      "measured": {
+        "width": 235,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1787251879913-0-417",
+      "type": "command",
+      "position": {
+        "x": 981.8818913883356,
+        "y": -27.237393442478915
+      },
+      "data": {
+        "label": "Command",
+        "command": "comet",
+        "value": "0,0,255,10"
+      },
+      "measured": {
+        "width": 186,
+        "height": 343
+      },
+      "selected": true,
+      "dragging": false
+    },
+    {
+      "id": "command-1787251910763-0-516",
+      "type": "command",
+      "position": {
+        "x": 1283.8984755744505,
+        "y": 163.48175847171873
+      },
+      "data": {
+        "label": "Command",
+        "command": "pulse",
+        "value": "255,255,0,50,50,50,10"
+      },
+      "measured": {
+        "width": 247,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1787251914430-0-239",
+      "type": "command",
+      "position": {
+        "x": 983.5703719607709,
+        "y": 392.22908469721204
+      },
+      "data": {
+        "label": "Command",
+        "command": "pulse",
+        "value": "0,255,255,50,50,50,10"
+      },
+      "measured": {
+        "width": 247,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1787251920338",
+      "type": "compare",
+      "position": {
+        "x": 275.7361741318745,
+        "y": 70.63488903519625
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 188
+      },
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "input-1",
+      "target": "compare-1787251920338",
+      "id": "xy-edge__input-1-compare-1787251920338"
+    },
+    {
+      "source": "compare-1787251920338",
+      "target": "deviceFilter-1787251828211-0-829",
+      "id": "xy-edge__compare-1787251920338-deviceFilter-1787251828211-0-829"
+    },
+    {
+      "source": "compare-1787251920338",
+      "target": "deviceFilter-1787251803065",
+      "id": "xy-edge__compare-1787251920338-deviceFilter-1787251803065"
+    },
+    {
+      "source": "compare-1787251920338",
+      "target": "deviceFilter-1787251808077-0-710",
+      "id": "xy-edge__compare-1787251920338-deviceFilter-1787251808077-0-710"
+    },
+    {
+      "source": "compare-1787251920338",
+      "target": "deviceFilter-1787251812442-0-856",
+      "id": "xy-edge__compare-1787251920338-deviceFilter-1787251812442-0-856"
+    },
+    {
+      "source": "compare-1787251920338",
+      "target": "deviceFilter-1787251807186-0-122",
+      "id": "xy-edge__compare-1787251920338-deviceFilter-1787251807186-0-122"
+    },
+    {
+      "source": "deviceFilter-1787251807186-0-122",
+      "target": "command-1787251914430-0-239",
+      "id": "xy-edge__deviceFilter-1787251807186-0-122-command-1787251914430-0-239"
+    },
+    {
+      "source": "deviceFilter-1787251812442-0-856",
+      "target": "command-1787251910763-0-516",
+      "id": "xy-edge__deviceFilter-1787251812442-0-856-command-1787251910763-0-516"
+    },
+    {
+      "source": "deviceFilter-1787251808077-0-710",
+      "target": "command-1787251879913-0-417",
+      "id": "xy-edge__deviceFilter-1787251808077-0-710-command-1787251879913-0-417"
+    },
+    {
+      "source": "deviceFilter-1787251803065",
+      "target": "command-1787251876475-0-741",
+      "id": "xy-edge__deviceFilter-1787251803065-command-1787251876475-0-741"
+    },
+    {
+      "source": "deviceFilter-1787251828211-0-829",
+      "target": "command-1787251839559",
+      "id": "xy-edge__deviceFilter-1787251828211-0-829-command-1787251839559"
+    },
+    {
+      "source": "command-1787251839559",
+      "target": "output-1",
+      "id": "xy-edge__command-1787251839559-output-1"
+    },
+    {
+      "source": "command-1787251876475-0-741",
+      "target": "output-1",
+      "id": "xy-edge__command-1787251876475-0-741-output-1"
+    },
+    {
+      "source": "command-1787251879913-0-417",
+      "target": "output-1",
+      "id": "xy-edge__command-1787251879913-0-417-output-1"
+    },
+    {
+      "source": "command-1787251910763-0-516",
+      "target": "output-1",
+      "id": "xy-edge__command-1787251910763-0-516-output-1"
+    },
+    {
+      "source": "command-1787251914430-0-239",
+      "target": "output-1",
+      "id": "xy-edge__command-1787251914430-0-239-output-1"
+    }
+  ]
+}

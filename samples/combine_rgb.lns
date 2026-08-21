@@ -1,0 +1,254 @@
+{
+  "nodes": [
+    {
+      "id": "input-1",
+      "type": "serialInput",
+      "position": {
+        "x": -238.7229541474006,
+        "y": 111.49781675808232
+      },
+      "data": {
+        "label": "Serial Input"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 231,
+        "height": 187
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "output-1",
+      "type": "serialOutput",
+      "position": {
+        "x": 1435.7629292236245,
+        "y": 112.04083737828478
+      },
+      "data": {
+        "label": "Serial Output"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 247,
+        "height": 120
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "combineRgb-1787306064909",
+      "type": "combineRgb",
+      "position": {
+        "x": 849.0082247775758,
+        "y": 103.13016997879322
+      },
+      "data": {
+        "label": "CombineRgb"
+      },
+      "measured": {
+        "width": 182,
+        "height": 153
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1787306074390",
+      "type": "deviceFilter",
+      "position": {
+        "x": 140.52424657198776,
+        "y": -117.59105681190431
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "D3"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1787306082314-0-677",
+      "type": "deviceFilter",
+      "position": {
+        "x": 139.3875837985084,
+        "y": 332.6054972975393
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "D5"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": true,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1787306083842-0-348",
+      "type": "deviceFilter",
+      "position": {
+        "x": 140.69488958716863,
+        "y": 102.06660910403996
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "D4"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "mapRange-1787306131582",
+      "type": "mapRange",
+      "position": {
+        "x": 493.75216172251373,
+        "y": -234.23078243776067
+      },
+      "data": {
+        "label": "MapRange",
+        "inMax": 1
+      },
+      "measured": {
+        "width": 221,
+        "height": 275
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "mapRange-1787306140691-0-396",
+      "type": "mapRange",
+      "position": {
+        "x": 492.6356621934855,
+        "y": 97.25220718545411
+      },
+      "data": {
+        "label": "MapRange",
+        "inMax": 1
+      },
+      "measured": {
+        "width": 221,
+        "height": 275
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "mapRange-1787306141749-0-128",
+      "type": "mapRange",
+      "position": {
+        "x": 488.49970446529267,
+        "y": 432.1072668236322
+      },
+      "data": {
+        "label": "MapRange",
+        "inMax": 1
+      },
+      "measured": {
+        "width": 221,
+        "height": 275
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1787306225342",
+      "type": "command",
+      "position": {
+        "x": 1120.1911747766185,
+        "y": 67.5858585582733
+      },
+      "data": {
+        "label": "Command",
+        "command": "set",
+        "value": "#,100",
+        "port": "",
+        "device": ""
+      },
+      "measured": {
+        "width": 217,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1787306074390",
+      "id": "xy-edge__input-1-deviceFilter-1787306074390",
+      "selected": false
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1787306083842-0-348",
+      "id": "xy-edge__input-1-deviceFilter-1787306083842-0-348",
+      "selected": false
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1787306082314-0-677",
+      "id": "xy-edge__input-1-deviceFilter-1787306082314-0-677",
+      "selected": false
+    },
+    {
+      "source": "deviceFilter-1787306074390",
+      "target": "mapRange-1787306131582",
+      "id": "xy-edge__deviceFilter-1787306074390-mapRange-1787306131582",
+      "selected": false
+    },
+    {
+      "source": "deviceFilter-1787306083842-0-348",
+      "target": "mapRange-1787306140691-0-396",
+      "id": "xy-edge__deviceFilter-1787306083842-0-348-mapRange-1787306140691-0-396",
+      "selected": false
+    },
+    {
+      "source": "deviceFilter-1787306082314-0-677",
+      "target": "mapRange-1787306141749-0-128",
+      "id": "xy-edge__deviceFilter-1787306082314-0-677-mapRange-1787306141749-0-128",
+      "selected": false
+    },
+    {
+      "source": "combineRgb-1787306064909",
+      "target": "command-1787306225342",
+      "id": "xy-edge__combineRgb-1787306064909-command-1787306225342",
+      "selected": false
+    },
+    {
+      "source": "command-1787306225342",
+      "target": "output-1",
+      "id": "xy-edge__command-1787306225342-output-1",
+      "selected": false
+    },
+    {
+      "source": "mapRange-1787306131582",
+      "target": "combineRgb-1787306064909",
+      "targetHandle": "r",
+      "id": "xy-edge__mapRange-1787306131582-combineRgb-1787306064909r"
+    },
+    {
+      "source": "mapRange-1787306140691-0-396",
+      "target": "combineRgb-1787306064909",
+      "targetHandle": "g",
+      "id": "xy-edge__mapRange-1787306140691-0-396-combineRgb-1787306064909g"
+    },
+    {
+      "source": "mapRange-1787306141749-0-128",
+      "target": "combineRgb-1787306064909",
+      "targetHandle": "b",
+      "id": "xy-edge__mapRange-1787306141749-0-128-combineRgb-1787306064909b"
+    }
+  ]
+}
