@@ -76,11 +76,20 @@ frequency.
 
 - **Output**: Periodic numeric signal (0 to 1)
 
-### Redis PubSub
+### Redis Input
+
+Subscribes to a Redis PubSub channel and emits received messages.
+
+- **Output**: Structured data (parsed JSON)
+- **Hostname**: Redis server hostname
+- **Port**: Redis server port
+- **Channel**: PubSub channel name
+
+### Redis Output
 
 Pipes data into a Redis PubSub channel.
 
-- **Input**: Any data (serialized to JSON if object)
+- **Input**: Any structured JSON data
 - **Hostname**: Redis server hostname
 - **Port**: Redis server port
 - **Channel**: PubSub channel name
