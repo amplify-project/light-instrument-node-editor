@@ -54,6 +54,7 @@ import { PeakDetectionNode } from "./components/nodes/math/PeakDetectionNode";
 import { QuantizeNode } from "./components/nodes/processing/QuantizeNode";
 import { RateNode } from "./components/nodes/processing/RateNode";
 import { RedisOutputNode } from "./components/nodes/io/RedisOutputNode";
+import { RedisInputNode } from "./components/nodes/io/RedisInputNode";
 import { ScriptNode } from "./components/nodes/action/ScriptNode";
 import { SerialInputNode } from "./components/nodes/io/SerialInputNode";
 import { SerialOutputNode } from "./components/nodes/io/SerialOutputNode";
@@ -105,6 +106,7 @@ const nodeTypes = {
   cumulativeSum: CumulativeSumNode,
   rate: RateNode,
   redisOutput: RedisOutputNode,
+  redisInput: RedisInputNode,
   script: ScriptNode,
   frame: FrameNode,
   annotation: AnnotationNode,

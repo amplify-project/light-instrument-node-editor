@@ -12,6 +12,7 @@ const nodeOptions: NodeOption[] = [
   { type: "functionGenerator", label: "Function Generator", category: "Input & IO" },
   { type: "timer", label: "Timer", category: "Input & IO" },
   { type: "value", label: "Value", category: "Input & IO" },
+  { type: "redisInput", label: "Redis Input", category: "Input & IO" },
   { type: "simulate", label: "Simulate", category: "Input & IO" },
   // Processing
   { type: "clamp", label: "Clamp", category: "Processing" },
