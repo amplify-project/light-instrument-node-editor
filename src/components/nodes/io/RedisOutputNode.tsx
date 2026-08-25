@@ -7,7 +7,7 @@ interface LastSentMessage {
   isError: boolean;
 }
 
-export function RedisNode({ data, id }: any) {
+export function RedisOutputNode({ data, id }: any) {
   const [lastSent, setLastSent] = useState<LastSentMessage>({ message: "", isError: false });
   const lastSentRef = useRef<LastSentMessage>({ message: "", isError: false });
 
@@ -68,11 +68,11 @@ export function RedisNode({ data, id }: any) {
   }, [host, port, channel, id, data]);
 
   return (
-    <div className="serial-node redis-node">
+    <div className="serial-node output-node redis-node">
       <Handle type="target" position={Position.Left} className="multi-handle" />
 
       <div className="node-header" title={"Pipes data into a Redis PubSub channel.\nInput: JSON-serializable object data\nOutput: None"}>
-        <span>Redis PubSub</span>
+        <span>Redis Output</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>
 
