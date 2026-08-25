@@ -12,8 +12,13 @@ struct PortEntry {
     stop_signal: Arc<AtomicBool>,
 }
 
+struct RedisSubscriptionEntry {
+    stop_signal: Arc<AtomicBool>,
+}
+
 struct SerialState {
     ports: Mutex<HashMap<String, PortEntry>>,
+    redis_subscriptions: Mutex<HashMap<String, RedisSubscriptionEntry>>,
     simulation_running: Arc<AtomicBool>,
 }
 
@@ -200,6 +205,99 @@ fn append_to_file(path: String, content: String) -> Result<(), String> {
 }
 
 #[tauri::command]
+fn redis_subscribe(
+    state: State<'_, SerialState>,
+    app: AppHandle,
+    host: String,
+    port: u16,
+    channel: String,
+) -> Result<(), String> {
+    let sub_key = format!("{}:{}:{}", host, port, channel);
+
+    {
+        let subs = state.redis_subscriptions.lock().unwrap();
+
+        if subs.contains_key(&sub_key) {
+            return Ok(());
+        }
+    }
+
+    let stop_signal = Arc::new(AtomicBool::new(false));
+    let thread_stop_signal = stop_signal.clone();
+
+    {
+        let mut subs = state.redis_subscriptions.lock().unwrap();
+        subs.insert(sub_key.clone(), RedisSubscriptionEntry { stop_signal });
+    }
+
+    let client = redis::Client::open(format!("redis://{}:{}/", host, port))
+        .map_err(|e| e.to_string())?;
+
+    let h = host.clone();
+    let p = port;
+    let c = channel.clone();
+
+    std::thread::spawn(move || {
+        let mut con = match client.get_connection() {
+            Ok(c) => c,
+            Err(_) => return,
+        };
+
+        if let Err(_) = con.set_read_timeout(Some(std::time::Duration::from_millis(100))) {
+            return;
+        }
+
+        let mut pubsub = con.as_pubsub();
+
+        if let Err(_) = pubsub.subscribe(&c) {
+            return;
+        }
+
+        loop {
+            if thread_stop_signal.load(Ordering::SeqCst) {
+                break;
+            }
+
+            match pubsub.get_message() {
+                Ok(msg) => {
+                    if let Ok(payload) = msg.get_payload::<String>() {
+                        let event_payload = serde_json::json!({
+                            "host": h,
+                            "port": p,
+                            "channel": c,
+                            "message": payload
+                        });
+
+                        let _ = app.emit("redis-message", event_payload);
+                    }
+                }
+                Err(e) => {
+                    if e.kind() == redis::ErrorKind::IoError {
+                        // This might be a timeout, which is what we want to check the stop signal
+                        continue;
+                    }
+
+                    // For other errors, we might want to break or log
+                    break;
+                }
+            }
+        }
+    });
+
+    Ok(())
+}
+
+#[tauri::command]
+fn redis_unsubscribe(state: State<'_, SerialState>, host: String, port: u16, channel: String) {
+    let sub_key = format!("{}:{}:{}", host, port, channel);
+    let mut subs = state.redis_subscriptions.lock().unwrap();
+
+    if let Some(entry) = subs.remove(&sub_key) {
+        entry.stop_signal.store(true, Ordering::SeqCst);
+    }
+}
+
+#[tauri::command]
 fn redis_publish(host: String, port: u16, channel: String, message: String) -> Result<(), String> {
     let client = redis::Client::open(format!("redis://{}:{}/", host, port))
         .map_err(|e| e.to_string())?;
@@ -300,6 +398,7 @@ pub fn run() {
         })
         .manage(SerialState {
             ports: Mutex::new(HashMap::new()),
+            redis_subscriptions: Mutex::new(HashMap::new()),
             simulation_running: Arc::new(AtomicBool::new(false)),
         })
         .invoke_handler(tauri::generate_handler![
@@ -312,7 +411,9 @@ pub fn run() {
             start_simulation,
             stop_simulation,
             append_to_file,
-            redis_publish
+            redis_publish,
+            redis_subscribe,
+            redis_unsubscribe
         ])
         .run(tauri::generate_context!())
         .expect("error while building tauri application")
