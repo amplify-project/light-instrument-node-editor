@@ -9,6 +9,7 @@ export function CommandNode({ data, id }: any) {
   const value = data.value || "";
   const [lastEmitted, setLastEmitted] = useState<any>(null);
   const lastEmittedRef = useRef<any>(null);
+  const [glowKey, setGlowKey] = useState(0);
 
   const hint = AVAILABLE_COMMANDS[command] || "";
 
@@ -49,6 +50,7 @@ export function CommandNode({ data, id }: any) {
     if (data.onData) {
       lastEmittedRef.current = payload;
       data.onData(id, payload);
+      setGlowKey(prev => prev + 1);
     }
   };
 
@@ -59,6 +61,13 @@ export function CommandNode({ data, id }: any) {
 
   return (
     <div className="serial-node command-node">
+      {glowKey > 0 && (
+        <div
+          key={glowKey}
+          className="node-glow-effect"
+          onAnimationEnd={() => setGlowKey(0)}
+        />
+      )}
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Converts a trigger signal into a structured command packet for the serial output.\nInput: Any signal\nOutput: Command packet {device, port, command, value}\nUse '#' in parameters to inject incoming value."}>

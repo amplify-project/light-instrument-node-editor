@@ -12,6 +12,7 @@ body {
 }
 
 .serial-node {
+  position: relative;
   background: #2b2b2b;
   border: 1px solid #444;
   border-radius: 8px;
@@ -442,4 +443,28 @@ body {
 .command-bar button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+@keyframes node-glow-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(162, 70, 255, 0);
+  }
+  20% {
+    box-shadow: 0 0 20px 5px rgba(162, 70, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(162, 70, 255, 0);
+  }
+}
+
+.node-glow-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: -1;
+  animation: node-glow-pulse 0.4s ease-out;
 }
