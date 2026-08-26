@@ -50,7 +50,7 @@ export function MedianFilterNode({ data, id }: any) {
   }, [windowSize, id, data]);
 
   return (
-    <div className="serial-node median-node">
+    <div className="node median-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Removes spike noise by outputting the median of a sliding window of values.\nInput: Numeric value\nOutput: Filtered value"}>

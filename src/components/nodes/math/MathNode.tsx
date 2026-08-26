@@ -67,7 +67,7 @@ export function MathNode({ data, id }: any) {
   }, [id, data, operator]);
 
   return (
-    <div className="serial-node math-node">
+    <div className="node math-node">
       <Handle type="target" position={Position.Left} id="a" style={{ top: 113 }} />
       <Handle type="target" position={Position.Left} id="b" style={{ top: 134 }} />
 

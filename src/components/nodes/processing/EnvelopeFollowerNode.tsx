@@ -52,7 +52,7 @@ export function EnvelopeFollowerNode({ data, id }: any) {
   }, [attack, release, id, data]);
 
   return (
-    <div className="serial-node envelope-node">
+    <div className="node envelope-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Tracks the peak level of a signal with configurable attack and release times.\nInput: Numeric value\nOutput: Envelope value"}>

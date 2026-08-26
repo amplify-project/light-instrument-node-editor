@@ -45,7 +45,7 @@ export function StoreValueNode({ data, id }: any) {
     : displayValue;
 
   return (
-    <div className="serial-node output-node store-value-node">
+    <div className="node output-node store-value-node">
       <Handle type="target" position={Position.Left} className="multi-handle" />
 
       <div className="node-header" title={"Stores incoming messages under a user-defined name.\nInput: Any message\nOutput: None"}>

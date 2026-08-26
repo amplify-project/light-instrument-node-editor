@@ -40,7 +40,7 @@ export function QuantizeNode({ data, id }: any) {
   }, [step, id, data]);
 
   return (
-    <div className="serial-node quantize-node">
+    <div className="node quantize-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Snaps incoming values to the nearest multiple of a set step size.\nInput: Numeric value\nOutput: Quantized value"}>

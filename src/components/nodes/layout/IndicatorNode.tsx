@@ -23,7 +23,7 @@ export function IndicatorNode({ data, id }: any) {
   }, [id, data]);
 
   return (
-    <div className={"serial-node indicator-node" + (glowKey > 0 ? " indicator-pulse-effect" : "")}>
+    <div className={"node indicator-node" + (glowKey > 0 ? " indicator-pulse-effect" : "")}>
       {glowKey > 0 && (
         <div
           key={glowKey}

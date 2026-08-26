@@ -65,7 +65,7 @@ export function BooleanNode({ data, id }: any) {
   }, [id, data, operator]);
 
   return (
-    <div className="serial-node boolean-node">
+    <div className="node boolean-node">
       <Handle type="target" position={Position.Left} id="a" style={{ top: "30%" }} />
       <Handle type="target" position={Position.Left} id="b" style={{ top: "70%" }} />
 

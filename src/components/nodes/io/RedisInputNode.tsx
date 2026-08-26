@@ -60,7 +60,7 @@ export function RedisInputNode({ data, id }: any) {
   };
 
   return (
-    <div className="serial-node input-node redis-node">
+    <div className="node input-node redis-node">
       <div className="node-header" title={"Subscribes to a Redis PubSub channel.\nOutput: Parsed JSON or raw string"}>
         <span>Redis Input</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>

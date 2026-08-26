@@ -32,7 +32,7 @@ export function StatisticsNode({ data, id }: any) {
   }, []);
 
   return (
-    <div className="serial-node statistics-node">
+    <div className="node statistics-node">
       <Handle type="target" position={Position.Left} className="multi-handle" />
 
       <div className="node-header" title={"Maintains a live count of received packets grouped by device name.\nInput: Structured packet"}>

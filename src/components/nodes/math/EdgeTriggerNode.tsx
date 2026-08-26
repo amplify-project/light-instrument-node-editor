@@ -59,7 +59,7 @@ export function EdgeTriggerNode({ data, id }: any) {
   }, [id, data, mode, threshold]);
 
   return (
-    <div className="serial-node edge-trigger-node">
+    <div className="node edge-trigger-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Detects rising or falling transitions in a signal and emits a single impulse.\nInput: Numeric signal\nOutput: Impulse (1)"}>

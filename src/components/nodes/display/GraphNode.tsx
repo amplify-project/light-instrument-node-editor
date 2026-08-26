@@ -57,7 +57,7 @@ export function GraphNode({ data, id }: any) {
     : "";
 
   return (
-    <div className="serial-node graph-node">
+    <div className="node graph-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Visualizes incoming numeric data on a real-time line chart.\nInput: Numeric value"}>

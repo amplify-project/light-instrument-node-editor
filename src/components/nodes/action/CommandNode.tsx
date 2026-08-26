@@ -60,7 +60,7 @@ export function CommandNode({ data, id }: any) {
   };
 
   return (
-    <div className="serial-node command-node">
+    <div className="node command-node">
       {glowKey > 0 && (
         <div
           key={glowKey}

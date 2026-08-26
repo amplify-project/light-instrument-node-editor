@@ -54,7 +54,7 @@ export function CombineRgbNode({ data, id }: any) {
   }, [id, data]);
 
   return (
-    <div className="serial-node combine-rgb-node">
+    <div className="node combine-rgb-node">
       <Handle
         type="target"
         position={Position.Left}

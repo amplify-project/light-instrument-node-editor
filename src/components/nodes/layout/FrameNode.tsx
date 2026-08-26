@@ -11,7 +11,7 @@ export function FrameNode({ data, id, selected }: any) {
       />
 
       <div
-        className="serial-node frame-node"
+        className="node frame-node"
         style={{
           width: "100%",
           height: "100%",

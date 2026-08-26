@@ -49,7 +49,7 @@ export function HysteresisNode({ data, id }: any) {
   }, [highThreshold, lowThreshold, id, data]);
 
   return (
-    <div className="serial-node hysteresis-node">
+    <div className="node hysteresis-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Uses two thresholds to provide stable on/off switching and prevent jitter.\nInput: Numeric value\nOutput: 1 or 0"}>

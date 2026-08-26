@@ -33,7 +33,6 @@ export function ClampNode({ data, id }: any) {
     }
 
     return () => {
-
       if (data.unregisterConsumer) {
         data.unregisterConsumer(id);
       }
@@ -41,7 +40,7 @@ export function ClampNode({ data, id }: any) {
   }, [min, max, id, data]);
 
   return (
-    <div className="serial-node clamp-node">
+    <div className="node clamp-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Restricts the incoming signal to be within a minimum and maximum range.\nInput: Numeric value\nOutput: Clamped value"}>

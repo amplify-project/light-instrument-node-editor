@@ -42,7 +42,7 @@ export function DeviceFilterNode({ data, id }: any) {
   }, [deviceFilter, portFilter, id, data]);
 
   return (
-    <div className="serial-node filter-node">
+    <div className="node filter-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Only allows packets from a specific device and/or port to pass through.\nInput: Structured packet\nOutput: Filtered packet"}>

@@ -49,7 +49,7 @@ export function SmoothNode({ data, id }: any) {
   }, [alpha, id, data]);
 
   return (
-    <div className="serial-node smooth-node">
+    <div className="node smooth-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Applies exponential smoothing to the data stream to reduce jitter.\nInput: Numeric value\nOutput: Smoothed value"}>

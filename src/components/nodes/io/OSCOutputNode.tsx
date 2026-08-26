@@ -67,7 +67,7 @@ export function OSCOutputNode({ data, id }: any) {
     : lastSent.message;
 
   return (
-    <div className="serial-node output-node osc-output-node">
+    <div className="node output-node osc-output-node">
       <Handle type="target" position={Position.Left} className="multi-handle" />
 
       <div className="node-header" title={"Sends OSC messages over UDP.\nInput: Any message with a 'value' property\nOutput: None"}>

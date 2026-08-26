@@ -64,7 +64,7 @@ export function PeakDetectionNode({ data, id }: any) {
   }, [id, data]);
 
   return (
-    <div className="serial-node peak-node">
+    <div className="node peak-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Identifies local maxima (peaks) in a numeric stream and emits a trigger signal.\nInput: Numeric value\nOutput: Trigger impulse"}>

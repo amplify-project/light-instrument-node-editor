@@ -47,7 +47,7 @@ export function DelayNode({ data, id }: any) {
   }, [delayMs, id, data]);
 
   return (
-    <div className="serial-node delay-node">
+    <div className="node delay-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Emits received events after a specified delay.\nInput: Any signal\nOutput: Delayed signal"}>

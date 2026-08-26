@@ -22,7 +22,7 @@ export function TimerNode({ data, id }: any) {
   }, [interval, value, id, data]);
 
   return (
-    <div className="serial-node timer-node">
+    <div className="node timer-node">
       <div className="node-header" title={"Emits periodic pulses at a fixed interval.\nOutput: Pulse signal"}>
         <span>Timer</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>

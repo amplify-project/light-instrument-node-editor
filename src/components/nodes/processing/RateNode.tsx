@@ -36,7 +36,7 @@ export function RateNode({ data, id }: any) {
   }, [interval, id, data]);
 
   return (
-    <div className="serial-node rate-node">
+    <div className="node rate-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Measures the frequency (messages per second) of incoming data packets.\nInput: Any data\nOutput: Frequency (Hz)"}>

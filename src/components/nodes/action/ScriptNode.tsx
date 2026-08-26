@@ -72,7 +72,7 @@ export function ScriptNode({ data, id }: any) {
   };
 
   return (
-    <div className="serial-node script-node">
+    <div className="node script-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Executes a sequence of commands and delays.\nFormat: command 'device' 'port' 'params'\nDelay: delay [ms]\nExample:\npulse 'receiver1' 'LED1' '255,0,0'\ndelay 500\nset '' '' '0'"}>

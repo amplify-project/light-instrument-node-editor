@@ -64,7 +64,7 @@ export function CsvWriterNode({ data, id }: any) {
   };
 
   return (
-    <div className="serial-node csv-writer-node">
+    <div className="node csv-writer-node">
       <Handle type="target" position={Position.Left} className="multi-handle" />
 
       <div

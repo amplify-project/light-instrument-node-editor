@@ -19,7 +19,7 @@ export function RerouteNode({ data, id }: any) {
   }, [id, data]);
 
   return (
-    <div className="serial-node reroute-node">
+    <div className="node reroute-node">
       <Handle type="target" position={Position.Left} className="multi-handle" style={{ left: "-4px" }} />
       <div className="node-header" title={"Bundles multiple inputs into a single output.\nInput: Any signal\nOutput: Same signal"}>
         <button className="delete-btn" style={{ fontSize: "12px" }} onClick={() => data.onDelete(id)}>×</button>

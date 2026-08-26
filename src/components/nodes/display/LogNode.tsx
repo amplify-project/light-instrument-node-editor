@@ -49,7 +49,7 @@ export function LogNode({ data, id }: any) {
   }, [logs]);
 
   return (
-    <div className="serial-node log-node">
+    <div className="node log-node">
       <Handle type="target" position={Position.Left} className="multi-handle" />
 
       <div className="node-header" title={"Displays a scrollable history of incoming data packets with timestamps.\nInput: Any data"}>

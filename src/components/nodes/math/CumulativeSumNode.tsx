@@ -48,7 +48,7 @@ export function CumulativeSumNode({ data, id }: any) {
   }, [bufferSize, id, data]);
 
   return (
-    <div className="serial-node cumulative-sum-node">
+    <div className="node cumulative-sum-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Sums incoming numeric values over an infinite or sliding window buffer.\nInput: Numeric value\nOutput: Current sum"}>

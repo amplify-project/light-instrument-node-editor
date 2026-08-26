@@ -56,7 +56,7 @@ export function CompareNode({ data, id }: any) {
   }, [compareValue, operator, id, data]);
 
   return (
-    <div className="serial-node compare-node">
+    <div className="node compare-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Compares input data against a threshold using mathematical operators.\nInput: Numeric value\nOutput: Filtered numeric value"}>

@@ -10,7 +10,7 @@ export function AnnotationNode({ data, id, selected }: any) {
       />
 
       <div
-        className="serial-node annotation-node"
+        className="node annotation-node"
         style={{
           width: "100%",
           height: "100%",

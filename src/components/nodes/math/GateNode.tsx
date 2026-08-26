@@ -41,7 +41,7 @@ export function GateNode({ data, id }: any) {
   }, [id, data]);
 
   return (
-    <div className="serial-node gate-node">
+    <div className="node gate-node">
       <Handle type="target" position={Position.Left} id="signal" style={{ top: "60%" }} />
       <label style={{ position: "absolute", left: "12px", top: "54%", fontSize: "8px", color: "#888" }}>Signal</label>
 

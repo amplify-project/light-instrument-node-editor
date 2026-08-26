@@ -49,7 +49,7 @@ export function MovingAverageNode({ data, id }: any) {
   }, [windowSize, id, data]);
 
   return (
-    <div className="serial-node moving-average-node">
+    <div className="node moving-average-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Smooths signal by averaging values over a sliding window.\nInput: Numeric value\nOutput: Averaged value"}>

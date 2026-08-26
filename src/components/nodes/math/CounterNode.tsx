@@ -42,7 +42,7 @@ export function CounterNode({ data, id }: any) {
   };
 
   return (
-    <div className="serial-node counter-node">
+    <div className="node counter-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Increments a internal counter for every message received and emits the total.\nInput: Any signal\nOutput: Current count"}>

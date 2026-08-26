@@ -44,7 +44,7 @@ export function DerivativeNode({ data, id }: any) {
   }, [id, data]);
 
   return (
-    <div className="serial-node derivative-node">
+    <div className="node derivative-node">
       <Handle type="target" position={Position.Left} />
 
       <div className="node-header" title={"Calculates the rate of change (velocity) of the incoming signal.\nInput: Numeric value\nOutput: Delta value"}>
