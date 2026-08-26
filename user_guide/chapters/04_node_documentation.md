@@ -140,6 +140,13 @@ Bundles multiple inputs into a single output.
 - **Input**: Any signal
 - **Output**: Same signal
 
+### Indicator
+
+Indicator, which lights up whenever a message passes through it.
+
+- **Input**: Any signal
+- **Output**: Same signal
+
 ## Math & Logic
 
 ### Boolean
