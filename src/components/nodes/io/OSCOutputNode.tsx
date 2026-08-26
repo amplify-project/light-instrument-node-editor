@@ -30,7 +30,11 @@ export function OSCOutputNode({ data, id }: any) {
       data.registerConsumer(id, (incoming: any) => {
         if (!incoming) return;
 
-        const finalValue = String(value).replace(/#/g, incoming.value);
+        const finalValue = String(value).replace(
+          /#/g, incoming.value
+        ).replace(
+          /@/g, incoming.port
+        );
 
         invoke("write_osc", {
           hostPort: hostPort.trim(),
