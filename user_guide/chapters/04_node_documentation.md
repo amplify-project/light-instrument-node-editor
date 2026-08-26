@@ -76,6 +76,13 @@ frequency.
 
 - **Output**: Periodic numeric signal (0 to 1)
 
+### Load Value
+
+Emits the message whenever a new value is stored under a matching name.
+
+- **Output**: Shared message
+- **Name**: The name of the channel to load from.
+
 ### Redis Input
 
 Subscribes to a Redis PubSub channel and emits received messages.
@@ -111,6 +118,13 @@ Sends formatted command packets to the connected serial port.
 Reads recorded sensor data from a file and streams it into the editor.
 
 - **Output**: Structured packet `{device, port, value}`
+
+### Store Value
+
+Stores incoming messages under a user-defined name.
+
+- **Input**: Any message
+- **Name**: The name of the channel to store to.
 
 ### Value
 
