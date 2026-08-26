@@ -56,7 +56,8 @@ body {
 .button-node .node-header,
 .function-generator-node .node-header,
 .value-node .node-header,
-.timer-node .node-header {
+.timer-node .node-header,
+.load-value-node .node-header {
   border-top: 3px solid #646cff;
 }
 

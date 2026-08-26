@@ -13,6 +13,7 @@ const nodeOptions: NodeOption[] = [
   { type: "timer", label: "Timer", category: "Input & IO" },
   { type: "value", label: "Value", category: "Input & IO" },
   { type: "redisInput", label: "Redis Input", category: "Input & IO" },
+  { type: "loadValue", label: "Load Value", category: "Input & IO" },
   { type: "simulate", label: "Simulate", category: "Input & IO" },
   // Processing
   { type: "clamp", label: "Clamp", category: "Processing" },

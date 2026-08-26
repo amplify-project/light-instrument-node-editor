@@ -45,6 +45,7 @@ import { FunctionGeneratorNode } from "./components/nodes/io/FunctionGeneratorNo
 import { GateNode } from "./components/nodes/math/GateNode";
 import { GraphNode } from "./components/nodes/display/GraphNode";
 import { HysteresisNode } from "./components/nodes/math/HysteresisNode";
+import { LoadValueNode } from "./components/nodes/io/LoadValueNode";
 import { LogNode } from "./components/nodes/display/LogNode";
 import { MapRangeNode } from "./components/nodes/processing/MapRangeNode";
 import { MathNode } from "./components/nodes/math/MathNode";
@@ -105,6 +106,7 @@ const nodeTypes = {
   math: MathNode,
   delay: DelayNode,
   storeValue: StoreValueNode,
+  loadValue: LoadValueNode,
   functionGenerator: FunctionGeneratorNode,
   cumulativeSum: CumulativeSumNode,
   rate: RateNode,
