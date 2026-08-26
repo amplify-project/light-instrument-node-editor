@@ -17,7 +17,9 @@ export function LoadValueNode({ data, id }: any) {
       }
     });
 
-    return unsubscribe;
+    return () => {
+      unsubscribe();
+    };
   }, [name, id, data]);
 
   const displayValue = lastValue !== null
