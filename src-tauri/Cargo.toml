@@ -1,6 +1,6 @@
 [package]
 name = "light-instrument-editor"
-version = "1.4.1"
+version = "1.4.2"
 description = "An editor for AMPLIFY Light Instruments"
 authors = ["Thomas Röggla"]
 edition = "2021"
@@ -25,4 +25,5 @@ serde_json = "1"
 serialport = "4.6.1"
 tauri-plugin-dialog = "2"
 redis = "0.27.6"
+rosc = "0.10"
 
