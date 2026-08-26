@@ -54,6 +54,7 @@ import { NodeSearch } from "./components/NodeSearch";
 import { PeakDetectionNode } from "./components/nodes/math/PeakDetectionNode";
 import { QuantizeNode } from "./components/nodes/processing/QuantizeNode";
 import { RateNode } from "./components/nodes/processing/RateNode";
+import { StoreValueNode } from "./components/nodes/io/StoreValueNode";
 import { RedisOutputNode } from "./components/nodes/io/RedisOutputNode";
 import { RedisInputNode } from "./components/nodes/io/RedisInputNode";
 import { ScriptNode } from "./components/nodes/action/ScriptNode";
@@ -103,6 +104,7 @@ const nodeTypes = {
   timer: TimerNode,
   math: MathNode,
   delay: DelayNode,
+  storeValue: StoreValueNode,
   functionGenerator: FunctionGeneratorNode,
   cumulativeSum: CumulativeSumNode,
   rate: RateNode,
@@ -133,7 +135,7 @@ const initialNodes: Node[] = [
 ];
 
 const initialEdges: Edge[] = [];
-const ALLOWS_MULTI_INPUT = ["serialOutput", "log", "statistics", "csvWriter", "reroute", "redisOutput"];
+const ALLOWS_MULTI_INPUT = ["serialOutput", "log", "statistics", "csvWriter", "reroute", "redisOutput", "storeValue"];
 
 function Flow() {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
