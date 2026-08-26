@@ -313,6 +313,41 @@ fn redis_publish(host: String, port: u16, channel: String, message: String) -> R
     Ok(())
 }
 
+#[tauri::command]
+fn write_osc(host_port: String, address: String, value: String) -> Result<(), String> {
+    use std::net::ToSocketAddrs;
+
+    let addrs = host_port.to_socket_addrs().map_err(|e| format!("Invalid host/port: {}", e))?;
+    let target_addr = addrs.into_iter().next().ok_or("Could not resolve host")?;
+
+    let bind_addr = if target_addr.is_ipv4() {
+        "0.0.0.0:0"
+    } else {
+        "[::]:0"
+    };
+
+    let socket = std::net::UdpSocket::bind(bind_addr).map_err(|e| format!("Failed to bind socket: {}", e))?;
+
+    // Intelligently parse value to use appropriate OSC types
+    let osc_value = if let Ok(f) = value.parse::<f32>() {
+        rosc::OscType::Float(f)
+    } else if let Ok(i) = value.parse::<i32>() {
+        rosc::OscType::Int(i)
+    } else {
+        rosc::OscType::String(value)
+    };
+
+    let msg = rosc::OscPacket::Message(rosc::OscMessage {
+        addr: if address.starts_with('/') { address } else { format!("/{}", address) },
+        args: vec![osc_value],
+    });
+
+    let packet = rosc::encoder::encode(&msg).map_err(|e| format!("OSC encoding error: {:?}", e))?;
+    socket.send_to(&packet, &target_addr).map_err(|e| format!("Network error (OS Error {}): {}", e.raw_os_error().unwrap_or(0), e))?;
+
+    Ok(())
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -413,7 +448,8 @@ pub fn run() {
             append_to_file,
             redis_publish,
             redis_subscribe,
-            redis_unsubscribe
+            redis_unsubscribe,
+            write_osc
         ])
         .run(tauri::generate_context!())
         .expect("error while building tauri application")
