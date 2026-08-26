@@ -40,6 +40,7 @@ import { EnvelopeFollowerNode } from "./components/nodes/processing/EnvelopeFoll
 import { FrameNode } from "./components/nodes/layout/FrameNode";
 import { AnnotationNode } from "./components/nodes/layout/AnnotationNode";
 import { RerouteNode } from "./components/nodes/layout/RerouteNode";
+import { IndicatorNode } from "./components/nodes/layout/IndicatorNode";
 import { FunctionGeneratorNode } from "./components/nodes/io/FunctionGeneratorNode";
 import { GateNode } from "./components/nodes/math/GateNode";
 import { GraphNode } from "./components/nodes/display/GraphNode";
@@ -111,6 +112,7 @@ const nodeTypes = {
   frame: FrameNode,
   annotation: AnnotationNode,
   reroute: RerouteNode,
+  indicator: IndicatorNode,
 };
 
 const initialNodes: Node[] = [

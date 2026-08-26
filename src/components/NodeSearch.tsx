@@ -52,6 +52,7 @@ const nodeOptions: NodeOption[] = [
   { type: "annotation", label: "Annotation", category: "Layout" },
   { type: "frame", label: "Frame", category: "Layout" },
   { type: "reroute", label: "Reroute", category: "Layout" },
+  { type: "indicator", label: "Indicator", category: "Layout" },
 ];
 
 interface NodeSearchProps {

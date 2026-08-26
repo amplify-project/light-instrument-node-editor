@@ -156,6 +156,33 @@ body {
   transform: translate(-6px, -12px);
 }
 
+.indicator-node {
+  min-width: 30px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 10px !important;
+  border: 1px solid #666 !important;
+}
+
+.indicator-node .node-header {
+  padding: 0 !important;
+  height: 100%;
+  border: none !important;
+  background: transparent !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicator-node .delete-btn {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.indicator-node:hover .delete-btn {
+  opacity: 1;
+}
+
 .graph-node, .log-node, .script-node {
   width: 250px;
 }
@@ -467,4 +494,22 @@ body {
   pointer-events: none;
   z-index: -1;
   animation: node-glow-pulse 0.4s ease-out;
+}
+
+@keyframes indicator-pulse {
+  0% {
+    background: #2b2b2b;
+  }
+
+  20% {
+    background: rgba(162, 70, 255, 0.6);
+  }
+
+  100% {
+    background: #2b2b2b;
+  }
+}
+
+.indicator-pulse-effect {
+  animation: indicator-pulse 0.4s ease-out;
 }
