@@ -45,6 +45,7 @@ const nodeOptions: NodeOption[] = [
   { type: "csvWriter", label: "CSV Writer", category: "Output" },
   { type: "redisOutput", label: "Redis Output", category: "Output" },
   { type: "storeValue", label: "Store Value", category: "Output" },
+  { type: "oscOutput", label: "OSC Output", category: "Output" },
   { type: "script", label: "Script", category: "Output" },
   // Visualization
   { type: "graph", label: "Graph", category: "Visualization" },

@@ -52,6 +52,7 @@ import { MathNode } from "./components/nodes/math/MathNode";
 import { MedianFilterNode } from "./components/nodes/processing/MedianFilterNode";
 import { MovingAverageNode } from "./components/nodes/processing/MovingAverageNode";
 import { NodeSearch } from "./components/NodeSearch";
+import { OSCOutputNode } from "./components/nodes/io/OSCOutputNode";
 import { PeakDetectionNode } from "./components/nodes/math/PeakDetectionNode";
 import { QuantizeNode } from "./components/nodes/processing/QuantizeNode";
 import { RateNode } from "./components/nodes/processing/RateNode";
@@ -107,6 +108,7 @@ const nodeTypes = {
   delay: DelayNode,
   storeValue: StoreValueNode,
   loadValue: LoadValueNode,
+  oscOutput: OSCOutputNode,
   functionGenerator: FunctionGeneratorNode,
   cumulativeSum: CumulativeSumNode,
   rate: RateNode,
@@ -137,7 +139,7 @@ const initialNodes: Node[] = [
 ];
 
 const initialEdges: Edge[] = [];
-const ALLOWS_MULTI_INPUT = ["serialOutput", "log", "statistics", "csvWriter", "reroute", "redisOutput", "storeValue"];
+const ALLOWS_MULTI_INPUT = ["serialOutput", "log", "statistics", "csvWriter", "reroute", "redisOutput", "storeValue", "oscOutput"];
 
 function Flow() {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
