@@ -83,6 +83,18 @@ Emits the message whenever a new value is stored under a matching name.
 - **Output**: Shared message
 - **Name**: The name of the channel to load from.
 
+### OSC Output
+
+Sends messages to other software or hardware using the Open Sound Control (OSC)
+protocol over UDP.
+
+- **Input**: Any message with a `value` property
+- **Host:Port**: Target network address (e.g., `localhost:9000`)
+- **OSC Pattern**: The OSC address path (e.g., `/amplify`)
+- **Value**: The data to send.
+- **Note**: Use "#" in the value field to inject the `value` from the incoming
+  message.
+
 ### Redis Input
 
 Subscribes to a Redis PubSub channel and emits received messages.

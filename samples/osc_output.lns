@@ -1,0 +1,517 @@
+{
+  "nodes": [
+    {
+      "id": "input-1",
+      "type": "serialInput",
+      "position": {
+        "x": -433.0385607795297,
+        "y": 43.086091025976856
+      },
+      "data": {
+        "label": "Serial Input"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 231,
+        "height": 211
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "output-1",
+      "type": "serialOutput",
+      "position": {
+        "x": 1232.0336288940941,
+        "y": 89.35404901398753
+      },
+      "data": {
+        "label": "Serial Output"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 217,
+        "height": 87
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1787744294779",
+      "type": "deviceFilter",
+      "position": {
+        "x": 44.927909965906,
+        "y": -292.7042741550044
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "D1",
+        "deviceFilter": "keys2"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1787744303386-0-149",
+      "type": "deviceFilter",
+      "position": {
+        "x": 40.0309534700786,
+        "y": 554.738186025418
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "D5",
+        "deviceFilter": "keys2"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1787744303609-0-271",
+      "type": "deviceFilter",
+      "position": {
+        "x": 42.60731098522214,
+        "y": -83.42187823226891
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "D2",
+        "deviceFilter": "keys2"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1787744304155-0-782",
+      "type": "deviceFilter",
+      "position": {
+        "x": 42.517197919985435,
+        "y": 127.0640901553408
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "D3",
+        "deviceFilter": "keys2"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "deviceFilter-1787744304386-0-545",
+      "type": "deviceFilter",
+      "position": {
+        "x": 41.147979985888185,
+        "y": 344.16210457257165
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "portFilter": "D4",
+        "deviceFilter": "keys2"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "oscOutput-1787744364505",
+      "type": "oscOutput",
+      "position": {
+        "x": 599.4648572969415,
+        "y": -341.6117115210917
+      },
+      "data": {
+        "label": "OscOutput",
+        "hostPort": "localhost:6000",
+        "address": "/amplify/D1"
+      },
+      "measured": {
+        "width": 186,
+        "height": 246
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1787744387758",
+      "type": "compare",
+      "position": {
+        "x": 275.29573237515154,
+        "y": -304.6708767312277
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 188
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "oscOutput-1787744400726-0-468",
+      "type": "oscOutput",
+      "position": {
+        "x": 812.2621675958301,
+        "y": -188.15256712902544
+      },
+      "data": {
+        "label": "OscOutput",
+        "hostPort": "localhost:6000",
+        "address": "/amplify/D2"
+      },
+      "measured": {
+        "width": 186,
+        "height": 246
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1787744400726-1-656",
+      "type": "compare",
+      "position": {
+        "x": 273.69842021391025,
+        "y": -88.15449043912324
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 188
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "oscOutput-1787744404596-0-548",
+      "type": "oscOutput",
+      "position": {
+        "x": 607.0782217891611,
+        "y": -5.2187781924993715
+      },
+      "data": {
+        "label": "OscOutput",
+        "hostPort": "localhost:6000",
+        "address": "/amplify/D3"
+      },
+      "measured": {
+        "width": 186,
+        "height": 246
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1787744404596-1-384",
+      "type": "compare",
+      "position": {
+        "x": 270.29764848736335,
+        "y": 125.4071017059928
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 188
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "oscOutput-1787744407405-0-235",
+      "type": "oscOutput",
+      "position": {
+        "x": 819.5219415457638,
+        "y": 192.42662904823027
+      },
+      "data": {
+        "label": "OscOutput",
+        "hostPort": "localhost:6000",
+        "address": "/amplify/D4"
+      },
+      "measured": {
+        "width": 186,
+        "height": 246
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1787744407405-1-666",
+      "type": "compare",
+      "position": {
+        "x": 268.3467457838362,
+        "y": 337.4655928095883
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 188
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "oscOutput-1787744438858-0-567",
+      "type": "oscOutput",
+      "position": {
+        "x": 611.8089035895309,
+        "y": 396.10237218480717
+      },
+      "data": {
+        "label": "OscOutput",
+        "hostPort": "localhost:6000",
+        "address": "/amplify/D5"
+      },
+      "measured": {
+        "width": 186,
+        "height": 246
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1787744438858-1-646",
+      "type": "compare",
+      "position": {
+        "x": 267.82178835630026,
+        "y": 550.1495133604562
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 188
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "indicator-1787744521485",
+      "type": "indicator",
+      "position": {
+        "x": 505.44383319843416,
+        "y": -198.0296516989457
+      },
+      "data": {
+        "label": "Indicator"
+      },
+      "measured": {
+        "width": 42,
+        "height": 42
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "indicator-1787744530751-0-381",
+      "type": "indicator",
+      "position": {
+        "x": 509.30314405158884,
+        "y": -38.06484051821619
+      },
+      "data": {
+        "label": "Indicator"
+      },
+      "measured": {
+        "width": 42,
+        "height": 42
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "indicator-1787744532767-0-785",
+      "type": "indicator",
+      "position": {
+        "x": 511.6757411429696,
+        "y": 122.01816223662692
+      },
+      "data": {
+        "label": "Indicator"
+      },
+      "measured": {
+        "width": 42,
+        "height": 42
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "indicator-1787744535129-0-608",
+      "type": "indicator",
+      "position": {
+        "x": 515.7072333150782,
+        "y": 358.62629768429963
+      },
+      "data": {
+        "label": "Indicator"
+      },
+      "measured": {
+        "width": 42,
+        "height": 42
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "indicator-1787744538180-0-120",
+      "type": "indicator",
+      "position": {
+        "x": 514.9935313044248,
+        "y": 534.6385389806054
+      },
+      "data": {
+        "label": "Indicator"
+      },
+      "measured": {
+        "width": 42,
+        "height": 42
+      },
+      "selected": true,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1787744294779",
+      "id": "xy-edge__input-1-deviceFilter-1787744294779",
+      "selected": false
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1787744303609-0-271",
+      "id": "xy-edge__input-1-deviceFilter-1787744303609-0-271",
+      "selected": false
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1787744304155-0-782",
+      "id": "xy-edge__input-1-deviceFilter-1787744304155-0-782",
+      "selected": false
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1787744304386-0-545",
+      "id": "xy-edge__input-1-deviceFilter-1787744304386-0-545",
+      "selected": false
+    },
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1787744303386-0-149",
+      "id": "xy-edge__input-1-deviceFilter-1787744303386-0-149",
+      "selected": false
+    },
+    {
+      "source": "deviceFilter-1787744294779",
+      "target": "compare-1787744387758",
+      "id": "xy-edge__deviceFilter-1787744294779-compare-1787744387758",
+      "selected": false
+    },
+    {
+      "source": "deviceFilter-1787744303609-0-271",
+      "target": "compare-1787744400726-1-656",
+      "id": "xy-edge__deviceFilter-1787744303609-0-271-compare-1787744400726-1-656",
+      "selected": false
+    },
+    {
+      "source": "deviceFilter-1787744304155-0-782",
+      "target": "compare-1787744404596-1-384",
+      "id": "xy-edge__deviceFilter-1787744304155-0-782-compare-1787744404596-1-384",
+      "selected": false
+    },
+    {
+      "source": "deviceFilter-1787744304386-0-545",
+      "target": "compare-1787744407405-1-666",
+      "id": "xy-edge__deviceFilter-1787744304386-0-545-compare-1787744407405-1-666",
+      "selected": false
+    },
+    {
+      "source": "deviceFilter-1787744303386-0-149",
+      "target": "compare-1787744438858-1-646",
+      "id": "xy-edge__deviceFilter-1787744303386-0-149-compare-1787744438858-1-646",
+      "selected": false
+    },
+    {
+      "source": "compare-1787744387758",
+      "target": "indicator-1787744521485",
+      "id": "xy-edge__compare-1787744387758-indicator-1787744521485"
+    },
+    {
+      "source": "indicator-1787744521485",
+      "target": "oscOutput-1787744364505",
+      "id": "xy-edge__indicator-1787744521485-oscOutput-1787744364505"
+    },
+    {
+      "source": "compare-1787744400726-1-656",
+      "target": "indicator-1787744530751-0-381",
+      "id": "xy-edge__compare-1787744400726-1-656-indicator-1787744530751-0-381"
+    },
+    {
+      "source": "indicator-1787744530751-0-381",
+      "target": "oscOutput-1787744400726-0-468",
+      "id": "xy-edge__indicator-1787744530751-0-381-oscOutput-1787744400726-0-468"
+    },
+    {
+      "source": "compare-1787744438858-1-646",
+      "target": "indicator-1787744538180-0-120",
+      "id": "xy-edge__compare-1787744438858-1-646-indicator-1787744538180-0-120"
+    },
+    {
+      "source": "indicator-1787744538180-0-120",
+      "target": "oscOutput-1787744438858-0-567",
+      "id": "xy-edge__indicator-1787744538180-0-120-oscOutput-1787744438858-0-567"
+    },
+    {
+      "source": "indicator-1787744535129-0-608",
+      "target": "oscOutput-1787744407405-0-235",
+      "id": "xy-edge__indicator-1787744535129-0-608-oscOutput-1787744407405-0-235"
+    },
+    {
+      "source": "compare-1787744407405-1-666",
+      "target": "indicator-1787744535129-0-608",
+      "id": "xy-edge__compare-1787744407405-1-666-indicator-1787744535129-0-608"
+    },
+    {
+      "source": "compare-1787744404596-1-384",
+      "target": "indicator-1787744532767-0-785",
+      "id": "xy-edge__compare-1787744404596-1-384-indicator-1787744532767-0-785"
+    },
+    {
+      "source": "indicator-1787744532767-0-785",
+      "target": "oscOutput-1787744404596-0-548",
+      "id": "xy-edge__indicator-1787744532767-0-785-oscOutput-1787744404596-0-548"
+    }
+  ]
+}
