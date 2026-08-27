@@ -30,6 +30,12 @@ export function OSCOutputNode({ data, id }: any) {
       data.registerConsumer(id, (incoming: any) => {
         if (!incoming) return;
 
+        const finalAddress = String(address).replace(
+          /#/g, incoming.value
+        ).replace(
+          /@/g, incoming.port
+        );
+
         const finalValue = String(value).replace(
           /#/g, incoming.value
         ).replace(
@@ -38,11 +44,11 @@ export function OSCOutputNode({ data, id }: any) {
 
         invoke("write_osc", {
           hostPort: hostPort.trim(),
-          address: address.trim(),
+          address: finalAddress.trim(),
           value: finalValue,
         }).then(() => {
           lastSentRef.current = {
-            message: `${address.trim().startsWith('/') ? address.trim() : '/' + address.trim()} ${finalValue}`,
+            message: `${finalAddress.trim().startsWith('/') ? finalAddress.trim() : '/' + finalAddress.trim()} ${finalValue}`,
             isError: false
           };
         }).catch((err) => {
@@ -50,6 +56,7 @@ export function OSCOutputNode({ data, id }: any) {
             message: String(err).length > 35 ? String(err).substring(0, 38) + "..." : String(err),
             isError: true
           };
+
           console.error(err);
         });
       });
@@ -111,11 +118,7 @@ export function OSCOutputNode({ data, id }: any) {
 
         {lastSent.message && (
           <div className="node-status" style={{ color: lastSent.isError ? "#f00" : "#888"}}>
-            {(!lastSent.isError) ? (
-              `Last Sent: ${displayValue}`
-            ) : (
-              displayValue
-            )}
+            {displayValue}
           </div>
         )}
       </div>
