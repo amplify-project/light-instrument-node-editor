@@ -160,7 +160,7 @@ export function SerialInputNode({ data, id }: any) {
 
         {lastParsed && (
           <div className="node-status">
-            Last: {lastParsed.device}:{lastParsed.value}
+            Last: {lastParsed.device}:{lastParsed.port}:{lastParsed.value}
           </div>
         )}
 
