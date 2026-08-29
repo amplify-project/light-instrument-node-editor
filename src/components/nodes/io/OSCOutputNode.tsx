@@ -34,12 +34,16 @@ export function OSCOutputNode({ data, id }: any) {
           /#/g, incoming.value
         ).replace(
           /@/g, incoming.port
+        ).replace(
+          /%/g, incoming.device
         );
 
         const finalValue = String(value).replace(
           /#/g, incoming.value
         ).replace(
           /@/g, incoming.port
+        ).replace(
+          /%/g, incoming.device
         );
 
         invoke("write_osc", {
