@@ -91,7 +91,8 @@ protocol over UDP.
 - **Input**: Any message with a `value` property
 - **Host:Port**: Target network address (e.g., `localhost:9000`)
 - **OSC Pattern**: The OSC address path (e.g., `/amplify`)
-- **Value**: The data to send.
+- **Value**: The data to send. Multiple values can be sent by separating them
+  with commas (e.g., `1.0, 2, hello`).
 - **Note**: Use "#" in the value field to inject the `value` from the incoming
   message.
 

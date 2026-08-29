@@ -329,17 +329,23 @@ fn write_osc(host_port: String, address: String, value: String) -> Result<(), St
     let socket = std::net::UdpSocket::bind(bind_addr).map_err(|e| format!("Failed to bind socket: {}", e))?;
 
     // Intelligently parse value to use appropriate OSC types
-    let osc_value = if let Ok(f) = value.parse::<f32>() {
-        rosc::OscType::Float(f)
-    } else if let Ok(i) = value.parse::<i32>() {
-        rosc::OscType::Int(i)
-    } else {
-        rosc::OscType::String(value)
-    };
+    let osc_args: Vec<rosc::OscType> = value.split(',')
+        .map(|s| {
+            let s = s.trim();
+
+            if let Ok(i) = s.parse::<i32>() {
+                rosc::OscType::Int(i)
+            } else if let Ok(f) = s.parse::<f32>() {
+                rosc::OscType::Float(f)
+            } else {
+                rosc::OscType::String(s.to_string())
+            }
+        })
+        .collect();
 
     let msg = rosc::OscPacket::Message(rosc::OscMessage {
         addr: if address.starts_with('/') { address } else { format!("/{}", address) },
-        args: vec![osc_value],
+        args: osc_args,
     });
 
     let packet = rosc::encoder::encode(&msg).map_err(|e| format!("OSC encoding error: {:?}", e))?;
