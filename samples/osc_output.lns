@@ -22,18 +22,18 @@
       "id": "output-1",
       "type": "serialOutput",
       "position": {
-        "x": 1232.0336288940941,
-        "y": 89.35404901398753
+        "x": 1050.3268804556403,
+        "y": 572.5642155319355
       },
       "data": {
         "label": "Serial Output"
       },
       "deletable": false,
       "measured": {
-        "width": 217,
-        "height": 87
+        "width": 265,
+        "height": 120
       },
-      "selected": false,
+      "selected": true,
       "dragging": false
     },
     {
@@ -398,7 +398,44 @@
         "width": 42,
         "height": 42
       },
-      "selected": true,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "command-1787769543662",
+      "type": "command",
+      "position": {
+        "x": 583.8222642692733,
+        "y": 678.6912159362661
+      },
+      "data": {
+        "label": "Command",
+        "command": "pulse",
+        "value": "255,0,0,50,10,50,10"
+      },
+      "measured": {
+        "width": 235,
+        "height": 343
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1787769565100",
+      "type": "compare",
+      "position": {
+        "x": 61.29559697448917,
+        "y": 821.4129712308094
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 188
+      },
+      "selected": false,
       "dragging": false
     }
   ],
@@ -512,6 +549,22 @@
       "source": "indicator-1787744532767-0-785",
       "target": "oscOutput-1787744404596-0-548",
       "id": "xy-edge__indicator-1787744532767-0-785-oscOutput-1787744404596-0-548"
+    },
+    {
+      "source": "command-1787769543662",
+      "target": "output-1",
+      "id": "xy-edge__command-1787769543662-output-1",
+      "selected": false
+    },
+    {
+      "source": "input-1",
+      "target": "compare-1787769565100",
+      "id": "xy-edge__input-1-compare-1787769565100"
+    },
+    {
+      "source": "compare-1787769565100",
+      "target": "command-1787769543662",
+      "id": "xy-edge__compare-1787769565100-command-1787769543662"
     }
   ]
 }
