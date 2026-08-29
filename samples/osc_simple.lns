@@ -1,0 +1,130 @@
+{
+  "nodes": [
+    {
+      "id": "input-1",
+      "type": "serialInput",
+      "position": {
+        "x": 50,
+        "y": 100
+      },
+      "data": {
+        "label": "Serial Input"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 231,
+        "height": 211
+      },
+      "selected": false
+    },
+    {
+      "id": "output-1",
+      "type": "serialOutput",
+      "position": {
+        "x": 1000,
+        "y": 120
+      },
+      "data": {
+        "label": "Serial Output"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 223,
+        "height": 87
+      }
+    },
+    {
+      "id": "deviceFilter-1787828752887",
+      "type": "deviceFilter",
+      "position": {
+        "x": 334.29618320610695,
+        "y": 75.03358778625952
+      },
+      "data": {
+        "label": "DeviceFilter",
+        "deviceFilter": "keys2"
+      },
+      "measured": {
+        "width": 186,
+        "height": 201
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "log-1787828805751",
+      "type": "log",
+      "position": {
+        "x": 615.1358778625954,
+        "y": -122.85038167938933
+      },
+      "data": {
+        "label": "Log"
+      },
+      "measured": {
+        "width": 252,
+        "height": 217
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "oscOutput-1787829010497",
+      "type": "oscOutput",
+      "position": {
+        "x": 717.9664122137405,
+        "y": 164.9022900763359
+      },
+      "data": {
+        "label": "OscOutput",
+        "address": "/amplify/@",
+        "hostPort": "localhost:6000"
+      },
+      "measured": {
+        "width": 186,
+        "height": 246
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "indicator-1787829353160",
+      "type": "indicator",
+      "position": {
+        "x": 605.6305343511451,
+        "y": 240.94503816793897
+      },
+      "data": {
+        "label": "Indicator"
+      },
+      "measured": {
+        "width": 42,
+        "height": 42
+      },
+      "selected": true,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "input-1",
+      "target": "deviceFilter-1787828752887",
+      "id": "xy-edge__input-1-deviceFilter-1787828752887"
+    },
+    {
+      "source": "deviceFilter-1787828752887",
+      "target": "log-1787828805751",
+      "id": "xy-edge__deviceFilter-1787828752887-log-1787828805751"
+    },
+    {
+      "source": "deviceFilter-1787828752887",
+      "target": "indicator-1787829353160",
+      "id": "xy-edge__deviceFilter-1787828752887-indicator-1787829353160"
+    },
+    {
+      "source": "indicator-1787829353160",
+      "target": "oscOutput-1787829010497",
+      "id": "xy-edge__indicator-1787829353160-oscOutput-1787829010497"
+    }
+  ]
+}
