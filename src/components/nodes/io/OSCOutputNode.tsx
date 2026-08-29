@@ -83,7 +83,7 @@ export function OSCOutputNode({ data, id }: any) {
       </div>
 
       <div className="node-content nodrag">
-        <label style={{ fontSize: "10px", color: "#888" }}>Host:Port:</label>
+        <label style={{ fontSize: "10px", color: "#888" }}>Host:</label>
         <input
           type="text"
           value={hostPort}
