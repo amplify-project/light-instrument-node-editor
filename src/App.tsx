@@ -134,7 +134,7 @@ const initialNodes: Node[] = [
     type: "serialOutput",
     position: { x: 1000, y: 120 },
     data: { label: "Serial Output" },
-    deletable: false,
+    deletable: true,
   },
 ];
 
@@ -383,6 +383,7 @@ function Flow() {
         return node;
       })
     );
+
     setIsDirty(true);
   }, []);
 
@@ -400,7 +401,7 @@ function Flow() {
     setNodes((nds) => {
       const node = nds.find((n) => n.id === id);
 
-      if (node?.type === "serialInput" || node?.type === "serialOutput") {
+      if (node?.type === "serialInput") {
         return nds;
       }
 

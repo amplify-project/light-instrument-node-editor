@@ -48,6 +48,7 @@ export function SerialOutputNode({ data, id }: any) {
 
       <div className="node-header" title={"Sends formatted command packets to the connected serial port.\nInput: Command packet {device, port, command, value}"}>
         <span>Serial Output</span>
+        <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>
 
       <div className="node-content nodrag">
