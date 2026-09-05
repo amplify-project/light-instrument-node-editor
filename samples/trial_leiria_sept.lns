@@ -4,8 +4,8 @@
       "id": "input-1",
       "type": "serialInput",
       "position": {
-        "x": -358.2502306641498,
-        "y": 406.7902304169023
+        "x": -366.2502306641498,
+        "y": 426.7902304169023
       },
       "data": {
         "label": "Serial Input"
@@ -13,7 +13,7 @@
       "deletable": false,
       "measured": {
         "width": 231,
-        "height": 187
+        "height": 211
       },
       "selected": false,
       "dragging": false
@@ -22,8 +22,8 @@
       "id": "output-1",
       "type": "serialOutput",
       "position": {
-        "x": 2788.2697739134837,
-        "y": 512.0307811520677
+        "x": 2666.2697739134837,
+        "y": 548.0307811520677
       },
       "data": {
         "label": "Serial Output"
@@ -33,7 +33,7 @@
         "width": 271,
         "height": 120
       },
-      "selected": false,
+      "selected": true,
       "dragging": false
     },
     {
@@ -49,7 +49,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -67,7 +67,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 188
+        "height": 155
       },
       "selected": false,
       "dragging": false
@@ -155,7 +155,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 188
+        "height": 155
       },
       "selected": false,
       "dragging": false
@@ -173,7 +173,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 188
+        "height": 155
       },
       "selected": false,
       "dragging": false
@@ -189,7 +189,8 @@
         "label": "Command",
         "command": "pulse",
         "value": "255,0,0,50,50,100,50",
-        "port": ""
+        "port": "",
+        "device": "receiver1"
       },
       "measured": {
         "width": 241,
@@ -209,11 +210,12 @@
         "label": "Command",
         "value": "0,255,0,50,50,100,50",
         "command": "pulse",
-        "port": ""
+        "port": "",
+        "device": "receiver1"
       },
       "measured": {
-        "width": 241,
-        "height": 343
+        "width": 191,
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -229,11 +231,12 @@
         "label": "Command",
         "command": "pulse",
         "value": "0,0,255,50,50,100,50",
-        "port": ""
+        "port": "",
+        "device": "receiver1"
       },
       "measured": {
-        "width": 241,
-        "height": 343
+        "width": 191,
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -263,8 +266,8 @@
       "id": "deviceFilter-1785034266787",
       "type": "deviceFilter",
       "position": {
-        "x": 498.84410694279063,
-        "y": 456.6582338366989
+        "x": 454.1037935556451,
+        "y": 523.04708595956
       },
       "data": {
         "label": "DeviceFilter",
@@ -272,7 +275,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -281,15 +284,15 @@
       "id": "derivative-1785034289916",
       "type": "derivative",
       "position": {
-        "x": 737.3510499123516,
-        "y": 453.31321043560865
+        "x": 692.6107365252061,
+        "y": 519.7020625584698
       },
       "data": {
         "label": "Derivative"
       },
       "measured": {
         "width": 182,
-        "height": 113
+        "height": 80
       },
       "selected": false,
       "dragging": false
@@ -298,8 +301,8 @@
       "id": "edgeTrigger-1785034368520",
       "type": "edgeTrigger",
       "position": {
-        "x": 984.1759285909352,
-        "y": 477.8735575583971
+        "x": 939.4356152037897,
+        "y": 544.2624096812583
       },
       "data": {
         "label": "EdgeTrigger",
@@ -316,17 +319,18 @@
       "id": "command-1785034383886",
       "type": "command",
       "position": {
-        "x": 1273.7729507782722,
-        "y": 404.61970444222925
+        "x": 1227.0326373911266,
+        "y": 477.00855656509043
       },
       "data": {
         "label": "Command",
         "command": "pulse",
-        "value": "255,0,0,50,50,200,50"
+        "value": "255,0,0,50,50,200,50",
+        "device": "receiver1"
       },
       "measured": {
-        "width": 241,
-        "height": 343
+        "width": 191,
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -335,18 +339,18 @@
       "id": "frame-1785034447395",
       "type": "frame",
       "position": {
-        "x": 469.0430308785104,
-        "y": 395.16068424246214
+        "x": 434.3027174913649,
+        "y": 423.5495363653233
       },
       "data": {
         "label": "Drum"
       },
       "zIndex": -1,
-      "width": 1042,
-      "height": 591,
+      "width": 1049,
+      "height": 552,
       "measured": {
-        "width": 1042,
-        "height": 591
+        "width": 1049,
+        "height": 552
       },
       "selected": false,
       "dragging": false,
@@ -356,8 +360,8 @@
       "id": "deviceFilter-1785034595608",
       "type": "deviceFilter",
       "position": {
-        "x": 466.96956233289086,
-        "y": 1065.444316130638
+        "x": 560.9695623328909,
+        "y": 1183.444316130638
       },
       "data": {
         "label": "DeviceFilter",
@@ -365,7 +369,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -374,8 +378,8 @@
       "id": "deviceFilter-1785034608419",
       "type": "deviceFilter",
       "position": {
-        "x": 464.95435245498265,
-        "y": 1282.3695050040124
+        "x": 558.9543524549827,
+        "y": 1400.3695050040124
       },
       "data": {
         "label": "DeviceFilter",
@@ -383,7 +387,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -392,17 +396,18 @@
       "id": "command-1785034639822",
       "type": "command",
       "position": {
-        "x": 769.0595179807099,
-        "y": 1051.2239811259826
+        "x": 863.0595179807099,
+        "y": 1169.2239811259826
       },
       "data": {
         "label": "Command",
         "command": "pulse",
-        "value": "0,255,0,50,50,100,50"
+        "value": "0,255,0,50,50,100,50",
+        "device": "receiver1"
       },
       "measured": {
-        "width": 241,
-        "height": 343
+        "width": 191,
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -411,17 +416,18 @@
       "id": "command-1785034673111",
       "type": "command",
       "position": {
-        "x": 1041.0156039269648,
-        "y": 1102.5280386128095
+        "x": 1135.0156039269648,
+        "y": 1220.5280386128095
       },
       "data": {
         "label": "Command",
         "command": "pulse",
-        "value": "0,0,255,50,50,100,50"
+        "value": "0,0,255,50,50,100,50",
+        "device": "receiver2"
       },
       "measured": {
-        "width": 241,
-        "height": 343
+        "width": 191,
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -430,8 +436,8 @@
       "id": "frame-1785034723705",
       "type": "frame",
       "position": {
-        "x": 420.4126218174372,
-        "y": 1002.1547418291211
+        "x": 514.4126218174372,
+        "y": 1120.1547418291211
       },
       "data": {
         "label": "Maracas"
@@ -461,26 +467,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
-      },
-      "selected": false,
-      "dragging": false
-    },
-    {
-      "id": "hysteresis-1785034977078",
-      "type": "hysteresis",
-      "position": {
-        "x": 1839.5137687659121,
-        "y": 630.043004853673
-      },
-      "data": {
-        "label": "Hysteresis",
-        "highThreshold": 400,
-        "lowThreshold": 320
-      },
-      "measured": {
-        "width": 205,
-        "height": 181
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -494,12 +481,13 @@
       },
       "data": {
         "label": "Command",
-        "command": "pulse",
-        "value": "255,0,0,50,50,100,50"
+        "command": "comet",
+        "value": "255,0,0,1",
+        "device": "receiver2"
       },
       "measured": {
-        "width": 241,
-        "height": 343
+        "width": 186,
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -508,8 +496,8 @@
       "id": "frame-1785035028033",
       "type": "frame",
       "position": {
-        "x": 1546.836632645501,
-        "y": 424.858851888319
+        "x": 1562.3899672871153,
+        "y": 430.83782856194466
       },
       "data": {
         "label": "Touch"
@@ -539,26 +527,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
-      },
-      "selected": false,
-      "dragging": false
-    },
-    {
-      "id": "hysteresis-1785056975576",
-      "type": "hysteresis",
-      "position": {
-        "x": 1849.0097716246673,
-        "y": 943.7403216304015
-      },
-      "data": {
-        "label": "Hysteresis",
-        "highThreshold": 400,
-        "lowThreshold": 300
-      },
-      "measured": {
-        "width": 205,
-        "height": 181
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -577,26 +546,7 @@
       },
       "measured": {
         "width": 186,
-        "height": 201
-      },
-      "selected": false,
-      "dragging": false
-    },
-    {
-      "id": "hysteresis-1785056989459",
-      "type": "hysteresis",
-      "position": {
-        "x": 1861.0097716246673,
-        "y": 1165.7403216304015
-      },
-      "data": {
-        "label": "Hysteresis",
-        "highThreshold": 100,
-        "lowThreshold": 300
-      },
-      "measured": {
-        "width": 205,
-        "height": 181
+        "height": 168
       },
       "selected": false,
       "dragging": false
@@ -610,12 +560,13 @@
       },
       "data": {
         "label": "Command",
-        "command": "pulse",
-        "value": "0,255,0,50,50,100,50"
+        "command": "comet",
+        "value": "0,255,0,1",
+        "device": "receiver2"
       },
       "measured": {
-        "width": 241,
-        "height": 343
+        "width": 186,
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -629,12 +580,13 @@
       },
       "data": {
         "label": "Command",
-        "command": "pulse",
-        "value": "0,0,255,50,50,100,50"
+        "command": "comet",
+        "value": "0,0,255,1",
+        "device": "receiver2"
       },
       "measured": {
-        "width": 241,
-        "height": 343
+        "width": 186,
+        "height": 310
       },
       "selected": false,
       "dragging": false
@@ -643,15 +595,15 @@
       "id": "statistics-1785076002046",
       "type": "statistics",
       "position": {
-        "x": 181.12879385012158,
-        "y": 1072.1890219974382
+        "x": 171.61992238900604,
+        "y": 1016.9818723057547
       },
       "data": {
         "label": "Statistics"
       },
       "measured": {
         "width": 182,
-        "height": 266
+        "height": 147
       },
       "selected": false,
       "dragging": false
@@ -677,8 +629,8 @@
       "id": "reroute-1785951481121",
       "type": "reroute",
       "position": {
-        "x": 1395.4599953574589,
-        "y": 1148.9105392106399
+        "x": 1489.4599953574589,
+        "y": 1266.9105392106399
       },
       "data": {
         "label": "Reroute"
@@ -733,19 +685,19 @@
       "id": "annotation-1785959344588",
       "type": "annotation",
       "position": {
-        "x": 158.88505999929913,
-        "y": 399.8118889874537
+        "x": 464.14474661215354,
+        "y": 794.045061500302
       },
       "data": {
         "label": "Annotation",
         "text": "This area of the tree filters for messages from the instrument named 'drum_big'. We then take the derivative of the signal, which will have a positive value if the signal increases and a negative value if the value decreases. This is passed into a rising edge trigger, which will emit a signal every time the signal is on the increase and has a value greater than 100. Every time the trigger activates, a red 'pulse' command is sent to all LED strips on all LED controllers."
       },
       "zIndex": -1,
-      "width": 295,
-      "height": 516,
+      "width": 723,
+      "height": 160,
       "measured": {
-        "width": 295,
-        "height": 516
+        "width": 723,
+        "height": 160
       },
       "selected": false,
       "dragging": false,
@@ -755,8 +707,8 @@
       "id": "annotation-1785960010648",
       "type": "annotation",
       "position": {
-        "x": 1013.3435489159024,
-        "y": 1492.9063150063369
+        "x": 1107.3435489159024,
+        "y": 1610.9063150063369
       },
       "data": {
         "label": "Annotation",
@@ -777,19 +729,19 @@
       "id": "annotation-1785960172586",
       "type": "annotation",
       "position": {
-        "x": 1601.5713909913293,
-        "y": 1392.6483150157958
+        "x": 1595.5713909913293,
+        "y": 1418.6483150157958
       },
       "data": {
         "label": "Annotation",
-        "text": "This area filters for the different ports of the 'touch' instrument:\n\n- If the signal on the port named 'r' rises above 400, emit a signal which then activates the 'comet' animation with colour red\n- If the signal on the port named 'g' rises above 400, emit a signal which then activates the 'comet' animation with colour green\n- If the signal on the port named 'b' rises above 100, emit a signal which then activates the 'comet' animation with colour blue\n\nThe data for each port is passed through Hysteresis nodes, which activate if the incoming value rises above the value defined in the param 'High' and only retriggers after the incoming value has fallen below the value defined in the param 'Low'."
+        "text": "This area filters for the different ports of the 'touch' instrument:\n\n- If a touch on the port named 'r' is detected, a 'comet' animation withe the colours red is triggered\n- If a touch on the port named 'g' is detected, a 'comet' animation withe the colours green is triggered\n- If a touch on the port named 'b' is detected, a 'comet' animation withe the colours blue is triggered\n"
       },
       "zIndex": -1,
-      "width": 468,
-      "height": 253,
+      "width": 472,
+      "height": 195,
       "measured": {
-        "width": 468,
-        "height": 253
+        "width": 472,
+        "height": 195
       },
       "selected": false,
       "dragging": false,
@@ -799,49 +751,12 @@
       "id": "deviceFilter-1788596924381",
       "type": "deviceFilter",
       "position": {
-        "x": 461.95648211568516,
-        "y": 1496.0412298749652
+        "x": 555.9564821156852,
+        "y": 1614.0412298749652
       },
       "data": {
         "label": "DeviceFilter",
         "deviceFilter": "maracas1"
-      },
-      "measured": {
-        "width": 186,
-        "height": 201
-      },
-      "selected": false,
-      "dragging": false
-    },
-    {
-      "id": "command-1788596942059-0-319",
-      "type": "command",
-      "position": {
-        "x": 723.4286322064495,
-        "y": 1412.180486345743
-      },
-      "data": {
-        "label": "Command",
-        "command": "pulse",
-        "value": "255,0,255,50,50,100,50"
-      },
-      "measured": {
-        "width": 253,
-        "height": 343
-      },
-      "selected": false,
-      "dragging": false
-    },
-    {
-      "id": "deviceFilter-1788597038226",
-      "type": "deviceFilter",
-      "position": {
-        "x": 504.39310040347243,
-        "y": 701.2148387010005
-      },
-      "data": {
-        "label": "DeviceFilter",
-        "deviceFilter": "drum_small"
       },
       "measured": {
         "width": 186,
@@ -851,51 +766,17 @@
       "dragging": false
     },
     {
-      "id": "derivative-1788597043139",
-      "type": "derivative",
-      "position": {
-        "x": 750.9842607243996,
-        "y": 716.1250018831962
-      },
-      "data": {
-        "label": "Derivative"
-      },
-      "measured": {
-        "width": 182,
-        "height": 80
-      },
-      "selected": false,
-      "dragging": false
-    },
-    {
-      "id": "edgeTrigger-1788597047546",
-      "type": "edgeTrigger",
-      "position": {
-        "x": 987.2530003807295,
-        "y": 708.0964524773984
-      },
-      "data": {
-        "label": "EdgeTrigger",
-        "threshold": 100
-      },
-      "measured": {
-        "width": 233,
-        "height": 190
-      },
-      "selected": false,
-      "dragging": false
-    },
-    {
-      "id": "command-1788597157557",
+      "id": "command-1788596942059-0-319",
       "type": "command",
       "position": {
-        "x": 1277.7298657893514,
-        "y": 755.5671471178144
+        "x": 817.4286322064495,
+        "y": 1530.180486345743
       },
       "data": {
         "label": "Command",
         "command": "pulse",
-        "value": "0,255,0,50,50,200,50"
+        "value": "255,0,255,50,50,100,50",
+        "device": "receiver2"
       },
       "measured": {
         "width": 191,
@@ -908,8 +789,8 @@
       "id": "button-1788604836451",
       "type": "button",
       "position": {
-        "x": -323.6047132978951,
-        "y": 622.0145604631779
+        "x": -343.6047132978951,
+        "y": 644.0145604631779
       },
       "data": {
         "label": "Button",
@@ -918,6 +799,95 @@
       "measured": {
         "width": 182,
         "height": 137
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "gate-1788605304952",
+      "type": "gate",
+      "position": {
+        "x": -65.86508988108542,
+        "y": 591.0654905672584
+      },
+      "data": {
+        "label": "Gate"
+      },
+      "measured": {
+        "width": 182,
+        "height": 92
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "redisOutput-1788617776664",
+      "type": "redisOutput",
+      "position": {
+        "x": 174.44187682145136,
+        "y": 721.9213771239129
+      },
+      "data": {
+        "label": "RedisOutput",
+        "host": "192.168.1.103"
+      },
+      "measured": {
+        "width": 186,
+        "height": 246
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1788624732187",
+      "type": "compare",
+      "position": {
+        "x": 1876.659106041556,
+        "y": 600.5654874166925
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 155
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1788624743855",
+      "type": "compare",
+      "position": {
+        "x": 1876.6591060415558,
+        "y": 936.2711608474514
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 155
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "compare-1788624759104",
+      "type": "compare",
+      "position": {
+        "x": 1872.4888492287516,
+        "y": 1180.2311843965124
+      },
+      "data": {
+        "label": "Compare",
+        "compareValue": 1
+      },
+      "measured": {
+        "width": 186,
+        "height": 155
       },
       "selected": false,
       "dragging": false
@@ -993,12 +963,6 @@
       "selected": false
     },
     {
-      "source": "input-1",
-      "target": "deviceFilter-1785034266787",
-      "id": "xy-edge__input-1-deviceFilter-1785034266787",
-      "selected": false
-    },
-    {
       "source": "derivative-1785034289916",
       "target": "edgeTrigger-1785034368520",
       "id": "xy-edge__derivative-1785034289916-edgeTrigger-1785034368520",
@@ -1017,18 +981,6 @@
       "selected": false
     },
     {
-      "source": "input-1",
-      "target": "deviceFilter-1785034595608",
-      "id": "xy-edge__input-1-deviceFilter-1785034595608",
-      "selected": false
-    },
-    {
-      "source": "input-1",
-      "target": "deviceFilter-1785034608419",
-      "id": "xy-edge__input-1-deviceFilter-1785034608419",
-      "selected": false
-    },
-    {
       "source": "deviceFilter-1785034595608",
       "target": "command-1785034639822",
       "id": "xy-edge__deviceFilter-1785034595608-command-1785034639822",
@@ -1038,66 +990,6 @@
       "source": "deviceFilter-1785034608419",
       "target": "command-1785034673111",
       "id": "xy-edge__deviceFilter-1785034608419-command-1785034673111",
-      "selected": false
-    },
-    {
-      "source": "deviceFilter-1785034964818",
-      "target": "hysteresis-1785034977078",
-      "id": "xy-edge__deviceFilter-1785034964818-hysteresis-1785034977078",
-      "selected": false
-    },
-    {
-      "source": "hysteresis-1785034977078",
-      "target": "command-1785034997247",
-      "id": "xy-edge__hysteresis-1785034977078-command-1785034997247",
-      "selected": false
-    },
-    {
-      "source": "input-1",
-      "target": "deviceFilter-1785034964818",
-      "id": "xy-edge__input-1-deviceFilter-1785034964818",
-      "selected": false
-    },
-    {
-      "source": "input-1",
-      "target": "deviceFilter-1785056964811",
-      "id": "xy-edge__input-1-deviceFilter-1785056964811",
-      "selected": false
-    },
-    {
-      "source": "input-1",
-      "target": "deviceFilter-1785056980583",
-      "id": "xy-edge__input-1-deviceFilter-1785056980583",
-      "selected": false
-    },
-    {
-      "source": "deviceFilter-1785056964811",
-      "target": "hysteresis-1785056975576",
-      "id": "xy-edge__deviceFilter-1785056964811-hysteresis-1785056975576",
-      "selected": false
-    },
-    {
-      "source": "deviceFilter-1785056980583",
-      "target": "hysteresis-1785056989459",
-      "id": "xy-edge__deviceFilter-1785056980583-hysteresis-1785056989459",
-      "selected": false
-    },
-    {
-      "source": "hysteresis-1785056975576",
-      "target": "command-1785057055748",
-      "id": "xy-edge__hysteresis-1785056975576-command-1785057055748",
-      "selected": false
-    },
-    {
-      "source": "hysteresis-1785056989459",
-      "target": "command-1785057082192",
-      "id": "xy-edge__hysteresis-1785056989459-command-1785057082192",
-      "selected": false
-    },
-    {
-      "source": "input-1",
-      "target": "statistics-1785076002046",
-      "id": "xy-edge__input-1-statistics-1785076002046",
       "selected": false
     },
     {
@@ -1143,21 +1035,9 @@
       "selected": false
     },
     {
-      "source": "command-1785057082192",
-      "target": "reroute-1785951508103",
-      "id": "xy-edge__command-1785057082192-reroute-1785951508103",
-      "selected": false
-    },
-    {
       "source": "command-1785057055748",
       "target": "reroute-1785951508103",
       "id": "xy-edge__command-1785057055748-reroute-1785951508103",
-      "selected": false
-    },
-    {
-      "source": "command-1785034997247",
-      "target": "reroute-1785951508103",
-      "id": "xy-edge__command-1785034997247-reroute-1785951508103",
       "selected": false
     },
     {
@@ -1169,47 +1049,121 @@
     {
       "source": "deviceFilter-1788596924381",
       "target": "command-1788596942059-0-319",
-      "id": "xy-edge__deviceFilter-1788596924381-command-1788596942059-0-319"
+      "id": "xy-edge__deviceFilter-1788596924381-command-1788596942059-0-319",
+      "selected": false
     },
     {
       "source": "command-1788596942059-0-319",
       "target": "reroute-1785951481121",
-      "id": "xy-edge__command-1788596942059-0-319-reroute-1785951481121"
+      "id": "xy-edge__command-1788596942059-0-319-reroute-1785951481121",
+      "selected": false
+    },
+    {
+      "source": "button-1788604836451",
+      "target": "gate-1788605304952",
+      "targetHandle": "control",
+      "id": "xy-edge__button-1788604836451-gate-1788605304952control"
     },
     {
       "source": "input-1",
-      "target": "deviceFilter-1788596924381",
-      "id": "xy-edge__input-1-deviceFilter-1788596924381"
+      "target": "gate-1788605304952",
+      "targetHandle": "signal",
+      "id": "xy-edge__input-1-gate-1788605304952signal"
     },
     {
-      "source": "deviceFilter-1788597038226",
-      "target": "derivative-1788597043139",
-      "id": "xy-edge__deviceFilter-1788597038226-derivative-1788597043139"
-    },
-    {
-      "source": "derivative-1788597043139",
-      "target": "edgeTrigger-1788597047546",
-      "id": "xy-edge__derivative-1788597043139-edgeTrigger-1788597047546"
-    },
-    {
-      "source": "input-1",
-      "target": "deviceFilter-1788597038226",
-      "id": "xy-edge__input-1-deviceFilter-1788597038226"
-    },
-    {
-      "source": "edgeTrigger-1788597047546",
-      "target": "command-1788597157557",
-      "id": "xy-edge__edgeTrigger-1788597047546-command-1788597157557"
-    },
-    {
-      "source": "command-1788597157557",
-      "target": "output-1",
-      "id": "xy-edge__command-1788597157557-output-1"
-    },
-    {
-      "source": "input-1",
+      "source": "gate-1788605304952",
       "target": "deviceFilter-1785033980243",
-      "id": "xy-edge__input-1-deviceFilter-1785033980243"
+      "id": "xy-edge__gate-1788605304952-deviceFilter-1785033980243"
+    },
+    {
+      "source": "gate-1788605304952",
+      "target": "deviceFilter-1785034266787",
+      "id": "xy-edge__gate-1788605304952-deviceFilter-1785034266787",
+      "selected": false
+    },
+    {
+      "source": "gate-1788605304952",
+      "target": "deviceFilter-1785034595608",
+      "id": "xy-edge__gate-1788605304952-deviceFilter-1785034595608",
+      "selected": false
+    },
+    {
+      "source": "gate-1788605304952",
+      "target": "deviceFilter-1785034608419",
+      "id": "xy-edge__gate-1788605304952-deviceFilter-1785034608419",
+      "selected": false
+    },
+    {
+      "source": "gate-1788605304952",
+      "target": "deviceFilter-1788596924381",
+      "id": "xy-edge__gate-1788605304952-deviceFilter-1788596924381",
+      "selected": false
+    },
+    {
+      "source": "gate-1788605304952",
+      "target": "deviceFilter-1785034964818",
+      "id": "xy-edge__gate-1788605304952-deviceFilter-1785034964818"
+    },
+    {
+      "source": "gate-1788605304952",
+      "target": "deviceFilter-1785056964811",
+      "id": "xy-edge__gate-1788605304952-deviceFilter-1785056964811"
+    },
+    {
+      "source": "gate-1788605304952",
+      "target": "deviceFilter-1785056980583",
+      "id": "xy-edge__gate-1788605304952-deviceFilter-1785056980583"
+    },
+    {
+      "source": "gate-1788605304952",
+      "target": "statistics-1785076002046",
+      "id": "xy-edge__gate-1788605304952-statistics-1785076002046",
+      "selected": false
+    },
+    {
+      "source": "command-1785057082192",
+      "target": "reroute-1785951508103",
+      "id": "xy-edge__command-1785057082192-reroute-1785951508103"
+    },
+    {
+      "source": "command-1785034997247",
+      "target": "reroute-1785951508103",
+      "id": "xy-edge__command-1785034997247-reroute-1785951508103"
+    },
+    {
+      "source": "gate-1788605304952",
+      "target": "redisOutput-1788617776664",
+      "id": "xy-edge__gate-1788605304952-redisOutput-1788617776664"
+    },
+    {
+      "source": "deviceFilter-1785034964818",
+      "target": "compare-1788624732187",
+      "id": "xy-edge__deviceFilter-1785034964818-compare-1788624732187"
+    },
+    {
+      "source": "compare-1788624732187",
+      "target": "command-1785034997247",
+      "id": "xy-edge__compare-1788624732187-command-1785034997247"
+    },
+    {
+      "source": "deviceFilter-1785056964811",
+      "target": "compare-1788624743855",
+      "id": "xy-edge__deviceFilter-1785056964811-compare-1788624743855"
+    },
+    {
+      "source": "compare-1788624743855",
+      "target": "command-1785057055748",
+      "id": "xy-edge__compare-1788624743855-command-1785057055748"
+    },
+    {
+      "source": "deviceFilter-1785056980583",
+      "target": "compare-1788624759104",
+      "id": "xy-edge__deviceFilter-1785056980583-compare-1788624759104"
+    },
+    {
+      "source": "compare-1788624759104",
+      "target": "command-1785057082192",
+      "id": "xy-edge__compare-1788624759104-command-1785057082192"
     }
   ]
 }
