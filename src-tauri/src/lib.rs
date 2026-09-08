@@ -19,6 +19,7 @@ struct RedisSubscriptionEntry {
 struct SerialState {
     ports: Mutex<HashMap<String, PortEntry>>,
     redis_subscriptions: Mutex<HashMap<String, RedisSubscriptionEntry>>,
+    redis_connections: Mutex<HashMap<String, redis::Connection>>,
     simulation_running: Arc<AtomicBool>,
 }
 
@@ -298,19 +299,38 @@ fn redis_unsubscribe(state: State<'_, SerialState>, host: String, port: u16, cha
 }
 
 #[tauri::command]
-fn redis_publish(host: String, port: u16, channel: String, message: String) -> Result<(), String> {
-    let client = redis::Client::open(format!("redis://{}:{}/", host, port))
-        .map_err(|e| e.to_string())?;
+fn redis_publish(
+    state: State<'_, SerialState>,
+    host: String,
+    port: u16,
+    channel: String,
+    message: String,
+) -> Result<(), String> {
+    let url = format!("redis://{}:{}/", host, port);
+    let mut connections = state.redis_connections.lock().unwrap();
 
-    let mut con = client.get_connection().map_err(|e| e.to_string())?;
+    let con = if let Some(con) = connections.get_mut(&url) {
+        con
+    } else {
+        let client = redis::Client::open(url.clone()).map_err(|e| e.to_string())?;
+        let con = client.get_connection().map_err(|e| e.to_string())?;
 
-    redis::cmd("PUBLISH")
+        connections.insert(url.clone(), con);
+        connections.get_mut(&url).unwrap()
+    };
+
+    let result = redis::cmd("PUBLISH")
         .arg(channel)
         .arg(message)
-        .exec(&mut con)
-        .unwrap();
+        .exec(con);
 
-    Ok(())
+    match result {
+        Ok(_) => Ok(()),
+        Err(e) => {
+            connections.remove(&url);
+            Err(e.to_string())
+        }
+    }
 }
 
 #[tauri::command]
@@ -440,6 +460,7 @@ pub fn run() {
         .manage(SerialState {
             ports: Mutex::new(HashMap::new()),
             redis_subscriptions: Mutex::new(HashMap::new()),
+            redis_connections: Mutex::new(HashMap::new()),
             simulation_running: Arc::new(AtomicBool::new(false)),
         })
         .invoke_handler(tauri::generate_handler![
