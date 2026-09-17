@@ -20,7 +20,11 @@ export function DeviceFilterNode({ data, id }: any) {
     if (data.registerConsumer) {
       data.registerConsumer(id, (incoming: any) => {
         if (incoming && typeof incoming === "object") {
-          const deviceMatch = !deviceFilter || incoming.device === deviceFilter;
+          const deviceMatch = !deviceFilter || (
+            incoming.device === deviceFilter
+          ) || (
+            deviceFilter.endsWith("*") && incoming.device.startsWith(deviceFilter.slice(0, -1))
+          );
           const portMatch = !portFilter || incoming.port === portFilter;
 
           if (deviceMatch && portMatch) {
