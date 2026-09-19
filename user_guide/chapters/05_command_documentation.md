@@ -53,8 +53,7 @@ Stops all activity on the targeted port.
 ## Animation Commands
 
 All animations run independently per port and can be updated in real-time
-using `set` or `setColor`. For a detailed description of each animation and its
-parameters, see [animations.md](animations.md).
+using `set` or `setColor`.
 
 ### `rainbow`
 
