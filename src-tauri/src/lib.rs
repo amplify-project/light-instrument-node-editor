@@ -105,11 +105,22 @@ fn close_port(state: State<'_, SerialState>, port_name: String) {
 }
 
 #[tauri::command]
-fn write_serial(state: State<'_, SerialState>, port_name: String, data: String) -> Result<(), String> {
+fn write_serial(
+    state: State<'_, SerialState>,
+    app: AppHandle,
+    port_name: String,
+    data: String,
+) -> Result<(), String> {
     let mut ports = state.ports.lock().unwrap();
 
     if let Some(entry) = ports.get_mut(&port_name) {
-        entry.port.write_all(data.as_bytes()).map_err(|e| e.to_string())?;
+        if let Err(e) = entry.port.write_all(data.as_bytes()) {
+            let err_msg = e.to_string();
+            ports.remove(&port_name);
+            let _ = app.emit("serial-disconnected", serde_json::json!({ "port": port_name }));
+
+            return Err(err_msg);
+        }
 
         Ok(())
     } else {
