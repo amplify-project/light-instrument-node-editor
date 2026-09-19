@@ -87,7 +87,14 @@ fn open_port(
                     let _ = app.emit("serial-data", payload);
                 }
                 Err(ref e) if e.kind() == std::io::ErrorKind::TimedOut => (),
-                Err(_) => break,
+                Err(_) => {
+                    let _ = app.emit("serial-disconnected", serde_json::json!({ "port": p_name }));
+
+                    let state = app.state::<SerialState>();
+                    let mut ports = state.ports.lock().unwrap();
+                    ports.remove(&p_name);
+                    break;
+                }
             }
         }
     });
