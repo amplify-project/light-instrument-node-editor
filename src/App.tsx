@@ -260,7 +260,7 @@ function Flow() {
 
       // Serial Output only allows connections from Command, Script and Reroute nodes
       if (targetNode?.type === "serialOutput") {
-        if (sourceNode?.type !== "command" && sourceNode?.type !== "script" && sourceNode?.type !== "reroute") {
+        if (sourceNode?.type !== "command" && sourceNode?.type !== "script" && sourceNode?.type !== "reroute" && sourceNode?.type !== "toggleCommand") {
           return false;
         }
       }
