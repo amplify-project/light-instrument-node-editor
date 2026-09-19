@@ -95,15 +95,16 @@ instrument in your setup.
 ## Sending commands
 
 To bridge the gap between sensor data and lighting effects, you use the
-**Command** node. This node acts as a translator: when it receives a trigger
-signal on its input, it emits a formatted command packet that the LED
-controllers understand. Note that the *Serial Output* node only accepts
-connections from a *Command* or *Script* node.
+**Command** or **Toggle Command** node. These nodes act as translators: when they
+receive a trigger signal on their input, they emit a formatted command packet
+that the LED controllers understand. Note that the *Serial Output* node only
+accepts connections from a *Command*, *Toggle Command*, *Script* or *Reroute*
+node.
 
-In the *Command* node, you can select from a range of animations and static
-effects (like `set`, `pulse`, or `rainbow`) defined in the controller firmware.
-You can specify a target device and port, or leave them blank to broadcast the
-command to all controllers.
+In the *Command* and *Toggle Command* nodes, you can select from a range of
+animations and static effects (like `set`, `pulse`, or `rainbow`) defined in the
+controller firmware. You can specify a target device and port, or leave them
+blank to broadcast the command to all controllers.
 
 To assist with configuration, a **parameter hint** appears below the input field
 whenever a command is selected, showing the expected format and required values
@@ -114,4 +115,4 @@ signal, allowing sensor intensity to directly control parameters like
 brightness, speed, or color.
 
 For testing, commands can be triggered by pressing the *Manual Trigger* button
-on the corresponding *Command* node.
+on the corresponding node.

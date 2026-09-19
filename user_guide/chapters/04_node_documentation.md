@@ -34,6 +34,22 @@ breathe animation with color red and a speed of 20 BPM to start. Then, the
 script waits for 500ms and then issues a `stop` command (empty strings for
 device and port send the command to all devices/port).
 
+### Toggle Command
+
+Similar to the *Command* node, it converts a trigger signal into a structured
+command packet. However, if it receives a signal with a value of 0, it
+automatically emits a `stop` command instead. Any other value emits the
+configured command.
+
+- **Input**: Any signal
+- **Output**: Command packet `{device, port, command, value}`
+- **Parameters**:
+  - **Device**: Target device name (optional)
+  - **Port**: Target port name (optional)
+  - **Command Name**: The animation or command to execute
+  - **Parameters**: Command-specific parameters (e.g., `r,g,b,speed`)
+- **Note**: Use "#" in parameters to inject incoming value.
+
 ## Display
 
 ### Graph
