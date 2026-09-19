@@ -68,6 +68,7 @@ import { SmoothNode } from "./components/nodes/processing/SmoothNode";
 import { StatisticsNode } from "./components/nodes/display/StatisticsNode";
 import { TimerNode } from "./components/nodes/math/TimerNode";
 import { ToggleNode } from "./components/nodes/math/ToggleNode";
+import { ToggleCommandNode } from "./components/nodes/action/ToggleCommandNode";
 
 import { AVAILABLE_COMMANDS } from "./constants";
 import "./App.css";
@@ -80,6 +81,7 @@ const nodeTypes = {
   deviceFilter: DeviceFilterNode,
   peakDetection: PeakDetectionNode,
   command: CommandNode,
+  toggleCommand: ToggleCommandNode,
   graph: GraphNode,
   compare: CompareNode,
   counter: CounterNode,
