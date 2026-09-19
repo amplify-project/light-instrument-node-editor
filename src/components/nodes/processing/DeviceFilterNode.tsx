@@ -49,7 +49,7 @@ export function DeviceFilterNode({ data, id }: any) {
     <div className="node filter-node">
       <Handle type="target" position={Position.Left} />
 
-      <div className="node-header" title={"Only allows packets from a specific device and/or port to pass through.\nInput: Structured packet\nOutput: Filtered packet"}>
+      <div className="node-header" title={"Only allows packets from a specific device and/or port to pass through. The device name field supports a trailing asterisk as wildcard.\nInput: Structured packet\nOutput: Filtered packet"}>
         <span>Device Filter</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
       </div>

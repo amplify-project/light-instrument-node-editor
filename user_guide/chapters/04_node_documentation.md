@@ -311,10 +311,14 @@ Calculates the rate of change (velocity) of the incoming signal.
 
 ### Device Filter
 
-Only allows packets from a specific device and/or port to pass through.
+Only allows packets from a specific device and/or port to pass through. A
+trailing asterisk in the *Device* field can be used as wildcard.
 
 - **Input**: Structured packet
 - **Output**: Filtered packet
+- **Parameters**:
+  - **Device**: The device name to filter for.
+  - **Port**: The port name to filter for.
 
 ### Envelope Follower
 
