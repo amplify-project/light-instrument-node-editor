@@ -397,6 +397,18 @@ function Flow() {
     invoke("write_serial", { portName: activePort, data: payload }).catch(console.error);
   }, [activePort, consoleData]);
 
+  useEffect(() => {
+    const unlisten = listen<{ port: string }>("serial-disconnected", (event) => {
+      if (activePort === event.payload.port) {
+        setActivePort(null);
+      }
+    });
+
+    return () => {
+      unlisten.then((f) => f());
+    };
+  }, [activePort]);
+
   const onDeleteNode = useCallback((id: string) => {
     setNodes((nds) => {
       const node = nds.find((n) => n.id === id);

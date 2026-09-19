@@ -88,8 +88,15 @@ export function SerialInputNode({ data, id }: any) {
       }
     });
 
+    const unlistenDisconnected = listen<{ port: string }>("serial-disconnected", (event) => {
+      if (event.payload.port === selectedPort) {
+        setIsConnected(false);
+      }
+    });
+
     return () => {
       unlistenData.then((f) => f());
+      unlistenDisconnected.then((f) => f());
     };
   }, [selectedPort, isConnected, id, data]);
 
