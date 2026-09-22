@@ -42,7 +42,7 @@ const nodeOptions: NodeOption[] = [
   { type: "toggle", label: "Toggle", category: "Math & Logic" },
   // Output
   { type: "command", label: "Command", category: "Output" },
-  { type: "toggleCommand", label: "ToggleCommand", category: "Output" },
+  { type: "toggleCommand", label: "Toggle Command", category: "Output" },
   { type: "csvWriter", label: "CSV Writer", category: "Output" },
   { type: "redisOutput", label: "Redis Output", category: "Output" },
   { type: "storeValue", label: "Store Value", category: "Output" },
