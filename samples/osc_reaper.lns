@@ -1,0 +1,110 @@
+{
+  "nodes": [
+    {
+      "id": "input-1",
+      "type": "serialInput",
+      "position": {
+        "x": -340.7245501553672,
+        "y": 356.7714022253958
+      },
+      "data": {
+        "label": "Serial Input"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 231,
+        "height": 211
+      },
+      "selected": true,
+      "dragging": false
+    },
+    {
+      "id": "output-1",
+      "type": "serialOutput",
+      "position": {
+        "x": 291.710453894553,
+        "y": 316.2529232299241
+      },
+      "data": {
+        "label": "Serial Output"
+      },
+      "deletable": false,
+      "measured": {
+        "width": 217,
+        "height": 87
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "oscOutput-1788039927513",
+      "type": "oscOutput",
+      "position": {
+        "x": 50.99740206143889,
+        "y": 202.40843000827445
+      },
+      "data": {
+        "label": "OscOutput",
+        "hostPort": "localhost:6000",
+        "address": "/amplify/@"
+      },
+      "measured": {
+        "width": 186,
+        "height": 213
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "indicator-1788041805377",
+      "type": "indicator",
+      "position": {
+        "x": -54.79521823236076,
+        "y": 441.6332446768903
+      },
+      "data": {
+        "label": "Indicator"
+      },
+      "measured": {
+        "width": 42,
+        "height": 42
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "log-1788041818420",
+      "type": "log",
+      "position": {
+        "x": 51.22352281774275,
+        "y": 467.9772954832797
+      },
+      "data": {
+        "label": "Log"
+      },
+      "measured": {
+        "width": 252,
+        "height": 217
+      },
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "input-1",
+      "target": "indicator-1788041805377",
+      "id": "xy-edge__input-1-indicator-1788041805377"
+    },
+    {
+      "source": "indicator-1788041805377",
+      "target": "oscOutput-1788039927513",
+      "id": "xy-edge__indicator-1788041805377-oscOutput-1788039927513"
+    },
+    {
+      "source": "indicator-1788041805377",
+      "target": "log-1788041818420",
+      "id": "xy-edge__indicator-1788041805377-log-1788041818420"
+    }
+  ]
+}

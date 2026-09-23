@@ -20,6 +20,7 @@ import "@xyflow/react/dist/style.css";
 import { save, open, ask } from "@tauri-apps/plugin-dialog";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
+import { getCurrentWindow } from "@tauri-apps/api/window";
 import useInterval from "@use-it/interval";
 
 import { BooleanNode } from "./components/nodes/math/BooleanNode";
@@ -72,7 +73,6 @@ import { ToggleCommandNode } from "./components/nodes/action/ToggleCommandNode";
 
 import { AVAILABLE_COMMANDS } from "./constants";
 import "./App.css";
-import { getCurrentWindow } from "@tauri-apps/api/window";
 
 const nodeTypes = {
   serialInput: SerialInputNode,
