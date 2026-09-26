@@ -9,6 +9,7 @@ interface LastSentMessage {
 
 export function OSCOutputNode({ data, id }: any) {
   const [lastSent, setLastSent] = useState<LastSentMessage>({ message: "", isError: false });
+  const [glowKey, setGlowKey] = useState(0);
   const lastSentRef = useRef<LastSentMessage>({ message: "", isError: false });
 
   const hostPort = data.hostPort ?? "localhost:9000";
@@ -55,6 +56,8 @@ export function OSCOutputNode({ data, id }: any) {
             message: `${finalAddress.trim().startsWith('/') ? finalAddress.trim() : '/' + finalAddress.trim()} ${finalValue}`,
             isError: false
           };
+
+          setGlowKey(prev => prev + 1);
         }).catch((err) => {
           lastSentRef.current = {
             message: String(err).length > 35 ? String(err).substring(0, 38) + "..." : String(err),
@@ -79,6 +82,13 @@ export function OSCOutputNode({ data, id }: any) {
 
   return (
     <div className="node output-node osc-output-node">
+      {glowKey > 0 && (
+        <div
+          key={glowKey}
+          className="node-glow-effect"
+          onAnimationEnd={() => setGlowKey(0)}
+        />
+      )}
       <Handle type="target" position={Position.Left} className="multi-handle" />
 
       <div className="node-header" title={"Sends OSC messages over UDP.\nInput: Any message with a 'value' property\nOutput: None"}>
