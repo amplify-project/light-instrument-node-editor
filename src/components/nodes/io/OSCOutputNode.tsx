@@ -12,7 +12,7 @@ export function OSCOutputNode({ data, id }: any) {
   const [glowKey, setGlowKey] = useState(0);
   const lastSentRef = useRef<LastSentMessage>({ message: "", isError: false });
 
-  const hostPort = data.hostPort ?? "localhost:9000";
+  const hostPort = data.hostPort ?? "localhost:6000";
   const address = data.address ?? "/amplify";
   const value = data.value ?? "#";
 
