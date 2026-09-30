@@ -34,7 +34,7 @@ export function CounterNode({ data, id }: any) {
         data.unregisterConsumer(id);
       }
     };
-  }, [id, data]);
+  }, [id, data.registerConsumer, data.unregisterConsumer, data.onData]);
 
   const onReset = () => {
     countRef.current = 0;

@@ -63,7 +63,7 @@ export function SimulateNode({ data, id }: any) {
       unlistenData.then((f) => f());
       unlistenFinished.then((f) => f());
     };
-  }, [isSimulating, id, data]);
+  }, [isSimulating, id, data.onData]);
 
   const handleSimulate = async () => {
     if (isSimulating) {

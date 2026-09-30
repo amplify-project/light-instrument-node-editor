@@ -36,7 +36,7 @@ export function FunctionGeneratorNode({ id, data }: any) {
     return () => {
       clearInterval(intervalId);
     };
-  }, [waveform, frequency, sampleRate, id, data]);
+  }, [waveform, frequency, sampleRate, id, data.onData]);
 
   return (
     <div className="node function-generator-node">

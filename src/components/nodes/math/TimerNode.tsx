@@ -19,7 +19,7 @@ export function TimerNode({ data, id }: any) {
     return () => {
       clearInterval(timer);
     };
-  }, [interval, value, id, data]);
+  }, [interval, value, id, data.onData]);
 
   return (
     <div className="node timer-node">

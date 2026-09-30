@@ -98,7 +98,7 @@ export function SerialInputNode({ data, id }: any) {
       unlistenData.then((f) => f());
       unlistenDisconnected.then((f) => f());
     };
-  }, [selectedPort, isConnected, id, data]);
+  }, [selectedPort, isConnected, id, data.onData, data.setActivePort]);
 
   const refreshPorts = async () => {
     const availablePorts = await invoke<string[]>("list_ports");

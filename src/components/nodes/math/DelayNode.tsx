@@ -6,6 +6,16 @@ export function DelayNode({ data, id }: any) {
   const [isPending, setIsPending] = useState(false);
   const [pendingCount, setPendingCount] = useState(0);
   const pendingCountRef = useRef(0);
+  const onDataRef = useRef(data.onData);
+  const delayMsRef = useRef(delayMs);
+
+  useEffect(() => {
+    onDataRef.current = data.onData;
+  }, [data.onData]);
+
+  useEffect(() => {
+    delayMsRef.current = delayMs;
+  }, [delayMs]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,15 +32,16 @@ export function DelayNode({ data, id }: any) {
     if (data.registerConsumer) {
       data.registerConsumer(id, (incoming: any) => {
         if (incoming) {
+          const currentDelay = delayMsRef.current;
           pendingCountRef.current++;
 
           const timeout = setTimeout(() => {
-            if (data.onData) {
-              data.onData(id, incoming);
+            if (onDataRef.current) {
+              onDataRef.current(id, incoming);
             }
 
             pendingCountRef.current--;
-          }, delayMs);
+          }, currentDelay);
 
           timeouts.push(timeout);
         }
@@ -44,7 +55,7 @@ export function DelayNode({ data, id }: any) {
 
       timeouts.forEach(clearTimeout);
     };
-  }, [delayMs, id, data]);
+  }, [id, data.registerConsumer, data.unregisterConsumer]);
 
   return (
     <div className="node delay-node">

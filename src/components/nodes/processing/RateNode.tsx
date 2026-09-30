@@ -33,7 +33,7 @@ export function RateNode({ data, id }: any) {
         data.unregisterConsumer(id);
       }
     };
-  }, [interval, id, data]);
+  }, [interval, id, data.onData, data.registerConsumer, data.unregisterConsumer]);
 
   return (
     <div className="node rate-node">
