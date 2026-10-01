@@ -89,7 +89,7 @@ export function EdgeTriggerNode({ data, id }: any) {
         </div>
 
         <div className="node-status" style={{ marginTop: "8px" }}>
-          Triggers: {triggerCount}
+          Count: {triggerCount}
         </div>
       </div>
 

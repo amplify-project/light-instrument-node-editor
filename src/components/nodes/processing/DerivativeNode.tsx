@@ -57,11 +57,9 @@ export function DerivativeNode({ data, id }: any) {
           Rate of Change (Δ)
         </div>
 
-        {lastDiff !== null && (
-          <div className="node-status">
-            {lastDiff}
-          </div>
-        )}
+        <div className="node-status">
+          {lastDiff}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

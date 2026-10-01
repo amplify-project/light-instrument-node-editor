@@ -62,11 +62,9 @@ export function StoreValueNode({ data, id }: any) {
           spellCheck="false"
         />
 
-        {name && lastValue !== null && (
-          <div className="node-status">
-            {displayValue}
-          </div>
-        )}
+        <div className="node-status">
+          {displayValue}
+        </div>
       </div>
     </div>
   );

@@ -56,11 +56,9 @@ export function SerialOutputNode({ data, id }: any) {
           {isConnected ? `Connected: ${selectedPort}` : "Not Connected"}
         </div>
 
-        {lastSent && (
-          <div className="node-status">
-            {lastSent}
-          </div>
-        )}
+        <div className="node-status">
+          {lastSent}
+        </div>
       </div>
     </div>
   );

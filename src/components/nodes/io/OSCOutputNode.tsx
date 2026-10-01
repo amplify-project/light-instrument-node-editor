@@ -126,11 +126,9 @@ export function OSCOutputNode({ data, id }: any) {
           spellCheck="false"
         />
 
-        {lastSent.message && (
-          <div className="node-status" style={{ color: lastSent.isError ? "#f00" : "#888"}}>
-            {lastSent.message}
-          </div>
-        )}
+        <div className="node-status" style={{ color: lastSent.isError ? "#f00" : "#888"}}>
+          {lastSent?.message}
+        </div>
       </div>
     </div>
   );

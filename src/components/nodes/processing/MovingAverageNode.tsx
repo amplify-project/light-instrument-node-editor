@@ -83,11 +83,9 @@ export function MovingAverageNode({ data, id }: any) {
           spellCheck="false"
         />
 
-        {lastAverage !== null && (
-          <div className="node-status">
-            {lastAverage.toFixed(2)}
-          </div>
-        )}
+        <div className="node-status">
+          {lastAverage?.toFixed(2)}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

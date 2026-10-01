@@ -73,14 +73,12 @@ export function PeakDetectionNode({ data, id }: any) {
       </div>
 
       <div className="node-content nodrag">
-        <div style={{ fontSize: "10px", color: "#888" }}>Detects peaks in values</div>
+        <div style={{ fontSize: "10px", color: "#888", textAlign: "center" }}>
+          Count: {triggerCount}
+        </div>
 
         <div className="node-status">
           {lastPeak !== null ? `Last Peak: ${lastPeak}` : "Waiting for data..."}
-        </div>
-
-        <div style={{ fontSize: "10px", color: "#888", textAlign: "right" }}>
-          Count: {triggerCount}
         </div>
       </div>
 

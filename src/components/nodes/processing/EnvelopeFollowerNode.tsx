@@ -100,11 +100,9 @@ export function EnvelopeFollowerNode({ data, id }: any) {
           />
         </div>
 
-        {lastEnvelope !== null && (
-          <div className="node-status">
-            {lastEnvelope.toFixed(2)}
-          </div>
-        )}
+        <div className="node-status">
+          {lastEnvelope?.toFixed(2)}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

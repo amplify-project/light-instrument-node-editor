@@ -96,11 +96,9 @@ export function MathNode({ data, id }: any) {
           Input B: {valB}
         </div>
 
-        {lastOutput !== null && (
-          <div className="node-status">
-            {lastOutput}
-          </div>
-        )}
+        <div className="node-status">
+          {lastOutput}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

@@ -79,11 +79,11 @@ export function DeviceFilterNode({ data, id }: any) {
           spellCheck="false"
         />
 
-        {lastRelayed && (
           <div className="node-status">
-            {lastRelayed.device}:{lastRelayed.port}:{lastRelayed.value}
+            {lastRelayed && (
+              `${lastRelayed.device}:${lastRelayed.port}:${lastRelayed.value}`
+            )}
           </div>
-        )}
       </div>
 
       <Handle type="source" position={Position.Right} />

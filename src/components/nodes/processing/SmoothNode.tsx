@@ -76,11 +76,9 @@ export function SmoothNode({ data, id }: any) {
           spellCheck="false"
         />
 
-        {lastSmoothed !== null && (
           <div className="node-status">
-            {lastSmoothed.toFixed(2)}
+            {lastSmoothed?.toFixed(2)}
           </div>
-        )}
       </div>
 
       <Handle type="source" position={Position.Right} />

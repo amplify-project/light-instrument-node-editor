@@ -132,11 +132,11 @@ export function CommandNode({ data, id }: any) {
           Manual Trigger
         </button>
 
-        {lastEmitted && (
-          <div className="node-status">
-            {lastEmitted.device},{lastEmitted.port},{lastEmitted.command},{lastEmitted.value}
-          </div>
-        )}
+        <div className="node-status">
+          {lastEmitted && (
+            `${lastEmitted.device},${lastEmitted.port},${lastEmitted.command},${lastEmitted.value}`
+          )}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

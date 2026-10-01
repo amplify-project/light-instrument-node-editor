@@ -84,11 +84,9 @@ export function MedianFilterNode({ data, id }: any) {
           spellCheck="false"
         />
 
-        {lastMedian !== null && (
-          <div className="node-status">
-            {lastMedian.toFixed(2)}
-          </div>
-        )}
+        <div className="node-status">
+          {lastMedian?.toFixed(2)}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

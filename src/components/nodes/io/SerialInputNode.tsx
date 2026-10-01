@@ -156,12 +156,11 @@ export function SerialInputNode({ data, id }: any) {
           Refresh Ports
         </button>
 
-        {lastParsed && (
-          <div className="node-status">
-            {lastParsed.device}:{lastParsed.port}:{lastParsed.value}
-          </div>
-        )}
-
+        <div className="node-status">
+          {lastParsed && (
+            `${lastParsed.device}:${lastParsed.port}:${lastParsed.value}`
+          )}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

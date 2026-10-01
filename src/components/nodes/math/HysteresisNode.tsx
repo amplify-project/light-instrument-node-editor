@@ -86,7 +86,7 @@ export function HysteresisNode({ data, id }: any) {
         </div>
 
         <div className="node-status" style={{ color: state ? "#46ff88" : "#888" }}>
-          State: {state ? "ON (1)" : "OFF (0)"}
+          {state ? "ON (1)" : "OFF (0)"}
         </div>
       </div>
 

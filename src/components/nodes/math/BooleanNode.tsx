@@ -93,11 +93,9 @@ export function BooleanNode({ data, id }: any) {
           Input B: {valB ? "True" : "False"}
         </div>
 
-        {lastOutput !== null && (
-          <div className="node-status">
-            {lastOutput}
-          </div>
-        )}
+        <div className="node-status">
+          {lastOutput}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

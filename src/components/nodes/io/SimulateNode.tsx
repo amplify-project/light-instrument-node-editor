@@ -107,11 +107,9 @@ export function SimulateNode({ data, id }: any) {
           </div>
         )}
 
-        {!lastParsed && (
-          <div className="node-status" style={{ color: "#888" }}>
-            {isSimulating ? "Streaming..." : "No data"}
-          </div>
-        )}
+        <div className="node-status" style={{ color: "#888" }}>
+          {isSimulating ? "Streaming..." : "No data"}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

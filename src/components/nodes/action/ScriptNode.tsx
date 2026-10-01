@@ -92,11 +92,11 @@ export function ScriptNode({ data, id }: any) {
           rows={10}
         />
 
-        {errorLine !== null && (
-          <div className="node-status" style={{ color: "#ff4444" }}>
-            Error on line {errorLine}
-          </div>
-        )}
+        <div className="node-status" style={{ color: "#ff4444" }}>
+          {errorLine !== null && (
+            `Error on line ${errorLine}`
+          )}
+        </div>
 
         <button disabled={isRunning || !script} onClick={executeScript}>
           {isRunning ? "Running..." : "Run Script"}

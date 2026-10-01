@@ -105,11 +105,9 @@ export function MapRangeNode({ data, id }: any) {
           />
         </div>
 
-        {lastValue !== null && (
-          <div className="node-status">
-            {lastValue.toFixed(2)}
-          </div>
-        )}
+        <div className="node-status">
+          {lastValue?.toFixed(2)}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

@@ -67,11 +67,9 @@ export function DeadbandNode({ data, id }: any) {
           spellCheck="false"
         />
 
-        {lastValue !== null && (
-          <div className="node-status">
-            {lastValue}
-          </div>
-        )}
+        <div className="node-status">
+          {lastValue}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

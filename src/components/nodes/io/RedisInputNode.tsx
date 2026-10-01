@@ -112,11 +112,9 @@ export function RedisInputNode({ data, id }: any) {
           </button>
         </div>
 
-        {lastMessage && (
-          <div className="node-status">
-            {lastMessage}
-          </div>
-        )}
+        <div className="node-status">
+          {lastMessage}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

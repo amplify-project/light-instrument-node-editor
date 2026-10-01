@@ -3,7 +3,6 @@ import { Handle, Position } from "@xyflow/react";
 
 export function DelayNode({ data, id }: any) {
   const delayMs = data.delayMs ?? 1000;
-  const [isPending, setIsPending] = useState(false);
   const [pendingCount, setPendingCount] = useState(0);
   const pendingCountRef = useRef(0);
   const onDataRef = useRef(data.onData);
@@ -19,7 +18,6 @@ export function DelayNode({ data, id }: any) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsPending(pendingCountRef.current > 0);
       setPendingCount(pendingCountRef.current);
     }, 100);
 
@@ -78,11 +76,9 @@ export function DelayNode({ data, id }: any) {
           spellCheck="false"
         />
 
-        {isPending && (
-          <div className="node-status">
-            {pendingCount} pending
-          </div>
-        )}
+        <div className="node-status">
+          {pendingCount} pending
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

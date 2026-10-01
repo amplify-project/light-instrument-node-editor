@@ -54,11 +54,11 @@ export function ToggleNode({ data, id }: any) {
       </div>
 
       <div className="node-content nodrag">
-        <div className="node-status" style={{ color: state ? "#46ff88" : "#888", textAlign: "center" }}>
-          {state ? "ON (1)" : "OFF (0)"}
-        </div>
         <div style={{ fontSize: "9px", color: "#666", textAlign: "center" }}>
           Toggles on rising edge
+        </div>
+        <div className="node-status" style={{ color: state ? "#46ff88" : "#888", textAlign: "center" }}>
+          {state ? "ON (1)" : "OFF (0)"}
         </div>
       </div>
 

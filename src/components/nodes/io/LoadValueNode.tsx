@@ -48,11 +48,9 @@ export function LoadValueNode({ data, id }: any) {
           spellCheck="false"
         />
 
-        {lastValue !== null && (
-          <div className="node-status">
-            {displayValue}
-          </div>
-        )}
+        <div className="node-status">
+          {displayValue}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />

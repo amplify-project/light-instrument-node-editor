@@ -89,11 +89,9 @@ export function CompareNode({ data, id }: any) {
           spellCheck="false"
         />
 
-        {lastMet && (
-          <div className="node-status">
-            {lastMet.value}
-          </div>
-        )}
+        <div className="node-status">
+          {lastMet?.value}
+        </div>
       </div>
 
       <Handle type="source" position={Position.Right} />
