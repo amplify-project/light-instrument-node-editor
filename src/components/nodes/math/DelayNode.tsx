@@ -80,7 +80,7 @@ export function DelayNode({ data, id }: any) {
 
         {isPending && (
           <div className="node-status">
-            {pendingCount} pending...
+            {pendingCount} pending
           </div>
         )}
       </div>

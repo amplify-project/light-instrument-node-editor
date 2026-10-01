@@ -52,7 +52,7 @@ export function CounterNode({ data, id }: any) {
 
       <div className="node-content nodrag">
         <div className="node-status">
-          Count: {count.toLocaleString()}
+          {count.toLocaleString()}
         </div>
 
         <button

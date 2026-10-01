@@ -86,7 +86,7 @@ export function MedianFilterNode({ data, id }: any) {
 
         {lastMedian !== null && (
           <div className="node-status">
-            Med: {lastMedian.toFixed(2)}
+            {lastMedian.toFixed(2)}
           </div>
         )}
       </div>

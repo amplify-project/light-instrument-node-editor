@@ -67,7 +67,7 @@ export function RateNode({ data, id }: any) {
         />
 
         <div className="node-status">
-          Rate: {currentRate} msg/int
+          {currentRate} msg/int
         </div>
       </div>
 

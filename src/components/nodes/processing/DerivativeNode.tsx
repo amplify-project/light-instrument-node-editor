@@ -59,7 +59,7 @@ export function DerivativeNode({ data, id }: any) {
 
         {lastDiff !== null && (
           <div className="node-status">
-            Diff: {lastDiff}
+            {lastDiff}
           </div>
         )}
       </div>

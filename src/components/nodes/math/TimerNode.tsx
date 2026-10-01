@@ -67,7 +67,7 @@ export function TimerNode({ data, id }: any) {
         />
 
         <div className="node-status">
-          Last tick: {lastTick > 0 ? new Date(lastTick).toLocaleTimeString() : "Never"}
+          {lastTick > 0 ? new Date(lastTick).toLocaleTimeString() : "Never"}
         </div>
       </div>
 

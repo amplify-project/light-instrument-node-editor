@@ -85,7 +85,7 @@ export function MovingAverageNode({ data, id }: any) {
 
         {lastAverage !== null && (
           <div className="node-status">
-            Avg: {lastAverage.toFixed(2)}
+            {lastAverage.toFixed(2)}
           </div>
         )}
       </div>

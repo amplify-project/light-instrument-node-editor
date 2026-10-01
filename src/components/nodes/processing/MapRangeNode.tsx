@@ -107,7 +107,7 @@ export function MapRangeNode({ data, id }: any) {
 
         {lastValue !== null && (
           <div className="node-status">
-            Out: {lastValue.toFixed(2)}
+            {lastValue.toFixed(2)}
           </div>
         )}
       </div>

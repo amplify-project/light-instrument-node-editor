@@ -66,7 +66,7 @@ export function QuantizeNode({ data, id }: any) {
 
         {lastValue !== null && (
           <div className="node-status">
-            Out: {lastValue}
+            {lastValue}
           </div>
         )}
       </div>

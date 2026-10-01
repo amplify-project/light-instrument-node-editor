@@ -81,7 +81,7 @@ export function DeviceFilterNode({ data, id }: any) {
 
         {lastRelayed && (
           <div className="node-status">
-            Relayed: {lastRelayed.device}:{lastRelayed.port}:{lastRelayed.value}
+            {lastRelayed.device}:{lastRelayed.port}:{lastRelayed.value}
           </div>
         )}
       </div>

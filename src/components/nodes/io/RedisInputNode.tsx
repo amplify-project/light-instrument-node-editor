@@ -114,7 +114,7 @@ export function RedisInputNode({ data, id }: any) {
 
         {lastMessage && (
           <div className="node-status">
-            Last: {lastMessage}
+            {lastMessage}
           </div>
         )}
       </div>

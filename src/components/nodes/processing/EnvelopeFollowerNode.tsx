@@ -102,7 +102,7 @@ export function EnvelopeFollowerNode({ data, id }: any) {
 
         {lastEnvelope !== null && (
           <div className="node-status">
-            Env: {lastEnvelope.toFixed(2)}
+            {lastEnvelope.toFixed(2)}
           </div>
         )}
       </div>

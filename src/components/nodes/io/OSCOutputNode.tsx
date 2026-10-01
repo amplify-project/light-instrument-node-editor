@@ -76,10 +76,6 @@ export function OSCOutputNode({ data, id }: any) {
     };
   }, [hostPort, address, value, id, data]);
 
-  const displayValue = lastSent.message.length > 30
-    ? lastSent.message.substring(0, 27) + "..."
-    : lastSent.message;
-
   return (
     <div className="node output-node osc-output-node">
       {glowKey > 0 && (
@@ -132,7 +128,7 @@ export function OSCOutputNode({ data, id }: any) {
 
         {lastSent.message && (
           <div className="node-status" style={{ color: lastSent.isError ? "#f00" : "#888"}}>
-            {displayValue}
+            {lastSent.message}
           </div>
         )}
       </div>

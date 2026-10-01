@@ -40,10 +40,6 @@ export function StoreValueNode({ data, id }: any) {
         : String(lastValue))
     : "";
 
-  const truncatedValue = displayValue.length > 30
-    ? displayValue.substring(0, 27) + "..."
-    : displayValue;
-
   return (
     <div className="node output-node store-value-node">
       <Handle type="target" position={Position.Left} className="multi-handle" />
@@ -68,7 +64,7 @@ export function StoreValueNode({ data, id }: any) {
 
         {name && lastValue !== null && (
           <div className="node-status">
-            {truncatedValue}
+            {displayValue}
           </div>
         )}
       </div>

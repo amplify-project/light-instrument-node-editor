@@ -58,7 +58,7 @@ export function SerialOutputNode({ data, id }: any) {
 
         {lastSent && (
           <div className="node-status">
-            Last Sent: {lastSent}
+            {lastSent}
           </div>
         )}
       </div>

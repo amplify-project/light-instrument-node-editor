@@ -145,7 +145,7 @@ export function ToggleCommandNode({ data, id }: any) {
 
         {lastEmitted && (
           <div className="node-status">
-            Last: {lastEmitted.device},{lastEmitted.port},{lastEmitted.command},{lastEmitted.value}
+            {lastEmitted.device},{lastEmitted.port},{lastEmitted.command},{lastEmitted.value}
           </div>
         )}
       </div>

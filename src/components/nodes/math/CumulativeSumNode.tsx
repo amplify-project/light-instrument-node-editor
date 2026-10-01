@@ -81,7 +81,7 @@ export function CumulativeSumNode({ data, id }: any) {
         />
 
         <div className="node-status">
-          Sum: {lastSum.toLocaleString()}
+          {lastSum.toLocaleString()}
         </div>
       </div>
 

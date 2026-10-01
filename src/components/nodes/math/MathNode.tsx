@@ -98,7 +98,7 @@ export function MathNode({ data, id }: any) {
 
         {lastOutput !== null && (
           <div className="node-status">
-            Result: {lastOutput}
+            {lastOutput}
           </div>
         )}
       </div>

@@ -78,7 +78,7 @@ export function SmoothNode({ data, id }: any) {
 
         {lastSmoothed !== null && (
           <div className="node-status">
-            Smoothed: {lastSmoothed.toFixed(2)}
+            {lastSmoothed.toFixed(2)}
           </div>
         )}
       </div>

@@ -94,7 +94,7 @@ export function CombineRgbNode({ data, id }: any) {
         </div>
 
         <div className="node-status">
-          Value: {r},{g},{b}
+          {r},{g},{b}
         </div>
       </div>
 

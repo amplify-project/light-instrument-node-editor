@@ -91,7 +91,7 @@ export function CompareNode({ data, id }: any) {
 
         {lastMet && (
           <div className="node-status">
-            Last Met: {lastMet.value}
+            {lastMet.value}
           </div>
         )}
       </div>

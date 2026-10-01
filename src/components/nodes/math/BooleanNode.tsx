@@ -95,7 +95,7 @@ export function BooleanNode({ data, id }: any) {
 
         {lastOutput !== null && (
           <div className="node-status">
-            Output: {lastOutput}
+            {lastOutput}
           </div>
         )}
       </div>

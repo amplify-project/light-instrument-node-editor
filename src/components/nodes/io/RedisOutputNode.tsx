@@ -112,11 +112,7 @@ export function RedisOutputNode({ data, id }: any) {
 
         {lastSent && (
           <div className="node-status" style={{ color: lastSent.isError ? "#f00" : "#888"}}>
-            {(!lastSent.isError) ? (
-              `Last Sent: ${lastSent.message}`
-            ) : (
-              lastSent.message
-            )}
+            {lastSent.message}
           </div>
         )}
       </div>
