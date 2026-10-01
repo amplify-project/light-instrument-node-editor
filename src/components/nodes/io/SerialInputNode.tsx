@@ -15,16 +15,13 @@ export function SerialInputNode({ data, id }: any) {
   const [selectedPort, setSelectedPort] = useState("");
   const [isConnected, setIsConnected] = useState(false);
   const [lastParsed, setLastParsed] = useState<any>(null);
-  const [queueLen, setQueueLen] = useState(0);
 
   const bufferRef = useRef("");
   const lastParsedRef = useRef<any>(null);
-  const queueLenRef = useRef(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setLastParsed(lastParsedRef.current);
-      setQueueLen(queueLenRef.current);
     }, 100);
 
     return () => clearInterval(interval);
@@ -76,12 +73,6 @@ export function SerialInputNode({ data, id }: any) {
               data.onData(id, { type: "deviceDiscovery", deviceType, deviceName });
             } else if (command == "pong") {
               data.onData(id, { type: "pong", deviceType, deviceName });
-            }
-          } else if (messageType == "MSG" && parts.length == 3) {
-            const [_, command, size] = parts;
-
-            if (command == "queuelen") {
-              queueLenRef.current = parseInt(size);
             }
           }
         }
@@ -171,11 +162,6 @@ export function SerialInputNode({ data, id }: any) {
           </div>
         )}
 
-        {(isConnected) && (
-          <div style={{ fontSize: "12px", color: "#888" }}>
-            Queue Length: {queueLen}
-          </div>
-        )}
       </div>
 
       <Handle type="source" position={Position.Right} />
