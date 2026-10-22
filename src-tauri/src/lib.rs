@@ -23,6 +23,24 @@ struct SerialState {
     simulation_running: Arc<AtomicBool>,
 }
 
+#[derive(serde::Serialize, serde::Deserialize, Clone)]
+struct RemoteNode {
+    name: String,
+    #[serde(rename = "type")] node_type: String,
+}
+
+struct RemoteControlState {
+    nodes: Mutex<Vec<RemoteNode>>,
+}
+
+#[derive(serde::Deserialize, serde::Serialize, Clone)]
+struct RemoteControlPacket {
+    #[serde(default)]
+    name: String,
+    action: String,
+    value: Option<serde_json::Value>,
+}
+
 #[tauri::command]
 fn list_ports() -> Vec<String> {
     match serialport::available_ports() {
@@ -392,10 +410,57 @@ fn write_osc(host_port: String, address: String, value: String) -> Result<(), St
     Ok(())
 }
 
+#[tauri::command]
+fn update_remote_nodes(state: State<'_, RemoteControlState>, nodes: Vec<RemoteNode>) {
+    let mut registry = state.nodes.lock().unwrap();
+    *registry = nodes;
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .setup(|app| {
+            let app_handle = app.handle().clone();
+
+            std::thread::spawn(move || {
+                let socket = std::net::UdpSocket::bind("0.0.0.0:9000");
+
+                match socket {
+                    Ok(socket) => {
+                        let mut buf = [0u8; 1024];
+
+                        loop {
+                            match socket.recv_from(&mut buf) {
+                                Ok((size, src)) => {
+                                    let data = &buf[..size];
+
+                                    if let Ok(packet) = serde_json::from_slice::<RemoteControlPacket>(data) {
+                                        if packet.action == "query" {
+                                            let state = app_handle.state::<RemoteControlState>();
+                                            let nodes = state.nodes.lock().unwrap();
+                                            let response = serde_json::json!({ "nodes": *nodes });
+
+                                            if let Ok(response_data) = serde_json::to_vec(&response) {
+                                                let _ = socket.send_to(&response_data, &src);
+                                            }
+                                        } else {
+                                            let _ = app_handle.emit("remote-control", packet);
+                                        }
+                                    }
+                                }
+                                Err(_) => {
+                                    // Sleep briefly on error to avoid tight loop
+                                    std::thread::sleep(std::time::Duration::from_millis(100));
+                                }
+                            }
+                        }
+                    }
+                    Err(e) => {
+                        eprintln!("Failed to bind UDP socket on port 9000: {}", e);
+                    }
+                }
+            });
+
             let new_menu_entry = MenuItemBuilder::new("New")
                 .id("new-custom")
                 .accelerator("CmdOrCtrl+N")
@@ -481,6 +546,9 @@ pub fn run() {
             redis_connections: Mutex::new(HashMap::new()),
             simulation_running: Arc::new(AtomicBool::new(false)),
         })
+        .manage(RemoteControlState {
+            nodes: Mutex::new(Vec::new()),
+        })
         .invoke_handler(tauri::generate_handler![
             list_ports,
             open_port,
@@ -494,7 +562,8 @@ pub fn run() {
             redis_publish,
             redis_subscribe,
             redis_unsubscribe,
-            write_osc
+            write_osc,
+            update_remote_nodes
         ])
         .run(tauri::generate_context!())
         .expect("error while building tauri application")
