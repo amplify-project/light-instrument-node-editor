@@ -411,6 +411,17 @@ function Flow() {
     };
   }, [activePort]);
 
+  useEffect(() => {
+    const remoteNodes = nodes
+      .filter((n) => n.data?.remoteName)
+      .map((n) => ({
+        name: n.data.remoteName,
+        type: n.type,
+      }));
+
+    invoke("update_remote_nodes", { nodes: remoteNodes }).catch(console.error);
+  }, [nodes]);
+
   const onDeleteNode = useCallback((id: string) => {
     setNodes((nds) => {
       const node = nds.find((n) => n.id === id);
