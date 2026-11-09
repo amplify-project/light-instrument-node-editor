@@ -77,7 +77,7 @@ export function OSCOutputNode({ data, id }: any) {
   }, [hostPort, address, value, id, data]);
 
   return (
-    <div className="node output-node osc-output-node">
+    <div className="node osc-output-node">
       {glowKey > 0 && (
         <div
           key={glowKey}

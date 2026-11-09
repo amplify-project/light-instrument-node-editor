@@ -29,7 +29,7 @@ export function LoadValueNode({ data, id }: any) {
     : "";
 
   return (
-    <div className="node input-node load-value-node">
+    <div className="node load-value-node">
       <div className="node-header" title={"Emits the message whenever a new value is stored under a matching name.\nInput: None\nOutput: Shared message"}>
         <span>Load Value</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>

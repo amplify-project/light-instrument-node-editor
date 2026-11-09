@@ -42,7 +42,7 @@ export function RemoteInputNode({ data, id }: any) {
   }, [remoteName, id, data.onData]);
 
   return (
-    <div className="node input-node remote-node">
+    <div className="node remote-node">
       <div className="node-header" title={"Receives remote control packets via UDP.\nOutput: Structured packet {device, port, value}"}>
         <span>Remote Input</span>
         <button className="delete-btn" onClick={() => data.onDelete(id)}>×</button>
