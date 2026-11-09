@@ -60,6 +60,7 @@ import { RateNode } from "./components/nodes/processing/RateNode";
 import { StoreValueNode } from "./components/nodes/io/StoreValueNode";
 import { RedisOutputNode } from "./components/nodes/io/RedisOutputNode";
 import { RedisInputNode } from "./components/nodes/io/RedisInputNode";
+import { RemoteInputNode } from "./components/nodes/io/RemoteInputNode";
 import { ScriptNode } from "./components/nodes/action/ScriptNode";
 import { SerialInputNode } from "./components/nodes/io/SerialInputNode";
 import { SerialOutputNode } from "./components/nodes/io/SerialOutputNode";
@@ -108,6 +109,7 @@ const nodeTypes = {
   timer: TimerNode,
   math: MathNode,
   delay: DelayNode,
+  remoteInput: RemoteInputNode,
   storeValue: StoreValueNode,
   loadValue: LoadValueNode,
   oscOutput: OSCOutputNode,
