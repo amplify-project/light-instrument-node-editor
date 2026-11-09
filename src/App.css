@@ -50,13 +50,13 @@ body {
 }
 
 /* Input & IO Nodes - Blue */
-.input-node .node-header,
-.output-node .node-header,
 .simulate-node .node-header,
 .button-node .node-header,
 .function-generator-node .node-header,
 .value-node .node-header,
 .timer-node .node-header,
+.serial-input-node .node-header,
+.redis-input-node .node-header,
 .remote-node .node-header,
 .load-value-node .node-header {
   border-top: 3px solid #646cff;
@@ -97,7 +97,8 @@ body {
 .command-node .node-header,
 .script-node .node-header,
 .csv-writer-node .node-header,
-.redis-node .node-header,
+.redis-output-node .node-header,
+.serial-output-node .node-header,
 .store-value-node .node-header,
 .osc-output-node .node-header {
   border-top: 3px solid #a246ff;
@@ -190,12 +191,6 @@ body {
 .graph-node, .log-node, .script-node {
   width: 250px;
 }
-
-/* Log Node - Grey */
-.log-node .node-header {
-  border-top: 3px solid #cccccc;
-}
-
 
 .node-content {
   padding: 12px;
